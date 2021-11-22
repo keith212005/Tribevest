@@ -1,4 +1,9 @@
-export { Home as TabNavigator } from './home';
-export { Login } from './login';
 export { Splash } from './splash';
-export { Home } from './home';
+export { Login } from './login';
+
+export { Tribes as TabNavigator } from './tribes';
+export { Tribes } from './tribes';
+
+export { Alerts } from './alerts';
+export { Messages } from './messages';
+export { Profile } from './profile';

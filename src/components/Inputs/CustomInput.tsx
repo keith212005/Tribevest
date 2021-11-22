@@ -29,7 +29,7 @@ const CustomInput: React.FC<Props> = (props: Props) => {
           style={globalStyle.textStyle(
             '_14',
             'textPrimaryColor',
-            'PROXIMANOVA_SEMIBOLD',
+            'NUNITO_SEMIBOLD',
           )}
         >
           {props.label}
@@ -51,9 +51,7 @@ const CustomInput: React.FC<Props> = (props: Props) => {
         ]}
       />
       <Text
-        style={[
-          globalStyle.textStyle('_14', 'hot_red', 'PROXIMANOVA_SEMIBOLD'),
-        ]}
+        style={[globalStyle.textStyle('_14', 'hot_red', 'NUNITO_SEMIBOLD')]}
       >
         {props.valueObject && props.valueObject.isError
           ? props.valueObject.errorText

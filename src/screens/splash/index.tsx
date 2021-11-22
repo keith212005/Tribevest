@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-undef */
 import * as React from 'react';
-import { View } from 'react-native';
+import { Image, ImageBackground, Text, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 // LOCAL IMPORTS
 import { styles } from './style';
 import { navigate } from 'navigator/RootNavigation';
-import { images } from '@resources';
-import { RenderImage } from '@components';
+import { colors, images } from '@resources';
 
-const Splashs = (props: any) => {
+const SplashScreen = (props: any) => {
   React.useEffect(() => {
     props.networkListener();
     props.setDarkTheme(false);
@@ -19,8 +19,26 @@ const Splashs = (props: any) => {
     }, 2000);
   }, [props]);
 
+  const _renderIconAndDescription = () => {
+    return (
+      <View style={styles.iconContainer}>
+        <View style={styles.iconInnerContainer}>
+          <Image source={images.logo} style={{ marginHorizontal: 10 }} />
+          <Image source={images.tribevest} />
+        </View>
+        <Text style={styles.tagline}>{loc('INVESTING_IS_BETTER')}</Text>
+      </View>
+    );
+  };
+
   return (
-    <View style={styles.container}>{RenderImage(images.splash, 1000)}</View>
+    <LinearGradient colors={colors.primaryGradiant} style={styles.container}>
+      <ImageBackground
+        source={images.background_logo}
+        style={styles.imageBackground}
+      />
+      {_renderIconAndDescription()}
+    </LinearGradient>
   );
 };
 
@@ -35,4 +53,7 @@ function mapDispatchToProps(dispatch: any) {
 }
 
 //Connect everything
-export const Splash = connects(mapStateToProps, mapDispatchToProps)(Splashs);
+export const Splash = connects(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SplashScreen);

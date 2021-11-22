@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@react-navigation/native';
-import { fonts, fontSiz } from './fonts';
+import { fonts, fontsize } from './fonts';
 
 export type Style = {
   textStyle: (
-    fontSize: keyof typeof fontSiz,
+    fontSize: keyof typeof fontsize,
     color: string,
     fontFamily: keyof typeof fonts,
   ) => object;
@@ -26,7 +26,7 @@ const getGlobalStyles = (props: { colors: any }) =>
   createStyles<Style>({
     textStyle: (fontSize, color, fontFamily) => {
       return {
-        fontSize: fontSiz[fontSize],
+        fontSize: fontsize[fontSize],
         color: props.colors[color],
         fontFamily: fonts[fontFamily],
       };

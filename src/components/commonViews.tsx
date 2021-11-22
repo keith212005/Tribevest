@@ -8,7 +8,15 @@ export const RenderIcon = (
   size?: number,
   extraProps?: object,
 ) => {
-  return <Icon name={name} type={type} size={size} {...extraProps} />;
+  return (
+    <Icon
+      tvParallaxProperties={false}
+      name={name}
+      type={type}
+      size={size}
+      {...extraProps}
+    />
+  );
 };
 
 export const RenderImage = (uri: string, size: number, extraStyle?: object) => {

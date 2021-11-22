@@ -122,7 +122,7 @@ const LoginScreen = (props: any) => {
       <SquareButton
         title="Login"
         onPress={() => {
-          resetNavigation('TabNavigator' as never);
+          resetNavigation('DrawerNavigator' as never);
         }}
       />
     </View>

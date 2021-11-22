@@ -17,7 +17,7 @@ import { navigationRef } from './RootNavigation';
 import { colors } from '@resources';
 import { SCREENS } from '@constants';
 import * as Screen from '@screens';
-import TabNavigator from './tabNavigator';
+import { DrawerNavigator } from './drawerNavigator';
 import { changeLanguage } from '@languages';
 import { actionCreators } from '../actions';
 
@@ -81,8 +81,8 @@ const App = (props: any) => {
           >
             {_addScreen('Splash' as never)}
             {_addScreen('Login' as never)}
-            {_addScreen('TabNavigator' as never, true, {
-              component: TabNavigator,
+            {_addScreen('DrawerNavigator' as never, true, {
+              component: DrawerNavigator,
             })}
           </Stack.Navigator>
         </NavigationContainer>
