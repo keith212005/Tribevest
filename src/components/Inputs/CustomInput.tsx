@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -16,7 +17,7 @@ interface Props extends TextInputProps {
 
 const CustomInput: React.FC<Props> = (props: Props) => {
   const globalStyle = useGlobalStyles();
-  const { colors } = useTheme();
+  const { colors } = useTheme() as unknown as CustomTheme;
 
   useEffect(() => {
     console.log('useEffect called....');
@@ -43,7 +44,7 @@ const CustomInput: React.FC<Props> = (props: Props) => {
           {
             borderColor:
               props.valueObject && props.valueObject.isError
-                ? colors.hot_red
+                ? colors.red
                 : props.valueObject && props.valueObject.isFocus
                 ? colors.primaryColor
                 : colors.unfocusBorder,

@@ -1,22 +1,23 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-undef */
 import * as React from 'react';
-import { Image, ImageBackground, Text, View } from 'react-native';
+import { Image, ImageBackground, Text, View, StatusBar } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 // LOCAL IMPORTS
 import { styles } from './style';
 import { navigate } from 'navigator/RootNavigation';
-import { colors, images } from '@resources';
+import { images } from '@resources';
+import { useTheme } from '@react-navigation/native';
 
 const SplashScreen = (props: any) => {
+  const { colors } = useTheme() as unknown as CustomTheme;
+
   React.useEffect(() => {
     props.networkListener();
-    props.setDarkTheme(false);
+
     props.setAppLanguage('en');
-    setTimeout(() => {
-      return navigate('Login' as never);
-    }, 2000);
+    setTimeout(() => navigate('Login' as never), 2000);
   }, [props]);
 
   const _renderIconAndDescription = () => {
@@ -32,13 +33,16 @@ const SplashScreen = (props: any) => {
   };
 
   return (
-    <LinearGradient colors={colors.primaryGradiant} style={styles.container}>
-      <ImageBackground
-        source={images.background_logo}
-        style={styles.imageBackground}
-      />
-      {_renderIconAndDescription()}
-    </LinearGradient>
+    <>
+      <StatusBar translucent backgroundColor="transparent" />
+      <LinearGradient colors={colors.primaryGradiant} style={styles.container}>
+        <ImageBackground
+          source={images.background_logo}
+          style={styles.imageBackground}
+        />
+        {_renderIconAndDescription()}
+      </LinearGradient>
+    </>
   );
 };
 

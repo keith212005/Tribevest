@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { Icon, Avatar } from 'react-native-elements';
+import FastImage from 'react-native-fast-image';
 
 export const RenderIcon = (
   name: string,
@@ -19,13 +20,26 @@ export const RenderIcon = (
   );
 };
 
-export const RenderImage = (uri: string, size: number, extraStyle?: object) => {
+export const RenderImage = (uri: string, extraStyle?: object) => {
   return (
     <Image
       source={{ uri: uri }}
       style={{
         ...extraStyle,
       }}
+    />
+  );
+};
+
+export const FImage = (url: any, extraProps?: any) => {
+  return (
+    <FastImage
+      source={{
+        uri: url,
+        priority: FastImage.priority.normal,
+      }}
+      resizeMode={FastImage.resizeMode.cover}
+      {...extraProps}
     />
   );
 };

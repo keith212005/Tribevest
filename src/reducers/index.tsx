@@ -8,13 +8,13 @@ import { REDUCER_TYPE } from '@constants';
 import { saveNetwork } from './networkReducer';
 import { isOpenFirstTime } from './isOpenFirstTime';
 import { setAppLanguage } from './setAppLanguage';
-import { setDarkTheme } from './setDarkTheme';
+import { getTheme } from './getThemeData';
 
 const appReducer = combineReducers({
   isOnline: saveNetwork,
   isOpenedFirstTime: isOpenFirstTime,
   language: setAppLanguage,
-  isDarkTheme: setDarkTheme,
+  theme: getTheme,
 });
 
 const rootReducer = (state: any, action: any) => {
@@ -27,7 +27,7 @@ const rootReducer = (state: any, action: any) => {
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['isOpenedFirstTime'], // navigation will not be persisted
+  blacklist: [], // navigation will not be persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

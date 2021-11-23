@@ -1,20 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, KeyboardAvoidingView, Platform } from 'react-native';
 import '../../typings/globals';
 
 // THIRD PARTY IMPORTS
 import { createStackNavigator } from '@react-navigation/stack';
-import {
-  DefaultTheme,
-  DarkTheme,
-  NavigationContainer,
-} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { connect } from 'react-redux';
 import { AnyAction, bindActionCreators, Dispatch } from 'redux';
 
 // LOCAL IMPORTS
 import { navigationRef } from './RootNavigation';
-import { colors } from '@resources';
+import { MyDarkTheme, LightTheme } from '@resources';
 import { SCREENS } from '@constants';
 import * as Screen from '@screens';
 import { DrawerNavigator } from './drawerNavigator';
@@ -29,24 +25,8 @@ const forFade = ({ current }: { current: any }) => ({
   },
 });
 
-const MyDarkTheme = {
-  ...DarkTheme,
-  colors: {
-    ...DarkTheme.colors,
-    ...colors,
-  },
-};
-
-const LightTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    ...colors,
-  },
-};
-
 const App = (props: any) => {
-  changeLanguage('es');
+  changeLanguage('en');
 
   const _addScreen = (
     routeName: keyof typeof SCREENS,
@@ -91,11 +71,8 @@ const App = (props: any) => {
   );
 };
 
-// export default AppContainer;
-
 function mapStateToProps(state: any) {
-  console.log('state>>>>', state);
-  return { isOnline: state.isOnline };
+  return { isOnline: state.isOnline, isDarkTheme: state.theme.isDarkTheme };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<AnyAction>) {

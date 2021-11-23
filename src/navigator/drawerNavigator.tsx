@@ -8,6 +8,7 @@ import * as Screen from '@screens';
 import { SCREENS } from '@constants';
 import { DrawerContent } from '@components';
 import { TabNavigator } from './tabNavigator';
+import { responsiveWidth } from '@resources';
 
 const Drawer = createDrawerNavigator();
 
@@ -31,6 +32,9 @@ export const DrawerNavigator = () => {
       screenOptions={{
         drawerType: 'front',
         headerShown: false,
+        drawerStyle: {
+          width: responsiveWidth(85),
+        },
       }}
       drawerContent={(props) => <DrawerContent {...props} />}
     >

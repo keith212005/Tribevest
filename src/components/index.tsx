@@ -4,3 +4,4 @@ export { default as SquareButton } from './Buttons/SquareButton';
 export * from './commonViews';
 export * from './Wrappers';
 export * from './Drawer';
+export * from './NavigationHeaderIcons';

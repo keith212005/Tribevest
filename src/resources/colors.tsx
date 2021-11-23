@@ -1,5 +1,7 @@
 /* eslint-disable camelcase */
-export const colors = {
+import { DefaultTheme, DarkTheme } from '@react-navigation/native';
+
+export const color = {
   white: '#FFFFFF',
   black: '#000000',
   green: '#32D291',
@@ -13,4 +15,25 @@ export const colors = {
   darkGray: '#4d4d4d',
   primaryGradiant: ['#189EFF', '#1846FF'],
   bluePrimary: '#1846FF',
+  background: '#2C2C2C',
+  red: 'red',
+  orange: 'orange',
+};
+
+export const MyDarkTheme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    ...color,
+    background: '#1B2531',
+    card: '#273143',
+  },
+};
+
+export const LightTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    ...color,
+  },
 };
