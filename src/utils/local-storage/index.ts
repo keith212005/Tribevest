@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const storeLocalStorage = (key: string, data: any) =>
   new Promise(async (resolve, reject) => {
@@ -7,7 +7,6 @@ export const storeLocalStorage = (key: string, data: any) =>
       resolve(true);
     } catch (e) {
       // saving error
-      console.log('Store Data in AsyncStorage Error!');
       reject(false);
     }
   });

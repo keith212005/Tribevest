@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-
 import { fonts, fontsize, responsiveHeight, responsiveWidth } from '@resources';
 
 export const styles = StyleSheet.create({
@@ -7,14 +6,11 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  imageBackground: {
-    aspectRatio: 1,
-    width: '100%',
-    alignSelf: 'flex-start',
-  },
-  imagePathStyle: {
-    marginLeft: responsiveWidth(10),
-    aspectRatio: 1,
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5,
   },
   tagline: {
     fontFamily: fonts.NUNITO_REGULAR,
@@ -26,11 +22,16 @@ export const styles = StyleSheet.create({
   },
   iconContainer: {
     position: 'absolute',
-    marginTop: responsiveHeight(40),
+    marginTop: responsiveHeight(50),
   },
   iconInnerContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  backgoundImage: {
+    aspectRatio: 1,
+    width: '100%',
+    alignSelf: 'flex-start',
   },
 });

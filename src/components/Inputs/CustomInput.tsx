@@ -1,6 +1,4 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-nested-ternary */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React, { useEffect } from 'react';
 import { StyleSheet, TextInput, TextInputProps, Text } from 'react-native';
@@ -17,11 +15,9 @@ interface Props extends TextInputProps {
 
 const CustomInput: React.FC<Props> = (props: Props) => {
   const globalStyle = useGlobalStyles();
-  const { colors } = useTheme() as unknown as CustomTheme;
+  const { colors } = useTheme();
 
-  useEffect(() => {
-    console.log('useEffect called....');
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -30,21 +26,23 @@ const CustomInput: React.FC<Props> = (props: Props) => {
           style={globalStyle.textStyle(
             '_14',
             'textPrimaryColor',
-            'NUNITO_SEMIBOLD',
+            'PROXIMANOVA_SEMIBOLD',
           )}
         >
           {props.label}
         </Text>
       )}
       <TextInput
+        blurOnSubmit={false}
         {...props}
         ref={props.refName}
         style={[
           styles.input,
           {
+            backgroundColor: colors.white,
             borderColor:
               props.valueObject && props.valueObject.isError
-                ? colors.red
+                ? colors.hot_red
                 : props.valueObject && props.valueObject.isFocus
                 ? colors.primaryColor
                 : colors.unfocusBorder,
@@ -52,7 +50,9 @@ const CustomInput: React.FC<Props> = (props: Props) => {
         ]}
       />
       <Text
-        style={[globalStyle.textStyle('_14', 'hot_red', 'NUNITO_SEMIBOLD')]}
+        style={[
+          globalStyle.textStyle('_14', 'hot_red', 'PROXIMANOVA_SEMIBOLD'),
+        ]}
       >
         {props.valueObject && props.valueObject.isError
           ? props.valueObject.errorText

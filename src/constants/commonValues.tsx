@@ -1,13 +1,11 @@
-/* eslint-disable max-len */
 export const SCREENS = {
   Splash: 'Splash',
   Login: 'Login',
   TabNavigator: 'TabNavigator',
-  Tribes: 'Tribes',
+  Dashboard: 'Dashboard',
   DrawerNavigator: 'DrawerNavigator',
-  Alerts: 'Alerts',
-  Messages: 'Messages',
-  Profile: 'Profile',
+  Leads: 'Leads',
+  Theme: 'Theme',
 };
 
 export interface IfieldObject {
@@ -24,32 +22,64 @@ export var fieldObject = {
   isFocus: false,
 };
 
-// STATIC DATA ARRAYS
+export const themeColors = [
+  {
+    id: 1,
+    name: 'Cadillac',
+    isChecked: true,
+    gradient: ['#8a2387', '#e94057'],
+  },
+  {
+    id: 2,
+    name: 'RoyalBlue',
+    isChecked: false,
+    gradient: ['#0575e6', '#021b79'],
+  },
+  {
+    id: 3,
+    name: 'HippieGreen',
+    isChecked: false,
+    gradient: ['#6a9113', '#185a9d'],
+  },
+  {
+    id: 4,
+    name: 'Turquiose',
+    isChecked: false,
+    gradient: ['#43cea2', '#fffddf'],
+  },
+  {
+    id: 5,
+    name: 'Tangerine',
+    isChecked: false,
+    gradient: ['#FF512F', '#ffc500'],
+  },
+];
+
 export const TRIBE_LIST_SIDE_DRAWER = [
   {
     id: 1,
     name: 'Crypto Crew',
-    url: 'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    url: 'https://reactnative.dev/img/tiny_logo.png',
   },
   {
     id: 2,
     name: 'STR Group',
-    url: 'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    url: 'https://reactnative.dev/img/tiny_logo.png',
   },
   {
     id: 3,
     name: 'Small Elephant',
-    url: 'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    url: 'https://reactnative.dev/img/tiny_logo.png',
   },
   {
     id: 4,
     name: 'Futurist Investing',
-    url: 'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    url: 'https://reactnative.dev/img/tiny_logo.png',
   },
   {
     id: 5,
     name: 'ATX Realtors',
-    url: 'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    url: 'https://reactnative.dev/img/tiny_logo.png',
   },
 ];
 

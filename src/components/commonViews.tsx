@@ -1,7 +1,7 @@
+import { useGlobalStyles } from '@resources';
 import React from 'react';
 import { Image } from 'react-native';
 import { Icon, Avatar } from 'react-native-elements';
-import FastImage from 'react-native-fast-image';
 
 export const RenderIcon = (
   name: string,
@@ -11,7 +11,7 @@ export const RenderIcon = (
 ) => {
   return (
     <Icon
-      tvParallaxProperties={false}
+      tvParallaxProperties={undefined}
       name={name}
       type={type}
       size={size}
@@ -20,26 +20,12 @@ export const RenderIcon = (
   );
 };
 
-export const RenderImage = (uri: string, extraStyle?: object) => {
+export const RenderImage = (uri: string, size: number, extraStyle?: object) => {
+  const globalStyles = useGlobalStyles();
   return (
     <Image
       source={{ uri: uri }}
-      style={{
-        ...extraStyle,
-      }}
-    />
-  );
-};
-
-export const FImage = (url: any, extraProps?: any) => {
-  return (
-    <FastImage
-      source={{
-        uri: url,
-        priority: FastImage.priority.normal,
-      }}
-      resizeMode={FastImage.resizeMode.cover}
-      {...extraProps}
+      style={[globalStyles.squareLayout(size), { ...extraStyle }]}
     />
   );
 };

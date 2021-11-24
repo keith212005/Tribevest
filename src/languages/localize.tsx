@@ -2,7 +2,7 @@ import I18n from 'react-native-i18n';
 import { en } from './en';
 import { es } from './es';
 
-export const localize = (name: string, params?: object) => {
+export const localize = (name: keyof typeof en | any, params?: object) => {
   I18n.fallbacks = true;
   I18n.translations = {
     en,

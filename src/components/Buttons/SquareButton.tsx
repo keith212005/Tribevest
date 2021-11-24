@@ -1,10 +1,9 @@
-/* eslint-disable no-undef */
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { Button, ButtonProps } from 'react-native-elements';
-import { useTheme } from '@react-navigation/native';
+import { color } from '@resources';
 
 // LOCAL IMPORTS
 
@@ -15,16 +14,8 @@ interface SquareButtonProps extends ButtonProps {
 }
 
 const SquareButton = (props: SquareButtonProps) => {
-  const { colors } = useTheme() as unknown as CustomTheme;
   return (
-    <Button
-      buttonStyle={[
-        styles.buttonStyle,
-        props.buttonStyle,
-        { backgroundColor: colors.orange },
-      ]}
-      {...props}
-    />
+    <Button buttonStyle={[styles.buttonStyle, props.buttonStyle]} {...props} />
   );
 };
 
@@ -36,7 +27,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
-
+    backgroundColor: color.primaryColor,
     shadowRadius: 5,
     shadowOpacity: 0.7,
     shadowColor: '#A58FFF',

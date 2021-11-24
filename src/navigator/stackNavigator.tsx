@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-undef */
+import React, { useEffect } from 'react';
 import { View, KeyboardAvoidingView, Platform } from 'react-native';
 import '../../typings/globals';
 
@@ -6,7 +7,6 @@ import '../../typings/globals';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { connect } from 'react-redux';
-import { AnyAction, bindActionCreators, Dispatch } from 'redux';
 
 // LOCAL IMPORTS
 import { navigationRef } from './RootNavigation';
@@ -14,8 +14,7 @@ import { MyDarkTheme, LightTheme } from '@resources';
 import { SCREENS } from '@constants';
 import * as Screen from '@screens';
 import { DrawerNavigator } from './drawerNavigator';
-import { changeLanguage } from '@languages';
-import { actionCreators } from '../actions';
+import { HeaderBackground } from '@components';
 
 const Stack = createStackNavigator();
 
@@ -26,7 +25,9 @@ const forFade = ({ current }: { current: any }) => ({
 });
 
 const App = (props: any) => {
-  changeLanguage('en');
+  useEffect(() => {
+    console.log('hide splash screen');
+  }, []);
 
   const _addScreen = (
     routeName: keyof typeof SCREENS,
@@ -51,6 +52,9 @@ const App = (props: any) => {
         <NavigationContainer
           ref={navigationRef}
           theme={props.isDarkTheme ? MyDarkTheme : LightTheme}
+          onReady={() => {
+            console.log('Naivation container is readye');
+          }}
         >
           <Stack.Navigator
             screenOptions={{
@@ -59,10 +63,19 @@ const App = (props: any) => {
               cardStyleInterpolator: forFade,
             }}
           >
-            {_addScreen('Splash' as never)}
+            {/* {_addScreen('Splash' as never)} */}
             {_addScreen('Login' as never)}
             {_addScreen('DrawerNavigator' as never, true, {
               component: DrawerNavigator,
+            })}
+            {_addScreen('Theme' as never, false, {
+              options: {
+                headerShown: true,
+                headerBackground: () => <HeaderBackground />,
+                headerBackTitleVisible: false,
+                headerTintColor: 'white',
+                headerMode: 'screen',
+              },
             })}
           </Stack.Navigator>
         </NavigationContainer>
@@ -75,8 +88,8 @@ function mapStateToProps(state: any) {
   return { isOnline: state.isOnline, isDarkTheme: state.theme.isDarkTheme };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<AnyAction>) {
-  return bindActionCreators(actionCreators, dispatch);
+function mapDispatchToProps(dispatch: any) {
+  return BindActionCreators(ActionCreators, dispatch);
 }
 
 //Connect everything

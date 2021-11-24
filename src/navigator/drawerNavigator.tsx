@@ -1,18 +1,22 @@
-import * as React from 'react';
+import React from 'react';
+import { Dimensions } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { connect } from 'react-redux';
+import { AnyAction, bindActionCreators, Dispatch } from 'redux';
 
 // LOCAL IMPORTS
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import * as Screen from '@screens';
-import { SCREENS } from '@constants';
 import { DrawerContent } from '@components';
+import { actionCreators } from '@actions';
+import { SCREENS } from '@constants';
 import { TabNavigator } from './tabNavigator';
-import { responsiveWidth } from '@resources';
 
+const { height, width } = Dimensions.get('window');
 const Drawer = createDrawerNavigator();
 
-export const DrawerNavigator = () => {
+const DrawerNav = () => {
   const _addScreen = (
     routeName: keyof typeof SCREENS,
     isNavigator?: boolean,
@@ -26,21 +30,41 @@ export const DrawerNavigator = () => {
       />
     );
   };
+
   return (
-    <Drawer.Navigator
-      initialRouteName={'TabNavigator'}
-      screenOptions={{
-        drawerType: 'front',
-        headerShown: false,
-        drawerStyle: {
-          width: responsiveWidth(85),
-        },
-      }}
-      drawerContent={(props) => <DrawerContent {...props} />}
-    >
-      {_addScreen('TabNavigator' as never, true, {
-        component: TabNavigator,
-      })}
-    </Drawer.Navigator>
+    <>
+      <Drawer.Navigator
+        initialRouteName={'TabNavigator'}
+        screenOptions={{
+          drawerType: 'front',
+          headerShown: false,
+          drawerStyle: {
+            width: width - width / 7,
+          },
+        }}
+        drawerContent={(props) => <DrawerContent {...props} />}
+      >
+        {_addScreen('TabNavigator' as never, true, {
+          component: TabNavigator,
+        })}
+      </Drawer.Navigator>
+    </>
   );
 };
+
+function mapStateToProps(state: any) {
+  return {
+    selectedGradient: state.theme.selectedGradient,
+    isDarkTheme: state.theme.isDarkTheme,
+  };
+}
+
+function mapDispatchToProps(dispatch: Dispatch<AnyAction>) {
+  return bindActionCreators(actionCreators, dispatch);
+}
+
+//Connect everything
+export const DrawerNavigator = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DrawerNav);

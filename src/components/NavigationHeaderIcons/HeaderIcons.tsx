@@ -16,7 +16,7 @@ export const HeaderLeftIcon = (props: any) => {
       containerStyle={{ margin: 10, borderRadius: 100 }}
       name={'menu'}
       type="feather"
-      color={'black'}
+      color={isFocused ? 'white' : 'black'}
       onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
       tvParallaxProperties={undefined}
     />

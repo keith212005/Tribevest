@@ -1,5 +1,6 @@
 import { Dimensions, PixelRatio, Platform } from 'react-native';
 const { height, width } = Dimensions.get('window');
+
 // based on iphone 5s's scale
 const scale = width / 320;
 

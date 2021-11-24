@@ -1,11 +1,8 @@
-export { Splash } from './splash';
+export { Dashboard as DrawerNavigator } from './dashboard';
+export { Dashboard as TabNavigator } from './dashboard';
+export { Dashboard } from './dashboard';
+
 export { Login } from './login';
-
-export { Tribes as TabNavigator } from './tribes';
-export { Tribes as DrawerNavigator } from './tribes';
-
-export { Tribes } from './tribes';
-
-export { Alerts } from './alerts';
-export { Messages } from './messages';
-export { Profile } from './profile';
+export { Splash } from './splash';
+export { Leads } from './leads';
+export { Theme } from './theme';

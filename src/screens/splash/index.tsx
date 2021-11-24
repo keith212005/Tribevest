@@ -1,24 +1,34 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-undef */
-import * as React from 'react';
-import { Image, ImageBackground, Text, View, StatusBar } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, Image, ImageBackground, StatusBar } from 'react-native';
+
+// THIRD PARTY IMPORTS
 import LinearGradient from 'react-native-linear-gradient';
 
 // LOCAL IMPORTS
-import { styles } from './style';
-import { navigate } from 'navigator/RootNavigation';
+import { resetNavigation } from '@navigator';
 import { images } from '@resources';
+import { styles } from './style';
 import { useTheme } from '@react-navigation/native';
 
 const SplashScreen = (props: any) => {
   const { colors } = useTheme() as unknown as CustomTheme;
 
-  React.useEffect(() => {
-    props.networkListener();
+  /**
+  |--------------------------------------------------
+  | Global section end
+  |--------------------------------------------------
+  */
 
-    props.setAppLanguage('en');
-    setTimeout(() => navigate('Login' as never), 2000);
-  }, [props]);
+  // props.resetStore();
+  props.networkListener();
+
+  useEffect(() => {
+    // navigate to Login or Dashboard
+    setTimeout(() => {
+      return resetNavigation('Login' as never);
+    }, 1000);
+  }, []);
 
   const _renderIconAndDescription = () => {
     return (
@@ -34,11 +44,11 @@ const SplashScreen = (props: any) => {
 
   return (
     <>
-      <StatusBar translucent backgroundColor="transparent" />
+      <StatusBar translucent={true} barStyle={'light-content'} />
       <LinearGradient colors={colors.primaryGradiant} style={styles.container}>
         <ImageBackground
           source={images.background_logo}
-          style={styles.imageBackground}
+          style={styles.backgoundImage}
         />
         {_renderIconAndDescription()}
       </LinearGradient>
@@ -46,9 +56,7 @@ const SplashScreen = (props: any) => {
   );
 };
 
-export default Splash;
-
-function mapStateToProps(state: any) {
+function mapStateToProps() {
   return {};
 }
 

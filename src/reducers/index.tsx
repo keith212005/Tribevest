@@ -8,7 +8,7 @@ import { REDUCER_TYPE } from '@constants';
 import { saveNetwork } from './networkReducer';
 import { isOpenFirstTime } from './isOpenFirstTime';
 import { setAppLanguage } from './setAppLanguage';
-import { getTheme } from './getThemeData';
+import { getTheme } from './getThemeList';
 
 const appReducer = combineReducers({
   isOnline: saveNetwork,
@@ -19,6 +19,8 @@ const appReducer = combineReducers({
 
 const rootReducer = (state: any, action: any) => {
   if (action.type === REDUCER_TYPE.RESET_STORE) {
+    console.log('reset store called...');
+
     state = undefined;
   }
   return appReducer(state, action as any);
@@ -27,7 +29,7 @@ const rootReducer = (state: any, action: any) => {
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: [], // navigation will not be persisted
+  blacklist: ['totalLeads'], // navigation will not be persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
