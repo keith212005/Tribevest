@@ -90,8 +90,6 @@ const ThemeList = (props: any) => {
 };
 
 function mapStateToProps(state: any) {
-  console.log('state in Theme screeen>>>>', state);
-
   return {
     themeList: state.theme.themeList,
     isDarkTheme: state.theme.isDarkTheme,

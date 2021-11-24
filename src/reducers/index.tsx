@@ -9,12 +9,14 @@ import { saveNetwork } from './networkReducer';
 import { isOpenFirstTime } from './isOpenFirstTime';
 import { setAppLanguage } from './setAppLanguage';
 import { getTheme } from './getThemeList';
+import { isLoggedIn } from './isLoggedIn';
 
 const appReducer = combineReducers({
   isOnline: saveNetwork,
   isOpenedFirstTime: isOpenFirstTime,
   language: setAppLanguage,
   theme: getTheme,
+  isLoggedIn: isLoggedIn,
 });
 
 const rootReducer = (state: any, action: any) => {

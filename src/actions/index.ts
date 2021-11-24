@@ -3,6 +3,7 @@ import * as networkListener from './networkListener';
 import * as isOpenFirstTime from './isOpenFirstTime';
 import * as setAppLanguage from './setAppLanguage';
 import * as themeData from './getThemeData';
+import * as isLoggedIn from './isLoggedIn';
 
 export const actionCreators = Object.assign(
   {},
@@ -11,4 +12,5 @@ export const actionCreators = Object.assign(
   isOpenFirstTime,
   setAppLanguage,
   themeData,
+  isLoggedIn,
 );

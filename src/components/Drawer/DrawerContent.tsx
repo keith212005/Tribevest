@@ -16,7 +16,7 @@ import { resetNavigation } from '@navigator';
 import { DrawerLeftSideFlatList } from './DrawerLeftSideFlatList';
 import DrawerHeader from './DrawerHeader';
 
-export const DrawerContent = (props: any) => {
+const DrawerContents = (props: any) => {
   const globalStyles = useGlobalStyles();
   const { colors } = useTheme();
 
@@ -41,7 +41,10 @@ export const DrawerContent = (props: any) => {
           { text: loc('CANCEL'), onPress: () => {} },
           {
             text: loc('OK'),
-            onPress: () => resetNavigation('Login', { reset_user: true }),
+            onPress: () => {
+              props.isLoggedIn(false);
+              resetNavigation('Login', { reset_user: true });
+            },
           },
         ]);
         break;
@@ -99,5 +102,19 @@ export const DrawerContent = (props: any) => {
     </DrawerContentScrollView>
   );
 };
+
+function mapStateToProps(state: any) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return BindActionCreators(ActionCreators, dispatch);
+}
+
+//Connect everything
+export const DrawerContent = connects(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DrawerContents);
 
 const styles = StyleSheet.create({});

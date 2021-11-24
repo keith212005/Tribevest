@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-fallthrough */
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { CustomInput, SquareButton, SafeAreaWrapper } from '@components';
@@ -19,8 +19,6 @@ interface User {
 }
 
 const LoginScreen = (props: any) => {
-  var isLoggedIn = true;
-
   var inputs = new Array(2);
   const { colors } = useTheme() as unknown as CustomTheme;
   const { isDarkTheme, isOpenedFirstTime } = props;
@@ -33,7 +31,6 @@ const LoginScreen = (props: any) => {
 
   // Actions to be done when app installed and opened first time only
   if (isOpenedFirstTime) {
-    console.log('setting theme in state first tiem');
     props.setThemeFirstTime();
   }
 
@@ -45,6 +42,14 @@ const LoginScreen = (props: any) => {
 
   useEffect(() => {
     props.isOpenFirstTime(false);
+    if (props.isUserLoggedIn) {
+      props.navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{ name: 'DrawerNavigator' }],
+        }),
+      );
+    }
   }, [props]);
 
   //handle of input box for check validation
@@ -131,14 +136,12 @@ const LoginScreen = (props: any) => {
     );
   };
 
-  if (isLoggedIn) {
-    props.navigation.dispatch(
-      CommonActions.reset({
-        index: 0,
-        routes: [{ name: 'DrawerNavigator' }],
-      }),
+  if (props.isUserLoggedIn) {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ActivityIndicator size="large" color={'blue'} />
+      </View>
     );
-    return null;
   }
 
   return (
@@ -157,6 +160,7 @@ const LoginScreen = (props: any) => {
           <SquareButton
             title="Login"
             onPress={() => {
+              props.isLoggedIn(true);
               resetNavigation('DrawerNavigator' as never);
             }}
           />
@@ -170,6 +174,7 @@ function mapStateToProps(state: any) {
   return {
     isDarkTheme: state.theme.isDarkTheme,
     isOpenedFirstTime: state.isOpenedFirstTime,
+    isUserLoggedIn: state.isLoggedIn,
   };
 }
 

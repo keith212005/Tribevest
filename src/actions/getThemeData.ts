@@ -14,8 +14,6 @@ export const toggleDarkTheme = () => ({
 
 // called when user changes the theme
 export const changeTheme = (selectedItem: any) => {
-  console.log('change Theme called', selectedItem);
-
   return async (dispatch: any) => {
     let selectedGradient: any;
     const newArr = await themeColors.map((item) => {

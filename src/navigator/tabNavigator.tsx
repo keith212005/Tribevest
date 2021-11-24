@@ -52,7 +52,6 @@ export const TabNavigator = () => {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color }) => {
             let iconName: string = 'home';
-            console.log(route.name);
 
             if (route.name === SCREENS.DrawerNavigator) {
               iconName = focused ? 'home' : 'home-outline';

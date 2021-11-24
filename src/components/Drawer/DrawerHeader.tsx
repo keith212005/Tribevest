@@ -34,7 +34,7 @@ const DrawerHeader = () => {
           >
             Crypto Crew
           </Text>
-          <FacePile
+          {/* <FacePile
             faces={FACES}
             hideOverflow={true}
             circleSize={15}
@@ -42,7 +42,7 @@ const DrawerHeader = () => {
               alignSelf: 'flex-start',
               borderWidth: 1,
             }}
-          />
+          /> */}
         </View>
       </ImageBackground>
     </>

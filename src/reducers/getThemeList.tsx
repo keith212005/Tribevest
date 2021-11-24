@@ -14,8 +14,6 @@ const initialTheme = {
 export const getTheme = (state = initialTheme, action: any) => {
   switch (action.type) {
     case REDUCER_TYPE.SET_THEME_FIRST_TIME:
-      console.log('set theme first time called..');
-
       return { ...state, themeList: themeColors };
     case REDUCER_TYPE.TOGGLE_DARK_THEME:
       return { ...state, isDarkTheme: !state.isDarkTheme };

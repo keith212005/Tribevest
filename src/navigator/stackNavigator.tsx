@@ -7,6 +7,7 @@ import '../../typings/globals';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { connect } from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
 
 // LOCAL IMPORTS
 import { navigationRef } from './RootNavigation';
@@ -25,9 +26,7 @@ const forFade = ({ current }: { current: any }) => ({
 });
 
 const App = (props: any) => {
-  useEffect(() => {
-    console.log('hide splash screen');
-  }, []);
+  useEffect(() => {}, []);
 
   const _addScreen = (
     routeName: keyof typeof SCREENS,
@@ -53,7 +52,9 @@ const App = (props: any) => {
           ref={navigationRef}
           theme={props.isDarkTheme ? MyDarkTheme : LightTheme}
           onReady={() => {
-            console.log('Naivation container is readye');
+            setTimeout(() => {
+              SplashScreen.hide();
+            }, 1000);
           }}
         >
           <Stack.Navigator

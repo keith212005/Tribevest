@@ -1,0 +1,1 @@
+npx react-native set-splash --path './src/resources/images/splash/Splash@3x.png' --resize cover
