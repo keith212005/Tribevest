@@ -2,11 +2,9 @@
 import React from 'react';
 import {
   SafeAreaView,
-  StatusBar,
   StyleSheet,
   ViewStyle,
   StatusBarStyle,
-  ColorValue,
   StatusBarProps,
 } from 'react-native';
 

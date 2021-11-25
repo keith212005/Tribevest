@@ -1,6 +1,6 @@
 import { useGlobalStyles } from '@resources';
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, ViewStyle } from 'react-native';
 import { Icon, Avatar } from 'react-native-elements';
 
 export const RenderIcon = (
@@ -20,7 +20,21 @@ export const RenderIcon = (
   );
 };
 
-export const RenderImage = (uri: string, size: number, extraStyle?: object) => {
+export const RenderImage = (uri: any, size: number, extraStyle?: object) => {
+  const globalStyles = useGlobalStyles();
+  return (
+    <Image
+      source={uri}
+      style={[globalStyles.squareLayout(size), { ...extraStyle }]}
+    />
+  );
+};
+
+export const RenderUrlImage = (
+  uri: string,
+  size: number,
+  extraStyle?: ViewStyle,
+) => {
   const globalStyles = useGlobalStyles();
   return (
     <Image

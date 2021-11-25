@@ -24,7 +24,6 @@ const SplashScreen = (props: any) => {
   props.networkListener();
 
   useEffect(() => {
-    // navigate to Login or Dashboard
     setTimeout(() => {
       return resetNavigation('Login' as never);
     }, 1000);

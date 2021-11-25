@@ -18,4 +18,5 @@ export const en = {
   TRIBE_SETTINGS: 'Tribe Settings',
   OPERATING_AGREEMENT: 'Operating Agreement',
   TRIBE_CHAT: 'Tribe Chat',
+  THEMING: 'Theme',
 };

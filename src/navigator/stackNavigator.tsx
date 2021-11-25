@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { useEffect } from 'react';
-import { View, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
 import '../../typings/globals';
 
 // THIRD PARTY IMPORTS
@@ -43,45 +43,40 @@ const App = (props: any) => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    <NavigationContainer
+      ref={navigationRef}
+      theme={props.isDarkTheme ? MyDarkTheme : LightTheme}
+      onReady={() => {
+        setTimeout(() => {
+          if (Platform.OS === 'android') {
+            SplashScreen.hide();
+          }
+        }, 1000);
+      }}
+    >
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          gestureEnabled: false,
+          cardStyleInterpolator: forFade,
+        }}
       >
-        <NavigationContainer
-          ref={navigationRef}
-          theme={props.isDarkTheme ? MyDarkTheme : LightTheme}
-          onReady={() => {
-            setTimeout(() => {
-              SplashScreen.hide();
-            }, 1000);
-          }}
-        >
-          <Stack.Navigator
-            screenOptions={{
-              headerShown: false,
-              gestureEnabled: false,
-              cardStyleInterpolator: forFade,
-            }}
-          >
-            {/* {_addScreen('Splash' as never)} */}
-            {_addScreen('Login' as never)}
-            {_addScreen('DrawerNavigator' as never, true, {
-              component: DrawerNavigator,
-            })}
-            {_addScreen('Theme' as never, false, {
-              options: {
-                headerShown: true,
-                headerBackground: () => <HeaderBackground />,
-                headerBackTitleVisible: false,
-                headerTintColor: 'white',
-                headerMode: 'screen',
-              },
-            })}
-          </Stack.Navigator>
-        </NavigationContainer>
-      </KeyboardAvoidingView>
-    </View>
+        {/* {_addScreen('Splash' as never)} */}
+        {_addScreen('Login' as never)}
+        {_addScreen('DrawerNavigator' as never, true, {
+          component: DrawerNavigator,
+        })}
+        {_addScreen('Theme' as never, false, {
+          options: {
+            headerShown: true,
+            headerBackground: () => <HeaderBackground />,
+            headerBackTitleVisible: false,
+            headerTintColor: 'white',
+            headerMode: 'screen',
+          },
+        })}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

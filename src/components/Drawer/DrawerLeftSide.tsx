@@ -13,7 +13,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useTheme } from '@react-navigation/native';
 import { actionCreators } from '@actions';
 
-const DrawerLeftSideFlatLists = (props: any) => {
+const DrawerLeftSides = (props: any) => {
   const globalStyles = useGlobalStyles();
   const { colors } = useTheme() as unknown as CustomTheme;
   const { isDarkTheme } = props;
@@ -32,7 +32,7 @@ const DrawerLeftSideFlatLists = (props: any) => {
           <FastImage
             style={[
               globalStyles.squareLayout(50),
-              { borderRadius: 10, marginHorizontal: 20, marginVertical: 10 },
+              { borderRadius: 10, marginHorizontal: 1, marginVertical: 8 },
             ]}
             source={{
               uri: item.url,
@@ -91,7 +91,7 @@ const DrawerLeftSideFlatLists = (props: any) => {
   return (
     <View style={[styles.container, { borderColor: colors.grey }]}>
       {_renderTitle()}
-      <ScrollView>
+      <ScrollView persistentScrollbar={true} style={{ paddingHorizontal: 10 }}>
         {TRIBE_LIST_SIDE_DRAWER.map((item: any, index: any) =>
           _renderItem(item, index),
         )}
@@ -109,14 +109,14 @@ function mapDispatchToProps(dispatch: any) {
 }
 
 //Connect everything
-export const DrawerLeftSideFlatList = connects(
+export const DrawerLeftSide = connects(
   mapStateToProps,
   mapDispatchToProps,
-)(DrawerLeftSideFlatLists);
+)(DrawerLeftSides);
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
-    borderRightWidth: 1,
+    alignItems: 'center',
+    borderWidth: 2,
   },
 });

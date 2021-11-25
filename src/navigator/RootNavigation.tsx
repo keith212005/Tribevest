@@ -2,6 +2,7 @@ import { SCREENS } from '@constants';
 import {
   createNavigationContainerRef,
   CommonActions,
+  DrawerActions,
 } from '@react-navigation/native';
 
 export const navigationRef = createNavigationContainerRef();
@@ -22,4 +23,12 @@ export const resetNavigation = (
       routes: [{ name: name, params }],
     }),
   );
+};
+
+export const openDrawer = () => {
+  navigationRef.dispatch(DrawerActions.openDrawer());
+};
+
+export const closeDrawer = () => {
+  navigationRef.dispatch(DrawerActions.closeDrawer());
 };
