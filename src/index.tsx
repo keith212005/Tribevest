@@ -1,10 +1,9 @@
 import * as React from 'react';
+import { LogBox } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { Provider } from 'react-redux';
 import { AppContainer } from './navigator';
-import { LogBox } from 'react-native';
-
 import { PersistGate } from 'redux-persist/integration/react';
 
 // LOCAL IMPORTS

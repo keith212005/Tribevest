@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import { CustomInput, SquareButton, SafeAreaWrapper } from '@components';
 import { CommonActions, useTheme } from '@react-navigation/native';
+import { CustomInput, SquareButton, SafeAreaWrapper } from '@components';
 
 // LOCAL IMPORTS
-import { fieldObject, IfieldObject } from '@constants';
 import { styles } from './style';
+import { fieldObject, IfieldObject } from '@constants';
 import { resetNavigation } from 'navigator/RootNavigation';
 
 interface User {

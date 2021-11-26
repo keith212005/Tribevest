@@ -3,16 +3,14 @@ import * as React from 'react';
 import { Text, Platform, Image } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import { useTheme } from '@react-navigation/native';
 import { HeaderStyleInterpolators } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // LOCAL IMPORTS
-import { SCREENS } from '@constants';
 import * as Screen from '@screens';
-import { HeaderBackground } from '@components';
+import { SCREENS } from '@constants';
 import { images, responsiveHeight, useGlobalStyles } from '@resources';
-import { useTheme } from '@react-navigation/native';
-import FastImage from 'react-native-fast-image';
 
 const Tab = createBottomTabNavigator();
 
@@ -67,8 +65,8 @@ export const TabNavigator = () => {
           }
           return (
             <>
-              <FastImage
-                source={iconName}
+              <Image
+                source={iconName as unknown as _SourceUri}
                 style={globalStyles.squareLayout(20)}
               />
               <Text
@@ -89,19 +87,17 @@ export const TabNavigator = () => {
             </>
           );
         },
-
-        gestureEnabled: false,
+        headerShown: false,
+        gestureEnabled: true,
         cardStyleInterpolator: forFade,
         headerStyleInterpolator: HeaderStyleInterpolators.forFade,
-        headerBackground: () => <HeaderBackground />,
         tabBarShowLabel: false,
         tabBarStyle: {
           height: responsiveHeight(Platform.OS === 'ios' ? 10 : 8),
         },
-        headerTintColor: 'white',
       })}
     >
-      {_addScreen('Tribes' as never, false)}
+      {_addScreen('Tribes' as never, false, {})}
       {_addScreen('Messages' as never, false)}
       {_addScreen('Alerts' as never, false)}
       {_addScreen('Profile' as never, false)}

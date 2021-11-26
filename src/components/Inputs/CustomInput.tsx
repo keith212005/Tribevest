@@ -1,10 +1,13 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-nested-ternary */
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, TextInput, TextInputProps, Text } from 'react-native';
 
-import { IfieldObject } from '@constants';
+// THIRD PARTY IMPORTS
 import { useTheme } from '@react-navigation/native';
+
+// LOCAL IMPORTS
+import { IfieldObject } from '@constants';
 import { useGlobalStyles } from '@resources';
 
 interface Props extends TextInputProps {
@@ -15,9 +18,7 @@ interface Props extends TextInputProps {
 
 const CustomInput: React.FC<Props> = (props: Props) => {
   const globalStyle = useGlobalStyles();
-  const { colors } = useTheme();
-
-  useEffect(() => {}, []);
+  const { colors } = useTheme() as unknown as CustomTheme;
 
   return (
     <>
@@ -26,7 +27,7 @@ const CustomInput: React.FC<Props> = (props: Props) => {
           style={globalStyle.textStyle(
             '_14',
             'textPrimaryColor',
-            'PROXIMANOVA_SEMIBOLD',
+            'NUNITO_SEMIBOLD',
           )}
         >
           {props.label}
@@ -50,9 +51,7 @@ const CustomInput: React.FC<Props> = (props: Props) => {
         ]}
       />
       <Text
-        style={[
-          globalStyle.textStyle('_14', 'hot_red', 'PROXIMANOVA_SEMIBOLD'),
-        ]}
+        style={[globalStyle.textStyle('_14', 'hot_red', 'NUNITO_SEMIBOLD')]}
       >
         {props.valueObject && props.valueObject.isError
           ? props.valueObject.errorText

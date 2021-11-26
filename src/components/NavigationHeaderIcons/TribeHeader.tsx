@@ -1,19 +1,21 @@
 /* eslint-disable no-undef */
 /* eslint-disable max-len */
-import { responsiveWidth, images, useGlobalStyles } from '@resources';
 import React, { memo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import { RenderImage, TribeAvatar } from '@components';
-import { colors } from 'react-native-elements';
-import { openDrawer } from '@navigator';
+// THIRD PARTY IMPORTS
 import { useTheme } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+
+// LOCAL IMPORTS
+import { openDrawer } from '@navigator';
+import { RenderImage, TribeAvatar } from '@components';
+import { images, useGlobalStyles } from '@resources';
 
 var url =
   'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
 
-const TribeHeader = () => {
+const TribeHeader = ({ title }: any) => {
   const globalStyles = useGlobalStyles();
   const { colors } = useTheme() as unknown as CustomTheme;
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
@@ -42,7 +44,7 @@ const TribeHeader = () => {
           styles.title,
         ]}
       >
-        Crypto Crew
+        {title}
       </Text>
       {RenderImage(images.members, 25, {
         borderRadius: 5,

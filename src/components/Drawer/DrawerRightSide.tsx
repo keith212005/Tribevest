@@ -1,25 +1,29 @@
-/* eslint-disable react-native/no-unused-styles */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-shadow */
 /* eslint-disable no-undef */
 import * as React from 'react';
-import { View, StyleSheet, Image, Alert } from 'react-native';
+import { View, Image, Alert } from 'react-native';
 
-import DrawerHeader from './DrawerHeader';
-import { GradientButton } from '@components';
+// THIRD PARTY IMPORTS
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { images } from '@resources';
-import { resetNavigation, navigate, closeDrawer } from '@navigator';
 import { Divider } from 'react-native-elements';
 
+// LOCAL IMPORTS
+import DrawerHeader from './DrawerHeader';
+import { GradientButton } from '@components';
+import { images } from '@resources';
+import { resetNavigation, navigate, closeDrawer } from '@navigator';
+import { ToggleDarkThemeSwitch } from './toggleDarkThemeSwitch';
+import { useDispatch } from 'react-redux';
+import { isLoggedIn } from 'actions/isLoggedIn';
+
 const DrawerRightSide = (props: any) => {
+  const dispatch = useDispatch();
+
   function handleSelectedDrawerItem(label: any) {
     closeDrawer();
     switch (label) {
       case loc('DASHBOARD'):
         navigate('Tribes');
-        break;
-      case loc('THEMING'):
-        setTimeout(() => navigate('Theme'), 300);
         break;
       case loc('LOGOUT'):
         Alert.alert(loc('LOGOUT'), loc('LOGOUT_MESSAGE'), [
@@ -27,7 +31,7 @@ const DrawerRightSide = (props: any) => {
           {
             text: loc('OK'),
             onPress: () => {
-              props.isLoggedIn(false);
+              dispatch(isLoggedIn(false));
               resetNavigation('Login');
             },
           },
@@ -77,14 +81,10 @@ const DrawerRightSide = (props: any) => {
 
         {_renderDrawerItem('settings', loc('LOGOUT'))}
         <Divider />
-        {_renderDrawerItem('settings', loc('THEMING'))}
+        <ToggleDarkThemeSwitch />
       </DrawerContentScrollView>
     </View>
   );
 };
 
 export default DrawerRightSide;
-
-const styles = StyleSheet.create({
-  container: {},
-});

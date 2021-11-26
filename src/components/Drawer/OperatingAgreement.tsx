@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-const OperatingAgreement = (props: any) => {
+const OperatingAgreement = () => {
   return (
     <View style={styles.container}>
       <Text>OperatingAgreement</Text>

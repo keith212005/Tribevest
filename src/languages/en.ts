@@ -19,4 +19,5 @@ export const en = {
   OPERATING_AGREEMENT: 'Operating Agreement',
   TRIBE_CHAT: 'Tribe Chat',
   THEMING: 'Theme',
+  DARK_THEME: 'Dark Theme',
 };

@@ -8,9 +8,10 @@ import {
   StatusBarProps,
 } from 'react-native';
 
-/**
- * ? Local Imports
- */
+// THIRD PARTY IMPORTS
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+// LOCAL IMPORTS
 import { FocusAwareStatusBar } from './FocusAwareStatusBar';
 
 interface ISafeAreaWrapperProps {
@@ -23,20 +24,20 @@ interface ISafeAreaWrapperProps {
 
 export const SafeAreaWrapper: React.FC<ISafeAreaWrapperProps> = ({
   statusBarStyle = 'dark-content',
-  statusBarBackgroundColor = ['red', 'red'],
   containerStyle = { flex: 1 },
   statusBarProps = {},
   children,
   ...rest
 }) => {
+  const insets = useSafeAreaInsets();
   return (
-    <SafeAreaView style={[styles.container, containerStyle]}>
+    <SafeAreaView
+      style={[styles.container, containerStyle, { marginTop: insets.top }]}
+    >
       <FocusAwareStatusBar
         barStyle={statusBarStyle as StatusBarStyle}
-        statusBarBackgroundColor={statusBarBackgroundColor}
         statusBarProps={statusBarProps}
       />
-
       {children}
     </SafeAreaView>
   );

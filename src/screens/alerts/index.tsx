@@ -1,16 +1,20 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 
-interface AlertsProps {}
+// THIRD PARTY IMPORTS
+import { useSelector } from 'react-redux';
 
-export const Alerts = (props: AlertsProps) => {
+// LOCAL IMPORTS
+import { styles } from './style';
+import { SafeAreaWrapper } from '@components';
+
+export const Alerts = () => {
+  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   return (
-    <View style={styles.container}>
-      <Text>Alerts</Text>
-    </View>
+    <SafeAreaWrapper
+      statusBarStyle={isDarkTheme ? 'light-content' : 'dark-content'}
+    >
+      <Text>Alerts screen</Text>
+    </SafeAreaWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});

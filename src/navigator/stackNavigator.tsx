@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import React, { useEffect } from 'react';
-import { View, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
+import React from 'react';
+import { Platform } from 'react-native';
 import '../../typings/globals';
 
 // THIRD PARTY IMPORTS
@@ -10,12 +10,11 @@ import { connect } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 
 // LOCAL IMPORTS
+import * as Screen from '@screens';
+import { SCREENS } from '@constants';
 import { navigationRef } from './RootNavigation';
 import { MyDarkTheme, LightTheme } from '@resources';
-import { SCREENS } from '@constants';
-import * as Screen from '@screens';
 import { DrawerNavigator } from './drawerNavigator';
-import { HeaderBackground } from '@components';
 
 const Stack = createStackNavigator();
 
@@ -26,8 +25,6 @@ const forFade = ({ current }: { current: any }) => ({
 });
 
 const App = (props: any) => {
-  useEffect(() => {}, []);
-
   const _addScreen = (
     routeName: keyof typeof SCREENS,
     isNavigator?: boolean,
@@ -65,15 +62,6 @@ const App = (props: any) => {
         {_addScreen('Login' as never)}
         {_addScreen('DrawerNavigator' as never, true, {
           component: DrawerNavigator,
-        })}
-        {_addScreen('Theme' as never, false, {
-          options: {
-            headerShown: true,
-            headerBackground: () => <HeaderBackground />,
-            headerBackTitleVisible: false,
-            headerTintColor: 'white',
-            headerMode: 'screen',
-          },
         })}
       </Stack.Navigator>
     </NavigationContainer>

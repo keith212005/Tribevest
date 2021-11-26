@@ -5,8 +5,6 @@ import { StyleSheet } from 'react-native';
 import { Button, ButtonProps } from 'react-native-elements';
 import { color } from '@resources';
 
-// LOCAL IMPORTS
-
 interface SquareButtonProps extends ButtonProps {
   title: string;
   buttonStyle?: object;

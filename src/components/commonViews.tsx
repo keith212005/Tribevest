@@ -1,7 +1,11 @@
-import { useGlobalStyles } from '@resources';
 import React from 'react';
 import { Image, ViewStyle } from 'react-native';
+
+// THIRD PARTY IMPORTS
 import { Icon, Avatar } from 'react-native-elements';
+
+// LOCAL IMPORTS
+import { useGlobalStyles } from '@resources';
 
 export const RenderIcon = (
   name: string,

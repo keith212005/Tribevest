@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 
-interface MessagesProps {}
+// LOCAL IMPORTS
+import { styles } from './style';
+import { SafeAreaWrapper } from '@components';
+import { useSelector } from 'react-redux';
 
-export const Messages = (props: MessagesProps) => {
+export const Messages = () => {
+  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   return (
-    <View style={styles.container}>
-      <Text>Messages</Text>
-    </View>
+    <SafeAreaWrapper
+      statusBarStyle={isDarkTheme ? 'light-content' : 'dark-content'}
+    >
+      <Text>Messages screen</Text>
+    </SafeAreaWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});

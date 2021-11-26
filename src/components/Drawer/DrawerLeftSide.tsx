@@ -1,22 +1,33 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { Icon } from 'react-native-elements';
 import FastImage from 'react-native-fast-image';
+import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
 import { TRIBE_LIST_SIDE_DRAWER } from '@constants';
 import { images, useGlobalStyles } from '@resources';
-import { ScrollView } from 'react-native-gesture-handler';
-import { useTheme } from '@react-navigation/native';
 import { actionCreators } from '@actions';
+import { useSelector } from 'react-redux';
 
-const DrawerLeftSides = (props: any) => {
+interface DrawerLeftSideProps {
+  show: boolean;
+}
+
+const DrawerLeftSides = ({ show }: DrawerLeftSideProps) => {
   const globalStyles = useGlobalStyles();
   const { colors } = useTheme() as unknown as CustomTheme;
-  const { isDarkTheme } = props;
+  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
 
   const _renderItem = (item: any, index: any) => {
     return (
@@ -41,7 +52,7 @@ const DrawerLeftSides = (props: any) => {
             resizeMode={FastImage.resizeMode.cover}
           />
         </TouchableOpacity>
-        {props.show && (
+        {show && (
           <>
             <Text
               style={[
@@ -74,7 +85,7 @@ const DrawerLeftSides = (props: any) => {
           containerStyle={{ flex: 2 }}
           onPress={() => console.log('hello')}
         />
-        {props.show && (
+        {show && (
           <Text
             style={[
               globalStyles.textStyle('_18', 'black', 'NUNITO_EXTRABOLD'),

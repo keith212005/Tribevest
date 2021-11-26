@@ -1,12 +1,11 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { Switch } from 'react-native-elements';
 
 // LOCAL IMPORTS
-import styles from './style';
 import { useGlobalStyles } from '@resources';
 
 export const DarkThemeSwitch = (props: any) => {
@@ -16,9 +15,7 @@ export const DarkThemeSwitch = (props: any) => {
 
   return (
     <View style={[styles.darkThemeContainer]}>
-      <Text
-        style={[globalStyles.textStyle('_14', 'text', 'PROXIMANOVA_REGULAR')]}
-      >
+      <Text style={[globalStyles.textStyle('_14', 'text', 'NUNITO_REGULAR')]}>
         {loc('DARK_THEME')}
       </Text>
       <Switch
@@ -49,3 +46,13 @@ export const ToggleDarkThemeSwitch = connects(
   mapStateToProps,
   mapDispatchToProps,
 )(DarkThemeSwitch);
+
+const styles = StyleSheet.create({
+  darkThemeContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 30,
+    paddingHorizontal: 20,
+  },
+});

@@ -1,18 +1,13 @@
-import { color, fonts, responsiveWidth, useGlobalStyles } from '@resources';
 import React, { memo } from 'react';
-import {
-  ViewStyle,
-  Image,
-  ImageSourcePropType,
-  Dimensions,
-} from 'react-native';
+import { ViewStyle, Image, ImageSourcePropType } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { Button } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { RFValue } from 'react-native-responsive-fontsize';
 
-const { height, width } = Dimensions.get('window');
+// LOCAL IMPORTS
+import { color, fonts, useGlobalStyles } from '@resources';
 
 interface DefaultProps {
   title: string;

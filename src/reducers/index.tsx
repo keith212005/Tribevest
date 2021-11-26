@@ -1,5 +1,6 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+// THIRD PARTY IMPORTS
 import thunk from 'redux-thunk';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistStore, persistReducer } from 'redux-persist';
 
@@ -8,7 +9,7 @@ import { REDUCER_TYPE } from '@constants';
 import { saveNetwork } from './networkReducer';
 import { isOpenFirstTime } from './isOpenFirstTime';
 import { setAppLanguage } from './setAppLanguage';
-import { getTheme } from './getThemeList';
+import { getTheme } from './getThemeData';
 import { isLoggedIn } from './isLoggedIn';
 
 const appReducer = combineReducers({
@@ -21,8 +22,6 @@ const appReducer = combineReducers({
 
 const rootReducer = (state: any, action: any) => {
   if (action.type === REDUCER_TYPE.RESET_STORE) {
-    console.log('reset store called...');
-
     state = undefined;
   }
   return appReducer(state, action as any);

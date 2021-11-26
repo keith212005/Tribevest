@@ -1,23 +1,20 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-undef */
 import React from 'react';
 
-// LOCAL IMPORTS
-import { SafeAreaWrapper, TribeHeader } from '@components';
+// THIRD PARTY IMPORTS
 import { useSelector } from 'react-redux';
 
-const Tribe = (props: any) => {
-  const { selectedGradient } = props;
-  console.log('selectedGradiet>>>>', selectedGradient);
+// LOCAL IMPORTS
+import { SafeAreaWrapper, TribeHeader } from '@components';
 
+const Tribe = () => {
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
 
   return (
     <SafeAreaWrapper
-    // statusBarStyle={isDarkTheme ? 'light-content' : 'dark-content'}
-    // statusBarBackgroundColor={['white', 'white']}
+      statusBarStyle={isDarkTheme ? 'light-content' : 'dark-content'}
     >
-      {/* <TribeHeader title={'ketan'} /> */}
+      <TribeHeader title={'Crypto Crew'} />
     </SafeAreaWrapper>
   );
 };

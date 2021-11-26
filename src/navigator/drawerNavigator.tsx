@@ -13,7 +13,7 @@ import { actionCreators } from '@actions';
 import { SCREENS } from '@constants';
 import { TabNavigator } from './tabNavigator';
 
-const { height, width } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 const Drawer = createDrawerNavigator();
 
 const DrawerNav = () => {

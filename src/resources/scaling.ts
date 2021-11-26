@@ -1,4 +1,4 @@
-import { Dimensions, PixelRatio, Platform } from 'react-native';
+import { PixelRatio, Platform, Dimensions } from 'react-native';
 const { height, width } = Dimensions.get('window');
 
 // based on iphone 5s's scale

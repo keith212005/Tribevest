@@ -3,7 +3,6 @@ export const SCREENS = {
   Login: 'Login',
   TabNavigator: 'TabNavigator',
   DrawerNavigator: 'DrawerNavigator',
-  Theme: 'Theme',
   Tribes: 'Tribes',
   Messages: 'Messages',
   Alerts: 'Alerts',
@@ -23,39 +22,6 @@ export var fieldObject = {
   errorText: '',
   isFocus: false,
 };
-
-export const themeColors = [
-  {
-    id: 1,
-    name: 'Cadillac',
-    isChecked: true,
-    gradient: ['#8a2387', '#e94057'],
-  },
-  {
-    id: 2,
-    name: 'RoyalBlue',
-    isChecked: false,
-    gradient: ['#0575e6', '#021b79'],
-  },
-  {
-    id: 3,
-    name: 'HippieGreen',
-    isChecked: false,
-    gradient: ['#6a9113', '#185a9d'],
-  },
-  {
-    id: 4,
-    name: 'Turquiose',
-    isChecked: false,
-    gradient: ['#43cea2', '#fffddf'],
-  },
-  {
-    id: 5,
-    name: 'Tangerine',
-    isChecked: false,
-    gradient: ['#FF512F', '#ffc500'],
-  },
-];
 
 export const TRIBE_LIST_SIDE_DRAWER = [
   {
