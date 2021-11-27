@@ -11,17 +11,18 @@ export const color = {
   textPrimaryColor: '#757575',
   errorColor: '#eb5a64',
   placeHolderColor: 'rgba(23, 28, 68, 0.5)',
-  blue: '#2350ea',
+  blue: '#197FE7',
   orange: 'orange',
   whiteOpacity: 'rgba(255, 255, 255, 0.8)',
   unfocusBorder_opacity_low: 'rgba(23, 28, 68, 0.1)',
   grey: '#DCDCDC',
-  darkGray: '#4d4d4d',
+  darkGrey: '#4d4d4d',
   BLACK_TRANSPARENT: 'rgba(0, 0, 0, 0.5)',
   hot_red: '#db3236',
   green: '#32CD32',
   lightBackground: '#273143',
   primaryGradiant: ['#189EFF', '#1846FF'],
+  lightText: '#828A92',
 };
 
 export const MyDarkTheme = {

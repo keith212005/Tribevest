@@ -3,7 +3,14 @@
     <style name="SplashScreenTheme" parent="SplashScreen_SplashTheme">
         <item name="colorPrimaryDark">@color/splashprimary</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:statusBarColor">#ffffff</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/red</item>
+        <!-- FULL SCREEN -->
+
+       
     </style>
 
     <!-- Base application theme. -->

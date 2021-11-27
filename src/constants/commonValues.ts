@@ -108,3 +108,46 @@ export const FACES = [
       'https://www.yojackets.com/wp-content/uploads/2016/04/Civil-War-Scarlet-Witch-Red-Coat-1.jpg',
   },
 ];
+
+export const CAP_TABLE = [
+  {
+    id: 0,
+    imageUrl:
+      'https://www.whatsappprofiledpimages.com/wp-content/uploads/2021/08/Profile-Photo-Wallpaper.jpg',
+    name: 'Luke Peake',
+    amount: '$223.00',
+    equity: '49%',
+  },
+  {
+    id: 1,
+    imageUrl:
+      'https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg',
+    name: 'Zach Bowers',
+    amount: '$199.00',
+    equity: '19%',
+  },
+  {
+    id: 2,
+    imageUrl:
+      'https://cdn.business2community.com/wp-content/uploads/2014/04/profile-picture-300x300.jpg',
+    name: 'Elizabeth Briggs',
+    amount: '$878.00',
+    equity: '10%',
+  },
+  {
+    id: 3,
+    imageUrl:
+      'https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg',
+    name: 'Jerry Christensen',
+    amount: '$955.00',
+    equity: '5%',
+  },
+  {
+    id: 4,
+    imageUrl:
+      'https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg',
+    name: 'Kate Doyle',
+    amount: '$778.00',
+    equity: '10%',
+  },
+];

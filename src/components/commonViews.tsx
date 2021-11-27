@@ -1,11 +1,11 @@
 import React from 'react';
-import { Image, ViewStyle } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import { Icon, Avatar } from 'react-native-elements';
+import { Icon, Avatar, AvatarProps } from 'react-native-elements';
 
 // LOCAL IMPORTS
 import { useGlobalStyles } from '@resources';
+import FastImage from 'react-native-fast-image';
 
 export const RenderIcon = (
   name: string,
@@ -24,39 +24,40 @@ export const RenderIcon = (
   );
 };
 
-export const RenderImage = (uri: any, size: number, extraStyle?: object) => {
+export const FastImg = (uri: any, size: number, extraStyle?: object) => {
   const globalStyles = useGlobalStyles();
   return (
-    <Image
+    <FastImage
       source={uri}
       style={[globalStyles.squareLayout(size), { ...extraStyle }]}
     />
   );
 };
 
-export const RenderUrlImage = (
-  uri: string,
-  size: number,
-  extraStyle?: ViewStyle,
-) => {
+export const FastImgUrl = (uri: any, size: number, extraStyle?: object) => {
   const globalStyles = useGlobalStyles();
   return (
-    <Image
+    <FastImage
       source={{ uri: uri }}
       style={[globalStyles.squareLayout(size), { ...extraStyle }]}
     />
   );
 };
 
-export const renderAvatar = (url: string, size: number, extraProps: object) => {
+export const renderAvatar = (
+  url: string,
+  size: number,
+  extraProps?: AvatarProps,
+) => {
   return (
     <Avatar
       activeOpacity={0.2}
       containerStyle={{ backgroundColor: '#BDBDBD' }}
       rounded
       size={size}
-      source={{ uri: url }}
+      source={{ uri: url, cache: 'only-if-cached' }}
       title="AP"
+      imageProps={{ transition: true }}
       {...extraProps}
     />
   );

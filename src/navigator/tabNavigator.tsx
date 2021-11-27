@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import * as React from 'react';
-import { Text, Platform, Image } from 'react-native';
+import { Text, Platform } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { useTheme } from '@react-navigation/native';
@@ -11,6 +11,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as Screen from '@screens';
 import { SCREENS } from '@constants';
 import { images, responsiveHeight, useGlobalStyles } from '@resources';
+import { FastImg } from '@components';
 
 const Tab = createBottomTabNavigator();
 
@@ -65,10 +66,7 @@ export const TabNavigator = () => {
           }
           return (
             <>
-              <Image
-                source={iconName as unknown as _SourceUri}
-                style={globalStyles.squareLayout(20)}
-              />
+              {FastImg(iconName, 25)}
               <Text
                 style={[
                   globalStyles.textStyle(

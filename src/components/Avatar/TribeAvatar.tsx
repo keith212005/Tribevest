@@ -1,30 +1,23 @@
 import React, { memo } from 'react';
-import { Image, ViewStyle, Pressable } from 'react-native';
+import { ViewStyle, Pressable } from 'react-native';
 
 import { useGlobalStyles } from '@resources';
+import FastImage from 'react-native-fast-image';
 
 interface TribeAvatarProps {
   url: string;
   size: number;
-  borderRadius: number;
   extraStyle: ViewStyle;
   onPress: () => void;
 }
 
-const TribeAvatars = ({
-  url,
-  size,
-  borderRadius,
-  extraStyle,
-  onPress,
-}: TribeAvatarProps) => {
+const TribeAvatars = ({ url, size, extraStyle, onPress }: TribeAvatarProps) => {
   const globalStyles = useGlobalStyles();
   return (
     <Pressable onPress={onPress}>
-      <Image
+      <FastImage
         source={{ uri: url }}
         style={[globalStyles.squareLayout(size), { ...extraStyle }]}
-        borderRadius={borderRadius ? borderRadius : 0}
       />
     </Pressable>
   );

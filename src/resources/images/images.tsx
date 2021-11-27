@@ -20,4 +20,5 @@ export const images = {
   document_white: require('./document_white/document_white.png'),
   chat: require('./chat/chat.png'),
   splash: require('./splash/Splash.png'),
+  arrow_drop_down_circle: require('./arrow_drop_down_circle/arrow_drop_down_circle.png'),
 };

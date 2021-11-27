@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 
 // LOCAL IMPORTS
 import { openDrawer } from '@navigator';
-import { RenderImage, TribeAvatar } from '@components';
+import { FastImg, TribeAvatar } from '@components';
 import { images, useGlobalStyles } from '@resources';
 
 var url =
@@ -34,8 +34,7 @@ const TribeHeader = ({ title }: any) => {
       <TribeAvatar
         url={url}
         size={32}
-        borderRadius={8}
-        extraStyle={{ marginHorizontal: 10 }}
+        extraStyle={{ marginHorizontal: 10, borderRadius: 8 }}
         onPress={() => openDrawer()}
       />
       <Text
@@ -46,7 +45,7 @@ const TribeHeader = ({ title }: any) => {
       >
         {title}
       </Text>
-      {RenderImage(images.members, 25, {
+      {FastImg(images.members, 25, {
         borderRadius: 5,
         marginHorizontal: 10,
       })}
@@ -61,6 +60,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 60,
     alignItems: 'center',
+    paddingHorizontal: 10,
   },
   title: {
     flex: 6,
