@@ -26,4 +26,5 @@ export const images = {
   onboarding_pool_capital: require('./onboarding_pool_capital/onboarding_pool_capital.png'),
   onboarding_file_llc: require('./onboarding_file_llc/onboarding_file_llc.png'),
   onboarding_create_plan: require('./onboarding_create_plan/onboarding_create_plan.png'),
+  arrow_drop_down_circle: require('./arrow_drop_down_circle/arrow_drop_down_circle.png'),
 };

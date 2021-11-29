@@ -17,6 +17,8 @@ export const en = {
   DOCUMENTS: 'Documents',
   TRIBE_SETTINGS: 'Tribe Settings',
   OPERATING_AGREEMENT: 'Operating Agreement',
+  NEW_MEMBERS: 'New Members',
+  VIEW: 'View',
   TRIBE_CHAT: 'Tribe Chat',
   THEMING: 'Theme',
   DARK_THEME: 'Dark Theme',
@@ -36,4 +38,14 @@ export const en = {
   ONBOARDING5_TITLE: 'Pool capital & invest together',
   ONBOARDING5_DESCRIPTION:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec vitae ultrices enimut elementum',
+  BANK_ACCOUNT_BALANCE: 'Bank Account Balance',
+  RECENT_ACTIVITY: 'Recent Activity',
+  TYPE: 'Type',
+  AMOUNT: 'Amount',
+  DATE: 'Date',
+  CONTRIBUTION: 'Contribution',
+  CAP_TABLE: 'Cap Table',
+  NAME: 'Name',
+  EQUITY: 'Equity',
+  TOTAL: 'Total',
 };

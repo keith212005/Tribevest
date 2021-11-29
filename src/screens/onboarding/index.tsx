@@ -12,6 +12,7 @@ import { SafeAreaWrapper } from '@components';
 import { ONBOARDING } from '@constants';
 import { color, images, responsiveWidth, useGlobalStyles } from '@resources';
 import RoundGradientButton from 'components/Buttons/RoundGradientButton';
+import { resetNavigation } from '@navigator';
 
 export const Onboarding = () => {
   const carouselRef = useRef(null);
@@ -91,6 +92,9 @@ export const Onboarding = () => {
           containerStyle={{
             width: responsiveWidth(90),
             alignSelf: 'center',
+          }}
+          onPress={() => {
+            resetNavigation('DrawerNavigator' as never);
           }}
         />
       </SafeAreaWrapper>

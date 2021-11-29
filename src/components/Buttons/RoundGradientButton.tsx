@@ -10,12 +10,14 @@ import { color, fonts, fontsize } from '@resources';
 
 interface DefaultProps {
   title: string;
+  onPress: Function;
   containerStyle?: ViewStyle;
   extraProps?: any;
 }
 
 const RoundGradientButton = ({
   title,
+  onPress,
   containerStyle,
   extraProps,
 }: DefaultProps) => {
@@ -43,6 +45,7 @@ const RoundGradientButton = ({
           fontWeight: '700',
         },
       ]}
+      onPress={onPress}
       {...extraProps}
     />
   );

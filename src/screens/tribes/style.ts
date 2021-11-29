@@ -1,15 +1,12 @@
-import { ViewStyle, TextStyle, StyleSheet } from 'react-native';
+import { ViewStyle, StyleSheet } from 'react-native';
 
 interface Style {
   container: ViewStyle;
-  buttonStyle: ViewStyle;
-  titleTextStyle: TextStyle;
-  buttonTextStyle: TextStyle;
 }
 
-export default StyleSheet.create<Style>({
-  container: {},
-  buttonStyle: {},
-  titleTextStyle: {},
-  buttonTextStyle: {},
+export const styles = StyleSheet.create<Style>({
+  container: {
+    // flex: 1,
+    paddingTop: 20,
+  },
 });

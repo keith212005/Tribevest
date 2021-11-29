@@ -1,11 +1,19 @@
 /* eslint-disable no-undef */
 import React from 'react';
+import { ScrollView, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { useSelector } from 'react-redux';
 
 // LOCAL IMPORTS
-import { SafeAreaWrapper, TribeHeader } from '@components';
+import { styles } from './style';
+import {
+  BankBalanceCard,
+  CapTableCard,
+  OperatingAgreementButton,
+  SafeAreaWrapper,
+  TribeHeader,
+} from '@components';
 
 const Tribe = () => {
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
@@ -15,6 +23,17 @@ const Tribe = () => {
       statusBarStyle={isDarkTheme ? 'light-content' : 'dark-content'}
     >
       <TribeHeader title={'Crypto Crew'} />
+      <ScrollView
+        style={styles.container}
+        bounces={false}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={{ marginHorizontal: 20 }}>
+          <OperatingAgreementButton />
+          <BankBalanceCard />
+          <CapTableCard />
+        </View>
+      </ScrollView>
     </SafeAreaWrapper>
   );
 };

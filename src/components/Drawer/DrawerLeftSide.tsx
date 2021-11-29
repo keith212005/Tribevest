@@ -4,21 +4,20 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import { useSelector } from 'react-redux';
 import { Icon } from 'react-native-elements';
-import FastImage from 'react-native-fast-image';
 import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
+import { FastImg, FastImgUrl } from '@components';
+import { actionCreators } from '@actions';
 import { TRIBE_LIST_SIDE_DRAWER } from '@constants';
 import { images, useGlobalStyles } from '@resources';
-import { actionCreators } from '@actions';
-import { useSelector } from 'react-redux';
 
 interface DrawerLeftSideProps {
   show: boolean;
@@ -40,17 +39,11 @@ const DrawerLeftSides = ({ show }: DrawerLeftSideProps) => {
         key={index}
       >
         <TouchableOpacity onPress={() => {}}>
-          <FastImage
-            style={[
-              globalStyles.squareLayout(50),
-              { borderRadius: 10, marginHorizontal: 1, marginVertical: 8 },
-            ]}
-            source={{
-              uri: item.url,
-              priority: FastImage.priority.normal,
-            }}
-            resizeMode={FastImage.resizeMode.cover}
-          />
+          {FastImgUrl(item.url, 50, {
+            borderRadius: 10,
+            marginHorizontal: 1,
+            marginVertical: 8,
+          })}
         </TouchableOpacity>
         {show && (
           <>
@@ -63,10 +56,7 @@ const DrawerLeftSides = ({ show }: DrawerLeftSideProps) => {
               {item.name}
             </Text>
             <TouchableOpacity style={{ flex: 2, alignItems: 'center' }}>
-              <Image
-                style={[globalStyles.squareLayout(40)]}
-                source={images.more_square}
-              />
+              {FastImg(images.more_square, 60)}
             </TouchableOpacity>
           </>
         )}
