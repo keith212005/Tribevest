@@ -22,7 +22,7 @@ interface User {
 const LoginScreen = (props: any) => {
   var inputs = new Array(2);
   const { colors } = useTheme() as unknown as CustomTheme;
-  const { isDarkTheme, isOpenedFirstTime } = props;
+  const { isDarkTheme, isAppOpenFirstTime, isUserLoggedIn } = props;
 
   /**
   |--------------------------------------------------
@@ -39,7 +39,7 @@ const LoginScreen = (props: any) => {
   });
 
   useEffect(() => {
-    props.isOpenFirstTime(false);
+    // props.isOpenFirstTime(false);
     if (props.isUserLoggedIn) {
       props.navigation.dispatch(
         CommonActions.reset({
@@ -134,16 +134,11 @@ const LoginScreen = (props: any) => {
     );
   };
 
-  if (true) {
+  if (isAppOpenFirstTime && !isUserLoggedIn) {
     return <Onboarding />;
   }
 
-  if (isOpenedFirstTime) {
-    props.setThemeFirstTime();
-    // resetNavigation('Onboarding' as never);
-  }
-
-  if (props.isUserLoggedIn) {
+  if (isUserLoggedIn) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <ActivityIndicator size="large" color={'blue'} />
@@ -182,7 +177,7 @@ function mapStateToProps(state: any) {
 
   return {
     isDarkTheme: state.theme.isDarkTheme,
-    isOpenedFirstTime: state.isOpenedFirstTime,
+    isAppOpenFirstTime: state.isOpenedFirstTime,
     isUserLoggedIn: state.isLoggedIn,
   };
 }

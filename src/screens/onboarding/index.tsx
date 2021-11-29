@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState, memo } from 'react';
 import { ImageBackground, Image, Text, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
@@ -13,14 +13,20 @@ import { ONBOARDING } from '@constants';
 import { color, images, responsiveWidth, useGlobalStyles } from '@resources';
 import RoundGradientButton from 'components/Buttons/RoundGradientButton';
 import { resetNavigation } from '@navigator';
+import { useDispatch } from 'react-redux';
+import { isOpenFirstTime } from 'actions/isOpenFirstTime';
+import { OnboardingCarousel } from 'components/Carousel/OnboardingCarousel';
+import { OnboardingCarouselPagination } from 'components/Carousel/OnboardingCarouselPagination';
 
 export const Onboarding = () => {
   const carouselRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const globalStyles = useGlobalStyles();
+  const dispatch = useDispatch();
 
   const _renderItem = ({ item }: any) => {
-    console.log('insets bottom>>', item.imageUrl);
+    console.log('_renderItem snap carousel');
+
     return (
       <>
         <Image
@@ -55,10 +61,12 @@ export const Onboarding = () => {
   return (
     <ImageBackground source={images.splashscreen_bg} style={[styles.container]}>
       <SafeAreaWrapper
-        statusBarProps={{ hidden: true, translucent: true }}
+        statusBarProps={{ hidden: true }}
         containerStyle={{ bottom: 30 }}
       >
-        <Carousel
+        <OnboardingCarousel />
+
+        {/* <Carousel
           ref={carouselRef}
           data={ONBOARDING}
           renderItem={_renderItem}
@@ -86,7 +94,7 @@ export const Onboarding = () => {
           }}
           inactiveDotOpacity={0.4}
           inactiveDotScale={0.6}
-        />
+        /> */}
         <RoundGradientButton
           title={'Get started'}
           containerStyle={{
@@ -94,7 +102,8 @@ export const Onboarding = () => {
             alignSelf: 'center',
           }}
           onPress={() => {
-            resetNavigation('DrawerNavigator' as never);
+            dispatch(isOpenFirstTime(false));
+            resetNavigation('Login' as never);
           }}
         />
       </SafeAreaWrapper>

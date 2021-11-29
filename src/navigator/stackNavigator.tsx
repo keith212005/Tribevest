@@ -52,6 +52,7 @@ const App = (props: any) => {
       }}
     >
       <Stack.Navigator
+        initialRouteName={'Login'}
         screenOptions={{
           headerShown: false,
           gestureEnabled: false,
