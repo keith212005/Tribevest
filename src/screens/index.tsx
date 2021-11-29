@@ -5,3 +5,4 @@ export { Login } from './login';
 export { Messages } from './messages';
 export { Alerts } from './alerts';
 export { Profile } from './profile';
+export { Onboarding } from './onboarding';

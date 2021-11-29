@@ -2,8 +2,15 @@
 
     <style name="SplashScreenTheme" parent="SplashScreen_SplashTheme">
         <item name="colorPrimaryDark">@color/splashprimary</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:statusBarColor">@color/transparent</item>
+
+
+        <!-- Make status & navigation bar translucent -->
+        <item name="android:statusBarColor">@color/transparent</item> 
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:navigationBarColor">@color/transparent</item> 
+
+        
+
     </style>
 
     <!-- Base application theme. -->

@@ -7,6 +7,7 @@ export const SCREENS = {
   Messages: 'Messages',
   Alerts: 'Alerts',
   Profile: 'Profile',
+  Onboarding: 'Onboarding',
 };
 
 export interface IfieldObject {
@@ -106,5 +107,38 @@ export const FACES = [
     id: 4,
     imageUrl:
       'https://www.yojackets.com/wp-content/uploads/2016/04/Civil-War-Scarlet-Witch-Red-Coat-1.jpg',
+  },
+];
+
+export const ONBOARDING = [
+  {
+    id: 0,
+    imageUrl: 'onboarding_welcome',
+    title: 'ONBOARDING1_TITLE',
+    description: '',
+  },
+  {
+    id: 1,
+    imageUrl: 'onboarding_create_plan',
+    title: 'ONBOARDING2_TITLE',
+    description: 'ONBOARDING2_DESCRIPTION',
+  },
+  {
+    id: 2,
+    imageUrl: 'onboarding_invite_friends',
+    title: 'ONBOARDING3_TITLE',
+    description: 'ONBOARDING3_DESCRIPTION',
+  },
+  {
+    id: 3,
+    imageUrl: 'onboarding_file_llc',
+    title: 'ONBOARDING4_TITLE',
+    description: 'ONBOARDING4_DESCRIPTION',
+  },
+  {
+    id: 4,
+    imageUrl: 'onboarding_pool_capital',
+    title: 'ONBOARDING5_TITLE',
+    description: 'ONBOARDING5_DESCRIPTION',
   },
 ];

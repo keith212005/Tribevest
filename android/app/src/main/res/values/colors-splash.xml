@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="splashprimary">#FFFFFF</color>
+    <!-- <color name="splashprimary">#FFFFFF</color> -->
+    <color name="splashprimary">#0000ffff</color>
     <color name="transparent">#0000ffff</color>
+    <color name="red">#ff0000</color>
+    <color name="white">#ffffff</color>
+    <color name="blue">#1846FF</color>
+    <color name="navcolor">#AARRGGBB</color>
+  
 </resources>

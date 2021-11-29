@@ -22,6 +22,8 @@ export const color = {
   green: '#32CD32',
   lightBackground: '#273143',
   primaryGradiant: ['#189EFF', '#1846FF'],
+  greenGradient: ['#23C26F', '#23BEC2'],
+  transparent: 'rgba(0, 0, 0, 0)',
 };
 
 export const MyDarkTheme = {

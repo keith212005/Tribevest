@@ -20,4 +20,20 @@ export const en = {
   TRIBE_CHAT: 'Tribe Chat',
   THEMING: 'Theme',
   DARK_THEME: 'Dark Theme',
+  ONBOARDING1_TITLE:
+    'Tribevest makes it easy to form, fund and manage your Investor Tribe with friends.',
+  ONBOARDING2_TITLE: 'Create your plan',
+  ONBOARDING2_DESCRIPTION:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec vitae ultrices enimut elementum',
+  ONBOARDING3_TITLE: 'Invite your friends',
+  ONBOARDING3_DESCRIPTION:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec vitae ultrices enimut elementum',
+
+  ONBOARDING4_TITLE: 'File you LLC',
+  ONBOARDING4_DESCRIPTION:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec vitae ultrices enimut elementum',
+
+  ONBOARDING5_TITLE: 'Pool capital & invest together',
+  ONBOARDING5_DESCRIPTION:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit donec vitae ultrices enimut elementum',
 };

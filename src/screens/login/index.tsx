@@ -11,6 +11,7 @@ import { CustomInput, SquareButton, SafeAreaWrapper } from '@components';
 import { styles } from './style';
 import { fieldObject, IfieldObject } from '@constants';
 import { resetNavigation } from 'navigator/RootNavigation';
+import { Onboarding } from '@screens';
 
 interface User {
   _key: string;
@@ -30,9 +31,6 @@ const LoginScreen = (props: any) => {
   */
 
   // Actions to be done when app installed and opened first time only
-  if (isOpenedFirstTime) {
-    props.setThemeFirstTime();
-  }
 
   const [state, setState]: any = useState<User>({
     _key: '',
@@ -136,6 +134,15 @@ const LoginScreen = (props: any) => {
     );
   };
 
+  if (true) {
+    return <Onboarding />;
+  }
+
+  if (isOpenedFirstTime) {
+    props.setThemeFirstTime();
+    // resetNavigation('Onboarding' as never);
+  }
+
   if (props.isUserLoggedIn) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -171,6 +178,8 @@ const LoginScreen = (props: any) => {
 };
 
 function mapStateToProps(state: any) {
+  console.log(state);
+
   return {
     isDarkTheme: state.theme.isDarkTheme,
     isOpenedFirstTime: state.isOpenedFirstTime,

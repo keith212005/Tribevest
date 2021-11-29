@@ -20,4 +20,10 @@ export const images = {
   document_white: require('./document_white/document_white.png'),
   chat: require('./chat/chat.png'),
   splash: require('./splash/Splash.png'),
+  splashscreen_bg: require('./splashscreen_bg/splashscreen_bg.png'),
+  onboarding_welcome: require('./onboarding_welcome/onboarding_welcome.png'),
+  onboarding_invite_friends: require('./onboarding_invite_friends/onboarding_invite_friends.png'),
+  onboarding_pool_capital: require('./onboarding_pool_capital/onboarding_pool_capital.png'),
+  onboarding_file_llc: require('./onboarding_file_llc/onboarding_file_llc.png'),
+  onboarding_create_plan: require('./onboarding_create_plan/onboarding_create_plan.png'),
 };

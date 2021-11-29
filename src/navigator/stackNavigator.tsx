@@ -63,6 +63,7 @@ const App = (props: any) => {
         {_addScreen('DrawerNavigator' as never, true, {
           component: DrawerNavigator,
         })}
+        {_addScreen('Onboarding' as never)}
       </Stack.Navigator>
     </NavigationContainer>
   );
