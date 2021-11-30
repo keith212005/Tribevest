@@ -83,12 +83,7 @@ export const CapTableCard = () => {
     return (
       <View style={{ height: 200 }}>
         <Divider />
-        <ScrollView
-          nestedScrollEnabled={true}
-          showsVerticalScrollIndicator={false}
-        >
-          {CAP_TABLE.map((item) => _renderItem(item))}
-        </ScrollView>
+        <ScrollView>{CAP_TABLE.map((item) => _renderItem(item))}</ScrollView>
       </View>
     );
   };

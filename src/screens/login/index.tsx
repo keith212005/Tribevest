@@ -173,8 +173,6 @@ const LoginScreen = (props: any) => {
 };
 
 function mapStateToProps(state: any) {
-  console.log(state);
-
   return {
     isDarkTheme: state.theme.isDarkTheme,
     isAppOpenFirstTime: state.isOpenedFirstTime,

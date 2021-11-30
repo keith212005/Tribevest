@@ -50,36 +50,6 @@ export const TRIBE_LIST_SIDE_DRAWER = [
     name: 'ATX Realtors',
     url: 'https://cdn.luxe.digital/media/2020/12/16175821/most-expensive-cars-2021-Maserati-MC20-luxe-digital%402x.jpg',
   },
-  {
-    id: 6,
-    name: 'ATX Realtors',
-    url: 'https://cdn.luxe.digital/media/2020/12/16175821/most-expensive-cars-2021-Maserati-MC20-luxe-digital%402x.jpg',
-  },
-  {
-    id: 7,
-    name: 'ATX Realtors',
-    url: 'https://cdn.luxe.digital/media/2020/12/16175821/most-expensive-cars-2021-Maserati-MC20-luxe-digital%402x.jpg',
-  },
-  {
-    id: 8,
-    name: 'ATX Realtors',
-    url: 'https://cdn.luxe.digital/media/2020/12/16175821/most-expensive-cars-2021-Maserati-MC20-luxe-digital%402x.jpg',
-  },
-  {
-    id: 9,
-    name: 'ATX Realtors',
-    url: 'https://cdn.luxe.digital/media/2020/12/16175821/most-expensive-cars-2021-Maserati-MC20-luxe-digital%402x.jpg',
-  },
-  {
-    id: 10,
-    name: 'ATX Realtors',
-    url: 'https://cdn.luxe.digital/media/2020/12/16175821/most-expensive-cars-2021-Maserati-MC20-luxe-digital%402x.jpg',
-  },
-  {
-    id: 11,
-    name: 'ATX Realtors',
-    url: 'https://cdn.luxe.digital/media/2020/12/16175821/most-expensive-cars-2021-Maserati-MC20-luxe-digital%402x.jpg',
-  },
 ];
 
 export const FACES = [
@@ -107,39 +77,6 @@ export const FACES = [
     id: 4,
     imageUrl:
       'https://www.yojackets.com/wp-content/uploads/2016/04/Civil-War-Scarlet-Witch-Red-Coat-1.jpg',
-  },
-];
-
-export const ONBOARDING = [
-  {
-    id: 0,
-    imageUrl: 'onboarding_welcome',
-    title: 'ONBOARDING1_TITLE',
-    description: '',
-  },
-  {
-    id: 1,
-    imageUrl: 'onboarding_create_plan',
-    title: 'ONBOARDING2_TITLE',
-    description: 'ONBOARDING2_DESCRIPTION',
-  },
-  {
-    id: 2,
-    imageUrl: 'onboarding_invite_friends',
-    title: 'ONBOARDING3_TITLE',
-    description: 'ONBOARDING3_DESCRIPTION',
-  },
-  {
-    id: 3,
-    imageUrl: 'onboarding_file_llc',
-    title: 'ONBOARDING4_TITLE',
-    description: 'ONBOARDING4_DESCRIPTION',
-  },
-  {
-    id: 4,
-    imageUrl: 'onboarding_pool_capital',
-    title: 'ONBOARDING5_TITLE',
-    description: 'ONBOARDING5_DESCRIPTION',
   },
 ];
 

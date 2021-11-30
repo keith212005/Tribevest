@@ -3,7 +3,6 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import { useSelector } from 'react-redux';
 
 // LOCAL IMPORTS
 import { styles } from './style';
@@ -16,13 +15,9 @@ import {
 } from '@components';
 
 const Tribe = () => {
-  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
-
   return (
-    <SafeAreaWrapper
-      statusBarStyle={isDarkTheme ? 'light-content' : 'dark-content'}
-    >
-      <TribeHeader title={'Crypto Crew'} />
+    <SafeAreaWrapper>
+      <TribeHeader />
       <ScrollView
         style={styles.container}
         bounces={false}

@@ -25,6 +25,7 @@ const RoundGradientButton = ({
     <Button
       buttonStyle={{ height: '100%' }}
       containerStyle={{
+        width: '100%',
         borderRadius: 60,
         height: 48,
         ...containerStyle,

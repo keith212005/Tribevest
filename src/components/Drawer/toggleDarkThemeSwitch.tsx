@@ -9,7 +9,7 @@ import { Switch } from 'react-native-elements';
 import { useGlobalStyles } from '@resources';
 
 export const DarkThemeSwitch = (props: any) => {
-  const { isDarkTheme, selectedGradient } = props;
+  const { isDarkTheme } = props;
   const [checked, setChecked] = useState(isDarkTheme);
   const globalStyles = useGlobalStyles();
 
@@ -19,7 +19,7 @@ export const DarkThemeSwitch = (props: any) => {
         {loc('DARK_THEME')}
       </Text>
       <Switch
-        color={checked ? selectedGradient[0] : 'grey'}
+        // color={checked ? selectedGradient[0] : 'grey'}
         value={checked}
         onValueChange={(value) => {
           setChecked(value);
@@ -32,7 +32,6 @@ export const DarkThemeSwitch = (props: any) => {
 
 function mapStateToProps(state: any) {
   return {
-    selectedGradient: state.theme.selectedGradient,
     isDarkTheme: state.theme.isDarkTheme,
   };
 }

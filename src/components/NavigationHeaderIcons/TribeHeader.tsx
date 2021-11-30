@@ -15,7 +15,7 @@ import { images, useGlobalStyles } from '@resources';
 var url =
   'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
 
-const TribeHeader = ({ title }: any) => {
+const TribeHeader = () => {
   const globalStyles = useGlobalStyles();
   const { colors } = useTheme() as unknown as CustomTheme;
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
@@ -43,7 +43,7 @@ const TribeHeader = ({ title }: any) => {
           styles.title,
         ]}
       >
-        {title}
+        Crypto Crew
       </Text>
       {FastImg(images.members, 25, {
         borderRadius: 5,

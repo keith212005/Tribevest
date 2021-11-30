@@ -48,4 +48,5 @@ export const en = {
   NAME: 'Name',
   EQUITY: 'Equity',
   TOTAL: 'Total',
+  GET_STARTED: 'Get Started',
 };

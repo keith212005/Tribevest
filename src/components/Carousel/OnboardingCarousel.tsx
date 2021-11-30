@@ -1,39 +1,106 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useRef, useState } from 'react';
-import { StyleSheet } from 'react-native';
+/* eslint-disable no-undef */
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
 
 // THRID PARTY IMPORTS
-import Carousel from 'react-native-snap-carousel';
+import Swiper from 'react-native-swiper';
 
 // LOCAL IMPORTS
-import { responsiveWidth } from '@resources';
-import { ONBOARDING } from '@constants';
-import { OnboardingCarouselItem } from './OnboardingCarouselItem';
-import { OnboardingCarouselPagination } from './OnboardingCarouselPagination';
+import {
+  images,
+  responsiveHeight,
+  responsiveWidth,
+  useGlobalStyles,
+} from '@resources';
+import { FastImg } from '@components';
+import _ from 'lodash';
 
 export const OnboardingCarousel = () => {
-  const carouselRef = useRef(null);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const globalStyles = useGlobalStyles();
+  const sliderView = (
+    sliderImage: string,
+    title: string,
+    description: string,
+  ) => {
+    return (
+      <View style={styles.sliderViewContainer}>
+        {FastImg(
+          images[sliderImage as keyof typeof images],
+          responsiveHeight(36),
+        )}
+        <Text
+          style={[
+            globalStyles.textStyle('_22', 'white', 'NUNITO_BOLD'),
+            styles.title,
+          ]}
+        >
+          {loc(title)}
+        </Text>
+        {!_.isEmpty(description) ? (
+          <Text
+            style={[
+              globalStyles.textStyle('_14', 'white', 'NUNITO_REGULAR'),
+              styles.description,
+            ]}
+          >
+            {loc(description)}
+          </Text>
+        ) : null}
+      </View>
+    );
+  };
 
   return (
-    <>
-      <Carousel
-        ref={carouselRef}
-        data={ONBOARDING}
-        renderItem={(item) => {
-          return <OnboardingCarouselItem item={item.item} />;
-        }}
-        onSnapToItem={(index) => setActiveSlide(index)}
-        sliderWidth={responsiveWidth(100)}
-        itemWidth={responsiveWidth(100)}
-        containerCustomStyle={{ borderWidth: 1 }}
-        contentContainerCustomStyle={{ alignItems: 'flex-end' }}
-        enableMomentum={true}
-        decelerationRate={0.9}
-      />
-      <OnboardingCarouselPagination activeSlide={activeSlide} />
-    </>
+    <Swiper
+      containerStyle={{
+        paddingTop: responsiveHeight(6),
+      }}
+      paginationStyle={{ marginVertical: 16 }}
+      loop={false}
+      index={0}
+      activeDotStyle={styles.activeDotStyle}
+      loadMinimal={true}
+    >
+      {sliderView('onboarding_welcome', 'ONBOARDING1_TITLE', '')}
+      {sliderView(
+        'onboarding_create_plan',
+        'ONBOARDING2_TITLE',
+        'ONBOARDING2_DESCRIPTION',
+      )}
+      {sliderView(
+        'onboarding_invite_friends',
+        'ONBOARDING3_TITLE',
+        'ONBOARDING3_DESCRIPTION',
+      )}
+      {sliderView(
+        'onboarding_file_llc',
+        'ONBOARDING4_TITLE',
+        'ONBOARDING4_DESCRIPTION',
+      )}
+      {sliderView(
+        'onboarding_pool_capital',
+        'ONBOARDING5_TITLE',
+        'ONBOARDING5_DESCRIPTION',
+      )}
+    </Swiper>
   );
 };
 
-const styles = StyleSheet.create({});
+export const styles = StyleSheet.create({
+  sliderViewContainer: {
+    alignItems: 'center',
+  },
+  title: {
+    textAlign: 'center',
+    paddingVertical: responsiveWidth(8),
+    paddingHorizontal: responsiveWidth(5),
+  },
+  description: {
+    textAlign: 'center',
+    paddingHorizontal: responsiveWidth(5),
+  },
+  activeDotStyle: {
+    backgroundColor: 'white',
+    paddingHorizontal: 8,
+  },
+});

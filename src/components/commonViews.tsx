@@ -30,6 +30,7 @@ export const FastImg = (uri: any, size: number, extraStyle?: object) => {
     <FastImage
       source={uri}
       style={[globalStyles.squareLayout(size), { ...extraStyle }]}
+      resizeMode={FastImage.resizeMode.contain}
     />
   );
 };
@@ -40,6 +41,7 @@ export const FastImgUrl = (uri: any, size: number, extraStyle?: object) => {
     <FastImage
       source={{ uri: uri }}
       style={[globalStyles.squareLayout(size), { ...extraStyle }]}
+      resizeMode={FastImage.resizeMode.contain}
     />
   );
 };
@@ -55,7 +57,7 @@ export const renderAvatar = (
       containerStyle={{ backgroundColor: '#BDBDBD' }}
       rounded
       size={size}
-      source={{ uri: url, cache: 'only-if-cached' }}
+      source={{ uri: url }}
       title="AP"
       imageProps={{ transition: true }}
       {...extraProps}
