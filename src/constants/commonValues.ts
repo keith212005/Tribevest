@@ -121,4 +121,20 @@ export const CAP_TABLE = [
     amount: '$778.00',
     equity: '10%',
   },
+  {
+    id: 5,
+    imageUrl:
+      'https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg',
+    name: 'Kate Doyle',
+    amount: '$778.00',
+    equity: '10%',
+  },
+  {
+    id: 6,
+    imageUrl:
+      'https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg',
+    name: 'Kate Doyle',
+    amount: '$778.00',
+    equity: '10%',
+  },
 ];

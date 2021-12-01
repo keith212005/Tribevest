@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import * as React from 'react';
-import { Text, Platform } from 'react-native';
+import { Text, Platform, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { useTheme } from '@react-navigation/native';
@@ -10,7 +10,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // LOCAL IMPORTS
 import * as Screen from '@screens';
 import { SCREENS } from '@constants';
-import { images, responsiveHeight, useGlobalStyles } from '@resources';
+import {
+  images,
+  moderateScale,
+  responsiveHeight,
+  useGlobalStyles,
+} from '@resources';
 import { FastImg } from '@components';
 
 const Tab = createBottomTabNavigator();
@@ -66,18 +71,37 @@ export const TabNavigator = () => {
           }
           return (
             <>
-              {FastImg(iconName, 25)}
+              <View
+                style={{
+                  shadowColor: focused ? colors.green : colors.transparent,
+                  padding: 2,
+                  borderRadius: 10,
+                  ...Platform.select({
+                    ios: {
+                      shadowOffset: {
+                        width: 0,
+                        height: 8,
+                      },
+                      shadowRadius: 8,
+                      shadowOpacity: 1,
+                    },
+                    android: {
+                      elevation: 5,
+                    },
+                  }),
+                }}
+              >
+                {FastImg(iconName, moderateScale(20))}
+              </View>
+
               <Text
                 style={[
                   globalStyles.textStyle(
-                    '_12',
+                    '_11',
                     'text',
                     focused ? 'NUNITO_BOLD' : 'NUNITO_REGULAR',
                   ),
-                  {
-                    color: focused ? colors.green : color,
-                    marginTop: 5,
-                  },
+                  { color: focused ? colors.green : color },
                 ]}
               >
                 {route.name}

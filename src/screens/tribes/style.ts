@@ -1,3 +1,4 @@
+import { scale } from '@resources';
 import { ViewStyle, StyleSheet } from 'react-native';
 
 interface Style {
@@ -6,7 +7,6 @@ interface Style {
 
 export const styles = StyleSheet.create<Style>({
   container: {
-    // flex: 1,
-    paddingTop: 20,
+    paddingTop: scale(20),
   },
 });

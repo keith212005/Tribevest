@@ -1,5 +1,11 @@
 /* eslint-disable max-len */
-import { responsiveHeight, useGlobalStyles } from '@resources';
+import {
+  moderateScale,
+  responsiveHeight,
+  scale,
+  useGlobalStyles,
+  verticalScale,
+} from '@resources';
 import * as React from 'react';
 import { Text, View, StyleSheet, ImageBackground } from 'react-native';
 
@@ -21,8 +27,8 @@ const DrawerHeader = () => {
     >
       <View
         style={{
-          paddingHorizontal: 12,
-          marginBottom: 12,
+          paddingHorizontal: scale(12),
+          marginBottom: scale(12),
           justifyContent: 'flex-start',
         }}
       >
@@ -49,9 +55,9 @@ export default DrawerHeader;
 
 const styles = StyleSheet.create({
   container: {
-    height: 109,
+    height: verticalScale(109),
     justifyContent: 'flex-end',
-    marginHorizontal: 10,
+    marginHorizontal: verticalScale(10),
   },
   title: {
     borderColor: 'white',

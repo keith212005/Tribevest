@@ -24,7 +24,7 @@ export const Onboarding = () => {
       >
         {FastImg(images.onboarding_logo, 110, {
           alignSelf: 'center',
-          marginTop: Platform.OS === 'ios' ? 0 : responsiveHeight(5),
+          marginTop: responsiveHeight(Platform.OS === 'ios' ? 2 : 8),
         })}
         <OnboardingCarousel />
         <RoundGradientButton

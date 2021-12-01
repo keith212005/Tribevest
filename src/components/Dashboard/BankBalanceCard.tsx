@@ -8,7 +8,7 @@ import { Card } from 'react-native-elements';
 
 // LOCAL IMPORTS
 import { FastImg } from '@components';
-import { images, useGlobalStyles } from '@resources';
+import { images, scale, useGlobalStyles } from '@resources';
 import { useTheme } from '@react-navigation/native';
 
 export const BankBalanceCard = () => {
@@ -146,7 +146,6 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 0,
     borderRadius: 10,
-    // elevation: 5,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -159,6 +158,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 5,
+    marginVertical: scale(5),
   },
 });

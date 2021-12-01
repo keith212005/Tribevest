@@ -10,12 +10,15 @@ import {
   images,
   responsiveHeight,
   responsiveWidth,
+  scale,
   useGlobalStyles,
 } from '@resources';
-import { FastImg } from '@components';
 import _ from 'lodash';
+import { FastImg } from '@components';
 
 export const OnboardingCarousel = () => {
+  console.log('rendering onBoarding carousel.....');
+
   const globalStyles = useGlobalStyles();
   const sliderView = (
     sliderImage: string,
@@ -24,10 +27,8 @@ export const OnboardingCarousel = () => {
   ) => {
     return (
       <View style={styles.sliderViewContainer}>
-        {FastImg(
-          images[sliderImage as keyof typeof images],
-          responsiveHeight(36),
-        )}
+        {FastImg(images[sliderImage as keyof typeof images], scale(250))}
+        {/* <Image style={{}} source={images[sliderImage as keyof typeof images]} /> */}
         <Text
           style={[
             globalStyles.textStyle('_22', 'white', 'NUNITO_BOLD'),
@@ -55,11 +56,9 @@ export const OnboardingCarousel = () => {
       containerStyle={{
         paddingTop: responsiveHeight(6),
       }}
-      paginationStyle={{ marginVertical: 16 }}
+      paginationStyle={{}}
       loop={false}
-      index={0}
       activeDotStyle={styles.activeDotStyle}
-      loadMinimal={true}
     >
       {sliderView('onboarding_welcome', 'ONBOARDING1_TITLE', '')}
       {sliderView(
@@ -92,8 +91,8 @@ export const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    paddingVertical: responsiveWidth(8),
-    paddingHorizontal: responsiveWidth(5),
+    paddingVertical: scale(20),
+    paddingHorizontal: scale(10),
   },
   description: {
     textAlign: 'center',

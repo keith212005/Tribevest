@@ -30,7 +30,7 @@ const rootReducer = (state: any, action: any) => {
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['isOpenedFirstTime'], // navigation will not be persisted
+  blacklist: [], // navigation will not be persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

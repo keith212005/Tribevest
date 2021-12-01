@@ -14,10 +14,10 @@ import { Icon } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
-import { FastImg, FastImgUrl } from '@components';
+import { FastImg, TribeAvatar } from '@components';
 import { actionCreators } from '@actions';
 import { TRIBE_LIST_SIDE_DRAWER } from '@constants';
-import { images, useGlobalStyles } from '@resources';
+import { images, scale, useGlobalStyles } from '@resources';
 
 interface DrawerLeftSideProps {
   show: boolean;
@@ -30,21 +30,16 @@ const DrawerLeftSides = ({ show }: DrawerLeftSideProps) => {
 
   const _renderItem = (item: any, index: any) => {
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          flex: 1,
-        }}
-        key={index}
-      >
-        <TouchableOpacity onPress={() => {}}>
-          {FastImgUrl(item.url, 50, {
-            borderRadius: 10,
-            marginHorizontal: 1,
-            marginVertical: 8,
-          })}
-        </TouchableOpacity>
+      <View style={styles.itemContainer} key={index}>
+        <TribeAvatar
+          url={item.url}
+          size={scale(45)}
+          extraStyle={{ borderRadius: 8, marginVertical: 10 }}
+          onPress={() => {
+            console.log('item pressed....');
+          }}
+        />
+
         {show && (
           <>
             <Text
@@ -118,6 +113,11 @@ export const DrawerLeftSide = connects(
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    borderWidth: 2,
+    borderRightWidth: 0.5,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
   },
 });

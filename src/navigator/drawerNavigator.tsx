@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -12,8 +11,8 @@ import { DrawerContent } from '@components';
 import { actionCreators } from '@actions';
 import { SCREENS } from '@constants';
 import { TabNavigator } from './tabNavigator';
+import { responsiveWidth } from '@resources';
 
-const { width } = Dimensions.get('window');
 const Drawer = createDrawerNavigator();
 
 const DrawerNav = () => {
@@ -38,9 +37,7 @@ const DrawerNav = () => {
         screenOptions={{
           drawerType: 'front',
           headerShown: false,
-          drawerStyle: {
-            width: width - width / 7,
-          },
+          drawerStyle: { width: responsiveWidth(86) },
         }}
         drawerContent={(props) => <DrawerContent {...props} />}
       >

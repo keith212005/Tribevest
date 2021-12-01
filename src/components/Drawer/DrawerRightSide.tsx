@@ -10,14 +10,17 @@ import { Divider } from 'react-native-elements';
 // LOCAL IMPORTS
 import DrawerHeader from './DrawerHeader';
 import { GradientButton } from '@components';
-import { images } from '@resources';
+import { images, scale, useGlobalStyles } from '@resources';
 import { resetNavigation, navigate, closeDrawer } from '@navigator';
 import { ToggleDarkThemeSwitch } from './toggleDarkThemeSwitch';
 import { useDispatch } from 'react-redux';
 import { isLoggedIn } from 'actions/isLoggedIn';
+import { useTheme } from '@react-navigation/native';
 
 const DrawerRightSide = (props: any) => {
   const dispatch = useDispatch();
+  const globalStyles = useGlobalStyles();
+  const { colors } = useTheme();
 
   function handleSelectedDrawerItem(label: any) {
     closeDrawer();
@@ -50,8 +53,11 @@ const DrawerRightSide = (props: any) => {
   ) => {
     return (
       <DrawerItem
-        icon={({}) => <Image source={images[iconName]} />}
+        icon={({}) => (
+          <Image source={images[iconName]} style={{ tintColor: colors.text }} />
+        )}
         label={label}
+        labelStyle={[globalStyles.textStyle('_12', 'text', 'NUNITO_BOLD')]}
         onPress={() => handleSelectedDrawerItem(label)}
       />
     );
@@ -64,10 +70,15 @@ const DrawerRightSide = (props: any) => {
         title={loc('OPERATING_AGREEMENT')}
         image={images.document_white}
         imageSize={20}
-        containerStyle={{ marginHorizontal: 10, marginVertical: 10 }}
+        containerStyle={{
+          marginHorizontal: scale(10),
+          marginVertical: scale(10),
+        }}
       />
       {_renderDrawerItem('chat', loc('TRIBE_CHAT'))}
-      <Divider style={{ width: '80%', alignSelf: 'center', marginTop: 20 }} />
+      <Divider
+        style={{ width: '80%', alignSelf: 'center', marginTop: scale(20) }}
+      />
 
       <DrawerContentScrollView {...props}>
         {_renderDrawerItem('dashboard', loc('DASHBOARD'))}

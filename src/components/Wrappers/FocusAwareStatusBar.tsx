@@ -11,10 +11,13 @@ export const FocusAwareStatusBar = (props: any) => {
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const { colors } = useTheme() as unknown as CustomTheme;
 
+  console.log('FocusAwareStatusBar render');
+
   return isFocused ? (
     <StatusBar
       translucent={true}
       showHideTransition={false}
+      barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
       backgroundColor={isDarkTheme ? colors.card : colors.white}
       {...props}
       {...props.statusBarProps}

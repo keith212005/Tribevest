@@ -14,7 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 // LOCAL IMPORTS
 import { FastImg } from '@components';
-import { color, images, useGlobalStyles } from '@resources';
+import { color, images, scale, useGlobalStyles } from '@resources';
 
 export const OperatingAgreementButton = () => {
   const globalStyles = useGlobalStyles();
@@ -71,23 +71,22 @@ export const OperatingAgreementButton = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 56,
-    width: '100%',
+    height: scale(56),
   },
   linearGradient: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    borderRadius: 10,
+    paddingHorizontal: scale(20),
+    borderRadius: scale(10),
   },
   viewButtonStyle: {
     backgroundColor: '#518DFA',
-    height: 40,
-    width: 72,
+    height: scale(30),
+    width: scale(55),
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
-    elevation: 10,
+    borderRadius: scale(5),
+    elevation: scale(10),
   },
 });

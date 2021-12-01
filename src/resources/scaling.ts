@@ -1,8 +1,11 @@
-import { PixelRatio, Platform, Dimensions } from 'react-native';
+import { PixelRatio, Dimensions } from 'react-native';
 const { height, width } = Dimensions.get('window');
 
-// based on iphone 5s's scale
-const scale = width / 320;
+//Guideline sizes are based on standard ~5" screen mobile device
+const guidelineBaseWidth = 350;
+const guidelineBaseHeight = 680;
+
+const scale = (size: number) => (width / guidelineBaseWidth) * size;
 
 // get responsiveHeight
 export const responsiveHeight = (h: number) => {
@@ -14,12 +17,8 @@ export const responsiveWidth = (w: number) => {
   return PixelRatio.roundToNearestPixel(width * (w / 100));
 };
 
-// get responsiveFonts
-export function responsiveFonts(size: number) {
-  const newSize = size * scale;
-  if (Platform.OS === 'ios') {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize));
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
-  }
-}
+const verticalScale = (size: number) => (height / guidelineBaseHeight) * size;
+const moderateScale = (size: number, factor = 0.5) =>
+  size + (scale(size) - size) * factor;
+
+export { scale, verticalScale, moderateScale };
