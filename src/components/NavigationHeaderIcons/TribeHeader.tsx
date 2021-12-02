@@ -9,8 +9,9 @@ import { useSelector } from 'react-redux';
 
 // LOCAL IMPORTS
 import { openDrawer } from '@navigator';
-import { FastImg, TribeAvatar } from '@components';
+import { TribeAvatar } from '@components';
 import { images, scale, useGlobalStyles } from '@resources';
+import FastImage from 'react-native-fast-image';
 
 var url =
   'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
@@ -45,10 +46,16 @@ const TribeHeader = () => {
       >
         Crypto Crew
       </Text>
-      {FastImg(images.members, 25, {
-        borderRadius: scale(5),
-        marginHorizontal: scale(10),
-      })}
+
+      <FastImage
+        source={images.members}
+        style={[
+          globalStyles.squareLayout(25),
+          { borderRadius: scale(5), marginHorizontal: scale(10) },
+        ]}
+        tintColor={isDarkTheme ? 'white' : 'black'}
+        resizeMode={FastImage.resizeMode.contain}
+      />
     </View>
   );
 };

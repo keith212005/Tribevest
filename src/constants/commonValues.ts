@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 export const SCREENS = {
-  Login: 'Login',
+  Signin: 'Signin',
   TabNavigator: 'TabNavigator',
   DrawerNavigator: 'DrawerNavigator',
   Tribes: 'Tribes',

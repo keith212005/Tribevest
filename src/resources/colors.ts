@@ -23,6 +23,7 @@ export const color = {
   lightBackground: '#273143',
   primaryGradiant: ['#189EFF', '#1846FF'],
   greenGradient: ['#23C26F', '#23BEC2'],
+  transparentGradient: ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0)'],
   transparent: 'rgba(0, 0, 0, 0)',
   lightText: '#828A92',
 };

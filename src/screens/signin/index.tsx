@@ -1,17 +1,22 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-fallthrough */
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, View, Text } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { CommonActions, useTheme } from '@react-navigation/native';
-import { CustomInput, SquareButton, SafeAreaWrapper } from '@components';
 
 // LOCAL IMPORTS
+import {
+  CustomInput,
+  SquareButton,
+  LinearGradeintBackground,
+  CustomStatusBar,
+} from '@components';
 import { styles } from './style';
-import { fieldObject, IfieldObject } from '@constants';
-import { resetNavigation } from 'navigator/RootNavigation';
 import { Onboarding } from '@screens';
+import { fieldObject, IfieldObject } from '@constants';
+import { responsiveHeight, responsiveWidth, useGlobalStyles } from '@resources';
 
 interface User {
   _key: string;
@@ -19,10 +24,11 @@ interface User {
   password: IfieldObject;
 }
 
-const LoginScreen = (props: any) => {
+const SigninScreen = (props: any) => {
   var inputs = new Array(2);
   const { colors } = useTheme() as unknown as CustomTheme;
-  const { isDarkTheme, isAppOpenFirstTime, isUserLoggedIn } = props;
+  const globalStyles = useGlobalStyles();
+  const { isAppOpenFirstTime, isUserLoggedIn } = props;
 
   /**
   |--------------------------------------------------
@@ -147,28 +153,49 @@ const LoginScreen = (props: any) => {
   }
 
   return (
-    <SafeAreaWrapper
-      statusBarStyle={isDarkTheme ? 'light-content' : 'dark-content'}
-    >
-      <View style={[styles.container, { backgroundColor: colors.background }]}>
-        <View style={{ flex: 4, justifyContent: 'center' }} />
-
-        <View style={{ flex: 6 }}>
-          {_renderInput(0, 'username', { valueObject: state.username })}
-          {_renderInput(1, 'password', {
-            valueObject: state.password,
-            blurOnSubmit: true,
-          })}
-          <SquareButton
-            title="Login"
-            onPress={() => {
-              props.isLoggedIn(true);
-              resetNavigation('DrawerNavigator' as never);
-            }}
-          />
+    <View style={{ flex: 1 }}>
+      <CustomStatusBar />
+      <LinearGradeintBackground>
+        <View
+          style={{
+            height: responsiveHeight(20),
+            justifyContent: 'center',
+            marginLeft: responsiveWidth(6),
+          }}
+        >
+          <Text
+            style={[globalStyles.textStyle('_22', 'white', 'NUNITO_EXTRABOLD')]}
+          >
+            {loc('SIGN_INTO_TRIBEVEST')}
+          </Text>
+          <Text
+            style={[globalStyles.textStyle('_14', 'white', 'NUNITO_REGULAR')]}
+          >
+            {loc('MANAGE_YOUR_TRIBES')}
+          </Text>
         </View>
-      </View>
-    </SafeAreaWrapper>
+
+        <View
+          style={[styles.gradientContainer, { backgroundColor: colors.card }]}
+        >
+          <View style={{ flex: 4, justifyContent: 'center' }} />
+
+          <View style={{ flex: 6 }}>
+            {_renderInput(0, 'username', { valueObject: state.username })}
+            {_renderInput(1, 'password', {
+              valueObject: state.password,
+              blurOnSubmit: true,
+            })}
+            <SquareButton
+              title="Signin"
+              onPress={() => {
+                props.isLoggedIn(true);
+              }}
+            />
+          </View>
+        </View>
+      </LinearGradeintBackground>
+    </View>
   );
 };
 
@@ -185,4 +212,7 @@ function mapDispatchToProps(dispatch: any) {
 }
 
 //Connect everything
-export const Login = connects(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export const Signin = connects(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SigninScreen);

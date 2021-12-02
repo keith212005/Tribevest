@@ -10,13 +10,14 @@ import {
   BankBalanceCard,
   CapTableCard,
   OperatingAgreementButton,
-  SafeAreaWrapper,
   TribeHeader,
 } from '@components';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Tribe = () => {
+  const insets = useSafeAreaInsets();
   return (
-    <SafeAreaWrapper>
+    <View style={{ flex: 1, marginTop: insets.top }}>
       <TribeHeader />
       <ScrollView
         style={styles.container}
@@ -29,7 +30,7 @@ const Tribe = () => {
           <CapTableCard />
         </View>
       </ScrollView>
-    </SafeAreaWrapper>
+    </View>
   );
 };
 

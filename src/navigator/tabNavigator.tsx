@@ -10,13 +10,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // LOCAL IMPORTS
 import * as Screen from '@screens';
 import { SCREENS } from '@constants';
-import {
-  images,
-  moderateScale,
-  responsiveHeight,
-  useGlobalStyles,
-} from '@resources';
-import { FastImg } from '@components';
+import { images, responsiveHeight, useGlobalStyles } from '@resources';
+import FastImage from 'react-native-fast-image';
 
 const Tab = createBottomTabNavigator();
 
@@ -91,7 +86,11 @@ export const TabNavigator = () => {
                   }),
                 }}
               >
-                {FastImg(iconName, moderateScale(20))}
+                <FastImage
+                  source={iconName as any}
+                  style={[globalStyles.squareLayout(20)]}
+                  resizeMode={FastImage.resizeMode.contain}
+                />
               </View>
 
               <Text

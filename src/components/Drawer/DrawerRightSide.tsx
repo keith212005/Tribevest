@@ -35,7 +35,7 @@ const DrawerRightSide = (props: any) => {
             text: loc('OK'),
             onPress: () => {
               dispatch(isLoggedIn(false));
-              resetNavigation('Login');
+              resetNavigation('Signin');
             },
           },
         ]);

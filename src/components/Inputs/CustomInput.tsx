@@ -22,17 +22,6 @@ const CustomInput: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      {props.label && (
-        <Text
-          style={globalStyle.textStyle(
-            '_14',
-            'textPrimaryColor',
-            'NUNITO_SEMIBOLD',
-          )}
-        >
-          {props.label}
-        </Text>
-      )}
       <TextInput
         blurOnSubmit={false}
         {...props}

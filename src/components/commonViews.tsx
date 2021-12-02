@@ -5,7 +5,8 @@ import { Icon, Avatar, AvatarProps } from 'react-native-elements';
 
 // LOCAL IMPORTS
 import { useGlobalStyles } from '@resources';
-import FastImage from 'react-native-fast-image';
+import FastImage, { FastImageProps } from 'react-native-fast-image';
+import { ViewStyle } from 'react-native';
 
 export const RenderIcon = (
   name: string,
@@ -24,13 +25,19 @@ export const RenderIcon = (
   );
 };
 
-export const FastImg = (uri: any, size: number, extraStyle?: object) => {
+export const FastImg = (
+  uri: any,
+  size: number,
+  extraStyle?: ViewStyle,
+  extraProps?: FastImageProps,
+) => {
   const globalStyles = useGlobalStyles();
   return (
     <FastImage
       source={uri}
       style={[globalStyles.squareLayout(size), { ...extraStyle }]}
       resizeMode={FastImage.resizeMode.contain}
+      {...extraProps}
     />
   );
 };

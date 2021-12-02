@@ -15,6 +15,7 @@ import { SCREENS } from '@constants';
 import { navigationRef } from './RootNavigation';
 import { MyDarkTheme, LightTheme } from '@resources';
 import { DrawerNavigator } from './drawerNavigator';
+import { CustomStatusBar } from '@components';
 
 const Stack = createStackNavigator();
 
@@ -51,16 +52,16 @@ const App = (props: any) => {
         }, 1000);
       }}
     >
+      <CustomStatusBar />
       <Stack.Navigator
-        initialRouteName={'Login'}
+        initialRouteName={'Signin'}
         screenOptions={{
           headerShown: false,
-          gestureEnabled: false,
+          gestureEnabled: true,
           cardStyleInterpolator: forFade,
         }}
       >
-        {/* {_addScreen('Splash' as never)} */}
-        {_addScreen('Login' as never)}
+        {_addScreen('Signin' as never)}
         {_addScreen('DrawerNavigator' as never, true, {
           component: DrawerNavigator,
         })}

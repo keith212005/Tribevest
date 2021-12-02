@@ -1,26 +1,29 @@
-/* eslint-disable no-undef */
 import React from 'react';
 import { StatusBar } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
+import SafeAreaView from 'react-native-safe-area-view';
 
-// THIRD PARTY IMPORTS
-import { useIsFocused, useTheme } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import LinearGradient from 'react-native-linear-gradient';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const FocusAwareStatusBar = (props: any) => {
   const isFocused = useIsFocused();
-  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
-  const { colors } = useTheme() as unknown as CustomTheme;
 
-  console.log('FocusAwareStatusBar render');
+  const insets = useSafeAreaInsets();
+  console.log('FocusAwareStatusBar render.....');
 
   return isFocused ? (
-    <StatusBar
-      translucent={true}
-      showHideTransition={false}
-      barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
-      backgroundColor={isDarkTheme ? colors.card : colors.white}
-      {...props}
-      {...props.statusBarProps}
-    />
+    <LinearGradient
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      colors={props.statusBarBackgroundColor}
+    >
+      <StatusBar
+        translucent={true}
+        backgroundColor={'transparent'}
+        {...props}
+        {...props.statusBarProps}
+      />
+    </LinearGradient>
   ) : null;
 };
