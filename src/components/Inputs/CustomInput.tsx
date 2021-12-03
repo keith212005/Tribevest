@@ -1,61 +1,106 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-nested-ternary */
 import React from 'react';
-import { StyleSheet, TextInput, TextInputProps, Text } from 'react-native';
+import {
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+  Text,
+  View,
+  Platform,
+  Pressable,
+} from 'react-native';
 
 // THIRD PARTY IMPORTS
-import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
 import { IfieldObject } from '@constants';
-import { useGlobalStyles } from '@resources';
+import {
+  color,
+  images,
+  scale,
+  useGlobalStyles,
+  verticalScale,
+} from '@resources';
+import FastImage, { Source } from 'react-native-fast-image';
 
-interface Props extends TextInputProps {
+export interface CustomInputProps extends TextInputProps {
   label?: string;
   refName?: any;
   valueObject?: IfieldObject;
+  leftIcon?: string;
 }
 
-const CustomInput: React.FC<Props> = (props: Props) => {
+export const CustomInput: React.FC<CustomInputProps> = (
+  props: CustomInputProps,
+) => {
   const globalStyle = useGlobalStyles();
-  const { colors } = useTheme() as unknown as CustomTheme;
+
+  console.log(props.valueObject);
 
   return (
-    <>
-      <TextInput
-        blurOnSubmit={false}
-        {...props}
-        ref={props.refName}
-        style={[
-          styles.input,
-          {
-            backgroundColor: colors.white,
-            borderColor:
-              props.valueObject && props.valueObject.isError
-                ? colors.hot_red
-                : props.valueObject && props.valueObject.isFocus
-                ? colors.primaryColor
-                : colors.unfocusBorder,
-          },
-        ]}
-      />
-      <Text
-        style={[globalStyle.textStyle('_14', 'hot_red', 'NUNITO_SEMIBOLD')]}
+    <View style={styles.container}>
+      <View
+        style={{
+          justifyContent: 'center',
+        }}
       >
+        <FastImage
+          style={[globalStyle.squareLayout(20), styles.leftImage]}
+          source={props.leftIcon as Source}
+          resizeMode={FastImage.resizeMode.contain}
+          tintColor={props.valueObject?.isError ? color.error : color.black}
+        />
+        <TextInput
+          blurOnSubmit={false}
+          {...props}
+          ref={props.refName}
+          style={[
+            styles.input,
+            {
+              backgroundColor:
+                props.valueObject && props.valueObject.isError
+                  ? color.error_light
+                  : color.inputBackgroundColor,
+            },
+          ]}
+        />
+        {props.secureTextEntry && (
+          <Pressable style={styles.rightImage}>
+            <FastImage
+              style={[globalStyle.squareLayout(20)]}
+              source={images.eye_slash}
+              resizeMode={FastImage.resizeMode.contain}
+            />
+          </Pressable>
+        )}
+      </View>
+      <Text style={[globalStyle.textStyle('_12', 'error', 'NUNITO_REGULAR')]}>
         {props.valueObject && props.valueObject.isError
           ? props.valueObject.errorText
           : ''}
       </Text>
-    </>
+    </View>
   );
 };
 
-export default CustomInput;
-
 const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+  },
   input: {
-    borderWidth: 1,
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 8,
+    paddingLeft: 40,
+    height: Platform.OS === 'ios' ? verticalScale(40) : verticalScale(50),
+  },
+  leftImage: {
+    position: 'absolute',
+    zIndex: 1,
+    margin: scale(10),
+  },
+  rightImage: {
+    marginRight: 20,
+    alignSelf: 'flex-end',
+    position: 'absolute',
+    paddingRight: 10,
   },
 });

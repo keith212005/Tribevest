@@ -10,13 +10,13 @@ import { color, fonts, fontsize } from '@resources';
 
 interface DefaultProps {
   title: string;
-  gradientColor: typeof color;
+  gradientColor: keyof typeof color;
   onPress: Function;
   containerStyle?: ViewStyle;
   extraProps?: any;
 }
 
-const RoundGradientButton = ({
+const RoundGradientButtons2 = ({
   title,
   gradientColor,
   onPress,
@@ -54,4 +54,4 @@ const RoundGradientButton = ({
   );
 };
 
-export default memo(RoundGradientButton);
+export const RoundGradientButton2 = memo(RoundGradientButtons2);

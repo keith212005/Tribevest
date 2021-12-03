@@ -20,7 +20,7 @@ import { useTheme } from '@react-navigation/native';
 const DrawerRightSide = (props: any) => {
   const dispatch = useDispatch();
   const globalStyles = useGlobalStyles();
-  const { colors } = useTheme();
+  const { colors } = useTheme() as unknown as CustomTheme;
 
   function handleSelectedDrawerItem(label: any) {
     closeDrawer();

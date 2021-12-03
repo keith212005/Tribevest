@@ -1,6 +1,4 @@
 export const en = {
-  username: 'Username',
-  password: 'Password',
   EMPTY_USERNAME: 'Please enter username',
   EMPTY_PASSWORD: 'Please enter password',
   INVESTING_IS_BETTER: 'Investing is better together',
@@ -51,8 +49,8 @@ export const en = {
   GET_STARTED: 'Get Started',
   SIGN_INTO_TRIBEVEST: 'Sign in to Tribevest',
   MANAGE_YOUR_TRIBES: 'Manage your tribes',
-  EMAIL_ADDRESS: 'Email Address',
-  CREATE_PASSWORD: 'Create Password',
+  email: 'Email Address',
+  password: 'Create Password',
   FORGOT_PASSWORD: 'Forgot Password?',
   SIGN_IN: 'Sign In',
   OR: 'OR',

@@ -12,9 +12,12 @@ import RoundGradientButton from 'components/Buttons/RoundGradientButton';
 import { useDispatch } from 'react-redux';
 import { isOpenFirstTime } from 'actions/isOpenFirstTime';
 import { OnboardingCarousel } from 'components/Carousel/OnboardingCarousel';
+import { colors } from 'react-native-elements';
+import { useTheme } from '@react-navigation/native';
 
 export const Onboarding = () => {
   const dispatch = useDispatch();
+  const { colors } = useTheme() as unknown as CustomTheme;
 
   return (
     <ImageBackground source={images.splashscreen_bg} style={[styles.container]}>
@@ -28,6 +31,7 @@ export const Onboarding = () => {
         })}
         <OnboardingCarousel />
         <RoundGradientButton
+          gradientColor={colors.primaryGradiant}
           title={loc('GET_STARTED')}
           containerStyle={{
             width: responsiveWidth(80),

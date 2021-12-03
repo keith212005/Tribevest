@@ -28,4 +28,8 @@ export const images = {
   onboarding_create_plan: require('./onboarding_create_plan/onboarding_create_plan.png'),
   arrow_drop_down_circle: require('./arrow_drop_down_circle/arrow_drop_down_circle.png'),
   onboarding_logo: require('./onboarding_logo/onboarding_logo.png'),
+  sms: require('./sms/sms.png'),
+  lock: require('./lock/lock.png'),
+  eye_slash: require('./eye_slash/eye_slash.png'),
+  face_unlock: require('./face_unlock/face_unlock.png'),
 };
