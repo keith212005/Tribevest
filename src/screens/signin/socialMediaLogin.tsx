@@ -1,20 +1,26 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-undef */
 /* eslint-disable no-sparse-arrays */
+import React from 'react';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+
+// THIRD PARTY IMPORTS
+import { Icon } from 'react-native-elements';
+
+// LOCAL IMPORTS
 import {
   color,
   responsiveHeight,
   responsiveWidth,
   useGlobalStyles,
 } from '@resources';
-import * as React from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
-
-// THIRD PARTY IMPORTS
-import { Icon } from 'react-native-elements';
+import { useSelector } from 'react-redux';
+import { useTheme } from '@react-navigation/native';
 
 export const SocialMediaLogin = () => {
   const globalStyles = useGlobalStyles();
+  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
+  const { colors } = useTheme() as unknown as CustomTheme;
 
   const _renderDivider = () => {
     return <View style={styles.divider} />;
@@ -22,11 +28,11 @@ export const SocialMediaLogin = () => {
 
   const _renderOr = () => {
     return (
-      <View style={styles.orContainer}>
+      <View style={[styles.orContainer]}>
         {_renderDivider()}
         <Text
           style={[
-            globalStyles.textStyle('_14', 'placeHolderColor', 'NUNITO_REGULAR'),
+            globalStyles.textStyle('_14', 'text', 'NUNITO_REGULAR'),
             { paddingHorizontal: 5 },
             ,
           ]}
@@ -55,27 +61,31 @@ export const SocialMediaLogin = () => {
   const _renderCreateAccount = () => {
     return (
       <View style={styles.createAccountContainer}>
-        <Text
-          style={[
-            globalStyles.textStyle('_14', 'placeholderColor', 'NUNITO_REGULAR'),
-          ]}
-        >
+        <Text style={[globalStyles.textStyle('_14', 'text', 'NUNITO_REGULAR')]}>
           {loc('NEW_TO_TRIBEVEST')}
         </Text>
-        <Pressable onPress={() => {}}>
+        <TouchableOpacity onPress={() => {}}>
           <Text
             style={[globalStyles.textStyle('_14', 'primary', 'NUNITO_REGULAR')]}
           >
             {'  '}
             {loc('CREATE_AN_ACCOUNT')}
           </Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     );
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        {
+          backgroundColor: isDarkTheme ? colors.background : color.white,
+          flex: 1,
+        },
+        styles.container,
+      ]}
+    >
       {_renderOr()}
       <View style={styles.iconsContainer}>
         {_renderIcon('google', '#FF6865')}
@@ -88,7 +98,7 @@ export const SocialMediaLogin = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { marginTop: responsiveHeight(2) },
+  container: { paddingTop: responsiveHeight(2) },
   divider: {
     borderColor: color.grey,
     borderWidth: 1,

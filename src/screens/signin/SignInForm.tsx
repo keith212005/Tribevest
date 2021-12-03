@@ -1,7 +1,7 @@
 /* eslint-disable no-fallthrough */
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 // THIRD PARTY IMPORTS
 
@@ -12,9 +12,9 @@ import { color, images, responsiveHeight, useGlobalStyles } from '@resources';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
 import _ from 'lodash';
 import { useTheme } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { isLoggedIn } from 'actions/isLoggedIn';
-import { FaceIdSignIn } from './FaceIdSignIn';
+import { FaceIdSignIn } from './faceIdSignIn';
 
 interface User {
   _key: string;
@@ -32,6 +32,7 @@ export const SignInForm = () => {
   const { colors } = useTheme() as unknown as CustomTheme;
   const dispatch = useDispatch();
   const globalStyle = useGlobalStyles();
+  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
 
   /**
   |--------------------------------------------------
@@ -128,7 +129,12 @@ export const SignInForm = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        { backgroundColor: isDarkTheme ? colors.background : 'white' },
+        styles.container,
+      ]}
+    >
       <FaceIdSignIn />
       {_renderInput(0, 'email', {
         valueObject: state.username,
@@ -141,14 +147,16 @@ export const SignInForm = () => {
         secureTextEntry: true,
         blurOnSubmit: true,
       })}
-      <Text
-        style={[
-          globalStyle.textStyle('_14', 'primary', 'NUNITO_REGULAR'),
-          { paddingTop: responsiveHeight(1) },
-        ]}
-      >
-        {loc('FORGOT_PASSWORD')}
-      </Text>
+      <TouchableOpacity onPress={() => {}}>
+        <Text
+          style={[
+            globalStyle.textStyle('_14', 'primary', 'NUNITO_REGULAR'),
+            { paddingTop: responsiveHeight(1) },
+          ]}
+        >
+          {loc('FORGOT_PASSWORD')}
+        </Text>
+      </TouchableOpacity>
 
       <RoundGradientButton2
         gradientColor={colors.primaryGradiant as unknown as keyof typeof color}
@@ -164,7 +172,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-start',
     paddingHorizontal: 20,
-    backgroundColor: color.white,
+    // backgroundColor: color.white,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     marginTop: -50,

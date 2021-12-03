@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
-import { ViewStyle } from 'react-native';
+import { Platform, ViewStyle } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import { Button } from 'react-native-elements';
+import { Button, colors } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 
 // LOCAL IMPORTS
-import { color, fonts, fontsize } from '@resources';
+import { color, fonts, fontsize, moderateScale } from '@resources';
 
 interface DefaultProps {
   title: string;
@@ -25,11 +25,30 @@ const RoundGradientButtons2 = ({
 }: DefaultProps) => {
   return (
     <Button
-      buttonStyle={{ height: '100%' }}
+      buttonStyle={{
+        height: moderateScale(51),
+        margin: moderateScale(20),
+        backgroundColor: color.primaryColor,
+        borderRadius: 100,
+      }}
       containerStyle={{
         width: '100%',
-        borderRadius: 30,
-        height: 48,
+        height: 100,
+        shadowColor: color.primaryColor,
+        ...Platform.select({
+          ios: {
+            shadowOffset: {
+              width: 0,
+              height: 8,
+            },
+            shadowRadius: 8,
+            shadowOpacity: 1,
+          },
+          android: {
+            backgroundColor: color.transparent,
+            elevation: 5,
+          },
+        }),
         ...containerStyle,
       }}
       ViewComponent={LinearGradient}

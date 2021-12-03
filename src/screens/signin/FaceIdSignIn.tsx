@@ -1,14 +1,17 @@
 /* eslint-disable no-undef */
 import { FastImg } from '@components';
-import { images } from '@resources';
+import { images, useGlobalStyles } from '@resources';
 import * as React from 'react';
 import { Text, StyleSheet, Pressable } from 'react-native';
 
 export const FaceIdSignIn = () => {
+  const globalStyle = useGlobalStyles();
   return (
     <Pressable style={styles.container} onPress={() => {}}>
       {FastImg(images.face_unlock, 30, { marginRight: 20 })}
-      <Text>{loc('SIGN_IN_WITH_FACEID')}</Text>
+      <Text style={[globalStyle.textStyle('_14', 'text', 'NUNITO_REGULAR')]}>
+        {loc('SIGN_IN_WITH_FACEID')}
+      </Text>
     </Pressable>
   );
 };

@@ -8,9 +8,8 @@ import { CommonActions } from '@react-navigation/native';
 // LOCAL IMPORTS
 import { Onboarding } from '@screens';
 import { SignInHeader } from './signInHeader';
-import { SignInForm } from './SignInForm';
+import { SignInForm } from './signInForm';
 import { SocialMediaLogin } from './socialMediaLogin';
-import { FaceIdSignIn } from './FaceIdSignIn';
 
 const SigninScreen = (props: any) => {
   const { isAppOpenFirstTime, isUserLoggedIn } = props;
@@ -47,7 +46,7 @@ const SigninScreen = (props: any) => {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{ flex: 1 }}>
       <SignInHeader />
       <SignInForm />
       <SocialMediaLogin />

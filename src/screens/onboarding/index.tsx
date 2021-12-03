@@ -31,7 +31,7 @@ export const Onboarding = () => {
         })}
         <OnboardingCarousel />
         <RoundGradientButton
-          gradientColor={colors.primaryGradiant}
+          gradientColor={colors.greenGradient}
           title={loc('GET_STARTED')}
           containerStyle={{
             width: responsiveWidth(80),
