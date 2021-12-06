@@ -6,40 +6,38 @@ import { ImageBackground, Platform } from 'react-native';
 
 // LOCAL IMPORTs
 import { styles } from './style';
-import { FastImg, SafeAreaWrapper } from '@components';
+import { FastImg, RoundGradientButton } from '@components';
 import { images, responsiveHeight, responsiveWidth } from '@resources';
-import RoundGradientButton from 'components/Buttons/RoundGradientButton';
 import { useDispatch } from 'react-redux';
 import { isOpenFirstTime } from 'actions/isOpenFirstTime';
 import { OnboardingCarousel } from 'components/Carousel/OnboardingCarousel';
-import { colors } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const Onboarding = () => {
   const dispatch = useDispatch();
   const { colors } = useTheme() as unknown as CustomTheme;
+  const insets = useSafeAreaInsets();
 
   return (
-    <ImageBackground source={images.splashscreen_bg} style={[styles.container]}>
-      <SafeAreaWrapper
-        statusBarProps={{ hidden: true }}
-        containerStyle={{ bottom: 30 }}
-      >
-        {FastImg(images.onboarding_logo, 110, {
+    <ImageBackground
+      source={images.splashscreen_bg}
+      style={[styles.container, { paddingBottom: insets.bottom }]}
+    >
+      {FastImg(images.onboarding_logo, 110, {
+        alignSelf: 'center',
+        marginTop: responsiveHeight(Platform.OS === 'ios' ? 2 : 8),
+      })}
+      <OnboardingCarousel />
+      <RoundGradientButton
+        gradientColor={colors.greenGradient as any}
+        title={loc('GET_STARTED')}
+        containerStyle={{
+          width: responsiveWidth(80),
           alignSelf: 'center',
-          marginTop: responsiveHeight(Platform.OS === 'ios' ? 2 : 8),
-        })}
-        <OnboardingCarousel />
-        <RoundGradientButton
-          gradientColor={colors.greenGradient}
-          title={loc('GET_STARTED')}
-          containerStyle={{
-            width: responsiveWidth(80),
-            alignSelf: 'center',
-          }}
-          onPress={() => dispatch(isOpenFirstTime(false))}
-        />
-      </SafeAreaWrapper>
+        }}
+        onPress={() => dispatch(isOpenFirstTime(false))}
+      />
     </ImageBackground>
   );
 };

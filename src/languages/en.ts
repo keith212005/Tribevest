@@ -61,4 +61,25 @@ export const en = {
   SIGN_IN_WITH_FACEID: 'Sign in with FaceID',
   UNLOCK: 'Unlock',
   USE_PASSWORD: 'Use Password',
+  RESET_PASSWORD: 'Reset password',
+  RESET_YOUR_PASSWORD: 'Reset your password',
+  CHECK_YOUR_EMAIL: 'Check your email',
+  PASSWORD_RESET_EMAIL_SENT:
+    'We have sent password recovery instructions to your email',
+  SEND_INSTRUCTIONS: 'Send Instructions',
+  OPEN_EMAIL: 'Open Email',
+  SKIP_CONFIRM_LATER: "Skip. I'll confirm later",
+  DID_NOT_RECEIVE_EMAIL:
+    'Did not receive the email? Check your spam filter or ',
+  TRY_ANOTHER_EMAIL: 'try another email address',
+  CREATE_NEW_PASSWORD: 'Create new password',
+  DIFFERENT_PASSWORD_MSG:
+    'Your new password must be different from previous used passwords.',
+  ATLEAST_EIGHT_CHAR: 'At least 8 Characters',
+  ATLEAST_ONE_SYMBOL: 'At least 1 symbol (!@#$%)',
+  ATLEAST_ONE_CAPITAL: 'At least 1 capital letter',
+  CREATE_PASSWORD: 'Create password',
+  GO_TO_SETTINGS: 'Go to settings',
+  ALLOW_FACEID_LOGIN_MSG:
+    'Allow Tribevest to login using Face Id. Please enable Face Id in settings.',
 };

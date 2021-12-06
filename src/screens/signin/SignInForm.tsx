@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-fallthrough */
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
@@ -15,6 +16,7 @@ import { useTheme } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { isLoggedIn } from 'actions/isLoggedIn';
 import { FaceIdSignIn } from './faceIdSignIn';
+import { navigate } from '@navigator';
 
 interface User {
   _key: string;
@@ -147,7 +149,7 @@ export const SignInForm = () => {
         secureTextEntry: true,
         blurOnSubmit: true,
       })}
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={() => navigate('PasswordReset')}>
         <Text
           style={[
             globalStyle.textStyle('_14', 'primary', 'NUNITO_REGULAR'),
@@ -162,7 +164,6 @@ export const SignInForm = () => {
         gradientColor={colors.primaryGradiant as unknown as keyof typeof color}
         title={loc('SIGN_IN')}
         onPress={() => dispatch(isLoggedIn(true))}
-        containerStyle={{ marginVertical: responsiveHeight(3) }}
       />
     </View>
   );

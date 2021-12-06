@@ -8,3 +8,4 @@ export * from './NavigationHeaderIcons';
 export * from './Wrappers';
 export * from './Avatar';
 export * from './Dashboard';
+export * from './GlobalComponents';

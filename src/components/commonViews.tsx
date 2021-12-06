@@ -34,10 +34,10 @@ export const FastImg = (
   const globalStyles = useGlobalStyles();
   return (
     <FastImage
+      {...extraProps}
       source={uri}
       style={[globalStyles.squareLayout(size), { ...extraStyle }]}
       resizeMode={FastImage.resizeMode.contain}
-      {...extraProps}
     />
   );
 };

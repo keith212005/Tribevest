@@ -32,4 +32,6 @@ export const images = {
   lock: require('./lock/lock.png'),
   eye_slash: require('./eye_slash/eye_slash.png'),
   face_unlock: require('./face_unlock/face_unlock.png'),
+  tick_circle: require('./tick_circle/tick_circle.png'),
+  check_email: require('./check_email/check_email.png'),
 };

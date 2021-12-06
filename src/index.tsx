@@ -10,6 +10,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // LOCAL IMPORTS
 import { store, persistor } from './reducers';
+import { CustomLoader } from '@components';
 
 const App = () => {
   LogBox.ignoreLogs(['If you want to use Reanimated 2']);
@@ -20,6 +21,7 @@ const App = () => {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <AppContainer />
+          <CustomLoader />
         </PersistGate>
       </Provider>
     </SafeAreaProvider>

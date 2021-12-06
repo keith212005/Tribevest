@@ -62,6 +62,11 @@ const App = (props: any) => {
         }}
       >
         {_addScreen('Signin' as never)}
+        {_addScreen('PasswordReset' as never)}
+        {_addScreen('CheckEmail' as never)}
+        {_addScreen('NewPassword' as never)}
+        {_addScreen('FaceId' as never)}
+
         {_addScreen('DrawerNavigator' as never, true, {
           component: DrawerNavigator,
         })}

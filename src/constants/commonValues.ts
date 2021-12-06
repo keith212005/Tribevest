@@ -8,6 +8,10 @@ export const SCREENS = {
   Alerts: 'Alerts',
   Profile: 'Profile',
   Onboarding: 'Onboarding',
+  PasswordReset: 'PasswordReset',
+  CheckEmail: 'CheckEmail',
+  NewPassword: 'NewPassword',
+  FaceId: 'FaceId',
 };
 
 export interface IfieldObject {

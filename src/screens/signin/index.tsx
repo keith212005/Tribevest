@@ -47,7 +47,10 @@ const SigninScreen = (props: any) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <SignInHeader />
+      <SignInHeader
+        title={loc('SIGN_INTO_TRIBEVEST')}
+        description={loc('MANAGE_YOUR_TRIBES')}
+      />
       <SignInForm />
       <SocialMediaLogin />
     </View>

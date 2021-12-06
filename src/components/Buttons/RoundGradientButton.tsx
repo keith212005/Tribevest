@@ -16,7 +16,7 @@ interface DefaultProps {
   extraProps?: any;
 }
 
-const RoundGradientButton = ({
+const RoundGradientButtons = ({
   title,
   gradientColor,
   onPress,
@@ -54,4 +54,4 @@ const RoundGradientButton = ({
   );
 };
 
-export default memo(RoundGradientButton);
+export const RoundGradientButton = memo(RoundGradientButtons);
