@@ -1,40 +1,32 @@
-/* eslint-disable no-shadow */
 /* eslint-disable no-fallthrough */
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
 
 // THIRD PARTY IMPORTS
-
-// LOCAL IMPORTS
-import { CustomInput, RoundGradientButton2 } from '@components';
-import { fieldObject, IfieldObject } from '@constants';
-import { color, images, responsiveHeight, useGlobalStyles } from '@resources';
-import { CustomInputProps } from 'components/Inputs/CustomInput';
 import _ from 'lodash';
 import { useTheme } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { isLoggedIn } from 'actions/isLoggedIn';
-import { FaceIdSignIn } from './faceIdSignIn';
+import { useDispatch } from 'react-redux';
+import createState from 'react-hook-setstate';
+
+// LOCAL IMPORTS
+import { fieldObject } from '@constants';
 import { navigate } from '@navigator';
+import { isLoggedIn } from 'actions/isLoggedIn';
+import { CustomInput, RoundGradientButton2 } from '@components';
+import { color, images, responsiveHeight, useGlobalStyles } from '@resources';
+import { CustomInputProps } from 'components/Inputs/CustomInput';
 
-interface User {
-  _key: string;
-  username: IfieldObject;
-  password: IfieldObject;
-}
-
-export const SignInForm = () => {
+export const SignUpForm = () => {
   var inputs = new Array(2);
-  const [state, setState]: any = useState<User>({
-    _key: '',
-    username: fieldObject,
+
+  const [state, setState] = createState({
+    email: fieldObject,
     password: fieldObject,
   });
   const { colors } = useTheme() as unknown as CustomTheme;
   const dispatch = useDispatch();
   const globalStyle = useGlobalStyles();
-  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
 
   /**
   |--------------------------------------------------
@@ -42,32 +34,29 @@ export const SignInForm = () => {
   |--------------------------------------------------
   */
 
-  const handleChange = (value: unknown, key: string) => {
-    console.log('handlecahnge claee...', state);
-
+  const handleChange = (value: string, key: string) => {
     setState({
       ...state,
       [key]: {
         value: value,
         isError: false,
         errorText: '',
-        isFocus: true,
       },
     });
   };
 
-  const checkValidation = (
-    numbers: number,
-    _key: string,
-    _isFocus: boolean,
-  ) => {
+  const checkValidation = (numbers: number, key: string) => {
+    console.log('checkValidation called....');
+
     var stateObject: any = {};
-    const username = state.username.value;
+    const email = state.email.value;
     const password = state.password.value;
+
+    console.log(key);
+
     return new Promise((resolve) => {
-      stateObject[_key] = {
-        ...state[_key],
-        isFocus: _isFocus,
+      stateObject[key] = {
+        ...state[key],
       };
 
       switch (numbers) {
@@ -77,23 +66,18 @@ export const SignInForm = () => {
               value: password,
               isError: true,
               errorText: loc('INVALID_PASSWORD_MSG'),
-              isFocus: false,
             };
           }
         case 1:
-          if (_.isEmpty(username)) {
-            stateObject.username = {
-              value: username,
+          if (_.isEmpty(email)) {
+            stateObject.email = {
+              value: email,
               isError: true,
               errorText: loc('INVALID_EMAIL_MSG'),
-              isFocus: false,
             };
           }
         default:
-          setState((prevState: any) => ({
-            ...prevState,
-            ...stateObject,
-          }));
+          setState(stateObject);
           resolve(true);
           break;
       }
@@ -120,9 +104,9 @@ export const SignInForm = () => {
         label={loc(key)}
         placeholder={loc(key)}
         refName={(input: any) => (inputs[index] = input)}
-        onFocus={() => checkValidation(index, key, true)}
+        onFocus={() => checkValidation(index, key)}
         onBlur={() => {}}
-        onEndEditing={() => checkValidation(index + 1, key, false)}
+        onEndEditing={() => checkValidation(index + 1, key)}
         onSubmitEditing={() => onSubmitEditing(index)}
         onChangeText={(val: string) => handleChange(val, key)}
         {...extraProps}
@@ -131,24 +115,30 @@ export const SignInForm = () => {
   };
 
   return (
-    <View
-      style={[
-        { backgroundColor: isDarkTheme ? colors.background : 'white' },
-        styles.container,
-      ]}
-    >
-      <FaceIdSignIn />
+    <>
+      {/* Render Email Input */}
+      {_renderInput(0, 'full_name', {
+        valueObject: state.email,
+        leftIcon: images.user,
+      })}
       {_renderInput(0, 'email', {
-        valueObject: state.username,
+        valueObject: state.email,
         leftIcon: images.sms,
       })}
+      {_renderInput(0, 'phone_number', {
+        valueObject: state.email,
+        leftIcon: images.call,
+      })}
 
+      {/* Render Password Input */}
       {_renderInput(1, 'password', {
         valueObject: state.password,
         leftIcon: images.lock,
-        secureTextEntry: true,
+        showPasswordIcon: true,
         blurOnSubmit: true,
       })}
+
+      {/* Render forgot password */}
       <TouchableOpacity onPress={() => navigate('PasswordReset')}>
         <Text
           style={[
@@ -156,27 +146,16 @@ export const SignInForm = () => {
             { paddingTop: responsiveHeight(1) },
           ]}
         >
-          {loc('FORGOT_PASSWORD')}
+          {loc('ADD_INVITE_CODE')}
         </Text>
       </TouchableOpacity>
 
+      {/* Render Sign In button */}
       <RoundGradientButton2
         gradientColor={colors.primaryGradiant as unknown as keyof typeof color}
-        title={loc('SIGN_IN')}
+        title={loc('CREATE_ACCOUNT')}
         onPress={() => dispatch(isLoggedIn(true))}
       />
-    </View>
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'flex-start',
-    paddingHorizontal: 20,
-    // backgroundColor: color.white,
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
-    marginTop: -50,
-    paddingTop: responsiveHeight(3),
-  },
-});

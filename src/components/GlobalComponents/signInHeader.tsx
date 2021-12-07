@@ -9,10 +9,18 @@ import { useTheme } from '@react-navigation/native';
 import { responsiveHeight, scale, useGlobalStyles } from '@resources';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon } from 'react-native-elements';
-import { navigationRef } from '@navigator';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { navigationRef } from '@navigator';
 
-export const SignInHeader = (props: any) => {
+export interface SignInHeaderProps {
+  title?: string;
+  description?: string;
+  showBackButton?: boolean;
+}
+
+export const SignInHeader: React.FC<SignInHeaderProps> = (
+  props: SignInHeaderProps,
+) => {
   const insets = useSafeAreaInsets();
   const { colors } = useTheme() as unknown as CustomTheme;
   const globalStyles = useGlobalStyles();

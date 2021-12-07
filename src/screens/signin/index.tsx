@@ -7,9 +7,7 @@ import { CommonActions } from '@react-navigation/native';
 
 // LOCAL IMPORTS
 import { Onboarding } from '@screens';
-import { SignInHeader } from './signInHeader';
-import { SignInForm } from './signInForm';
-import { SocialMediaLogin } from './socialMediaLogin';
+import { SocialMediaLogin, SignInHeader, SignInForm } from '@components';
 
 const SigninScreen = (props: any) => {
   const { isAppOpenFirstTime, isUserLoggedIn } = props;
@@ -50,6 +48,9 @@ const SigninScreen = (props: any) => {
       <SignInHeader
         title={loc('SIGN_INTO_TRIBEVEST')}
         description={loc('MANAGE_YOUR_TRIBES')}
+        onBackPress={() => {
+          console.log('sdf');
+        }}
       />
       <SignInForm />
       <SocialMediaLogin />

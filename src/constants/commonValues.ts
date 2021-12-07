@@ -12,6 +12,7 @@ export const SCREENS = {
   CheckEmail: 'CheckEmail',
   NewPassword: 'NewPassword',
   FaceId: 'FaceId',
+  SignUp: 'SignUp',
 };
 
 export interface IfieldObject {

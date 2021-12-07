@@ -14,8 +14,7 @@ import { color, images } from '@resources';
 import { navigate } from '@navigator';
 import { fieldObject, IfieldObject } from '@constants';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
-import { SignInHeader } from 'screens/signin/signInHeader';
-import { CustomInput, RoundGradientButton2 } from '@components';
+import { CustomInput, RoundGradientButton2, SignInHeader } from '@components';
 
 interface User {
   _key: string;

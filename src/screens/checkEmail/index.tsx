@@ -4,8 +4,7 @@ import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 
 // LOCAL IMPORTS
-import { SignInHeader } from 'screens/signin/signInHeader';
-import { FastImg, RoundGradientButton2 } from '@components';
+import { FastImg, RoundGradientButton2, SignInHeader } from '@components';
 import { navigate, navigationRef, resetNavigation } from '@navigator';
 import { useTheme } from '@react-navigation/native';
 import { color, images, responsiveWidth, useGlobalStyles } from '@resources';

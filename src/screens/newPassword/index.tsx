@@ -11,9 +11,8 @@ import { useTheme } from '@react-navigation/native';
 // LOCAL IMPORTS
 import { styles } from './style';
 import { fieldObject, IfieldObject } from '@constants';
-import { SignInHeader } from 'screens/signin/signInHeader';
 import { CustomInput, CustomInputProps } from 'components/Inputs/CustomInput';
-import { FastImg, RoundGradientButton2 } from '@components';
+import { FastImg, RoundGradientButton2, SignInHeader } from '@components';
 import { color, images, useGlobalStyles } from '@resources';
 import { navigate } from '@navigator';
 import { en } from '@languages';

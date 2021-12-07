@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import {
   StyleSheet,
@@ -10,6 +11,7 @@ import {
 } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import createState from 'react-hook-setstate';
 
 // LOCAL IMPORTS
 import { IfieldObject } from '@constants';
@@ -27,22 +29,28 @@ export interface CustomInputProps extends TextInputProps {
   refName?: any;
   valueObject?: IfieldObject;
   leftIcon?: string;
+  showPasswordIcon?: boolean;
+  onPressRightIcon?: any;
 }
 
 export const CustomInput: React.FC<CustomInputProps> = (
   props: CustomInputProps,
 ) => {
+  console.log('rendering Custom inptu');
+  const [state, setState] = createState({
+    secureTextEntry: props.showPasswordIcon ? true : false,
+  });
   const globalStyle = useGlobalStyles();
 
-  console.log(props.valueObject);
+  const handleRightIconClick = () => {
+    setState({ secureTextEntry: !state.secureTextEntry });
+  };
+
+  console.log(props.valueObject && props.valueObject.isError);
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          justifyContent: 'center',
-        }}
-      >
+      <View style={{ justifyContent: 'center' }}>
         <FastImage
           style={[globalStyle.squareLayout(20), styles.leftImage]}
           source={props.leftIcon as Source}
@@ -51,7 +59,7 @@ export const CustomInput: React.FC<CustomInputProps> = (
         />
         <TextInput
           blurOnSubmit={false}
-          {...props}
+          secureTextEntry={state.secureTextEntry}
           ref={props.refName}
           style={[
             styles.input,
@@ -62,21 +70,31 @@ export const CustomInput: React.FC<CustomInputProps> = (
                   : color.inputBackgroundColor,
             },
           ]}
+          {...props}
         />
-        {props.secureTextEntry && (
-          <Pressable style={styles.rightImage}>
+        {props.showPasswordIcon && (
+          <Pressable style={styles.rightImage} onPress={handleRightIconClick}>
             <FastImage
               style={[globalStyle.squareLayout(20)]}
-              source={images.eye_slash}
+              source={
+                state.secureTextEntry && !props.valueObject?.isError
+                  ? images.eye_slash
+                  : props.valueObject && props.valueObject.isError
+                  ? images.eye_slash_error
+                  : images.eye_slash_error
+              }
               resizeMode={FastImage.resizeMode.contain}
             />
           </Pressable>
         )}
       </View>
-      <Text style={[globalStyle.textStyle('_12', 'error', 'NUNITO_REGULAR')]}>
-        {props.valueObject && props.valueObject.isError
-          ? props.valueObject.errorText
-          : ''}
+      <Text
+        style={[
+          globalStyle.textStyle('_12', 'error', 'NUNITO_REGULAR'),
+          { height: scale(19) },
+        ]}
+      >
+        {props.valueObject && props.valueObject.errorText}
       </Text>
     </View>
   );

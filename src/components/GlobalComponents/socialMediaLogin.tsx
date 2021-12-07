@@ -16,6 +16,7 @@ import {
 } from '@resources';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@react-navigation/native';
+import { navigate } from '@navigator';
 
 export const SocialMediaLogin = () => {
   const globalStyles = useGlobalStyles();
@@ -64,7 +65,7 @@ export const SocialMediaLogin = () => {
         <Text style={[globalStyles.textStyle('_14', 'text', 'NUNITO_REGULAR')]}>
           {loc('NEW_TO_TRIBEVEST')}
         </Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => navigate('SignUp')}>
           <Text
             style={[globalStyles.textStyle('_14', 'primary', 'NUNITO_REGULAR')]}
           >

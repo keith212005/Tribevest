@@ -1,1 +1,2 @@
-export { CustomLoader } from './CustomLoader';
+export { SocialMediaLogin } from './socialMediaLogin';
+export { SignInHeader } from './signInHeader';
