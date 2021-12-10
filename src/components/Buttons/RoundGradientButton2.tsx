@@ -5,13 +5,14 @@ import { Platform, Text, TouchableOpacity, ViewStyle } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 // LOCAL IMPORTS
-import { color, useGlobalStyles } from '@resources';
+import { color, responsiveHeight, useGlobalStyles } from '@resources';
 
 interface DefaultProps {
   title: string;
-  gradientColor: keyof typeof color;
+  gradientColor: string[];
   onPress: () => void;
   extraStyle?: ViewStyle;
+  disabled?: boolean;
 }
 
 const RoundGradientButtons2 = ({
@@ -19,17 +20,19 @@ const RoundGradientButtons2 = ({
   gradientColor,
   onPress,
   extraStyle,
+  disabled,
 }: DefaultProps) => {
   const globalStyle = useGlobalStyles();
   return (
     <>
       <TouchableOpacity
+        disabled={disabled}
         style={{
           height: 50,
           borderRadius: 100,
           justifyContent: 'center',
           marginVertical: 20,
-          shadowColor: gradientColor,
+          shadowColor: gradientColor[2],
           ...Platform.select({
             ios: {
               shadowOffset: {
@@ -39,9 +42,7 @@ const RoundGradientButtons2 = ({
               shadowRadius: 8,
               shadowOpacity: 0.5,
             },
-            android: {
-              marginVertical: 30,
-            },
+            android: { marginVertical: 30 },
           }),
           ...extraStyle,
         }}
@@ -50,15 +51,14 @@ const RoundGradientButtons2 = ({
         <LinearGradient
           colors={color.primaryGradiant}
           style={{
-            height: 50,
+            opacity: disabled ? 0.3 : 1,
+            height: responsiveHeight(6),
             borderRadius: 100,
             justifyContent: 'center',
             alignItems: 'center',
-            shadowColor: gradientColor,
+            shadowColor: gradientColor[2],
             ...Platform.select({
-              android: {
-                elevation: 15,
-              },
+              android: { elevation: 15 },
             }),
           }}
         >

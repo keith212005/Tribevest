@@ -11,3 +11,4 @@ export { PasswordReset } from './passwordReset';
 export { CheckEmail } from './checkEmail';
 export { NewPassword } from './newPassword';
 export { FaceId } from './faceId';
+export { SignUpSteps } from './signupsteps';

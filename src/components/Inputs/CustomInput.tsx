@@ -36,28 +36,30 @@ export interface CustomInputProps extends TextInputProps {
 export const CustomInput: React.FC<CustomInputProps> = (
   props: CustomInputProps,
 ) => {
-  console.log('rendering Custom inptu');
+  // console.log('rendering Custom inptu');
   const [state, setState] = createState({
     secureTextEntry: props.showPasswordIcon ? true : false,
   });
+
   const globalStyle = useGlobalStyles();
 
   const handleRightIconClick = () => {
     setState({ secureTextEntry: !state.secureTextEntry });
   };
 
-  console.log(props.valueObject && props.valueObject.isError);
-
   return (
     <View style={styles.container}>
       <View style={{ justifyContent: 'center' }}>
-        <FastImage
-          style={[globalStyle.squareLayout(20), styles.leftImage]}
-          source={props.leftIcon as Source}
-          resizeMode={FastImage.resizeMode.contain}
-          tintColor={props.valueObject?.isError ? color.error : color.black}
-        />
+        {props.leftIcon && (
+          <FastImage
+            style={[globalStyle.squareLayout(20), styles.leftImage]}
+            source={props.leftIcon as Source}
+            resizeMode={FastImage.resizeMode.contain}
+            tintColor={props.valueObject?.isError ? color.error : color.black}
+          />
+        )}
         <TextInput
+          placeholderTextColor={color.placeHolderColor}
           blurOnSubmit={false}
           secureTextEntry={state.secureTextEntry}
           ref={props.refName}
@@ -68,6 +70,7 @@ export const CustomInput: React.FC<CustomInputProps> = (
                 props.valueObject && props.valueObject.isError
                   ? color.error_light
                   : color.inputBackgroundColor,
+              paddingLeft: props.leftIcon ? 40 : 20,
             },
           ]}
           {...props}
@@ -106,9 +109,7 @@ const styles = StyleSheet.create({
   },
   input: {
     color: color.black,
-    padding: 10,
     borderRadius: 8,
-    paddingLeft: 40,
     height: Platform.OS === 'ios' ? verticalScale(40) : verticalScale(50),
   },
   leftImage: {

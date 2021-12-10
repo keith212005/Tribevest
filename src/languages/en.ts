@@ -88,6 +88,8 @@ export const en = {
   CREATE_YOUR_ACCOUNT: 'Create your account',
   full_name: 'Full Name',
   phone_number: 'Phone Number (Optional)',
+  invite_code: 'Invite code',
+  INVITE_CODE_LABEL: 'Invite Code (If you have one)',
   ADD_INVITE_CODE: 'Add invite code',
   CREATE_ACCOUNT: 'Create Account',
   ALREADY_HAVE_ACCOUNT: 'Already have an account?',
@@ -193,4 +195,5 @@ export const en = {
   ENTER_ZIP: 'Enter you zip',
   SKIP_NOW: 'Skip for now',
   SLIDE_BUTTON: 'Confirm with Side Button',
+  EMPTY_FULL_NAME: 'Name cannot be empty',
 };

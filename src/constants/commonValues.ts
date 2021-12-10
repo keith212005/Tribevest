@@ -1,3 +1,5 @@
+import { en } from '@languages';
+
 /* eslint-disable max-len */
 export const SCREENS = {
   Signin: 'Signin',
@@ -13,6 +15,7 @@ export const SCREENS = {
   NewPassword: 'NewPassword',
   FaceId: 'FaceId',
   SignUp: 'SignUp',
+  SignUpSteps: 'SignUpSteps',
 };
 
 export interface IfieldObject {
@@ -141,5 +144,107 @@ export const CAP_TABLE = [
     name: 'Kate Doyle',
     amount: '$778.00',
     equity: '10%',
+  },
+];
+
+export const SIGN_UP_STEP1 = [
+  {
+    id: 1,
+    description: en.FINANCE_MY_DEAL,
+    selected: false,
+  },
+  {
+    id: 2,
+    description: en.SETUP_MY_INVESTOR_GROUP,
+    selected: false,
+  },
+  {
+    id: 3,
+    description: en.HAVE_EXISTING_INVESTOR_GROUP,
+    selected: false,
+  },
+  {
+    id: 4,
+    description: en.LEARN_TRIBE_INVESTING,
+    selected: false,
+  },
+];
+
+export const SIGN_UP_STEP2 = [
+  {
+    id: 1,
+    description: en.NOT_DISCUSSED,
+    selected: false,
+  },
+  {
+    id: 2,
+    description: en.TALKING_ABOUT,
+    selected: false,
+  },
+  {
+    id: 3,
+    description: en.ACTIVELY_LOOKING_TOOL,
+    selected: false,
+  },
+  {
+    id: 4,
+    description: en.CONNECT_OUTSIDE_NETWORK,
+    selected: false,
+  },
+];
+
+export const SIGN_UP_STEP3 = [
+  {
+    id: 1,
+    description: en.LESS_THAN_10_K,
+    selected: false,
+  },
+  {
+    id: 2,
+    description: en.TEN_TO_20_K,
+    selected: false,
+  },
+  {
+    id: 3,
+    description: en.TWENTY_TO_50_K,
+    selected: false,
+  },
+  {
+    id: 4,
+    description: en.FIFTY_TO_100_K,
+    selected: false,
+  },
+  {
+    id: 5,
+    description: en.HUNDERED_TO_250_K,
+    selected: false,
+  },
+  {
+    id: 6,
+    description: en.TWOHUNDREDFITY_K_PLUS,
+    selected: false,
+  },
+];
+
+export const SIGN_UP_STEP4 = [
+  {
+    id: 1,
+    description: en.EXPEDITED,
+    selected: false,
+  },
+  {
+    id: 2,
+    description: en.STANDARD,
+    selected: false,
+  },
+  {
+    id: 3,
+    description: en.TWO_WEEKS,
+    selected: false,
+  },
+  {
+    id: 4,
+    description: en.NOT_READY_FORM_LLC,
+    selected: false,
   },
 ];

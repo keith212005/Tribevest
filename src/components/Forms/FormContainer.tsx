@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 32,
     borderTopLeftRadius: 32,
     marginTop: responsiveHeight(-4),
-    paddingHorizontal: 20,
     justifyContent: 'space-between',
-    paddingTop: 40,
-    borderWidth: 1,
+    paddingTop: responsiveHeight(2),
+    // borderWidth: 3,
+    // borderColor: 'red',
   },
 });

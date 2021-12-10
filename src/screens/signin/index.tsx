@@ -1,13 +1,18 @@
 /* eslint-disable no-undef */
 import React, { useEffect } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, ScrollView, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { CommonActions } from '@react-navigation/native';
 
 // LOCAL IMPORTS
 import { Onboarding } from '@screens';
-import { SocialMediaLogin, SignInHeader, SignInForm } from '@components';
+import {
+  SocialMediaLogin,
+  SignInHeader,
+  SignInForm,
+  FormContainer,
+} from '@components';
 
 const SigninScreen = (props: any) => {
   const { isAppOpenFirstTime, isUserLoggedIn } = props;
@@ -48,12 +53,18 @@ const SigninScreen = (props: any) => {
       <SignInHeader
         title={loc('SIGN_INTO_TRIBEVEST')}
         description={loc('MANAGE_YOUR_TRIBES')}
-        onBackPress={() => {
-          console.log('sdf');
-        }}
       />
-      <SignInForm />
-      <SocialMediaLogin />
+
+      <FormContainer>
+        <ScrollView
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+          style={{ paddingHorizontal: 20 }}
+        >
+          <SignInForm />
+          <SocialMediaLogin />
+        </ScrollView>
+      </FormContainer>
     </View>
   );
 };

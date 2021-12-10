@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable camelcase */
 /* eslint-disable no-fallthrough */
 /* eslint-disable no-undef */
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import _ from 'lodash';
@@ -12,17 +14,21 @@ import createState from 'react-hook-setstate';
 // LOCAL IMPORTS
 import { fieldObject } from '@constants';
 import { navigate } from '@navigator';
-import { isLoggedIn } from 'actions/isLoggedIn';
 import { CustomInput, RoundGradientButton2 } from '@components';
 import { color, images, responsiveHeight, useGlobalStyles } from '@resources';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
+import { validateEmail } from '@utils';
 
 export const SignUpForm = () => {
-  var inputs = new Array(2);
+  var inputs = new Array(4);
 
   const [state, setState] = createState({
+    showInviteCodeInput: false,
+    full_name: fieldObject,
     email: fieldObject,
+    phone_number: fieldObject,
     password: fieldObject,
+    invite_code: fieldObject,
   });
   const { colors } = useTheme() as unknown as CustomTheme;
   const dispatch = useDispatch();
@@ -46,13 +52,11 @@ export const SignUpForm = () => {
   };
 
   const checkValidation = (numbers: number, key: string) => {
-    console.log('checkValidation called....');
-
     var stateObject: any = {};
+    const full_name = state.full_name.value;
     const email = state.email.value;
+    const phone_number = state.phone_number.value;
     const password = state.password.value;
-
-    console.log(key);
 
     return new Promise((resolve) => {
       stateObject[key] = {
@@ -60,7 +64,7 @@ export const SignUpForm = () => {
       };
 
       switch (numbers) {
-        case 2:
+        case 4:
           if (_.isEmpty(password)) {
             stateObject.password = {
               value: password,
@@ -68,28 +72,50 @@ export const SignUpForm = () => {
               errorText: loc('INVALID_PASSWORD_MSG'),
             };
           }
-        case 1:
+        case 3:
+          if (_.isEmpty(phone_number)) {
+            stateObject.phone_number = {
+              value: phone_number,
+              isError: true,
+              errorText: loc('INVALID_PASSWORD_MSG'),
+            };
+          }
+        case 2:
           if (_.isEmpty(email)) {
+            stateObject.email = {
+              value: email,
+              isError: true,
+              errorText: loc('INVALID_PASSWORD_MSG'),
+            };
+          } else if (!validateEmail(email)) {
             stateObject.email = {
               value: email,
               isError: true,
               errorText: loc('INVALID_EMAIL_MSG'),
             };
           }
+        case 1:
+          if (_.isEmpty(full_name)) {
+            stateObject.full_name = {
+              value: full_name,
+              isError: true,
+              errorText: loc('EMPTY_FULL_NAME'),
+            };
+          }
         default:
           setState(stateObject);
           resolve(true);
+
           break;
       }
     });
   };
 
-  // hadnle onSubmitEditing method of input box
+  // handle onSubmitEditing method of input box
   const onSubmitEditing = (number: number) => {
-    if (number < 1) {
+    if (number < 3) {
       inputs[number + 1].focus();
     } else {
-      // this.onLogin();
     }
   };
 
@@ -105,7 +131,6 @@ export const SignUpForm = () => {
         placeholder={loc(key)}
         refName={(input: any) => (inputs[index] = input)}
         onFocus={() => checkValidation(index, key)}
-        onBlur={() => {}}
         onEndEditing={() => checkValidation(index + 1, key)}
         onSubmitEditing={() => onSubmitEditing(index)}
         onChangeText={(val: string) => handleChange(val, key)}
@@ -114,48 +139,91 @@ export const SignUpForm = () => {
     );
   };
 
+  const _renderInviteCode = () => {
+    return (
+      <>
+        <TouchableOpacity
+          onPress={() => {
+            setState({ showInviteCodeInput: !state.showInviteCodeInput });
+          }}
+        >
+          <Text
+            style={[
+              globalStyle.textStyle('_14', 'primary', 'NUNITO_REGULAR'),
+              { paddingTop: responsiveHeight(1) },
+            ]}
+          >
+            {loc('ADD_INVITE_CODE')}
+          </Text>
+        </TouchableOpacity>
+
+        {state.showInviteCodeInput ? (
+          <View>
+            <Text
+              style={[
+                globalStyle.textStyle('_14', 'text', 'NUNITO_REGULAR'),
+                { paddingVertical: responsiveHeight(1), fontWeight: '600' },
+              ]}
+            >
+              {loc('INVITE_CODE_LABEL')}
+            </Text>
+
+            {_renderInput(2, 'invite_code', {
+              valueObject: state.invite_code,
+            })}
+          </View>
+        ) : null}
+      </>
+    );
+  };
+
   return (
-    <>
-      {/* Render Email Input */}
+    <View style={{ paddingTop: 10 }}>
+      {/* Render Full Name */}
       {_renderInput(0, 'full_name', {
-        valueObject: state.email,
+        valueObject: state.full_name,
         leftIcon: images.user,
       })}
-      {_renderInput(0, 'email', {
+
+      {/* Render email */}
+      {_renderInput(1, 'email', {
         valueObject: state.email,
         leftIcon: images.sms,
       })}
-      {_renderInput(0, 'phone_number', {
-        valueObject: state.email,
+
+      {/* Render Phone Number */}
+      {_renderInput(2, 'phone_number', {
+        valueObject: state.phone_number,
         leftIcon: images.call,
       })}
 
       {/* Render Password Input */}
-      {_renderInput(1, 'password', {
+      {_renderInput(3, 'password', {
         valueObject: state.password,
         leftIcon: images.lock,
         showPasswordIcon: true,
         blurOnSubmit: true,
       })}
 
-      {/* Render forgot password */}
-      <TouchableOpacity onPress={() => navigate('PasswordReset')}>
-        <Text
-          style={[
-            globalStyle.textStyle('_14', 'primary', 'NUNITO_REGULAR'),
-            { paddingTop: responsiveHeight(1) },
-          ]}
-        >
-          {loc('ADD_INVITE_CODE')}
-        </Text>
-      </TouchableOpacity>
+      {/* Render InviteCode */}
+      {_renderInviteCode()}
 
       {/* Render Sign In button */}
       <RoundGradientButton2
         gradientColor={colors.primaryGradiant as unknown as keyof typeof color}
         title={loc('CREATE_ACCOUNT')}
-        onPress={() => dispatch(isLoggedIn(true))}
+        onPress={() => navigate('SignUpSteps')}
+        disabled={
+          state.full_name.isError ||
+          state.email.isError ||
+          state.phone_number.isError ||
+          state.password.isError ||
+          _.isEmpty(state.full_name.value) ||
+          _.isEmpty(state.email.value) ||
+          _.isEmpty(state.phone_number.value) ||
+          _.isEmpty(state.password.value)
+        }
       />
-    </>
+    </View>
   );
 };

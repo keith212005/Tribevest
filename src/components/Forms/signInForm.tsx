@@ -2,7 +2,7 @@
 /* eslint-disable no-fallthrough */
 /* eslint-disable no-undef */
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import _ from 'lodash';
@@ -18,6 +18,7 @@ import { isLoggedIn } from 'actions/isLoggedIn';
 import { CustomInput, RoundGradientButton2 } from '@components';
 import { color, images, responsiveHeight, useGlobalStyles } from '@resources';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
+import { validateEmail } from '@utils';
 
 export const SignInForm = () => {
   var inputs = new Array(2);
@@ -78,6 +79,12 @@ export const SignInForm = () => {
               isError: true,
               errorText: loc('INVALID_EMAIL_MSG'),
             };
+          } else if (!validateEmail(email)) {
+            stateObject.email = {
+              value: email,
+              isError: true,
+              errorText: loc('INVALID_EMAIL_MSG'),
+            };
           }
         default:
           setState(stateObject);
@@ -119,10 +126,7 @@ export const SignInForm = () => {
 
   return (
     <View
-      style={[
-        { backgroundColor: isDarkTheme ? colors.background : 'white' },
-        styles.container,
-      ]}
+      style={[{ backgroundColor: isDarkTheme ? colors.background : 'white' }]}
     >
       {/* Render Face Id Sign In */}
       <FaceIdSignIn />
@@ -162,14 +166,3 @@ export const SignInForm = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'flex-start',
-    paddingHorizontal: 20,
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
-    marginTop: -50,
-    paddingTop: responsiveHeight(3),
-  },
-});

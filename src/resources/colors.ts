@@ -12,6 +12,7 @@ export const color = {
   errorColor: '#eb5a64',
   placeHolderColor: 'rgba(23, 28, 68, 0.5)',
   blue: '#197FE7',
+  selectedBackgroundBlue: '#E0EFFF',
   orange: 'orange',
   whiteOpacity: 'rgba(255, 255, 255, 0.8)',
   unfocusBorder_opacity_low: 'rgba(23, 28, 68, 0.1)',

@@ -6,16 +6,16 @@ import { Text, View, StyleSheet, Platform } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
-import { responsiveHeight, scale, useGlobalStyles } from '@resources';
+import { responsiveHeight, useGlobalStyles } from '@resources';
 import LinearGradient from 'react-native-linear-gradient';
-import { Icon } from 'react-native-elements';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { navigationRef } from '@navigator';
+import { BackButton } from '@components';
 
 export interface SignInHeaderProps {
   title?: string;
   description?: string;
   showBackButton?: boolean;
+  onBackPress?: () => void;
 }
 
 export const SignInHeader: React.FC<SignInHeaderProps> = (
@@ -26,28 +26,20 @@ export const SignInHeader: React.FC<SignInHeaderProps> = (
   const globalStyles = useGlobalStyles();
   return (
     <LinearGradient
+      useAngle={true}
+      angle={90}
+      angleCenter={{ x: 0.5, y: 0.5 }}
       colors={colors.primaryGradiant}
       style={[
         styles.container,
-        {
-          justifyContent: props.showBackButton ? 'flex-start' : 'center',
-          paddingTop: Platform.OS === 'ios' ? insets.top : insets.top + 20,
-          paddingHorizontal: 20,
-        },
+        { paddingTop: Platform.OS === 'ios' ? insets.top : insets.top + 20 },
       ]}
     >
-      <View style={{ justifyContent: 'center' }}>
-        {props.showBackButton && (
-          <Icon
-            tvParallaxProperties={false}
-            size={25}
-            name="chevron-left"
-            type="feather"
-            color="white"
-            onPress={() => navigationRef.goBack()}
-            containerStyle={styles.backIconStyle}
-          />
-        )}
+      <View style={{ height: responsiveHeight(6) }}>
+        {props.showBackButton && <BackButton onPress={props.onBackPress} />}
+      </View>
+
+      <View>
         <Text
           style={[globalStyles.textStyle('_22', 'white', 'NUNITO_EXTRABOLD')]}
         >
@@ -65,16 +57,7 @@ export const SignInHeader: React.FC<SignInHeaderProps> = (
 
 const styles = StyleSheet.create({
   container: {
-    height: responsiveHeight(30),
-  },
-  backIconStyle: {
-    height: scale(35),
-    width: scale(35),
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#46AFFF',
-    alignSelf: 'flex-start',
-    borderRadius: 60,
-    marginBottom: responsiveHeight(2),
+    height: responsiveHeight(26),
+    paddingHorizontal: 20,
   },
 });

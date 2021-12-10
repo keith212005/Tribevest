@@ -72,6 +72,7 @@ const App = (props: any) => {
           component: DrawerNavigator,
         })}
         {_addScreen('Onboarding' as never)}
+        {_addScreen('SignUpSteps' as never)}
       </Stack.Navigator>
     </NavigationContainer>
   );
