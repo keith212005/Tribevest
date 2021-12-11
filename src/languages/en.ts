@@ -103,7 +103,7 @@ export const en = {
   LEARN_TRIBE_INVESTING:
     'I’d like to be contacted to learn more about Tribe Investing.',
   NOT_DISCUSSED: 'We have not discussed this yet.',
-  TALKING_ABOUT: 'We have not discussed this yet.',
+  TALKING_ABOUT: 'We’ve been talking about this!',
   ACTIVELY_LOOKING_TOOL: 'We are actively looking for a tool like this.',
   CONNECT_OUTSIDE_NETWORK:
     'I would like to be connected to potential members outside of my network.',
@@ -130,9 +130,11 @@ export const en = {
   CHANGE_NAME_LATER_MSG: 'Don’t worry, you’ll be able to change this later.',
   INVESTMENT_INTEREST: 'Choose your tribe’s investment interests',
   INVESTMENT_TYPES: 'Common tribe investment types',
-  VACATION_HOME: 'Vacation Home',
-  SINGLE_FAMILY: 'Single-Family Property',
-  MULTIPLE_FAMILY: 'Multi-Family Property',
+  VACATION: 'Vacation ',
+  HOME: 'Home',
+  SINGLE_FAMILY: 'Single-Family ',
+  PROPERTY: 'Property',
+  MULTIPLE_FAMILY: 'Multi-Family ',
   REAL_ESTATE: 'Large Real Estate Deal',
   RECREATIONAL_ASSET: 'Recreational Asset or Experience',
   STARTUP_BUSINESS: 'Startup or Business Venture',

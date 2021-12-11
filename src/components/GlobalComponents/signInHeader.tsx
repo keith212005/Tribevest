@@ -10,6 +10,7 @@ import { responsiveHeight, useGlobalStyles } from '@resources';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BackButton } from '@components';
+import { en } from '@languages';
 
 export interface SignInHeaderProps {
   title?: string;
@@ -27,12 +28,17 @@ export const SignInHeader: React.FC<SignInHeaderProps> = (
   return (
     <LinearGradient
       useAngle={true}
-      angle={90}
-      angleCenter={{ x: 0.5, y: 0.5 }}
+      angle={145}
+      angleCenter={{ x: 0.5, y: 0.8 }}
       colors={colors.primaryGradiant}
       style={[
         styles.container,
-        { paddingTop: Platform.OS === 'ios' ? insets.top : insets.top + 20 },
+        {
+          paddingTop: Platform.OS === 'ios' ? insets.top : insets.top + 20,
+          height: responsiveHeight(
+            props.title === en.HOW_MUCH_CAPITAL_INV_GROUP ? 36 : 26,
+          ),
+        },
       ]}
     >
       <View style={{ height: responsiveHeight(6) }}>
@@ -57,7 +63,6 @@ export const SignInHeader: React.FC<SignInHeaderProps> = (
 
 const styles = StyleSheet.create({
   container: {
-    height: responsiveHeight(26),
     paddingHorizontal: 20,
   },
 });

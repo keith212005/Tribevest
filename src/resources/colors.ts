@@ -29,6 +29,12 @@ export const color = {
   transparent: 'rgba(0, 0, 0, 0)',
   lightText: '#828A92',
   inputBackgroundColor: '#F1F5F9',
+  green_text: '#32D291',
+  light_green_background: '#D8F7EA',
+  purple_text: '#9140FF',
+  purple_background: '#ECEAFF',
+  orange_text: '#FF9B5F',
+  orange_background: '#FFF0E5',
 };
 
 export const MyDarkTheme = {

@@ -55,6 +55,7 @@ const App = (props: any) => {
       <CustomStatusBar />
       <Stack.Navigator
         initialRouteName={'Signin'}
+        // initialRouteName={'SignUpSteps'}
         screenOptions={{
           headerShown: false,
           gestureEnabled: true,

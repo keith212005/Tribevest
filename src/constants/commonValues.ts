@@ -248,3 +248,66 @@ export const SIGN_UP_STEP4 = [
     selected: false,
   },
 ];
+
+export const SIGN_UP_STEP5 = [
+  {
+    id: 1,
+    icon: 'singlefamily',
+    description: en.SINGLE_FAMILY + en.PROPERTY,
+    selected: false,
+  },
+  {
+    id: 2,
+    icon: 'multifamily',
+    description: en.MULTIPLE_FAMILY + en.PROPERTY,
+    selected: false,
+  },
+  {
+    id: 3,
+    icon: 'vacation_home',
+    description: en.VACATION + en.HOME,
+    selected: false,
+  },
+  {
+    id: 4,
+    icon: 'realestate',
+    description: en.REAL_ESTATE,
+    selected: false,
+  },
+  {
+    id: 5,
+    icon: 'recreational_asset',
+    description: en.RECREATIONAL_ASSET,
+    selected: false,
+  },
+  {
+    id: 6,
+    icon: 'startup_business',
+    description: en.STARTUP_BUSINESS,
+    selected: false,
+  },
+  {
+    id: 7,
+    icon: 'collectibles',
+    description: en.COLLECTIBLES,
+    selected: false,
+  },
+  {
+    id: 8,
+    icon: 'cryptocurrency',
+    description: en.CRYPTOCURRENCY,
+    selected: false,
+  },
+  {
+    id: 9,
+    icon: 'stock',
+    description: en.STOCKS,
+    selected: false,
+  },
+  {
+    id: 10,
+    icon: 'other',
+    description: en.OTHER,
+    selected: false,
+  },
+];

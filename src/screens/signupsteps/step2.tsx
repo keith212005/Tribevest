@@ -1,23 +1,78 @@
-import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-undef */
+import React, { useEffect } from 'react';
+import { Text, StyleSheet, Pressable } from 'react-native';
+
+// THIRD PARTY IMPORTS
+import createState from 'react-hook-setstate';
 
 // LOCAL IMPORTS
 import { SIGN_UP_STEP2 } from '@constants';
+import { useGlobalStyles } from '@resources';
+import { useSelector } from 'react-redux';
+import { useTheme } from '@react-navigation/native';
 
 export const Step2 = () => {
+  const globalStyle = useGlobalStyles();
+  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
+  const { colors } = useTheme() as unknown as CustomTheme;
+
+  const [state, setState] = createState({
+    dataArr: SIGN_UP_STEP2,
+  });
+
+  useEffect(() => {}, [state.dataArr]);
   return (
-    <View style={styles.container}>
-      {SIGN_UP_STEP2.map((item) => {
+    <>
+      {state.dataArr.map((item) => {
         return (
-          <View key={item.id} style={{ borderWidth: 1, margin: 10 }}>
-            <Text>{item.description}</Text>
-          </View>
+          <Pressable
+            key={item.id}
+            onPress={() => {
+              const newArr = SIGN_UP_STEP2.map((item2) =>
+                item2.description === item.description
+                  ? { ...item2, selected: true }
+                  : { ...item2, selected: false },
+              );
+              setState({ dataArr: newArr });
+            }}
+            style={[
+              styles.container,
+              {
+                borderColor: item.selected
+                  ? colors.blue
+                  : isDarkTheme
+                  ? colors.placeHolderColor
+                  : colors.text,
+                backgroundColor: item.selected
+                  ? colors.selectedBackgroundBlue
+                  : colors.white,
+              },
+            ]}
+          >
+            <Text
+              style={[
+                globalStyle.textStyle(
+                  '_14',
+                  item.selected ? 'blue' : isDarkTheme ? 'lightText' : 'text',
+                  'NUNITO_REGULAR',
+                ),
+              ]}
+            >
+              {item.description}
+            </Text>
+          </Pressable>
         );
       })}
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    borderWidth: 1,
+    margin: 10,
+    borderRadius: 16,
+    padding: 16,
+  },
 });

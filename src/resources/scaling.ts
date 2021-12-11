@@ -7,6 +7,12 @@ const guidelineBaseHeight = 680;
 
 const scale = (size: number) => (width / guidelineBaseWidth) * size;
 
+const verticalScale = (size: number) => (height / guidelineBaseHeight) * size;
+const moderateScale = (size: number, factor = 0.5) =>
+  size + (scale(size) - size) * factor;
+
+export { scale, verticalScale, moderateScale };
+
 // get responsiveHeight
 export const responsiveHeight = (h: number) => {
   return PixelRatio.roundToNearestPixel(height * (h / 100));
@@ -16,9 +22,3 @@ export const responsiveHeight = (h: number) => {
 export const responsiveWidth = (w: number) => {
   return PixelRatio.roundToNearestPixel(width * (w / 100));
 };
-
-const verticalScale = (size: number) => (height / guidelineBaseHeight) * size;
-const moderateScale = (size: number, factor = 0.5) =>
-  size + (scale(size) - size) * factor;
-
-export { scale, verticalScale, moderateScale };

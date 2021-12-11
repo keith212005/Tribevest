@@ -28,15 +28,14 @@ export const Step1 = () => {
       {state.dataArr.map((item) => {
         return (
           <Pressable
-            // key={item.id}
-            onPress={async () => {
-              const newArr = await SIGN_UP_STEP1.map((item2) => {
-                return (item.selected =
-                  item2.description === item.description ? true : false);
-              });
-              console.log(newArr);
-
-              // setState({ dataArr: newArr });
+            key={item.id}
+            onPress={() => {
+              const newArr = SIGN_UP_STEP1.map((item2) =>
+                item2.description === item.description
+                  ? { ...item2, selected: true }
+                  : { ...item2, selected: false },
+              );
+              setState({ dataArr: newArr });
             }}
             style={[
               styles.container,
@@ -53,7 +52,13 @@ export const Step1 = () => {
             ]}
           >
             <Text
-              style={[globalStyle.textStyle('_14', 'text', 'NUNITO_REGULAR')]}
+              style={[
+                globalStyle.textStyle(
+                  '_14',
+                  item.selected ? 'blue' : isDarkTheme ? 'lightText' : 'text',
+                  item.selected ? 'NUNITO_SEMIBOLD' : 'NUNITO_REGULAR',
+                ),
+              ]}
             >
               {item.description}
             </Text>

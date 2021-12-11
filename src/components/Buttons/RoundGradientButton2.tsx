@@ -5,7 +5,7 @@ import { Platform, Text, TouchableOpacity, ViewStyle } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 // LOCAL IMPORTS
-import { color, responsiveHeight, useGlobalStyles } from '@resources';
+import { color, useGlobalStyles } from '@resources';
 
 interface DefaultProps {
   title: string;
@@ -24,52 +24,51 @@ const RoundGradientButtons2 = ({
 }: DefaultProps) => {
   const globalStyle = useGlobalStyles();
   return (
-    <>
-      <TouchableOpacity
-        disabled={disabled}
+    <TouchableOpacity
+      disabled={disabled}
+      style={{
+        height: 50,
+        borderRadius: 100,
+        // justifyContent: 'center',
+        shadowColor: gradientColor[2],
+        ...Platform.select({
+          ios: {
+            shadowOffset: {
+              width: 5,
+              height: 5,
+            },
+            shadowRadius: 8,
+            shadowOpacity: 0.5,
+          },
+        }),
+        ...extraStyle,
+      }}
+      onPress={onPress}
+    >
+      <LinearGradient
+        useAngle={true}
+        angle={179}
+        angleCenter={{ x: 0.2, y: 0.8 }}
+        colors={color.primaryGradiant}
         style={{
+          opacity: disabled ? 0.3 : 1,
           height: 50,
           borderRadius: 100,
           justifyContent: 'center',
-          marginVertical: 20,
+          alignItems: 'center',
           shadowColor: gradientColor[2],
           ...Platform.select({
-            ios: {
-              shadowOffset: {
-                width: 5,
-                height: 5,
-              },
-              shadowRadius: 8,
-              shadowOpacity: 0.5,
-            },
-            android: { marginVertical: 30 },
+            android: { elevation: 15 },
           }),
-          ...extraStyle,
         }}
-        onPress={onPress}
       >
-        <LinearGradient
-          colors={color.primaryGradiant}
-          style={{
-            opacity: disabled ? 0.3 : 1,
-            height: responsiveHeight(6),
-            borderRadius: 100,
-            justifyContent: 'center',
-            alignItems: 'center',
-            shadowColor: gradientColor[2],
-            ...Platform.select({
-              android: { elevation: 15 },
-            }),
-          }}
+        <Text
+          style={[globalStyle.textStyle('_16', 'white', 'NUNITO_SEMIBOLD')]}
         >
-          <Text
-            style={[globalStyle.textStyle('_16', 'white', 'NUNITO_SEMIBOLD')]}
-          >
-            {title}
-          </Text>
-        </LinearGradient>
-      </TouchableOpacity>
-    </>
+          {title}
+        </Text>
+      </LinearGradient>
+    </TouchableOpacity>
   );
 };
 

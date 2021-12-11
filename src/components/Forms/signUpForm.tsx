@@ -210,19 +210,20 @@ export const SignUpForm = () => {
 
       {/* Render Sign In button */}
       <RoundGradientButton2
-        gradientColor={colors.primaryGradiant as unknown as keyof typeof color}
+        gradientColor={colors.primaryGradiant}
         title={loc('CREATE_ACCOUNT')}
         onPress={() => navigate('SignUpSteps')}
-        disabled={
-          state.full_name.isError ||
-          state.email.isError ||
-          state.phone_number.isError ||
-          state.password.isError ||
-          _.isEmpty(state.full_name.value) ||
-          _.isEmpty(state.email.value) ||
-          _.isEmpty(state.phone_number.value) ||
-          _.isEmpty(state.password.value)
-        }
+        // disabled={
+        //   state.full_name.isError ||
+        //   state.email.isError ||
+        //   state.phone_number.isError ||
+        //   state.password.isError ||
+        //   _.isEmpty(state.full_name.value) ||
+        //   _.isEmpty(state.email.value) ||
+        //   _.isEmpty(state.phone_number.value) ||
+        //   _.isEmpty(state.password.value)
+        // }
+        disabled={false}
       />
     </View>
   );
