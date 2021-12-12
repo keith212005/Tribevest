@@ -4,30 +4,49 @@ import { View, StyleSheet, ScrollView, Platform } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { useTheme } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // LOCAL IMPORTS
 import { Step1 } from './step1';
 import { Step2 } from './step2';
-import { navigate } from '@navigator';
-import { SignInHeader, FormContainer, RoundGradientButton2 } from '@components';
 import { Step3 } from './step3';
 import { Step4 } from './step4';
 import { Step5 } from './step5';
-import { responsiveWidth } from '@resources';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Step6 } from './step6';
 import { Step7 } from './step7';
 import { Step8 } from './step8';
 import { Step9 } from './step9';
+import { navigate, navigationRef } from '@navigator';
+import { SignInHeader, FormContainer, RoundGradientButton2 } from '@components';
+import { responsiveWidth } from '@resources';
+import { useBackButton } from '@utils';
 
 export const SignUpSteps = () => {
   const [state, setState] = useState({ stepIndex: 1 });
   const { colors } = useTheme() as unknown as CustomTheme;
   const insets = useSafeAreaInsets();
-
   const { stepIndex } = state;
-
   useEffect(() => {}, [state.stepIndex]);
+
+  /**
+  |--------------------------------------------------
+  | Android back handler
+  |--------------------------------------------------
+  */
+  const backHandler = () => {
+    if (state.stepIndex !== 1) {
+      setState({ stepIndex: state.stepIndex - 1 });
+    } else {
+      navigationRef.goBack();
+    }
+    return true;
+  };
+  useBackButton(backHandler);
+  /**
+  |--------------------------------------------------
+  | Android back handler
+  |--------------------------------------------------
+  */
 
   let headerTitle,
     headerDescription,
