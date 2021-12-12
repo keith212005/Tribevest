@@ -35,7 +35,7 @@ export const SignUpSteps = () => {
   */
   const backHandler = () => {
     if (state.stepIndex !== 1) {
-      setState({ stepIndex: state.stepIndex - 1 });
+      goToNext();
     } else {
       navigationRef.goBack();
     }
@@ -47,6 +47,13 @@ export const SignUpSteps = () => {
   | Android back handler
   |--------------------------------------------------
   */
+
+  const goToNext = () => {
+    setState({ stepIndex: state.stepIndex + 1 });
+  };
+  const goToPrevious = () => {
+    setState({ stepIndex: state.stepIndex - 1 });
+  };
 
   let headerTitle,
     headerDescription,
@@ -95,7 +102,7 @@ export const SignUpSteps = () => {
         showBackButton={true}
         onBackPress={() => {
           if (state.stepIndex !== 1) {
-            setState({ stepIndex: state.stepIndex - 1 });
+            goToPrevious();
           } else {
             navigate('SignUp');
           }
@@ -125,7 +132,7 @@ export const SignUpSteps = () => {
           disabled={false}
           gradientColor={colors.primaryGradiant}
           title={buttonName}
-          onPress={() => setState({ stepIndex: state.stepIndex + 1 })}
+          onPress={() => goToNext()}
           extraStyle={styles.buttonStyle}
         />
       </FormContainer>
