@@ -16,7 +16,7 @@ import { navigate } from '@navigator';
 import { FaceIdSignIn } from './faceIdSignIn';
 import { isLoggedIn } from 'actions/isLoggedIn';
 import { CustomInput, RoundGradientButton2 } from '@components';
-import { color, images, responsiveHeight, useGlobalStyles } from '@resources';
+import { images, responsiveHeight, useGlobalStyles } from '@resources';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
 import { validateEmail } from '@utils';
 
@@ -150,7 +150,10 @@ export const SignInForm = () => {
         <Text
           style={[
             globalStyle.textStyle('_14', 'primary', 'NUNITO_REGULAR'),
-            { paddingTop: responsiveHeight(1) },
+            {
+              paddingTop: responsiveHeight(1),
+              paddingBottom: responsiveHeight(4),
+            },
           ]}
         >
           {loc('FORGOT_PASSWORD')}
@@ -159,7 +162,7 @@ export const SignInForm = () => {
 
       {/* Render Sign In button */}
       <RoundGradientButton2
-        gradientColor={colors.primaryGradiant as unknown as keyof typeof color}
+        gradientColor={colors.primaryGradiant}
         title={loc('SIGN_IN')}
         onPress={() => dispatch(isLoggedIn(true))}
       />

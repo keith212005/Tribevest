@@ -1,16 +1,15 @@
 /* eslint-disable no-undef */
-import { TribeNameForm } from '@components';
-import { useTheme } from '@react-navigation/native';
+import { TribeNameForm, UsaMap } from '@components';
+// import { useTheme } from '@react-navigation/native';
 import { useGlobalStyles } from '@resources';
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
-import { UsaMap } from './usamap';
+// import { useSelector } from 'react-redux';
 
 export const Step5 = () => {
   const globalStyle = useGlobalStyles();
-  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
-  const { colors } = useTheme() as unknown as CustomTheme;
+  // const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
+  // const { colors } = useTheme() as unknown as CustomTheme;
 
   const _renderTitle = () => {
     return (

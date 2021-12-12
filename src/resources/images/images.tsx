@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-export const images = {
+export const images: any = {
   logo: require('./logo/logo.png'),
   background_logo: require('./background_logo/back_logo.png'),
   tribevest: require('./tribevest/tribevest.png'),

@@ -8,9 +8,9 @@ import { Text, View, StyleSheet } from 'react-native';
 
 // LOCAL IMPORT
 import { responsiveWidth, useGlobalStyles } from '@resources';
-import { InvestPercent, PropertyList } from '@components';
+import { InvestPercent, TribeGoalsList } from '@components';
 
-export const Step6 = () => {
+export const Step8 = () => {
   const globalStyle = useGlobalStyles();
   // const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   // const { colors } = useTheme() as unknown as CustomTheme;
@@ -20,22 +20,25 @@ export const Step6 = () => {
       <View style={styles.investmentPercentContainer}>
         <InvestPercent
           percent={37}
-          title1={'VACATION'}
-          title2={'HOME'}
+          title1={'FEATURED_TRIBE'}
+          title2={'GOALS'}
+          title3={''}
           backgroundColor={'light_green_background'}
           textColor={'green_text'}
         />
         <InvestPercent
           percent={46}
-          title1={'SINGLE_FAMILY'}
-          title2={'PROPERTY'}
+          title1={'EXPERIENCE'}
+          title2={'LEARN_TOGETHER'}
+          title3={''}
           backgroundColor={'purple_background'}
           textColor={'purple_text'}
         />
         <InvestPercent
           percent={35}
-          title1={'MULTIPLE_FAMILY'}
-          title2={'PROPERTY'}
+          title1={'BUILD_WEALTH'}
+          title2={'THROUGH'}
+          title3={'OWNERSHIP'}
           backgroundColor={'orange_background'}
           textColor={'orange_text'}
         />
@@ -51,10 +54,10 @@ export const Step6 = () => {
           { textAlign: 'center' },
         ]}
       >
-        {loc('INVESTMENT_TYPES')}
+        {loc('FEATURED_TRIBE') + loc('GOALS')}
       </Text>
       {_renderInvestmentPercent()}
-      <PropertyList />
+      <TribeGoalsList />
     </View>
   );
 };

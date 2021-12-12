@@ -311,3 +311,46 @@ export const SIGN_UP_STEP5 = [
     selected: false,
   },
 ];
+
+export const SIGN_UP_STEP8 = [
+  {
+    id: 1,
+    description: en.ROI,
+    selected: false,
+  },
+  {
+    id: 2,
+    description: en.EXPERIENCE + en.LEARN_TOGETHER,
+    selected: false,
+  },
+  {
+    id: 3,
+    description: en.IMPACT_OUT_TRIBE,
+    selected: false,
+  },
+  {
+    id: 4,
+    description: en.SHARED_ASSET,
+    selected: false,
+  },
+  {
+    id: 5,
+    description: en.BUILD_WEALTH + en.THROUGH + en.OWNERSHIP,
+    selected: false,
+  },
+  {
+    id: 6,
+    description: en.BUILD_REAL_ESTATE,
+    selected: false,
+  },
+  {
+    id: 7,
+    description: en.ENHANCE_RELATIONSHIP,
+    selected: false,
+  },
+  {
+    id: 8,
+    description: en.OTHER,
+    selected: false,
+  },
+];

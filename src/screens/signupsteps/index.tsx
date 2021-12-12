@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, ScrollView, Platform } from 'react-native';
@@ -17,6 +16,9 @@ import { Step5 } from './step5';
 import { responsiveWidth } from '@resources';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Step6 } from './step6';
+import { Step7 } from './step7';
+import { Step8 } from './step8';
+import { Step9 } from './step9';
 
 export const SignUpSteps = () => {
   const [state, setState] = useState({ stepIndex: 1 });
@@ -51,6 +53,18 @@ export const SignUpSteps = () => {
     headerTitle = loc('INVESTMENT_INTEREST');
     headerDescription = '';
     buttonName = loc('CONTINUE');
+  } else if (stepIndex === 7) {
+    headerTitle = loc('HOW_MANY_MEMBERS_TRIBE');
+    headerDescription = '';
+    buttonName = loc('SAVE_N_CONTINUE');
+  } else if (stepIndex === 8) {
+    headerTitle = loc('OUR_TRIBE_GOALS');
+    headerDescription = '';
+    buttonName = loc('SAVE_N_CONTINUE');
+  } else if (stepIndex === 9) {
+    headerTitle = loc('MISSION_STATEMENT');
+    headerDescription = loc('INSPIRE_PARTNER');
+    buttonName = loc('SAVE_N_CONTINUE');
   } else {
     headerTitle = '';
   }
@@ -71,8 +85,8 @@ export const SignUpSteps = () => {
 
       <FormContainer
         containerStyle={{
-          paddingTop: 20,
           paddingBottom: insets.bottom,
+          paddingTop: 20,
           paddingHorizontal: Platform.OS === 'ios' ? 10 : 5,
         }}
       >
@@ -83,6 +97,9 @@ export const SignUpSteps = () => {
           {state.stepIndex === 4 ? <Step4 /> : null}
           {state.stepIndex === 5 ? <Step5 /> : null}
           {state.stepIndex === 6 ? <Step6 /> : null}
+          {state.stepIndex === 7 ? <Step7 /> : null}
+          {state.stepIndex === 8 ? <Step8 /> : null}
+          {state.stepIndex === 9 ? <Step9 /> : null}
         </ScrollView>
 
         <RoundGradientButton2
@@ -90,11 +107,7 @@ export const SignUpSteps = () => {
           gradientColor={colors.primaryGradiant}
           title={buttonName}
           onPress={() => setState({ stepIndex: state.stepIndex + 1 })}
-          extraStyle={{
-            marginVertical: 10,
-            width: responsiveWidth(90),
-            alignSelf: 'center',
-          }}
+          extraStyle={styles.buttonStyle}
         />
       </FormContainer>
     </View>
@@ -103,4 +116,9 @@ export const SignUpSteps = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  buttonStyle: {
+    marginVertical: 10,
+    width: responsiveWidth(90),
+    alignSelf: 'center',
+  },
 });

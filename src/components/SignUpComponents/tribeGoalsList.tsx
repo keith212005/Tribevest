@@ -7,23 +7,30 @@ import { Text, StyleSheet, Pressable } from 'react-native';
 import createState from 'react-hook-setstate';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@react-navigation/native';
-import FastImage, { Source } from 'react-native-fast-image';
 
 // LOCAL IMPORTS
-import { images, useGlobalStyles } from '@resources';
-import { SIGN_UP_STEP5 } from '@constants';
+import { useGlobalStyles } from '@resources';
+import { SIGN_UP_STEP8 } from '@constants';
 
-export const PropertyList = () => {
+export const TribeGoalsList = () => {
   const globalStyle = useGlobalStyles();
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const { colors } = useTheme() as unknown as CustomTheme;
 
   const [state, setState] = createState({
-    dataArr: SIGN_UP_STEP5,
+    dataArr: SIGN_UP_STEP8,
   });
 
   return (
     <>
+      <Text
+        style={[
+          globalStyle.textStyle('_16', 'text', 'NUNITO_SEMIBOLD'),
+          { alignSelf: 'center' },
+        ]}
+      >
+        {loc('TOP_2_GOALS')}
+      </Text>
       {state.dataArr.map((item) => {
         return (
           <Pressable
@@ -34,8 +41,6 @@ export const PropertyList = () => {
                   ? { ...item2, selected: !item2.selected }
                   : { ...item2 },
               );
-              console.log(newArr);
-
               setState({ dataArr: newArr });
             }}
             style={[
@@ -52,12 +57,6 @@ export const PropertyList = () => {
               },
             ]}
           >
-            <FastImage
-              tintColor={item.selected ? 'blue' : 'grey'}
-              source={images[item.icon] as Source}
-              style={[globalStyle.squareLayout(18), { marginRight: 10 }]}
-              resizeMode={FastImage.resizeMode.contain}
-            />
             <Text
               style={[
                 globalStyle.textStyle(

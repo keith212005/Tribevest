@@ -224,6 +224,7 @@ export const SignUpForm = () => {
         //   _.isEmpty(state.password.value)
         // }
         disabled={false}
+        extraStyle={{ marginTop: responsiveHeight(3) }}
       />
     </View>
   );
