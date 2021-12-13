@@ -42,11 +42,7 @@ export const SignUp = () => {
       />
 
       <FormContainer>
-        <ScrollView
-          bounces={false}
-          showsVerticalScrollIndicator={false}
-          style={{ paddingHorizontal: 20 }}
-        >
+        <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
           <SignUpForm />
           <SocialMediaLogin />
         </ScrollView>

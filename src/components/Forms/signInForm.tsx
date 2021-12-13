@@ -16,7 +16,12 @@ import { navigate } from '@navigator';
 import { FaceIdSignIn } from './faceIdSignIn';
 import { isLoggedIn } from 'actions/isLoggedIn';
 import { CustomInput, RoundGradientButton2 } from '@components';
-import { images, responsiveHeight, useGlobalStyles } from '@resources';
+import {
+  images,
+  responsiveHeight,
+  responsiveWidth,
+  useGlobalStyles,
+} from '@resources';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
 import { validateEmail } from '@utils';
 
@@ -111,7 +116,6 @@ export const SignInForm = () => {
     return (
       <CustomInput
         returnKeyType="done"
-        label={loc(key)}
         placeholder={loc(key)}
         refName={(input: any) => (inputs[index] = input)}
         onFocus={() => checkValidation(index, key)}
@@ -128,43 +132,50 @@ export const SignInForm = () => {
     <View
       style={[{ backgroundColor: isDarkTheme ? colors.background : 'white' }]}
     >
-      {/* Render Face Id Sign In */}
-      <FaceIdSignIn />
+      <View style={{ paddingHorizontal: 20 }}>
+        {/* Render Face Id Sign In */}
+        <FaceIdSignIn />
 
-      {/* Render Email Input */}
-      {_renderInput(0, 'email', {
-        valueObject: state.email,
-        leftIcon: images.sms,
-      })}
+        {/* Render Email Input */}
+        {_renderInput(0, 'email', {
+          valueObject: state.email,
+          leftIcon: images.sms,
+        })}
 
-      {/* Render Password Input */}
-      {_renderInput(1, 'password', {
-        valueObject: state.password,
-        leftIcon: images.lock,
-        showPasswordIcon: true,
-        blurOnSubmit: true,
-      })}
+        {/* Render Password Input */}
+        {_renderInput(1, 'password', {
+          valueObject: state.password,
+          leftIcon: images.lock,
+          showPasswordIcon: true,
+          blurOnSubmit: true,
+        })}
 
-      {/* Render forgot password */}
-      <TouchableOpacity onPress={() => navigate('PasswordReset')}>
-        <Text
-          style={[
-            globalStyle.textStyle('_14', 'primary', 'NUNITO_REGULAR'),
-            {
-              paddingTop: responsiveHeight(1),
-              paddingBottom: responsiveHeight(4),
-            },
-          ]}
-        >
-          {loc('FORGOT_PASSWORD')}
-        </Text>
-      </TouchableOpacity>
+        {/* Render forgot password */}
+        <TouchableOpacity onPress={() => navigate('PasswordReset')}>
+          <Text
+            style={[
+              globalStyle.textStyle('_14', 'primary', 'NUNITO_REGULAR'),
+              {
+                paddingTop: responsiveHeight(1),
+                paddingBottom: responsiveHeight(4),
+              },
+            ]}
+          >
+            {loc('FORGOT_PASSWORD')}
+          </Text>
+        </TouchableOpacity>
+      </View>
 
       {/* Render Sign In button */}
       <RoundGradientButton2
         gradientColor={colors.primaryGradiant}
         title={loc('SIGN_IN')}
         onPress={() => dispatch(isLoggedIn(true))}
+        extraStyle={{
+          marginBottom: 30,
+          width: responsiveWidth(90),
+          alignSelf: 'center',
+        }}
       />
     </View>
   );

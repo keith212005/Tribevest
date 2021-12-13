@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { en } from '@languages';
 
 /* eslint-disable max-len */
@@ -351,6 +352,23 @@ export const SIGN_UP_STEP8 = [
   {
     id: 8,
     description: en.OTHER,
+    selected: false,
+  },
+];
+
+export const TRIBEVEST_PLANS = [
+  {
+    id: 1,
+    title: 'TRIBEVEST_ANNUAL',
+    amount: '$30',
+    description: 'PER_MONTH_ANUALLY',
+    selected: true,
+  },
+  {
+    id: 2,
+    title: 'TRIBEVEST_MONTHLY',
+    amount: '$40',
+    description: 'PER_MONTH_ANUALLY',
     selected: false,
   },
 ];

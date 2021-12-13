@@ -169,15 +169,16 @@ export const en = {
   INTEGRITY_INVESTOR_TRIBE: 'Integrity Investor Tribe',
   TOGETHER_ACHEIVE_MORE:
     'Together we can achieve more! Real Estate is the most stable path to wealth.',
-  LOOK_AFTER_EACHOTHER: `It's time for us to break bread together and look after each other's best interests by building a solid financial future.`,
+  LOOK_AFTER_EACHOTHER:
+    "It's time for us to break bread together and look after each other's best interests by building a solid financial future.",
   MISSION: 'MISSION',
   YOUR_MISSION: 'Your Mission...',
   CHANGE_LATER: 'You can change this later.',
-  TRIBE_LOOKS_GREAT: (tribeName: string) =>
-    `Kasey, your tribe ${tribeName} looks great!`,
+  YOUR_TRIBE: ', your tribe ',
+  LOOKS_GREAT: ' looks great!',
   GET_STARTED_YOUR_WAY: 'Get started with Tribevest your way',
   TRIBEVEST_ANNUAL: 'Tribevest Annual',
-  TRIBEVEST_MONTHLY: 'per month, billed annually',
+  TRIBEVEST_MONTHLY: 'Tribevest Monthly',
   PER_MONTH_ANUALLY: 'per month, billed annually',
   WHAT_YOU_GETTING: 'What you’re getting',
   STANDARD_PKG_ANNUAL: 'Standard Setup Package (annual)',

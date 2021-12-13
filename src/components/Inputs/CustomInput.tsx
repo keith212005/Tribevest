@@ -8,6 +8,7 @@ import {
   View,
   Platform,
   Pressable,
+  ViewStyle,
 } from 'react-native';
 
 // THIRD PARTY IMPORTS
@@ -31,6 +32,7 @@ export interface CustomInputProps extends TextInputProps {
   leftIcon?: string;
   showPasswordIcon?: boolean;
   onPressRightIcon?: any;
+  extraStyle?: ViewStyle;
 }
 
 export const CustomInput: React.FC<CustomInputProps> = (
@@ -49,6 +51,11 @@ export const CustomInput: React.FC<CustomInputProps> = (
 
   return (
     <View style={styles.container}>
+      {props.label && (
+        <Text style={[globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD')]}>
+          {props.label}
+        </Text>
+      )}
       <View style={{ justifyContent: 'center' }}>
         {props.leftIcon && (
           <FastImage
@@ -72,6 +79,7 @@ export const CustomInput: React.FC<CustomInputProps> = (
                   : color.inputBackgroundColor,
               paddingLeft: props.leftIcon ? 40 : 20,
             },
+            props.extraStyle,
           ]}
           {...props}
         />

@@ -8,7 +8,8 @@ import { useSelector } from 'react-redux';
 import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
-import { color, useGlobalStyles } from '@resources';
+import { color, responsiveHeight, useGlobalStyles } from '@resources';
+import { CustomInput } from '@components';
 
 export const Step9 = () => {
   const globalStyle = useGlobalStyles();
@@ -45,15 +46,40 @@ export const Step9 = () => {
           { backgroundColor: color[background] },
         ]}
       >
-        <Text style={{ color: color[textColor] }}>{loc(name)}</Text>
+        <Text style={{ color: color[textColor], textAlign: 'justify' }}>
+          {loc(name)}
+        </Text>
       </View>
     );
   };
 
   const _renderMissionTextArea = () => {
     return (
-      <View>
-        <Text>sdfsf</Text>
+      <View style={{ marginTop: 20 }}>
+        <CustomInput
+          returnKeyType="done"
+          label={loc('MISSION')}
+          placeholder={loc('YOUR_MISSION')}
+          multiline={true}
+          numberOfLines={5}
+          extraStyle={{ height: responsiveHeight(16) }}
+
+          // refName={(input: any) => (inputs[index] = input)}
+          // onFocus={() => checkValidation(index, key)}
+          // onBlur={() => {}}
+          // onEndEditing={() => checkValidation(index + 1, key)}
+          // onSubmitEditing={() => onSubmitEditing(index)}
+          // onChangeText={(val: string) => handleChange(val, key)}
+          // {...extraProps}
+        />
+        <Text
+          style={[
+            globalStyle.textStyle('_12', 'textPrimaryColor', 'NUNITO_REGULAR'),
+            { marginTop: -12 },
+          ]}
+        >
+          {loc('CHANGE_LATER')}
+        </Text>
       </View>
     );
   };
@@ -61,7 +87,7 @@ export const Step9 = () => {
   return (
     <View style={styles.container}>
       {/* Render Tag Container */}
-      <View style={{ flexDirection: 'row', marginLeft: 15 }}>
+      <View style={{ flexDirection: 'row' }}>
         {_renderTagItem('TRIBE_NAME', 'blue')}
         {_renderTagItem('THE_WHY', 'green_text')}
         {_renderTagItem('THE_GOALS', 'error')}
@@ -91,10 +117,13 @@ export const Step9 = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    paddingHorizontal: 20,
+  },
   tagItemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 10,
   },
   dot: {
     height: 8,
@@ -105,7 +134,7 @@ const styles = StyleSheet.create({
   descriptionContainer: {
     padding: 10,
     alignSelf: 'flex-start',
-    margin: 10,
+    marginVertical: 2,
     borderRadius: 5,
   },
 });

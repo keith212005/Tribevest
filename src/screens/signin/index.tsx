@@ -59,7 +59,7 @@ const SigninScreen = (props: any) => {
         <ScrollView
           bounces={false}
           showsVerticalScrollIndicator={false}
-          style={{ paddingHorizontal: 20 }}
+          style={{}}
         >
           <SignInForm />
           <SocialMediaLogin />

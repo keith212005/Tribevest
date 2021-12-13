@@ -20,6 +20,8 @@ import { navigate, navigationRef } from '@navigator';
 import { SignInHeader, FormContainer, RoundGradientButton2 } from '@components';
 import { responsiveWidth } from '@resources';
 import { useBackButton } from '@utils';
+import { Step10 } from './step10';
+import { en } from '@languages';
 
 export const SignUpSteps = () => {
   const [state, setState] = useState({ stepIndex: 1 });
@@ -35,7 +37,7 @@ export const SignUpSteps = () => {
   */
   const backHandler = () => {
     if (state.stepIndex !== 1) {
-      goToNext();
+      goToPrevious();
     } else {
       navigationRef.goBack();
     }
@@ -91,6 +93,13 @@ export const SignUpSteps = () => {
     headerTitle = loc('MISSION_STATEMENT');
     headerDescription = loc('INSPIRE_PARTNER');
     buttonName = loc('SAVE_N_CONTINUE');
+  } else if (stepIndex === 10) {
+    let userName = 'Kasey';
+    let tribeName = 'Wealth Tribe';
+
+    headerTitle = userName + loc('YOUR_TRIBE') + tribeName + loc('LOOKS_GREAT');
+    headerDescription = '';
+    buttonName = loc('CHECKOUT');
   } else {
     headerTitle = '';
   }
@@ -126,6 +135,7 @@ export const SignUpSteps = () => {
           {state.stepIndex === 7 ? <Step7 /> : null}
           {state.stepIndex === 8 ? <Step8 /> : null}
           {state.stepIndex === 9 ? <Step9 /> : null}
+          {state.stepIndex === 10 ? <Step10 /> : null}
         </ScrollView>
 
         <RoundGradientButton2

@@ -15,7 +15,12 @@ import createState from 'react-hook-setstate';
 import { fieldObject } from '@constants';
 import { navigate } from '@navigator';
 import { CustomInput, RoundGradientButton2 } from '@components';
-import { color, images, responsiveHeight, useGlobalStyles } from '@resources';
+import {
+  images,
+  responsiveHeight,
+  responsiveWidth,
+  useGlobalStyles,
+} from '@resources';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
 import { validateEmail } from '@utils';
 
@@ -127,7 +132,6 @@ export const SignUpForm = () => {
     return (
       <CustomInput
         returnKeyType="done"
-        label={loc(key)}
         placeholder={loc(key)}
         refName={(input: any) => (inputs[index] = input)}
         onFocus={() => checkValidation(index, key)}
@@ -178,35 +182,37 @@ export const SignUpForm = () => {
   };
 
   return (
-    <View style={{ paddingTop: 10 }}>
-      {/* Render Full Name */}
-      {_renderInput(0, 'full_name', {
-        valueObject: state.full_name,
-        leftIcon: images.user,
-      })}
+    <>
+      <View style={{ paddingHorizontal: 20 }}>
+        {/* Render Full Name */}
+        {_renderInput(0, 'full_name', {
+          valueObject: state.full_name,
+          leftIcon: images.user,
+        })}
 
-      {/* Render email */}
-      {_renderInput(1, 'email', {
-        valueObject: state.email,
-        leftIcon: images.sms,
-      })}
+        {/* Render email */}
+        {_renderInput(1, 'email', {
+          valueObject: state.email,
+          leftIcon: images.sms,
+        })}
 
-      {/* Render Phone Number */}
-      {_renderInput(2, 'phone_number', {
-        valueObject: state.phone_number,
-        leftIcon: images.call,
-      })}
+        {/* Render Phone Number */}
+        {_renderInput(2, 'phone_number', {
+          valueObject: state.phone_number,
+          leftIcon: images.call,
+        })}
 
-      {/* Render Password Input */}
-      {_renderInput(3, 'password', {
-        valueObject: state.password,
-        leftIcon: images.lock,
-        showPasswordIcon: true,
-        blurOnSubmit: true,
-      })}
+        {/* Render Password Input */}
+        {_renderInput(3, 'password', {
+          valueObject: state.password,
+          leftIcon: images.lock,
+          showPasswordIcon: true,
+          blurOnSubmit: true,
+        })}
 
-      {/* Render InviteCode */}
-      {_renderInviteCode()}
+        {/* Render InviteCode */}
+        {_renderInviteCode()}
+      </View>
 
       {/* Render Sign In button */}
       <RoundGradientButton2
@@ -224,8 +230,13 @@ export const SignUpForm = () => {
         //   _.isEmpty(state.password.value)
         // }
         disabled={false}
-        extraStyle={{ marginTop: responsiveHeight(3) }}
+        extraStyle={{
+          marginTop: 20,
+          marginBottom: 30,
+          width: responsiveWidth(90),
+          alignSelf: 'center',
+        }}
       />
-    </View>
+    </>
   );
 };
