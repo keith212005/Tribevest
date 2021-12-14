@@ -360,14 +360,14 @@ export const TRIBEVEST_PLANS = [
   {
     id: 1,
     title: 'TRIBEVEST_ANNUAL',
-    amount: '$30',
+    amount: 30,
     description: 'PER_MONTH_ANUALLY',
     selected: true,
   },
   {
     id: 2,
     title: 'TRIBEVEST_MONTHLY',
-    amount: '$40',
+    amount: 40,
     description: 'PER_MONTH_ANUALLY',
     selected: false,
   },

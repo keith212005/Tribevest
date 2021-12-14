@@ -1,8 +1,10 @@
 // import './wdyr';
+
 import * as React from 'react';
 import { LogBox } from 'react-native';
 
 // THIRD PARTY IMPORTS
+
 import { Provider } from 'react-redux';
 import { AppContainer } from './navigator';
 import { PersistGate } from 'redux-persist/integration/react';

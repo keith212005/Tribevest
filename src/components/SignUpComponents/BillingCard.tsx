@@ -1,11 +1,10 @@
 /* eslint-disable no-undef */
 import * as React from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, StyleSheet, Pressable } from 'react-native';
 
 // LOCAL IMPORT
 import { color, useGlobalStyles } from '@resources';
 import { useTheme } from '@react-navigation/native';
-import { colors } from 'react-native-elements';
 
 interface BillingCardProps {
   title: string;
@@ -21,6 +20,7 @@ export const BillingCard = (props: BillingCardProps) => {
 
   return (
     <Pressable
+      key={props.title}
       onPress={props.onPress}
       style={[
         styles.container,
@@ -37,7 +37,7 @@ export const BillingCard = (props: BillingCardProps) => {
           styles.text,
           globalStyle.textStyle(
             '_14',
-            props.selected ? 'blue' : 'text',
+            props.selected ? 'blue' : 'black',
             'NUNITO_BOLD',
           ),
         ]}
@@ -49,12 +49,12 @@ export const BillingCard = (props: BillingCardProps) => {
           styles.text,
           globalStyle.textStyle(
             '_24',
-            props.selected ? 'blue' : 'text',
+            props.selected ? 'blue' : 'black',
             'NUNITO_BOLD',
           ),
         ]}
       >
-        {props.amount}
+        ${props.amount}
       </Text>
       <Text
         style={[
@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     padding: 16,
-
     marginBottom: 10,
   },
   text: {

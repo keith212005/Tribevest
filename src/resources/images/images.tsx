@@ -57,4 +57,5 @@ export const images: any = {
   multifamily: require('./multifamily/multifamily.png'),
   cryptocurrency: require('./cryptocurrency/cryptocurrency.png'),
   collectibles: require('./collectibles/collectibles.png'),
+  tick_circle_light: require('./tick_circle_light/tick_circle_light.png'),
 };

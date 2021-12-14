@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 // LOCAL IMPORTS
 import { styles } from './style';
-import { color, images } from '@resources';
+import { images } from '@resources';
 import { navigate } from '@navigator';
 import { fieldObject, IfieldObject } from '@constants';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
@@ -125,9 +125,7 @@ export const PasswordReset = () => {
         })}
 
         <RoundGradientButton2
-          gradientColor={
-            colors.primaryGradiant as unknown as keyof typeof color
-          }
+          gradientColor={colors.primaryGradiant}
           title={loc('SEND_INSTRUCTIONS')}
           onPress={() => navigate('CheckEmail')}
         />

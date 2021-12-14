@@ -7,7 +7,7 @@ export const color: any = {
   lightBlack: '#202123',
   borderGray: 'rgba(255,255,255,0.2)',
   unfocusBorder: 'rgba(23, 28, 68, 0.2)',
-  primaryColor: '#1846FF',
+  primaryColor: '#189EFF',
   textPrimaryColor: '#757575',
   errorColor: '#eb5a64',
   placeHolderColor: 'rgba(23, 28, 68, 0.5)',

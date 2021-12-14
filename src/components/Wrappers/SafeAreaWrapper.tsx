@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type SafeAreaViewProps = {
