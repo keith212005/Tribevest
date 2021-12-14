@@ -3,13 +3,14 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 
 // LOCAL IMPORT
-import { images, useGlobalStyles } from '@resources';
+import { fontsize, images, useGlobalStyles } from '@resources';
 import { FastImg } from '@components';
 
 interface DefaultProps {
   icon: string;
   tintColor: string;
   message: string;
+  textSize?: keyof typeof fontsize;
 }
 
 export const MessageWithIcon = (props: DefaultProps) => {
@@ -30,7 +31,11 @@ export const MessageWithIcon = (props: DefaultProps) => {
       )}
       <Text
         style={[
-          globalStyle.textStyle('_14', 'text', 'NUNITO_REGULAR'),
+          globalStyle.textStyle(
+            props.textSize ? props.textSize : '_14',
+            'text',
+            'NUNITO_REGULAR',
+          ),
           { paddingHorizontal: 5 },
         ]}
       >

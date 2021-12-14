@@ -4,7 +4,6 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 // THIRD PARTY IMPORT
-import createState from 'react-hook-setstate';
 
 // LOCAL IMPORT
 import { BillingForm, CustomSwitch } from '@components';
@@ -12,9 +11,6 @@ import { responsiveWidth, useGlobalStyles } from '@resources';
 
 export const Step11 = () => {
   const globalStyle = useGlobalStyles();
-  const [state, setState] = createState<any>({
-    isOn: false,
-  });
 
   const _renderMonthlyOrAnuallySwitch = () => {
     const _renderLabel = (name: string) => {

@@ -12,3 +12,4 @@ export * from './GlobalComponents';
 export * from './Forms';
 export * from './SignUpComponents';
 export * from './Switch';
+export * from './DropDownPicker';
