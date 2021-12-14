@@ -11,17 +11,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import createState from 'react-hook-setstate';
 
 // LOCAL IMPORTS
-import { fieldObject } from '@constants';
-import { navigate } from '@navigator';
-import { FaceIdSignIn } from './faceIdSignIn';
-import { isLoggedIn } from 'actions/isLoggedIn';
-import { CustomInput, RoundGradientButton2 } from '@components';
 import {
   images,
   responsiveHeight,
   responsiveWidth,
   useGlobalStyles,
 } from '@resources';
+import { fieldObject } from '@constants';
+import { navigate } from '@navigator';
+import { FaceIdSignIn } from './faceIdSignIn';
+import { isLoggedIn } from 'actions/isLoggedIn';
+import { CustomInput, RoundGradientButton2 } from '@components';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
 import { validateEmail } from '@utils';
 

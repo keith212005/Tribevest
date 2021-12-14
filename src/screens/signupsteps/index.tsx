@@ -16,12 +16,13 @@ import { Step6 } from './step6';
 import { Step7 } from './step7';
 import { Step8 } from './step8';
 import { Step9 } from './step9';
+import { Step10 } from './step10';
+import { Step11 } from './step11';
+
 import { navigate, navigationRef } from '@navigator';
 import { SignInHeader, FormContainer, RoundGradientButton2 } from '@components';
 import { responsiveWidth } from '@resources';
 import { useBackButton } from '@utils';
-import { Step10 } from './step10';
-import { en } from '@languages';
 
 export const SignUpSteps = () => {
   const [state, setState] = useState({ stepIndex: 1 });
@@ -96,10 +97,15 @@ export const SignUpSteps = () => {
   } else if (stepIndex === 10) {
     let userName = 'Kasey';
     let tribeName = 'Wealth Tribe';
-
     headerTitle = userName + loc('YOUR_TRIBE') + tribeName + loc('LOOKS_GREAT');
     headerDescription = '';
     buttonName = loc('CHECKOUT');
+  } else if (stepIndex === 11) {
+    let userName = 'Kasey';
+    let tribeName = 'Wealth Tribe';
+    headerTitle = userName + loc('YOUR_TRIBE') + tribeName + loc('LOOKS_GREAT');
+    headerDescription = '';
+    buttonName = loc('SKIP_NOW');
   } else {
     headerTitle = '';
   }
@@ -136,6 +142,7 @@ export const SignUpSteps = () => {
           {state.stepIndex === 8 ? <Step8 /> : null}
           {state.stepIndex === 9 ? <Step9 /> : null}
           {state.stepIndex === 10 ? <Step10 /> : null}
+          {state.stepIndex === 11 ? <Step11 /> : null}
         </ScrollView>
 
         <RoundGradientButton2
