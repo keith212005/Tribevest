@@ -6,15 +6,19 @@ import { View } from 'react-native';
 // THIRD PARTY IMPORTS
 import _ from 'lodash';
 import { useTheme } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
 
 // LOCAL IMPORTS
+import {
+  CustomInput,
+  FormContainer,
+  RoundGradientButton2,
+  SignInHeader,
+} from '@components';
 import { styles } from './style';
 import { images } from '@resources';
-import { navigate } from '@navigator';
+import { navigate, navigationRef } from '@navigator';
 import { fieldObject, IfieldObject } from '@constants';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
-import { CustomInput, RoundGradientButton2, SignInHeader } from '@components';
 
 interface User {
   _key: string;
@@ -24,7 +28,7 @@ interface User {
 export const PasswordReset = () => {
   var inputs = new Array(2);
   const { colors } = useTheme() as unknown as CustomTheme;
-  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
+
   const [state, setState]: any = useState<User>({
     _key: '',
     username: fieldObject,
@@ -93,7 +97,6 @@ export const PasswordReset = () => {
     return (
       <CustomInput
         returnKeyType="done"
-        label={loc(key)}
         placeholder={loc(key)}
         refName={(input: any) => (inputs[index] = input)}
         onFocus={() => checkValidation(index, key, true)}
@@ -112,13 +115,12 @@ export const PasswordReset = () => {
         title={loc('RESET_PASSWORD')}
         description={loc('RESET_YOUR_PASSWORD')}
         showBackButton={true}
+        onBackPress={() => {
+          navigationRef.goBack();
+        }}
       />
-      <View
-        style={[
-          styles.body,
-          { backgroundColor: isDarkTheme ? colors.background : 'white' },
-        ]}
-      >
+
+      <FormContainer containerStyle={styles.formContainer}>
         {_renderInput(0, 'email', {
           valueObject: state.username,
           leftIcon: images.sms,
@@ -129,7 +131,7 @@ export const PasswordReset = () => {
           title={loc('SEND_INSTRUCTIONS')}
           onPress={() => navigate('CheckEmail')}
         />
-      </View>
+      </FormContainer>
     </View>
   );
 };

@@ -27,7 +27,7 @@ import { validateEmail } from '@utils';
 export const SignUpForm = () => {
   var inputs = new Array(4);
 
-  const [state, setState] = createState({
+  const [state, setState] = createState<any>({
     showInviteCodeInput: false,
     full_name: fieldObject,
     email: fieldObject,
@@ -183,7 +183,7 @@ export const SignUpForm = () => {
 
   return (
     <>
-      <View style={{ paddingHorizontal: 20 }}>
+      <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
         {/* Render Full Name */}
         {_renderInput(0, 'full_name', {
           valueObject: state.full_name,

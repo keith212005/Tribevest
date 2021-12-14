@@ -17,14 +17,14 @@ export const Step2 = () => {
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const { colors } = useTheme() as unknown as CustomTheme;
 
-  const [state, setState] = createState({
+  const [state, setState] = createState<any>({
     dataArr: SIGN_UP_STEP2,
   });
 
   useEffect(() => {}, [state.dataArr]);
   return (
     <>
-      {state.dataArr.map((item) => {
+      {state.dataArr.map((item: any) => {
         return (
           <Pressable
             key={item.id}

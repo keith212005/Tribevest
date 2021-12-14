@@ -21,7 +21,7 @@ import { validateEmail } from '@utils';
 export const TribeNameForm = () => {
   var inputs = new Array(1);
 
-  const [state, setState] = createState({
+  const [state, setState] = createState<any>({
     enter_name: fieldObject,
   });
   const { colors } = useTheme() as unknown as CustomTheme;
@@ -88,7 +88,6 @@ export const TribeNameForm = () => {
     return (
       <CustomInput
         returnKeyType="done"
-        label={loc(key)}
         placeholder={loc(key)}
         refName={(input: any) => (inputs[index] = input)}
         onFocus={() => checkValidation(index, key)}

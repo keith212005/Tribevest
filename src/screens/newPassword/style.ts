@@ -14,6 +14,10 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     justifyContent: 'space-between',
     paddingTop: 40,
-    borderWidth: 1,
+  },
+  formContainer: {
+    padding: 20,
+    paddingTop: 30,
+    justifyContent: 'space-between',
   },
 });

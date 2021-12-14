@@ -18,11 +18,10 @@ import { Step8 } from './step8';
 import { Step9 } from './step9';
 import { Step10 } from './step10';
 import { Step11 } from './step11';
-
+import { useBackButton } from '@utils';
+import { responsiveWidth } from '@resources';
 import { navigate, navigationRef } from '@navigator';
 import { SignInHeader, FormContainer, RoundGradientButton2 } from '@components';
-import { responsiveWidth } from '@resources';
-import { useBackButton } from '@utils';
 
 export const SignUpSteps = () => {
   const [state, setState] = useState({ stepIndex: 1 });
@@ -131,7 +130,10 @@ export const SignUpSteps = () => {
           paddingHorizontal: Platform.OS === 'ios' ? 10 : 5,
         }}
       >
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          nestedScrollEnabled={true} // required for dropdown on select state
+        >
           {state.stepIndex === 1 ? <Step1 /> : null}
           {state.stepIndex === 2 ? <Step2 /> : null}
           {state.stepIndex === 3 ? <Step3 /> : null}

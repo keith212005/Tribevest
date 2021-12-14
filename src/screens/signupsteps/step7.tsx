@@ -3,21 +3,19 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 // THIRD PARTY IMPORT
-import { useSelector } from 'react-redux';
 import { useTheme } from '@react-navigation/native';
 import createState from 'react-hook-setstate';
 
 // LOCAL IMPORT
-import { color, images, responsiveWidth, useGlobalStyles } from '@resources';
+import { images, responsiveWidth, useGlobalStyles } from '@resources';
 import { FastImg } from '@components';
 import { Icon } from 'react-native-elements';
 
 export const Step7 = () => {
   const globalStyle = useGlobalStyles();
-  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const { colors } = useTheme() as unknown as CustomTheme;
 
-  const [state, setState] = createState({
+  const [state, setState] = createState<any>({
     number: 0,
   });
 

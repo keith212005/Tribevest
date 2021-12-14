@@ -39,7 +39,7 @@ export const CustomInput: React.FC<CustomInputProps> = (
   props: CustomInputProps,
 ) => {
   // console.log('rendering Custom inptu');
-  const [state, setState] = createState({
+  const [state, setState] = createState<any>({
     secureTextEntry: props.showPasswordIcon ? true : false,
   });
 
@@ -78,6 +78,7 @@ export const CustomInput: React.FC<CustomInputProps> = (
                   ? color.error_light
                   : color.inputBackgroundColor,
               paddingLeft: props.leftIcon ? 40 : 20,
+              textAlignVertical: props.multiline ? 'top' : 'auto',
             },
             props.extraStyle,
           ]}

@@ -17,7 +17,7 @@ export const TribeGoalsList = () => {
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const { colors } = useTheme() as unknown as CustomTheme;
 
-  const [state, setState] = createState({
+  const [state, setState] = createState<any>({
     dataArr: SIGN_UP_STEP8,
   });
 
@@ -31,12 +31,12 @@ export const TribeGoalsList = () => {
       >
         {loc('TOP_2_GOALS')}
       </Text>
-      {state.dataArr.map((item) => {
+      {state.dataArr.map((item: any) => {
         return (
           <Pressable
             key={item.id}
             onPress={() => {
-              const newArr = state.dataArr.map((item2) =>
+              const newArr = state.dataArr.map((item2: any) =>
                 item2.description === item.description
                   ? { ...item2, selected: !item2.selected }
                   : { ...item2 },

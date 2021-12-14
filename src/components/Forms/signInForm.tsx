@@ -28,7 +28,7 @@ import { validateEmail } from '@utils';
 export const SignInForm = () => {
   var inputs = new Array(2);
 
-  const [state, setState] = createState({
+  const [state, setState] = createState<any>({
     email: fieldObject,
     password: fieldObject,
   });

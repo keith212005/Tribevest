@@ -21,7 +21,7 @@ import { navigate, navigationRef } from '@navigator';
 export const SignUp = () => {
   const { colors } = useTheme() as unknown as CustomTheme;
 
-  const [state, setState] = createState({
+  const [state, setState] = createState<any>({
     email: fieldObject,
     password: fieldObject,
   });

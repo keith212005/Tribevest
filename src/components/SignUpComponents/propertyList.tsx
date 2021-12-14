@@ -18,7 +18,7 @@ export const PropertyList = () => {
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const { colors } = useTheme() as unknown as CustomTheme;
 
-  const [state, setState] = createState({
+  const [state, setState] = createState<any>({
     dataArr: SIGN_UP_STEP5,
   });
 

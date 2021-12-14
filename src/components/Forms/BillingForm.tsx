@@ -1,8 +1,6 @@
-/* eslint-disable camelcase */
-/* eslint-disable no-fallthrough */
 /* eslint-disable no-undef */
-
-import React from 'react';
+/* eslint-disable no-fallthrough */
+import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 // THIRD PARTY IMPORTS
@@ -10,21 +8,31 @@ import createState from 'react-hook-setstate';
 
 // LOCAL IMPORTS
 import _ from 'lodash';
-import { CustomInput } from '@components';
+import { CustomDropDownPicker, CustomInput } from '@components';
 import { useGlobalStyles } from '@resources';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
 import { fieldObject } from '@constants';
+import { useTheme } from '@react-navigation/native';
 
 export const BillingForm = () => {
   var inputs = new Array(5);
-  const globalStyle = useGlobalStyles();
-  const [state, setState] = createState({
+  const [state, setState] = createState<any>({
     address: fieldObject,
     address_2: fieldObject,
     city: fieldObject,
-    state: fieldObject,
+    states: fieldObject,
     zip: fieldObject,
   });
+
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+    { label: 'Orange', value: 'orange' },
+  ]);
+  const globalStyle = useGlobalStyles();
+  const { colors } = useTheme() as CustomTheme;
 
   /**
   |--------------------------------------------------
@@ -44,12 +52,12 @@ export const BillingForm = () => {
   };
 
   const checkValidation = (numbers: number, key: string) => {
-    console.log('checkValidation called....');
-
     var stateObject: any = {};
     const address = state.address.value;
-
-    console.log(key);
+    const address_2 = state.address_2.value;
+    const city = state.city.value;
+    const states = state.states.value;
+    const zip = state.zip.value;
 
     return new Promise((resolve) => {
       stateObject[key] = {
@@ -57,12 +65,44 @@ export const BillingForm = () => {
       };
 
       switch (numbers) {
+        case 5:
+          if (_.isEmpty(zip)) {
+            stateObject.zip = {
+              value: zip,
+              isError: true,
+              errorText: loc('EMPTY_ZIP'),
+            };
+          }
+        case 4:
+          if (_.isEmpty(states)) {
+            stateObject.states = {
+              value: states,
+              isError: true,
+              errorText: loc('EMPTY_STATE'),
+            };
+          }
+        case 3:
+          if (_.isEmpty(city)) {
+            stateObject.city = {
+              value: city,
+              isError: true,
+              errorText: loc('EMPTY_CITY'),
+            };
+          }
+        case 2:
+          if (_.isEmpty(address_2)) {
+            stateObject.address_2 = {
+              value: address_2,
+              isError: true,
+              errorText: loc('EMPTY_ADDRESS_2'),
+            };
+          }
         case 1:
           if (_.isEmpty(address)) {
             stateObject.address = {
               value: address,
               isError: true,
-              errorText: loc('INVALID_EMAIL_MSG'),
+              errorText: loc('EMPTY_ADDRESS_1'),
             };
           }
         default:
@@ -75,7 +115,7 @@ export const BillingForm = () => {
 
   // hadnle onSubmitEditing method of input box
   const onSubmitEditing = (number: number) => {
-    if (number < 1) {
+    if (number < 4) {
       inputs[number + 1].focus();
     } else {
       // this.onLogin();
@@ -98,6 +138,7 @@ export const BillingForm = () => {
         onEndEditing={() => checkValidation(index + 1, key)}
         onSubmitEditing={() => onSubmitEditing(index)}
         onChangeText={(val: string) => handleChange(val, key)}
+        extraStyle={{ borderWidth: 1, borderColor: colors.placeHolderColor }}
         {...extraProps}
       />
     );
@@ -113,11 +154,34 @@ export const BillingForm = () => {
       >
         {loc('BILLING_PAYMENT_DETAILS')}
       </Text>
-      {_renderInput(0, 'address', 'ADDRESS_LABEL')}
-      {_renderInput(1, 'address_2', 'ADDRESS_LINE_2_LABEL')}
-      {_renderInput(2, 'city', 'CITY_LABEL')}
-      {_renderInput(3, 'state', 'STATE_LABEL')}
-      {_renderInput(4, 'zip', 'ZIP_LABEL')}
+      {_renderInput(0, 'address', 'ADDRESS_LABEL', {
+        valueObject: state.address,
+      })}
+      {_renderInput(1, 'address_2', 'ADDRESS_LINE_2_LABEL', {
+        valueObject: state.address_2,
+      })}
+      {_renderInput(2, 'city', 'CITY_LABEL', {
+        valueObject: state.city,
+      })}
+
+      <CustomDropDownPicker
+        label={loc('STATE_LABEL')}
+        placeholder={loc('states')}
+        placeholderStyle={{ marginLeft: 8, color: colors.placeHolderColor }}
+        open={open}
+        value={value}
+        items={items}
+        setOpen={setOpen}
+        setValue={setValue}
+        setItems={setItems}
+        listMode="SCROLLVIEW" // required or get error Virtualized list
+        containerProps={{}}
+        labelStyle={{ marginLeft: 10 }}
+      />
+      {_renderInput(4, 'zip', 'ZIP_LABEL', {
+        valueObject: state.zip,
+        blurOnSubmit: true,
+      })}
     </View>
   );
 };
