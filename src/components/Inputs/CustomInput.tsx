@@ -73,10 +73,9 @@ export const CustomInput: React.FC<CustomInputProps> = (
           style={[
             styles.input,
             {
-              backgroundColor:
-                props.valueObject && props.valueObject.isError
-                  ? color.error_light
-                  : color.inputBackgroundColor,
+              backgroundColor: props.valueObject?.isError
+                ? color.error_light
+                : color.inputBackgroundColor,
               paddingLeft: props.leftIcon ? 40 : 20,
               textAlignVertical: props.multiline ? 'top' : 'auto',
             },
@@ -91,7 +90,7 @@ export const CustomInput: React.FC<CustomInputProps> = (
               source={
                 state.secureTextEntry && !props.valueObject?.isError
                   ? images.eye_slash
-                  : props.valueObject && props.valueObject.isError
+                  : props.valueObject?.isError
                   ? images.eye_slash_error
                   : images.eye_slash_error
               }
@@ -106,7 +105,8 @@ export const CustomInput: React.FC<CustomInputProps> = (
           { height: scale(19) },
         ]}
       >
-        {props.valueObject && props.valueObject.errorText}
+        {/* {props.valueObject && props.valueObject.errorText} */}
+        {props.valueObject?.errorText}
       </Text>
     </View>
   );

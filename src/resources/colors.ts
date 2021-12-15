@@ -5,7 +5,7 @@ export const color: any = {
   white: '#FFFFFF',
   black: '#000000',
   lightBlack: '#202123',
-  borderGray: 'rgba(255,255,255,0.2)',
+  borderGray: '#CAD2DA',
   unfocusBorder: 'rgba(23, 28, 68, 0.2)',
   primaryColor: '#189EFF',
   textPrimaryColor: '#757575',

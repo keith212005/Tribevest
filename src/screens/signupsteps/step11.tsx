@@ -25,12 +25,11 @@ export const Step11 = () => {
       <View
         style={[
           globalStyle.layoutDirection('row', 'space-evenly', 'center'),
-          { width: responsiveWidth(80), alignSelf: 'center' },
+          { width: responsiveWidth(80), alignSelf: 'center', marginTop: 20 },
         ]}
       >
         {_renderLabel('MONTHLY_BILLING')}
         <CustomSwitch onPress={(res) => console.log('switch...', res)} />
-
         {_renderLabel('ANNUAL_BILLING')}
       </View>
     );

@@ -1,22 +1,26 @@
 /* eslint-disable no-undef */
-import * as React from 'react';
+import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-
-// THIRD PARTY IMPORT
-// import { useSelector } from 'react-redux';
-// import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORT
 import { responsiveWidth, useGlobalStyles } from '@resources';
-import { InvestPercent, PropertyList } from '@components';
+import { InvestPercent, MultiSelectList } from '@components';
+import { SIGN_UP_STEP5 } from '@constants';
 
 export const Step6 = () => {
   const globalStyle = useGlobalStyles();
-  // const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
-  // const { colors } = useTheme() as unknown as CustomTheme;
 
-  const _renderInvestmentPercent = () => {
-    return (
+  return (
+    <View>
+      <Text
+        style={[
+          globalStyle.textStyle('_16', 'text', 'NUNITO_BOLD'),
+          { textAlign: 'center' },
+        ]}
+      >
+        {loc('INVESTMENT_TYPES')}
+      </Text>
+
       <View style={styles.investmentPercentContainer}>
         <InvestPercent
           percent={37}
@@ -40,21 +44,8 @@ export const Step6 = () => {
           textColor={'orange_text'}
         />
       </View>
-    );
-  };
 
-  return (
-    <View>
-      <Text
-        style={[
-          globalStyle.textStyle('_16', 'text', 'NUNITO_SEMIBOLD'),
-          { textAlign: 'center' },
-        ]}
-      >
-        {loc('INVESTMENT_TYPES')}
-      </Text>
-      {_renderInvestmentPercent()}
-      <PropertyList />
+      <MultiSelectList array={SIGN_UP_STEP5} onPress={() => {}} />
     </View>
   );
 };

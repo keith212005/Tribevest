@@ -29,7 +29,7 @@ export const Step10 = () => {
       <Text
         style={[
           globalStyle.textStyle('_16', 'text', 'NUNITO_BOLD'),
-          { textAlign: 'center', marginBottom: 20 },
+          { textAlign: 'center', paddingTop: 20, paddingBottom: 30 },
         ]}
       >
         {loc('GET_STARTED_YOUR_WAY')}
@@ -65,7 +65,7 @@ export const Step10 = () => {
         {/* render What are you getting */}
         <Text
           style={[
-            globalStyle.textStyle('_18', 'text', 'NUNITO_SEMIBOLD'),
+            globalStyle.textStyle('_18', 'text', 'NUNITO_EXTRABOLD'),
             { marginTop: 12 },
           ]}
         >
@@ -81,7 +81,9 @@ export const Step10 = () => {
           }}
         >
           <Text
-            style={[globalStyle.textStyle('_16', 'text', 'NUNITO_REGULAR')]}
+            style={[
+              globalStyle.textStyle('_16', 'lightText', 'NUNITO_REGULAR'),
+            ]}
           >
             {loc('STANDARD_PKG_ANNUAL')}
           </Text>
@@ -170,7 +172,7 @@ export const Step10 = () => {
         <MessageWithIcon
           icon={'tick_circle_filled'}
           tintColor={colors.primaryColor}
-          message={loc('AUTOMATED_ANUAL_COMP')}
+          message={loc('TERMS_AND_CONDITIONS')}
         />
         <MessageWithIcon
           icon={'tick_star'}
@@ -208,5 +210,6 @@ const styles = StyleSheet.create({
   },
   termsAndCondition: {
     marginVertical: 20,
+    marginRight: 20,
   },
 });

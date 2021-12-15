@@ -138,7 +138,13 @@ export const BillingForm = () => {
         onEndEditing={() => checkValidation(index + 1, key)}
         onSubmitEditing={() => onSubmitEditing(index)}
         onChangeText={(val: string) => handleChange(val, key)}
-        extraStyle={{ borderWidth: 1, borderColor: colors.placeHolderColor }}
+        extraStyle={{
+          borderWidth: 1,
+          borderColor: colors.borderGray,
+          backgroundColor: state[key].isError
+            ? colors.error_light
+            : colors.white,
+        }}
         {...extraProps}
       />
     );

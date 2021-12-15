@@ -7,30 +7,27 @@ import { Text, StyleSheet, Pressable } from 'react-native';
 import createState from 'react-hook-setstate';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@react-navigation/native';
+import FastImage, { Source } from 'react-native-fast-image';
 
 // LOCAL IMPORTS
-import { useGlobalStyles } from '@resources';
-import { SIGN_UP_STEP8 } from '@constants';
+import { images, useGlobalStyles } from '@resources';
 
-export const TribeGoalsList = () => {
+interface DefaultProps {
+  array: Array<object>;
+  onPress: (arr: any) => void;
+}
+
+export const MultiSelectList = (props: DefaultProps) => {
   const globalStyle = useGlobalStyles();
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const { colors } = useTheme() as unknown as CustomTheme;
 
   const [state, setState] = createState<any>({
-    dataArr: SIGN_UP_STEP8,
+    dataArr: props.array,
   });
 
   return (
     <>
-      <Text
-        style={[
-          globalStyle.textStyle('_16', 'text', 'NUNITO_SEMIBOLD'),
-          { alignSelf: 'center' },
-        ]}
-      >
-        {loc('TOP_2_GOALS')}
-      </Text>
       {state.dataArr.map((item: any) => {
         return (
           <Pressable
@@ -42,6 +39,7 @@ export const TribeGoalsList = () => {
                   : { ...item2 },
               );
               setState({ dataArr: newArr });
+              props.onPress(newArr);
             }}
             style={[
               styles.container,
@@ -57,6 +55,14 @@ export const TribeGoalsList = () => {
               },
             ]}
           >
+            {item.icon && (
+              <FastImage
+                tintColor={item.selected ? colors.blue : 'grey'}
+                source={images[item.icon] as Source}
+                style={[globalStyle.squareLayout(18), { marginRight: 10 }]}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+            )}
             <Text
               style={[
                 globalStyle.textStyle(
@@ -79,7 +85,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     borderWidth: 1,
-    margin: 10,
+    marginHorizontal: 20,
+    marginBottom: 5,
     borderRadius: 16,
     padding: 16,
     alignItems: 'center',

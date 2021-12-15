@@ -3,14 +3,15 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 // LOCAL IMPORT
-import { useGlobalStyles } from '@resources';
-import { TribeNameForm, UsaMap } from '@components';
+import { images, useGlobalStyles } from '@resources';
+import { TribeNameForm } from '@components';
+import FastImage from 'react-native-fast-image';
 
 export const Step5 = () => {
   const globalStyle = useGlobalStyles();
 
-  const _renderTitle = () => {
-    return (
+  return (
+    <View style={styles.container}>
       <Text
         style={[
           globalStyle.textStyle('_16', 'text', 'NUNITO_BOLD'),
@@ -19,31 +20,27 @@ export const Step5 = () => {
       >
         {loc('AVAILABLE_COMPANY_NAMES')}
       </Text>
-    );
-  };
+      <FastImage
+        source={images.usa_map}
+        style={{
+          width: '100%',
+          aspectRatio: 1.5,
+          marginVertical: 20,
+        }}
+        resizeMode={FastImage.resizeMode.center}
+      />
 
-  const _renderTribeNameInput = () => {
-    return (
-      <View style={{ marginVertical: 10 }}>
-        <Text style={[globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD')]}>
-          {loc('TRIBE_NAME')}
-        </Text>
-        <TribeNameForm />
-      </View>
-    );
-  };
-
-  return (
-    <View style={styles.container}>
-      {_renderTitle()}
-      <UsaMap />
-      {_renderTribeNameInput()}
+      <TribeNameForm />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
+  container: {
+    flex: 1,
+
+    paddingHorizontal: 20,
+  },
   title: {
     textAlign: 'center',
   },

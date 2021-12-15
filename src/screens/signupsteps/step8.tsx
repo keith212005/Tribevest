@@ -4,13 +4,22 @@ import { Text, View, StyleSheet } from 'react-native';
 
 // LOCAL IMPORT
 import { responsiveWidth, useGlobalStyles } from '@resources';
-import { InvestPercent, TribeGoalsList } from '@components';
+import { InvestPercent, MultiSelectList } from '@components';
+import { SIGN_UP_STEP8 } from '@constants';
 
 export const Step8 = () => {
   const globalStyle = useGlobalStyles();
 
-  const _renderInvestmentPercent = () => {
-    return (
+  return (
+    <View>
+      <Text
+        style={[
+          globalStyle.textStyle('_16', 'text', 'NUNITO_BOLD'),
+          { textAlign: 'center' },
+        ]}
+      >
+        {loc('FEATURED_TRIBE') + loc('GOALS')}
+      </Text>
       <View style={styles.investmentPercentContainer}>
         <InvestPercent
           percent={37}
@@ -37,21 +46,7 @@ export const Step8 = () => {
           textColor={'orange_text'}
         />
       </View>
-    );
-  };
-
-  return (
-    <View>
-      <Text
-        style={[
-          globalStyle.textStyle('_16', 'text', 'NUNITO_SEMIBOLD'),
-          { textAlign: 'center' },
-        ]}
-      >
-        {loc('FEATURED_TRIBE') + loc('GOALS')}
-      </Text>
-      {_renderInvestmentPercent()}
-      <TribeGoalsList />
+      <MultiSelectList array={SIGN_UP_STEP8} onPress={() => {}} />
     </View>
   );
 };

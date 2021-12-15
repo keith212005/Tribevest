@@ -4,8 +4,6 @@ import { Text, View, StyleSheet } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import _ from 'lodash';
-import { useSelector } from 'react-redux';
-import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
 import { color, responsiveHeight, useGlobalStyles } from '@resources';
@@ -13,8 +11,6 @@ import { CustomInput } from '@components';
 
 export const Step9 = () => {
   const globalStyle = useGlobalStyles();
-  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
-  const { colors } = useTheme() as unknown as CustomTheme;
 
   const _renderTagItem = (name: string, backgroundColor: string) => {
     return (
@@ -88,7 +84,7 @@ export const Step9 = () => {
     <View style={styles.container}>
       {/* Render Tag Container */}
       <View style={{ flexDirection: 'row' }}>
-        {_renderTagItem('TRIBE_NAME', 'blue')}
+        {_renderTagItem('tribe_name', 'blue')}
         {_renderTagItem('THE_WHY', 'green_text')}
         {_renderTagItem('THE_GOALS', 'error')}
       </View>

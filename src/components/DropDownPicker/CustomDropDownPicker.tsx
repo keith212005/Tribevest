@@ -43,7 +43,8 @@ export const CustomDropDownPicker = (props: DefaultProps) => {
           { height: scale(19) },
         ]}
       >
-        {props.valueObject && props.valueObject.errorText}
+        {/* {props.valueObject && props.valueObject.errorText} */}
+        {props?.valueObject?.errorText}
       </Text>
     </>
   );

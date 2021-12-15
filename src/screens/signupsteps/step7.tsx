@@ -8,8 +8,8 @@ import createState from 'react-hook-setstate';
 
 // LOCAL IMPORT
 import { images, responsiveWidth, useGlobalStyles } from '@resources';
-import { FastImg } from '@components';
 import { Icon } from 'react-native-elements';
+import FastImage from 'react-native-fast-image';
 
 export const Step7 = () => {
   const globalStyle = useGlobalStyles();
@@ -39,14 +39,16 @@ export const Step7 = () => {
       <>
         <Text
           style={[
-            globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
+            globalStyle.textStyle('_14', 'text', 'NUNITO_BOLD'),
             { marginBottom: 10 },
           ]}
         >
           {loc('NUMBER_TRIBE_MEMBERS')}
         </Text>
 
-        <View style={[styles.counterContainer, { borderColor: colors.text }]}>
+        <View
+          style={[styles.counterContainer, { borderColor: colors.borderGray }]}
+        >
           {_renderButton('minus', () => {
             if (state.number > 0) {
               setState({ number: state.number - 1 });
@@ -67,10 +69,31 @@ export const Step7 = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={[globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD')]}>
+      <Text style={[globalStyle.textStyle('_14', 'text', 'NUNITO_EXTRABOLD')]}>
         {loc('AVERAGE_TRIBE_HAS')}
       </Text>
-      {FastImg(images.bar_chart, 300, { alignSelf: 'center' })}
+      <Text
+        style={[
+          globalStyle.textStyle('_20', 'green', 'NUNITO_BOLD'),
+          { marginTop: 20 },
+        ]}
+      >
+        {loc('FIVE_SIX_MEMBERS')}
+      </Text>
+      <View style={{ paddingRight: 20, paddingLeft: 10 }}>
+        <FastImage
+          source={images.bar_chart}
+          style={{
+            width: '100%',
+            aspectRatio: 1,
+            // borderWidth: 1,
+            marginTop: -45,
+            marginBottom: -20,
+          }}
+          resizeMode={FastImage.resizeMode.contain}
+        />
+      </View>
+
       {_renderEnterNumberofTribeMembers()}
     </View>
   );
@@ -80,7 +103,6 @@ const styles = StyleSheet.create({
   container: { alignItems: 'center' },
   counterContainer: {
     borderWidth: 1,
-
     borderRadius: 60,
     flexDirection: 'row',
     width: responsiveWidth(90),
@@ -94,6 +116,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F1F5F9',
-    margin: 10,
+    margin: 5,
   },
 });

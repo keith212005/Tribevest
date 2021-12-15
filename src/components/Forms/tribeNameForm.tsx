@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable camelcase */
 /* eslint-disable no-fallthrough */
 /* eslint-disable no-undef */
 import React from 'react';
@@ -7,8 +5,6 @@ import { View, Text } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import _ from 'lodash';
-import { useTheme } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
 import createState from 'react-hook-setstate';
 
 // LOCAL IMPORTS
@@ -16,16 +12,13 @@ import { fieldObject } from '@constants';
 import { CustomInput } from '@components';
 import { useGlobalStyles } from '@resources';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
-import { validateEmail } from '@utils';
 
 export const TribeNameForm = () => {
   var inputs = new Array(1);
-
   const [state, setState] = createState<any>({
-    enter_name: fieldObject,
+    tribe_name: fieldObject,
   });
-  const { colors } = useTheme() as unknown as CustomTheme;
-  const dispatch = useDispatch();
+
   const globalStyle = useGlobalStyles();
 
   /**
@@ -46,8 +39,10 @@ export const TribeNameForm = () => {
   };
 
   const checkValidation = (numbers: number, key: string) => {
+    console.log('check validation called...', numbers);
+
     var stateObject: any = {};
-    const enter_name = state.enter_name.value;
+    const tribe_name = state.tribe_name.value;
 
     return new Promise((resolve) => {
       stateObject[key] = {
@@ -56,28 +51,29 @@ export const TribeNameForm = () => {
 
       switch (numbers) {
         case 1:
-          if (_.isEmpty(enter_name)) {
-            stateObject.enter_name = {
-              value: enter_name,
+          if (_.isEmpty(tribe_name)) {
+            console.log('insied');
+
+            stateObject.tribe_name = {
+              value: tribe_name,
               isError: true,
-              errorText: loc('EMPTY_FULL_NAME'),
+              errorText: loc('EMPTY_TRIBE_NAME'),
             };
           }
         default:
           setState(stateObject);
           resolve(true);
-
           break;
       }
     });
   };
 
   // handle onSubmitEditing method of input box
-  const onSubmitEditing = (number: number) => {
-    if (number < 1) {
-      inputs[number + 1].focus();
-    } else {
-    }
+  const onSubmitEditing = () => {
+    // if (number < 1) {
+    //   inputs[number + 1].focus();
+    // } else {
+    // }
   };
 
   const _renderInput = (
@@ -87,13 +83,15 @@ export const TribeNameForm = () => {
   ) => {
     return (
       <CustomInput
+        label={loc(key)}
         returnKeyType="done"
         placeholder={loc(key)}
         refName={(input: any) => (inputs[index] = input)}
         onFocus={() => checkValidation(index, key)}
         onEndEditing={() => checkValidation(index + 1, key)}
-        onSubmitEditing={() => onSubmitEditing(index)}
+        onSubmitEditing={() => onSubmitEditing()}
         onChangeText={(val: string) => handleChange(val, key)}
+        blurOnSubmit={true}
         {...extraProps}
       />
     );
@@ -102,8 +100,8 @@ export const TribeNameForm = () => {
   return (
     <View style={{ paddingTop: 10 }}>
       {/* Render Full Name */}
-      {_renderInput(0, 'enter_name', {
-        valueObject: state.enter_name,
+      {_renderInput(0, 'tribe_name', {
+        valueObject: state.tribe_name,
       })}
       <Text style={[globalStyle.textStyle('_12', 'lightText', 'NUNITO_BOLD')]}>
         {loc('CHANGE_NAME_LATER_MSG')}

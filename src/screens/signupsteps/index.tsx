@@ -18,6 +18,7 @@ import { Step8 } from './step8';
 import { Step9 } from './step9';
 import { Step10 } from './step10';
 import { Step11 } from './step11';
+import { Step12 } from './step12';
 import { useBackButton } from '@utils';
 import { responsiveWidth } from '@resources';
 import { navigate, navigationRef } from '@navigator';
@@ -105,6 +106,12 @@ export const SignUpSteps = () => {
     headerTitle = userName + loc('YOUR_TRIBE') + tribeName + loc('LOOKS_GREAT');
     headerDescription = '';
     buttonName = loc('SKIP_NOW');
+  } else if (stepIndex === 12) {
+    let userName = 'Kasey';
+    let tribeName = 'Wealth Tribe';
+    headerTitle = userName + loc('YOUR_TRIBE') + tribeName + loc('LOOKS_GREAT');
+    headerDescription = '';
+    buttonName = loc('SKIP_NOW');
   } else {
     headerTitle = '';
   }
@@ -145,15 +152,18 @@ export const SignUpSteps = () => {
           {state.stepIndex === 9 ? <Step9 /> : null}
           {state.stepIndex === 10 ? <Step10 /> : null}
           {state.stepIndex === 11 ? <Step11 /> : null}
+          {state.stepIndex === 12 ? <Step12 /> : null}
         </ScrollView>
 
-        <RoundGradientButton2
-          disabled={false}
-          gradientColor={colors.primaryGradiant}
-          title={buttonName}
-          onPress={() => goToNext()}
-          extraStyle={styles.buttonStyle}
-        />
+        {state.stepIndex !== 12 && (
+          <RoundGradientButton2
+            disabled={false}
+            gradientColor={colors.primaryGradiant}
+            title={buttonName}
+            onPress={() => goToNext()}
+            extraStyle={styles.buttonStyle}
+          />
+        )}
       </FormContainer>
     </View>
   );

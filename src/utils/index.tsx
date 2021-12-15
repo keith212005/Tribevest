@@ -1,2 +1,2 @@
 export * from './validate';
-export * from './customhooks';
+export * from './Hooks';
