@@ -39,7 +39,8 @@ export const SingleSelectList = (props: DefaultProps) => {
                   : { ...item2, selected: false },
               );
               setState({ dataArr: newArr });
-              props.onPress(newArr);
+              const SelectedItemArr = newArr.filter((x) => x.selected === true);
+              props.onPress(SelectedItemArr);
             }}
             style={[
               styles.container,
@@ -76,7 +77,7 @@ export const SingleSelectList = (props: DefaultProps) => {
 const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
-    margin: 10,
+    margin: 8,
     borderRadius: 16,
     padding: 16,
   },

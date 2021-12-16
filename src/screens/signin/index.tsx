@@ -13,6 +13,8 @@ import {
   SignInForm,
   FormContainer,
 } from '@components';
+import { FaceIdSignIn } from 'components/Forms/faceIdSignIn';
+import { navigate } from '@navigator';
 
 const SigninScreen = (props: any) => {
   const { isAppOpenFirstTime, isUserLoggedIn } = props;
@@ -61,8 +63,19 @@ const SigninScreen = (props: any) => {
           showsVerticalScrollIndicator={false}
           style={{}}
         >
+          {/* Render Face Id Sign In */}
+          <FaceIdSignIn />
+
+          {/* Render Sign In Form*/}
           <SignInForm />
-          <SocialMediaLogin />
+
+          {/* Render Google Facebook Apple Buttons*/}
+          <SocialMediaLogin
+            leftText={loc('NEW_TO_TRIBEVEST')}
+            rightText={loc('CREATE_AN_ACCOUNT')}
+            onPressRightText={() => navigate('SignUp')}
+            onPressIcon={(iconName) => console.log(iconName)}
+          />
         </ScrollView>
       </FormContainer>
     </View>

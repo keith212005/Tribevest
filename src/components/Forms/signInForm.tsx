@@ -19,7 +19,6 @@ import {
 } from '@resources';
 import { fieldObject } from '@constants';
 import { navigate } from '@navigator';
-import { FaceIdSignIn } from './faceIdSignIn';
 import { isLoggedIn } from 'actions/isLoggedIn';
 import { CustomInput, RoundGradientButton2 } from '@components';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
@@ -133,9 +132,6 @@ export const SignInForm = () => {
       style={[{ backgroundColor: isDarkTheme ? colors.background : 'white' }]}
     >
       <View style={{ paddingHorizontal: 20 }}>
-        {/* Render Face Id Sign In */}
-        <FaceIdSignIn />
-
         {/* Render Email Input */}
         {_renderInput(0, 'email', {
           valueObject: state.email,

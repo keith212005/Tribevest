@@ -40,6 +40,7 @@ export const Step10 = () => {
   const _renderBillCard = (item: any) => {
     return (
       <BillingCard
+        key={item.title}
         title={loc(item.title)}
         amount={item.amount}
         description={loc(item.description)}

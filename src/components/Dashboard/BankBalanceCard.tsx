@@ -1,143 +1,100 @@
 /* eslint-disable no-undef */
-
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+  LayoutAnimation,
+  Pressable,
+  Platform,
+  UIManager,
+} from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { Card } from 'react-native-elements';
-
-// LOCAL IMPORTS
-import { FastImg } from '@components';
-import { images, scale, useGlobalStyles } from '@resources';
 import { useTheme } from '@react-navigation/native';
 
+// LOCAL IMPORTS
+import { FastImg, Rotate } from '@components';
+import { images, scale, useGlobalStyles } from '@resources';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
+
 export const BankBalanceCard = () => {
-  const globalStyles = useGlobalStyles();
-  const { colors } = useTheme() as unknown as CustomTheme;
+  const [open, setopen] = useState(false);
+
+  const globalStyle = useGlobalStyles();
+  const { colors } = useTheme() as CustomTheme;
+  const onPress = () => {
+    LayoutAnimation.easeInEaseOut();
+    setopen(!open);
+  };
 
   const _renderCardHeader = () => {
     return (
-      <>
-        <View>
-          <View style={[styles.row]}>
-            <Text
-              style={[
-                globalStyles.textStyle('_24', 'blue', 'NUNITO_REGULAR'),
-                { fontWeight: '900' },
-              ]}
-            >
-              $45,198.00
-            </Text>
+      <Pressable onPress={onPress}>
+        <View style={[styles.row]}>
+          <Text
+            style={[globalStyle.textStyle('_24', 'blue', 'NUNITO_EXTRABOLD')]}
+          >
+            $45,198.00
+          </Text>
+          <Rotate onPress={onPress}>
             {FastImg(images.arrow_drop_down_circle, 25)}
-          </View>
-          <View style={[styles.row, { marginBottom: 20 }]}>
-            <Text
-              style={[globalStyles.textStyle('_14', 'text', 'NUNITO_SEMIBOLD')]}
-            >
-              {loc('BANK_ACCOUNT_BALANCE')}
-            </Text>
-
-            <Text
-              style={[
-                globalStyles.textStyle('_14', 'lightText', 'NUNITO_REGULAR'),
-              ]}
-            >
-              Oct 2020
-            </Text>
-          </View>
+          </Rotate>
         </View>
+        <View style={[styles.row, { marginBottom: 20 }]}>
+          {_renderText(loc('BANK_ACCOUNT_BALANCE'))}
+          {_renderText('Oct 2020', { color: colors.lightText })}
+        </View>
+      </Pressable>
+    );
+  };
+
+  const _renderText = (name: string, extraStyle?: any) => {
+    return (
+      <Text
+        style={[
+          globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
+          { ...extraStyle },
+        ]}
+      >
+        {name}
+      </Text>
+    );
+  };
+
+  const _renderCollapsibleCardBody = () => {
+    return (
+      <>
         <Card.Divider />
+        <Text style={[globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD')]}>
+          {loc('RECENT_ACTIVITY')}
+        </Text>
+
+        <View style={[styles.row, { justifyContent: 'space-evenly' }]}>
+          {_renderText(loc('TYPE'), { flex: 5 })}
+          {_renderText(loc('AMOUNT'), { flex: 2 })}
+          {_renderText(loc('DATE'), { flex: 2, textAlign: 'right' })}
+        </View>
+
+        <View style={[styles.row]}>
+          {_renderText('Contribution', { flex: 5 })}
+          {_renderText('$5000', { flex: 2, color: colors.lightText })}
+          {_renderText('10/10/21', { color: colors.lightText })}
+        </View>
       </>
     );
   };
 
-  const _renderTableTitle = (
-    title1: string,
-    title2: string,
-    title3: string,
-  ) => {
-    return (
-      <View style={[styles.row, { justifyContent: 'space-evenly' }]}>
-        <Text
-          style={[
-            { flex: 5 },
-            globalStyles.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
-          ]}
-        >
-          {loc(title1)}
-        </Text>
-        <Text
-          style={[
-            { flex: 2 },
-            globalStyles.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
-          ]}
-        >
-          {loc(title2)}
-        </Text>
-        <Text
-          style={[
-            { flex: 2, textAlign: 'right' },
-            globalStyles.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
-          ]}
-        >
-          {loc(title3)}
-        </Text>
-      </View>
-    );
-  };
-
-  const _renderCardBody = () => {
-    return (
-      <View>
-        <View
-          style={[
-            styles.row,
-            globalStyles.textStyle('_14', 'text', 'NUNITO_BOLD'),
-          ]}
-        >
-          <Text
-            style={[globalStyles.textStyle('_14', 'text', 'NUNITO_SEMIBOLD')]}
-          >
-            {loc('RECENT_ACTIVITY')}
-          </Text>
-        </View>
-
-        {_renderTableTitle('TYPE', 'AMOUNT', 'DATE')}
-        <View style={[styles.row]}>
-          <Text
-            style={[
-              { flex: 5 },
-              globalStyles.textStyle('_14', 'text', 'NUNITO_REGULAR'),
-            ]}
-          >
-            Contirbution
-          </Text>
-          <Text
-            style={[
-              { flex: 2 },
-              globalStyles.textStyle('_14', 'lightText', 'NUNITO_REGULAR'),
-            ]}
-          >
-            $5000
-          </Text>
-          <Text
-            style={[
-              globalStyles.textStyle('_14', 'lightText', 'NUNITO_REGULAR'),
-            ]}
-          >
-            10/10/21
-          </Text>
-        </View>
-      </View>
-    );
-  };
-
-  console.log('rendering BankBalanceCard.tsx');
-
   return (
     <Card containerStyle={[styles.container, { backgroundColor: colors.card }]}>
       {_renderCardHeader()}
-      {_renderCardBody()}
+      {open && _renderCollapsibleCardBody()}
     </Card>
   );
 };

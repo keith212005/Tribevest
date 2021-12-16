@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 
+// THIRD PARTY IMPORTS
 import { Icon } from 'react-native-elements';
-import { responsiveHeight, scale } from '@resources';
+
+// LOCAL IMPORTS
+import { scale } from '@resources';
 
 export const BackButton = (props: any) => {
   return (
@@ -13,21 +16,23 @@ export const BackButton = (props: any) => {
       type="feather"
       color="white"
       onPress={props.onPress}
-      containerStyle={styles.backIconStyle}
+      containerStyle={styles.containerStyle}
+      iconStyle={styles.iconStyle}
       {...props.extraProps}
     />
   );
 };
 
 const styles = StyleSheet.create({
-  backIconStyle: {
+  containerStyle: {
     height: scale(35),
     width: scale(35),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#46AFFF',
-    alignSelf: 'flex-start',
-    borderRadius: 60,
-    marginBottom: responsiveHeight(2),
+  },
+  iconStyle: {
+    borderRadius: 20,
+    padding: 5,
   },
 });

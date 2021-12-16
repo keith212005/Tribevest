@@ -1,22 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-undef */
 import React from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import createState from 'react-hook-setstate';
 import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
-import { styles } from './style';
-import { fieldObject, SIGN_UP_STEP1 } from '@constants';
 import {
   SignInHeader,
   FormContainer,
   SignUpForm,
   SocialMediaLogin,
 } from '@components';
-import { navigate, navigationRef } from '@navigator';
+import { styles } from './style';
+import { fieldObject } from '@constants';
+import { navigationRef } from '@navigator';
 
 export const SignUp = () => {
   const { colors } = useTheme() as unknown as CustomTheme;
@@ -44,7 +44,14 @@ export const SignUp = () => {
       <FormContainer>
         <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
           <SignUpForm />
-          <SocialMediaLogin />
+
+          {/* Render Google Facebook Apple Buttons*/}
+          <SocialMediaLogin
+            leftText={loc('ALREADY_HAVE_ACCOUNT')}
+            rightText={loc('SIGN_IN')}
+            onPressRightText={() => navigationRef.goBack()}
+            onPressIcon={(iconName) => console.log(iconName)}
+          />
         </ScrollView>
       </FormContainer>
     </View>

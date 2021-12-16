@@ -5,13 +5,14 @@ import { ScrollView, View } from 'react-native';
 // THIRD PARTY IMPORTS
 
 // LOCAL IMPORTS
-import { styles } from './style';
 import {
   BankBalanceCard,
   CapTableCard,
+  CollapsibleHeader1,
   OperatingAgreementButton,
   TribeHeader,
 } from '@components';
+import { styles } from './style';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Tribe = () => {
@@ -27,6 +28,7 @@ const Tribe = () => {
         <View style={{ marginHorizontal: 20 }}>
           <OperatingAgreementButton />
           <BankBalanceCard />
+          {/* <CollapsibleHeader1 /> */}
           <CapTableCard />
         </View>
       </ScrollView>

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Text, Platform, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import FastImage from 'react-native-fast-image';
 import { useTheme } from '@react-navigation/native';
 import { HeaderStyleInterpolators } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,7 +12,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as Screen from '@screens';
 import { SCREENS } from '@constants';
 import { images, responsiveHeight, useGlobalStyles } from '@resources';
-import FastImage from 'react-native-fast-image';
 
 const Tab = createBottomTabNavigator();
 
@@ -50,7 +50,6 @@ export const TabNavigator = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color }) => {
           let iconName: string = 'home';
-
           if (route.name === SCREENS.Tribes) {
             iconName = focused ? images.tribes_active : images.tribes_inactive;
           } else if (route.name === SCREENS.Messages) {

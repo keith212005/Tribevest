@@ -7,10 +7,6 @@ import { useTheme } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // LOCAL IMPORTS
-import { Step1 } from './step1';
-import { Step2 } from './step2';
-import { Step3 } from './step3';
-import { Step4 } from './step4';
 import { Step5 } from './step5';
 import { Step6 } from './step6';
 import { Step7 } from './step7';
@@ -22,14 +18,28 @@ import { Step12 } from './step12';
 import { useBackButton } from '@utils';
 import { responsiveWidth } from '@resources';
 import { navigate, navigationRef } from '@navigator';
-import { SignInHeader, FormContainer, RoundGradientButton2 } from '@components';
+import {
+  SignInHeader,
+  FormContainer,
+  RoundGradientButton2,
+  SingleSelectList,
+} from '@components';
+import {
+  SIGN_UP_STEP1,
+  SIGN_UP_STEP2,
+  SIGN_UP_STEP3,
+  SIGN_UP_STEP4,
+} from '@constants';
 
 export const SignUpSteps = () => {
   const [state, setState] = useState({ stepIndex: 1 });
+  const [disabled, setDisabled] = useState<any>({ disabled: false });
   const { colors } = useTheme() as unknown as CustomTheme;
   const insets = useSafeAreaInsets();
   const { stepIndex } = state;
-  useEffect(() => {}, [state.stepIndex]);
+  useEffect(() => {
+    setDisabled(false);
+  }, [state.stepIndex]);
 
   /**
   |--------------------------------------------------
@@ -37,11 +47,7 @@ export const SignUpSteps = () => {
   |--------------------------------------------------
   */
   const backHandler = () => {
-    if (state.stepIndex !== 1) {
-      goToPrevious();
-    } else {
-      navigationRef.goBack();
-    }
+    state.stepIndex !== 1 ? goToPrevious() : navigationRef.goBack();
     return true;
   };
   useBackButton(backHandler);
@@ -52,10 +58,10 @@ export const SignUpSteps = () => {
   */
 
   const goToNext = () => {
-    setState({ stepIndex: state.stepIndex + 1 });
+    setState({ stepIndex: ++state.stepIndex });
   };
   const goToPrevious = () => {
-    setState({ stepIndex: state.stepIndex - 1 });
+    setState({ stepIndex: --state.stepIndex });
   };
 
   let headerTitle,
@@ -122,11 +128,7 @@ export const SignUpSteps = () => {
         description={headerDescription}
         showBackButton={true}
         onBackPress={() => {
-          if (state.stepIndex !== 1) {
-            goToPrevious();
-          } else {
-            navigate('SignUp');
-          }
+          state.stepIndex !== 1 ? goToPrevious() : navigate('SignUp');
         }}
       />
 
@@ -141,10 +143,42 @@ export const SignUpSteps = () => {
           showsVerticalScrollIndicator={false}
           nestedScrollEnabled={true} // required for dropdown on select state
         >
-          {state.stepIndex === 1 ? <Step1 /> : null}
-          {state.stepIndex === 2 ? <Step2 /> : null}
-          {state.stepIndex === 3 ? <Step3 /> : null}
-          {state.stepIndex === 4 ? <Step4 /> : null}
+          {state.stepIndex === 1 ? (
+            <SingleSelectList
+              array={SIGN_UP_STEP1}
+              onPress={(selectedItem: any) => {
+                console.log(selectedItem);
+                setDisabled(false);
+              }}
+            />
+          ) : null}
+          {state.stepIndex === 2 ? (
+            <SingleSelectList
+              array={SIGN_UP_STEP2}
+              onPress={(selectedItem: any) => {
+                console.log(selectedItem);
+                setDisabled(false);
+              }}
+            />
+          ) : null}
+          {state.stepIndex === 3 ? (
+            <SingleSelectList
+              array={SIGN_UP_STEP3}
+              onPress={(selectedItem: any) => {
+                console.log(selectedItem);
+                setDisabled(false);
+              }}
+            />
+          ) : null}
+          {state.stepIndex === 4 ? (
+            <SingleSelectList
+              array={SIGN_UP_STEP4}
+              onPress={(selectedItem: any) => {
+                console.log(selectedItem);
+                setDisabled(false);
+              }}
+            />
+          ) : null}
           {state.stepIndex === 5 ? <Step5 /> : null}
           {state.stepIndex === 6 ? <Step6 /> : null}
           {state.stepIndex === 7 ? <Step7 /> : null}
@@ -157,7 +191,7 @@ export const SignUpSteps = () => {
 
         {state.stepIndex !== 12 && (
           <RoundGradientButton2
-            disabled={false}
+            disabled={disabled}
             gradientColor={colors.primaryGradiant}
             title={buttonName}
             onPress={() => goToNext()}
@@ -172,7 +206,7 @@ export const SignUpSteps = () => {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   buttonStyle: {
-    marginVertical: 10,
+    marginVertical: Platform.OS === 'ios' ? 0 : 10,
     width: responsiveWidth(90),
     alignSelf: 'center',
   },

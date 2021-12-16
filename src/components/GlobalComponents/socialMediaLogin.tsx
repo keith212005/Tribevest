@@ -16,9 +16,15 @@ import {
 } from '@resources';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@react-navigation/native';
-import { navigate } from '@navigator';
 
-export const SocialMediaLogin = () => {
+interface DefaultProps {
+  leftText: string;
+  rightText: string;
+  onPressIcon: (name: string) => void;
+  onPressRightText: () => void;
+}
+
+export const SocialMediaLogin = (props: DefaultProps) => {
   const globalStyles = useGlobalStyles();
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const { colors } = useTheme() as unknown as CustomTheme;
@@ -53,7 +59,7 @@ export const SocialMediaLogin = () => {
         name={name}
         type="font-awesome"
         color={color}
-        onPress={() => console.log('hello')}
+        onPress={() => props.onPressIcon(name)}
         containerStyle={{ borderWidth: 1, borderColor: '#C9D2DA' }}
       />
     );
@@ -63,14 +69,14 @@ export const SocialMediaLogin = () => {
     return (
       <View style={styles.createAccountContainer}>
         <Text style={[globalStyles.textStyle('_14', 'text', 'NUNITO_REGULAR')]}>
-          {loc('NEW_TO_TRIBEVEST')}
+          {props.leftText}
         </Text>
-        <TouchableOpacity onPress={() => navigate('SignUp')}>
+        <TouchableOpacity onPress={props.onPressRightText}>
           <Text
             style={[globalStyles.textStyle('_14', 'primary', 'NUNITO_REGULAR')]}
           >
             {'  '}
-            {loc('CREATE_AN_ACCOUNT')}
+            {props.rightText}
           </Text>
         </TouchableOpacity>
       </View>
