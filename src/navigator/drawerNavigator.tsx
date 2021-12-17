@@ -2,7 +2,7 @@ import React from 'react';
 
 // THIRD PARTY IMPORTS
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { AnyAction, bindActionCreators, Dispatch } from 'redux';
 
 // LOCAL IMPORTS
@@ -16,6 +16,9 @@ import { responsiveWidth } from '@resources';
 const Drawer = createDrawerNavigator();
 
 const DrawerNav = () => {
+  const isDrawerLeftSideCollapsed = useSelector(
+    (state: any) => state.isDrawerLeftSideCollapsed,
+  );
   const _addScreen = (
     routeName: keyof typeof SCREENS,
     isNavigator?: boolean,
@@ -37,7 +40,9 @@ const DrawerNav = () => {
         screenOptions={{
           drawerType: 'front',
           headerShown: false,
-          drawerStyle: { width: responsiveWidth(86) },
+          drawerStyle: {
+            width: responsiveWidth(isDrawerLeftSideCollapsed ? 100 : 86),
+          },
         }}
         drawerContent={(props) => <DrawerContent {...props} />}
       >
@@ -50,9 +55,12 @@ const DrawerNav = () => {
 };
 
 function mapStateToProps(state: any) {
+  console.log(state);
+
   return {
     selectedGradient: state.theme.selectedGradient,
     isDarkTheme: state.theme.isDarkTheme,
+    isDrawerLeftSideCollapsed: state.isDrawerLeftSideCollapsed,
   };
 }
 

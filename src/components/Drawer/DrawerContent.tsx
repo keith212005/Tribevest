@@ -13,7 +13,7 @@ const DrawerContents = () => {
 
   return (
     <View style={[styles.mainContainer, { paddingTop: insets.top + 10 }]}>
-      <DrawerLeftSide show={false} />
+      <DrawerLeftSide />
       <DrawerRightSide />
     </View>
   );

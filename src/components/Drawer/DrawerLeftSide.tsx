@@ -1,98 +1,94 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
   ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  Pressable,
 } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { useSelector } from 'react-redux';
-import { Icon } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
-import { FastImg, TribeAvatar } from '@components';
-import { actionCreators } from '@actions';
+import { images, responsiveWidth, scale, useGlobalStyles } from '@resources';
+import { DrawerLeftSideCollapseButton } from 'components/Buttons/DrawerLeftSideCollapseButton';
 import { TRIBE_LIST_SIDE_DRAWER } from '@constants';
-import { images, scale, useGlobalStyles } from '@resources';
+import { FastImg, TribeAvatar } from '@components';
 
-interface DrawerLeftSideProps {
-  show: boolean;
-}
-
-const DrawerLeftSides = ({ show }: DrawerLeftSideProps) => {
+const DrawerLeftSides = () => {
   const globalStyles = useGlobalStyles();
-  const { colors } = useTheme() as unknown as CustomTheme;
-  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
+  const isOpen = useSelector((state: any) => state.isDrawerLeftSideCollapsed);
+  const { colors } = useTheme() as CustomTheme;
 
-  const _renderItem = (item: any, index: any) => {
+  const RenderItem = ({ item, index }: any) => {
     return (
-      <View style={styles.itemContainer} key={index}>
+      <Pressable
+        style={[styles.itemContainer]}
+        key={index}
+        onPress={() => console.log('item presssed....')}
+      >
         <TribeAvatar
           url={item.url}
           size={scale(45)}
-          extraStyle={{ borderRadius: 8, marginVertical: 10 }}
-          onPress={() => {
-            console.log('item pressed....');
-          }}
+          extraStyle={styles.tribeAvatarStyle}
+          onPress={() => console.log('Tribe image pressed....')}
         />
 
-        {show && (
+        {isOpen && (
           <>
             <Text
               style={[
                 globalStyles.textStyle('_16', 'black', 'NUNITO_REGULAR'),
-                { flex: 5, fontWeight: '700', marginLeft: 10 },
+                styles.tribeNameStyle,
               ]}
             >
               {item.name}
             </Text>
-            <TouchableOpacity style={{ flex: 2, alignItems: 'center' }}>
-              {FastImg(images.more_square, 60)}
+
+            <TouchableOpacity
+              style={styles.threeDotButtonStyle}
+              onPress={() => console.log('3 dot button pressed....')}
+            >
+              {FastImg(images.more_square, 20)}
             </TouchableOpacity>
           </>
         )}
-      </View>
-    );
-  };
-
-  const _renderTitle = () => {
-    return (
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Icon
-          tvParallaxProperties={false}
-          name="chevron-back-circle-sharp"
-          type="ionicon"
-          color={isDarkTheme ? colors.white : colors.blue}
-          containerStyle={{ flex: 2 }}
-          onPress={() => console.log('hello')}
-        />
-        {show && (
-          <Text
-            style={[
-              globalStyles.textStyle('_18', 'black', 'NUNITO_EXTRABOLD'),
-              { flex: 8 },
-            ]}
-          >
-            {loc('TRIBES')}
-          </Text>
-        )}
-      </View>
+      </Pressable>
     );
   };
 
   return (
-    <View style={[styles.container, { borderColor: colors.grey }]}>
-      {_renderTitle()}
-      <ScrollView persistentScrollbar={true} style={{ paddingHorizontal: 10 }}>
-        {TRIBE_LIST_SIDE_DRAWER.map((item: any, index: any) =>
-          _renderItem(item, index),
-        )}
-      </ScrollView>
-    </View>
+    <>
+      <View style={[styles.container, { borderColor: colors.grey }]}>
+        <View
+          style={[
+            styles.tribeImageContainer,
+            { width: isOpen ? responsiveWidth(80) : '100%' },
+          ]}
+        >
+          <DrawerLeftSideCollapseButton />
+
+          {isOpen && (
+            <Text
+              style={[
+                globalStyles.textStyle('_18', 'black', 'NUNITO_EXTRABOLD'),
+              ]}
+            >
+              {loc('TRIBES')}
+            </Text>
+          )}
+        </View>
+        <ScrollView persistentScrollbar={true}>
+          {TRIBE_LIST_SIDE_DRAWER.map((item: any, index: any) => (
+            <RenderItem item={item} index={index} />
+          ))}
+        </ScrollView>
+      </View>
+    </>
   );
 };
 
@@ -101,7 +97,7 @@ function mapStateToProps(state: any) {
 }
 
 function mapDispatchToProps(dispatch: any) {
-  return BindActionCreators(actionCreators, dispatch);
+  return BindActionCreators(ActionCreators, dispatch);
 }
 
 //Connect everything
@@ -111,13 +107,34 @@ export const DrawerLeftSide = connects(
 )(DrawerLeftSides);
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    borderRightWidth: 0.5,
-  },
   itemContainer: {
+    flex: 1,
+    paddingHorizontal: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    flex: 1,
+  },
+  container: {
+    borderRightWidth: 0.3,
+  },
+  tribeAvatarStyle: {
+    borderRadius: 8,
+    marginVertical: 10,
+    // borderWidth: 1,
+  },
+  tribeNameStyle: {
+    fontWeight: '700',
+    borderWidth: 0,
+    marginLeft: 10,
+  },
+  tribeImageContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    // borderWidth: 1,
+  },
+  threeDotButtonStyle: {
+    flexGrow: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    // borderWidth: 1,
   },
 });

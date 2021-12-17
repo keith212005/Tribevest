@@ -25,10 +25,9 @@ if (Platform.OS === 'android') {
 }
 
 export const BankBalanceCard = () => {
-  const [open, setopen] = useState(false);
-
   const globalStyle = useGlobalStyles();
   const { colors } = useTheme() as CustomTheme;
+  const [open, setopen] = useState(false);
   const onPress = () => {
     LayoutAnimation.easeInEaseOut();
     setopen(!open);

@@ -8,7 +8,6 @@ import { ScrollView, View } from 'react-native';
 import {
   BankBalanceCard,
   CapTableCard,
-  CollapsibleHeader1,
   OperatingAgreementButton,
   TribeHeader,
 } from '@components';
@@ -28,7 +27,6 @@ const Tribe = () => {
         <View style={{ marginHorizontal: 20 }}>
           <OperatingAgreementButton />
           <BankBalanceCard />
-          {/* <CollapsibleHeader1 /> */}
           <CapTableCard />
         </View>
       </ScrollView>

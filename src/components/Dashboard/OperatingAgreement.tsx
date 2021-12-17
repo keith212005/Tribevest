@@ -19,13 +19,12 @@ import { color, images, scale, useGlobalStyles } from '@resources';
 export const OperatingAgreementButton = () => {
   const globalStyles = useGlobalStyles();
 
-  console.log('rendering OperatingAgreementButton.tsx');
-
   return (
     <Pressable style={styles.container}>
       <LinearGradient
-        start={{ x: 0, y: 0.5 }}
-        end={{ x: 1, y: 0.5 }}
+        useAngle={true}
+        angle={177}
+        angleCenter={{ x: 0.2, y: 0.8 }}
         colors={color.primaryGradiant}
         style={styles.linearGradient}
       >

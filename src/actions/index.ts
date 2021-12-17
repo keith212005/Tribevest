@@ -4,6 +4,7 @@ import * as isOpenFirstTime from './isOpenFirstTime';
 import * as setAppLanguage from './setAppLanguage';
 import * as themeData from './getThemeData';
 import * as isLoggedIn from './isLoggedIn';
+import * as isDrawerLeftSideCollapsed from './isDrawerLeftSideCollapsed';
 
 export const actionCreators = Object.assign(
   {},
@@ -13,4 +14,5 @@ export const actionCreators = Object.assign(
   setAppLanguage,
   themeData,
   isLoggedIn,
+  isDrawerLeftSideCollapsed,
 );

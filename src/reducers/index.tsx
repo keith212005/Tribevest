@@ -11,6 +11,7 @@ import { isOpenFirstTime } from './isOpenFirstTime';
 import { setAppLanguage } from './setAppLanguage';
 import { getTheme } from './getThemeData';
 import { isLoggedIn } from './isLoggedIn';
+import { isDrawerLeftSideCollapsed } from './isDrawerLeftSideCollapsed';
 
 const appReducer = combineReducers({
   isOnline: saveNetwork,
@@ -18,6 +19,7 @@ const appReducer = combineReducers({
   language: setAppLanguage,
   theme: getTheme,
   isLoggedIn: isLoggedIn,
+  isDrawerLeftSideCollapsed: isDrawerLeftSideCollapsed,
 });
 
 const rootReducer = (state: any, action: any) => {
@@ -30,7 +32,7 @@ const rootReducer = (state: any, action: any) => {
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['isLoggedIn'], // navigation will not be persisted
+  blacklist: ['isLoggedIn', 'isDrawerLeftSideCollapsed'], // navigation will not be persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
