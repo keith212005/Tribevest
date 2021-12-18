@@ -13,6 +13,7 @@ interface TribeAvatarProps {
 
 const TribeAvatars = ({ url, size, extraStyle, onPress }: TribeAvatarProps) => {
   const globalStyles = useGlobalStyles();
+
   return (
     <Pressable onPress={onPress}>
       <FastImage
@@ -23,4 +24,6 @@ const TribeAvatars = ({ url, size, extraStyle, onPress }: TribeAvatarProps) => {
   );
 };
 
-export const TribeAvatar = memo(TribeAvatars);
+export const TribeAvatar = memo(TribeAvatars, (prev, next) => {
+  return true;
+});

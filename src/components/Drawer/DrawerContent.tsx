@@ -1,16 +1,16 @@
-/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
+// THIRD PARTY IMPORTS
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 // LOCAL IMPORTS
 import { DrawerLeftSide } from './DrawerLeftSide';
+import { DrawerRightSide } from './DrawerRightSide';
 
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import DrawerRightSide from './DrawerRightSide';
-
-const DrawerContents = () => {
+export const DrawerContent = (props: any) => {
   const insets = useSafeAreaInsets();
-
   return (
     <View style={[styles.mainContainer, { paddingTop: insets.top + 10 }]}>
       <DrawerLeftSide />
@@ -19,23 +19,9 @@ const DrawerContents = () => {
   );
 };
 
-function mapStateToProps() {
-  return {};
-}
-
-function mapDispatchToProps(dispatch: any) {
-  return BindActionCreators(ActionCreators, dispatch);
-}
-
-//Connect everything
-export const DrawerContent = connects(
-  mapStateToProps,
-  mapDispatchToProps,
-)(DrawerContents);
-
 const styles = StyleSheet.create({
   mainContainer: {
-    flexDirection: 'row',
     flex: 1,
+    flexDirection: 'row',
   },
 });

@@ -147,7 +147,6 @@ export const SignUpSteps = () => {
             <SingleSelectList
               array={SIGN_UP_STEP1}
               onPress={(selectedItem: any) => {
-                console.log(selectedItem);
                 setDisabled(false);
               }}
             />
@@ -156,7 +155,6 @@ export const SignUpSteps = () => {
             <SingleSelectList
               array={SIGN_UP_STEP2}
               onPress={(selectedItem: any) => {
-                console.log(selectedItem);
                 setDisabled(false);
               }}
             />
@@ -165,7 +163,6 @@ export const SignUpSteps = () => {
             <SingleSelectList
               array={SIGN_UP_STEP3}
               onPress={(selectedItem: any) => {
-                console.log(selectedItem);
                 setDisabled(false);
               }}
             />
@@ -174,7 +171,6 @@ export const SignUpSteps = () => {
             <SingleSelectList
               array={SIGN_UP_STEP4}
               onPress={(selectedItem: any) => {
-                console.log(selectedItem);
                 setDisabled(false);
               }}
             />

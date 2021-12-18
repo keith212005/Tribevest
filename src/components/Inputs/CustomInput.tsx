@@ -38,7 +38,6 @@ export interface CustomInputProps extends TextInputProps {
 export const CustomInput: React.FC<CustomInputProps> = (
   props: CustomInputProps,
 ) => {
-  // console.log('rendering Custom inptu');
   const [state, setState] = createState<any>({
     secureTextEntry: props.showPasswordIcon ? true : false,
   });
@@ -105,7 +104,6 @@ export const CustomInput: React.FC<CustomInputProps> = (
           { height: scale(19) },
         ]}
       >
-        {/* {props.valueObject && props.valueObject.errorText} */}
         {props.valueObject?.errorText}
       </Text>
     </View>

@@ -142,8 +142,6 @@ export const CapTableCard = () => {
     );
   };
 
-  console.log('rendering CapTableCard.tsx');
-
   return (
     <Card containerStyle={[styles.container, { backgroundColor: colors.card }]}>
       {_renderCardHeader()}

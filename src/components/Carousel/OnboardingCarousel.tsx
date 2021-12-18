@@ -17,8 +17,6 @@ import _ from 'lodash';
 import { FastImg } from '@components';
 
 export const OnboardingCarousel = () => {
-  console.log('rendering onBoarding carousel.....');
-
   const globalStyles = useGlobalStyles();
   const sliderView = (
     sliderImage: string,
@@ -28,7 +26,7 @@ export const OnboardingCarousel = () => {
     return (
       <View style={styles.sliderViewContainer}>
         {FastImg(images[sliderImage as keyof typeof images], scale(250))}
-        {/* <Image style={{}} source={images[sliderImage as keyof typeof images]} /> */}
+
         <Text
           style={[
             globalStyles.textStyle('_22', 'white', 'NUNITO_BOLD'),

@@ -1,12 +1,10 @@
-/* eslint-disable max-len */
 import {
-  moderateScale,
-  responsiveHeight,
+  responsiveWidth,
   scale,
   useGlobalStyles,
   verticalScale,
 } from '@resources';
-import * as React from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, ImageBackground } from 'react-native';
 
 // THIRD PARTY IMPORTS
@@ -14,37 +12,48 @@ import FacePile from 'react-native-face-pile';
 
 // LOCAL IMPORTS
 import { FACES } from '@constants';
+import { useSelector } from 'react-redux';
 
 const DrawerHeader = () => {
   const globalStyles = useGlobalStyles();
+  const isOpen = useSelector((state: any) => state.isDrawerLeftSideCollapsed);
+
   return (
     <ImageBackground
       style={styles.container}
       source={{
         uri: 'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
       }}
-      imageStyle={{ borderRadius: 5 }}
+      imageStyle={{
+        flex: 1,
+        borderRadius: 5,
+        width: isOpen ? responsiveWidth(100) : '100%',
+      }}
     >
       <View
         style={{
-          paddingHorizontal: scale(12),
           marginBottom: scale(12),
           justifyContent: 'flex-start',
+          marginHorizontal: 20,
+          width: responsiveWidth(100),
         }}
       >
         <Text
           style={[
             globalStyles.textStyle('_18', 'white', 'NUNITO_EXTRABOLD'),
             styles.title,
+            {
+              width: isOpen ? responsiveWidth(100) : undefined,
+            },
           ]}
         >
-          Crypto Crew
+          Crypto Crewss
         </Text>
         <FacePile
           faces={FACES}
           hideOverflow={true}
-          circleSize={12}
-          containerStyle={styles.facePileContainerStyle}
+          circleSize={16}
+          containerStyle={[styles.facePileContainerStyle]}
         />
       </View>
     </ImageBackground>

@@ -37,26 +37,31 @@ export const TRIBE_LIST_SIDE_DRAWER = [
   {
     id: 1,
     name: 'Crypto Crew',
-    url: 'https://www.yojackets.com/wp-content/uploads/2016/04/Civil-War-Scarlet-Witch-Red-Coat-1.jpg',
+    selected: true,
+    url: 'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
   },
   {
     id: 2,
     name: 'STR Group',
+    selected: false,
     url: 'https://media.istockphoto.com/photos/empty-road-at-building-exterior-picture-id479842074?k=20&m=479842074&s=612x612&w=0&h=HS6lsU1f9W21IkotS3cxdvU5KeEO-gLMUa6xrIBbR6k=',
   },
   {
     id: 3,
     name: 'Small Elephant',
+    selected: false,
     url: 'https://cdn.cnn.com/cnnnext/dam/assets/210701131308-worlds-largest-yacht--aft-night---credit--winch-design.jpg',
   },
   {
     id: 4,
     name: 'Futurist Investing',
+    selected: false,
     url: 'https://www.elitetraveler.com/wp-content/uploads/2021/03/octopus_00006307_vb1574492_optimized.jpg',
   },
   {
     id: 5,
     name: 'ATX Realtors',
+    selected: false,
     url: 'https://cdn.luxe.digital/media/2020/12/16175821/most-expensive-cars-2021-Maserati-MC20-luxe-digital%402x.jpg',
   },
 ];

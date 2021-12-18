@@ -54,13 +54,9 @@ export const SignInForm = () => {
   };
 
   const checkValidation = (numbers: number, key: string) => {
-    console.log('checkValidation called....');
-
     var stateObject: any = {};
     const email = state.email.value;
     const password = state.password.value;
-
-    console.log(key);
 
     return new Promise((resolve) => {
       stateObject[key] = {

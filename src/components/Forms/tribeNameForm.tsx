@@ -39,8 +39,6 @@ export const TribeNameForm = () => {
   };
 
   const checkValidation = (numbers: number, key: string) => {
-    console.log('check validation called...', numbers);
-
     var stateObject: any = {};
     const tribe_name = state.tribe_name.value;
 
@@ -52,8 +50,6 @@ export const TribeNameForm = () => {
       switch (numbers) {
         case 1:
           if (_.isEmpty(tribe_name)) {
-            console.log('insied');
-
             stateObject.tribe_name = {
               value: tribe_name,
               isError: true,

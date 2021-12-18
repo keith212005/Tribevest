@@ -3,8 +3,6 @@ import { StatusBar } from 'react-native';
 import { useSelector } from 'react-redux';
 
 const CustomStatusBars = (props: any) => {
-  console.log('FocusAwareStatusBar render.....');
-
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   return (
     <StatusBar

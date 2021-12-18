@@ -5,22 +5,18 @@ import { LayoutAnimation } from 'react-native';
 // THIRD PARTY IMPORTS
 import { Icon } from 'react-native-elements';
 import { useSelector } from 'react-redux';
-import { useNavigation, useTheme } from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
 import { Rotate } from 'components/Collapsible';
-import { navigationRef } from '@navigator';
 
 export const DrawerLeftSideCollapseButtons = (props: any) => {
   const { colors } = useTheme() as CustomTheme;
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const isOpen = useSelector((state: any) => state.isDrawerLeftSideCollapsed);
-  const navigation = useNavigation();
   const onPress = () => {
     LayoutAnimation.easeInEaseOut();
     props.isDrawerLeftSideCollapsed(!isOpen);
-    // console.log('navigation>>>>', navigationRef.set);
-    // navigation.setOptions({ drawerWidth: 10 });
   };
 
   return (

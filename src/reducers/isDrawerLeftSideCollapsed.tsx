@@ -1,6 +1,6 @@
 import { REDUCER_TYPE } from '@constants';
 
-const initialState = true;
+const initialState = false;
 export const isDrawerLeftSideCollapsed = (
   state = initialState,
   action: any,

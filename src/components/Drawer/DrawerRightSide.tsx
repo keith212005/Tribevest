@@ -10,17 +10,18 @@ import { Divider } from 'react-native-elements';
 // LOCAL IMPORTS
 import DrawerHeader from './DrawerHeader';
 import { GradientButton } from '@components';
-import { images, scale, useGlobalStyles } from '@resources';
+import { images, responsiveWidth, scale, useGlobalStyles } from '@resources';
 import { resetNavigation, navigate, closeDrawer } from '@navigator';
 import { ToggleDarkThemeSwitch } from './toggleDarkThemeSwitch';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { isLoggedIn } from 'actions/isLoggedIn';
 import { useTheme } from '@react-navigation/native';
 
-const DrawerRightSide = (props: any) => {
+export const DrawerRightSide = (props: any) => {
   const dispatch = useDispatch();
   const globalStyles = useGlobalStyles();
   const { colors } = useTheme() as unknown as CustomTheme;
+  const isOpen = useSelector((state: any) => state.isDrawerLeftSideCollapsed);
 
   function handleSelectedDrawerItem(label: any) {
     closeDrawer();
@@ -67,12 +68,13 @@ const DrawerRightSide = (props: any) => {
     <View style={{ flex: 8 }}>
       <DrawerHeader />
       <GradientButton
-        title={loc('OPERATING_AGREEMENT')}
+        title={isOpen ? '' : loc('OPERATING_AGREEMENT')}
         image={images.document_white}
         imageSize={20}
         containerStyle={{
           marginHorizontal: scale(10),
           marginVertical: scale(10),
+          width: isOpen ? responsiveWidth(100) : undefined,
         }}
       />
       {_renderDrawerItem('chat', loc('TRIBE_CHAT'))}
@@ -82,14 +84,12 @@ const DrawerRightSide = (props: any) => {
 
       <DrawerContentScrollView {...props}>
         {_renderDrawerItem('dashboard', loc('DASHBOARD'))}
-
         {_renderDrawerItem('wallet', loc('BANKING_WALLET'))}
         {_renderDrawerItem('dollar_circle', loc('FUNDING'))}
         {_renderDrawerItem('like', loc('VOTING'))}
         {_renderDrawerItem('members', loc('MEMBERS'))}
         {_renderDrawerItem('document', loc('DOCUMENTS'))}
         {_renderDrawerItem('settings', loc('TRIBE_SETTINGS'))}
-
         {_renderDrawerItem('settings', loc('LOGOUT'))}
         <Divider />
         <ToggleDarkThemeSwitch />
@@ -97,5 +97,3 @@ const DrawerRightSide = (props: any) => {
     </View>
   );
 };
-
-export default DrawerRightSide;

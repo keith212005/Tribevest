@@ -1,16 +1,12 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { useIsFocused } from '@react-navigation/native';
-import SafeAreaView from 'react-native-safe-area-view';
 
+// THIRD PARTY IMPORTS
+import { useIsFocused } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const FocusAwareStatusBar = (props: any) => {
   const isFocused = useIsFocused();
-
-  const insets = useSafeAreaInsets();
-  console.log('FocusAwareStatusBar render.....');
 
   return isFocused ? (
     <LinearGradient
