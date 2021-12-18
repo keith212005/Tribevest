@@ -12,7 +12,7 @@ export const TribeDetails = (props: any) => {
   const isOpen = useSelector((state: any) => state.isDrawerLeftSideCollapsed);
   return (
     <View style={styles.container}>
-      {isOpen && (
+      {isOpen ? (
         <View style={styles.detailsContainer}>
           <Text style={styles.tribeNameStyle}>{props.item.name}</Text>
           <TouchableOpacity
@@ -21,6 +21,8 @@ export const TribeDetails = (props: any) => {
             {FastImg(images.more_square, 20)}
           </TouchableOpacity>
         </View>
+      ) : (
+        <View />
       )}
     </View>
   );

@@ -8,7 +8,7 @@ import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { Divider } from 'react-native-elements';
 
 // LOCAL IMPORTS
-import DrawerHeader from './DrawerHeader';
+import { DrawerHeader } from './DrawerHeader';
 import { GradientButton } from '@components';
 import { images, responsiveWidth, scale, useGlobalStyles } from '@resources';
 import { resetNavigation, navigate, closeDrawer } from '@navigator';

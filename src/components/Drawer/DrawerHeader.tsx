@@ -8,13 +8,12 @@ import React from 'react';
 import { Text, View, StyleSheet, ImageBackground } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import FacePile from 'react-native-face-pile';
 
 // LOCAL IMPORTS
 import { FACES } from '@constants';
 import { useSelector } from 'react-redux';
 
-const DrawerHeader = () => {
+export const DrawerHeader = () => {
   const globalStyles = useGlobalStyles();
   const isOpen = useSelector((state: any) => state.isDrawerLeftSideCollapsed);
 
@@ -43,24 +42,16 @@ const DrawerHeader = () => {
             globalStyles.textStyle('_18', 'white', 'NUNITO_EXTRABOLD'),
             styles.title,
             {
-              width: isOpen ? responsiveWidth(100) : undefined,
+              width: isOpen ? responsiveWidth(100) : '100%',
             },
           ]}
         >
           Crypto Crewss
         </Text>
-        <FacePile
-          faces={FACES}
-          hideOverflow={true}
-          circleSize={16}
-          containerStyle={[styles.facePileContainerStyle]}
-        />
       </View>
     </ImageBackground>
   );
 };
-
-export default DrawerHeader;
 
 const styles = StyleSheet.create({
   container: {
@@ -69,10 +60,6 @@ const styles = StyleSheet.create({
     marginHorizontal: verticalScale(10),
   },
   title: {
-    borderColor: 'white',
-  },
-  facePileContainerStyle: {
-    alignSelf: 'flex-start',
     borderColor: 'white',
   },
 });
