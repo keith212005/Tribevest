@@ -35,6 +35,7 @@ export const Onboarding = () => {
         containerStyle={{
           width: responsiveWidth(80),
           alignSelf: 'center',
+          marginBottom: 40,
         }}
         onPress={() => dispatch(isOpenFirstTime(false))}
       />
