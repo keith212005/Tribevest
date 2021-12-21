@@ -1,9 +1,4 @@
-import {
-  responsiveWidth,
-  scale,
-  useGlobalStyles,
-  verticalScale,
-} from '@resources';
+import { responsiveWidth, useGlobalStyles, verticalScale } from '@resources';
 import React from 'react';
 import { Text, View, StyleSheet, ImageBackground } from 'react-native';
 
@@ -12,6 +7,7 @@ import { Text, View, StyleSheet, ImageBackground } from 'react-native';
 // LOCAL IMPORTS
 import { FACES } from '@constants';
 import { useSelector } from 'react-redux';
+import { AvatarGroup } from '@components';
 
 export const DrawerHeader = () => {
   const globalStyles = useGlobalStyles();
@@ -29,14 +25,7 @@ export const DrawerHeader = () => {
         width: isOpen ? responsiveWidth(100) : '100%',
       }}
     >
-      <View
-        style={{
-          marginBottom: scale(12),
-          justifyContent: 'flex-start',
-          marginHorizontal: 20,
-          width: responsiveWidth(100),
-        }}
-      >
+      <View style={{ marginHorizontal: 20 }}>
         <Text
           style={[
             globalStyles.textStyle('_18', 'white', 'NUNITO_EXTRABOLD'),
@@ -49,6 +38,13 @@ export const DrawerHeader = () => {
           Crypto Crewss
         </Text>
       </View>
+
+      <AvatarGroup
+        list={FACES}
+        size={30}
+        containerStyle={{ marginVertical: 5, marginLeft: 20 }}
+        // showVotes={true}
+      />
     </ImageBackground>
   );
 };

@@ -69,28 +69,33 @@ export const TRIBE_LIST_SIDE_DRAWER = [
 export const FACES = [
   {
     id: 0,
+    upVote: true,
     imageUrl:
-      'https://www.yojackets.com/wp-content/uploads/2016/04/Civil-War-Scarlet-Witch-Red-Coat-1.jpg',
+      'https://www.whatsappprofiledpimages.com/wp-content/uploads/2021/08/Profile-Photo-Wallpaper.jpg',
   },
   {
     id: 1,
+    upVote: false,
     imageUrl:
-      'https://www.yojackets.com/wp-content/uploads/2016/04/Civil-War-Scarlet-Witch-Red-Coat-1.jpg',
+      'https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg',
   },
   {
     id: 2,
+    upVote: true,
     imageUrl:
-      'https://www.yojackets.com/wp-content/uploads/2016/04/Civil-War-Scarlet-Witch-Red-Coat-1.jpg',
+      'https://cdn.business2community.com/wp-content/uploads/2014/04/profile-picture-300x300.jpg',
   },
   {
     id: 3,
+    upVote: false,
     imageUrl:
-      'https://www.yojackets.com/wp-content/uploads/2016/04/Civil-War-Scarlet-Witch-Red-Coat-1.jpg',
+      'https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg',
   },
   {
     id: 4,
+    upVote: true,
     imageUrl:
-      'https://www.yojackets.com/wp-content/uploads/2016/04/Civil-War-Scarlet-Witch-Red-Coat-1.jpg',
+      'https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg',
   },
 ];
 

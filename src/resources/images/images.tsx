@@ -14,6 +14,7 @@ export const images: any = {
   wallet: require('./wallet/wallet.png'),
   dollar_circle: require('./dollar_circle/dollar_circle.png'),
   like: require('./like/like.png'),
+  dislike: require('./dislike/dislike.png'),
   members: require('./members/members.png'),
   document: require('./document/document.png'),
   settings: require('./settings/settings.png'),
