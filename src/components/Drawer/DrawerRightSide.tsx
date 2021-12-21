@@ -67,33 +67,36 @@ export const DrawerRightSide = (props: any) => {
   return (
     <View style={{ flex: 8 }}>
       <DrawerHeader />
-      <GradientButton
-        title={isOpen ? '' : loc('OPERATING_AGREEMENT')}
-        image={images.document_white}
-        imageSize={20}
-        containerStyle={{
-          marginHorizontal: scale(10),
-          marginVertical: scale(10),
-          width: isOpen ? responsiveWidth(100) : undefined,
-        }}
-      />
-      {_renderDrawerItem('chat', loc('TRIBE_CHAT'))}
-      <Divider
-        style={{ width: '80%', alignSelf: 'center', marginTop: scale(20) }}
-      />
 
-      <DrawerContentScrollView {...props}>
-        {_renderDrawerItem('dashboard', loc('DASHBOARD'))}
-        {_renderDrawerItem('wallet', loc('BANKING_WALLET'))}
-        {_renderDrawerItem('dollar_circle', loc('FUNDING'))}
-        {_renderDrawerItem('like', loc('VOTING'))}
-        {_renderDrawerItem('members', loc('MEMBERS'))}
-        {_renderDrawerItem('document', loc('DOCUMENTS'))}
-        {_renderDrawerItem('settings', loc('TRIBE_SETTINGS'))}
-        {_renderDrawerItem('settings', loc('LOGOUT'))}
-        <Divider />
-        <ToggleDarkThemeSwitch />
-      </DrawerContentScrollView>
+      <View style={{ flex: 1, paddingLeft: 16 }}>
+        <GradientButton
+          title={isOpen ? '' : loc('OPERATING_AGREEMENT')}
+          image={images.document_white}
+          imageSize={20}
+          containerStyle={{
+            marginHorizontal: scale(10),
+            marginVertical: scale(10),
+            width: isOpen ? responsiveWidth(15) : undefined,
+          }}
+        />
+        {_renderDrawerItem('chat', loc('TRIBE_CHAT'))}
+        <Divider
+          style={{ width: '79%', alignSelf: 'center', marginTop: scale(20) }}
+        />
+
+        <DrawerContentScrollView {...props} bounces={false} style={{ top: 0 }}>
+          {_renderDrawerItem('dashboard', loc('DASHBOARD'))}
+          {_renderDrawerItem('wallet', loc('BANKING_WALLET'))}
+          {_renderDrawerItem('dollar_circle', loc('FUNDING'))}
+          {_renderDrawerItem('like', loc('VOTING'))}
+          {_renderDrawerItem('members', loc('MEMBERS'))}
+          {_renderDrawerItem('document', loc('DOCUMENTS'))}
+          {_renderDrawerItem('settings', loc('TRIBE_SETTINGS'))}
+          {_renderDrawerItem('settings', loc('LOGOUT'))}
+          <Divider />
+          <ToggleDarkThemeSwitch />
+        </DrawerContentScrollView>
+      </View>
     </View>
   );
 };

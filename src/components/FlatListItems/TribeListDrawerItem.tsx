@@ -6,11 +6,11 @@ import { View, StyleSheet, Pressable } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSelector } from 'react-redux';
+import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
 import { responsiveWidth, responsiveHeight, useGlobalStyles } from '@resources';
 import { TribeDetails } from 'components/Drawer/TribeDetails';
-import { useTheme } from '@react-navigation/native';
 
 export const TribeListDrawerItem = ({ item, onTribeSelected }: any) => {
   const globalStyle = useGlobalStyles();
@@ -28,7 +28,7 @@ export const TribeListDrawerItem = ({ item, onTribeSelected }: any) => {
           resizeMode={FastImage.resizeMode.cover}
           style={[
             styles.image,
-            globalStyle.squareLayout(60),
+            globalStyle.squareLayout(48),
             {
               borderColor: item.selected ? colors.blue : colors.transparent,
               borderWidth: responsiveWidth(item.selected ? 0.6 : 0),
@@ -53,7 +53,9 @@ export const TribeListDrawerItem = ({ item, onTribeSelected }: any) => {
 const styles = StyleSheet.create({
   itemMainContainer: {
     flexDirection: 'row',
-    marginLeft: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 16,
     marginBottom: 10,
   },
   itemContainer: {
@@ -63,9 +65,9 @@ const styles = StyleSheet.create({
   },
   selctedView: {
     width: 4,
-    height: responsiveHeight(7),
+    height: responsiveHeight(6),
     alignSelf: 'center',
-    marginLeft: 10,
+    marginLeft: 20,
     borderRadius: 6,
   },
   image: {

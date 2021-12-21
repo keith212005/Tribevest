@@ -12,7 +12,6 @@ import { Rotate } from 'components/Collapsible';
 
 export const DrawerLeftSideCollapseButtons = (props: any) => {
   const { colors } = useTheme() as CustomTheme;
-  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const isOpen = useSelector((state: any) => state.isDrawerLeftSideCollapsed);
   const onPress = () => {
     LayoutAnimation.easeInEaseOut();
@@ -20,13 +19,30 @@ export const DrawerLeftSideCollapseButtons = (props: any) => {
   };
 
   return (
-    <Rotate onPress={onPress}>
+    <Rotate
+      onPress={onPress}
+      extraStyle={{
+        padding: 10,
+        marginLeft: 16,
+        marginRight: 16,
+        backgroundColor: '#F6F8FF',
+        borderRadius: 60,
+      }}
+    >
       <Icon
+        size={20}
         tvParallaxProperties={false}
-        name="chevron-back-circle-sharp"
-        type="ionicon"
-        color={isDarkTheme ? colors.white : colors.blue}
-        containerStyle={{ paddingHorizontal: 30, paddingVertical: 10 }}
+        name="chevron-left"
+        type="entypo"
+        color={colors.white}
+        containerStyle={{
+          height: 25,
+          width: 25,
+          borderRadius: 50 / 2,
+          backgroundColor: '#1846FF',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       />
     </Rotate>
   );

@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { responsiveWidth, useGlobalStyles } from '@resources';
 import { DrawerLeftSideCollapseButton } from 'components/Buttons/DrawerLeftSideCollapseButton';
 import { TRIBE_LIST_SIDE_DRAWER } from '@constants';
-import { TribeListDrawerItem } from 'components/FlatListItems';
+import { AddNewTribeButton, TribeListDrawerItem } from '@components';
 
 export const DrawerLeftSide = () => {
   const globalStyles = useGlobalStyles();
@@ -30,33 +30,47 @@ export const DrawerLeftSide = () => {
   };
 
   const renderItem = ({ item }: any) => (
-    <TribeListDrawerItem item={item} onTribeSelected={handleSelectedTribe} />
+    <>
+      <TribeListDrawerItem item={item} onTribeSelected={handleSelectedTribe} />
+    </>
+  );
+
+  const _renderFooterItem = () => (
+    <AddNewTribeButton extraStyle={{ marginLeft: 16 }} />
+  );
+
+  const _renderHeaderItem = () => (
+    <View
+      style={[
+        styles.tribeImageContainer,
+        { width: isOpen ? responsiveWidth(80) : '100%' },
+      ]}
+    >
+      <DrawerLeftSideCollapseButton />
+      {isOpen && (
+        <Text
+          style={[
+            globalStyles.textStyle('_18', 'text', 'NUNITO_REGULAR'),
+            { fontWeight: '900' },
+          ]}
+        >
+          {loc('TRIBES')}
+        </Text>
+      )}
+    </View>
   );
 
   const keyExtractor = useCallback((item: any) => item.id.toString(), []);
 
   return (
     <View>
-      <View
-        style={[
-          styles.tribeImageContainer,
-          { width: isOpen ? responsiveWidth(80) : '100%' },
-        ]}
-      >
-        <DrawerLeftSideCollapseButton />
-        {isOpen && (
-          <Text
-            style={[globalStyles.textStyle('_18', 'black', 'NUNITO_EXTRABOLD')]}
-          >
-            {loc('TRIBES')}
-          </Text>
-        )}
-      </View>
-
+      {_renderHeaderItem()}
       <FlatList
+        style={styles.flatList}
         data={list}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
+        ListFooterComponent={_renderFooterItem}
       />
     </View>
   );
@@ -66,5 +80,8 @@ const styles = StyleSheet.create({
   tribeImageContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  flatList: {
+    paddingVertical: 20,
   },
 });

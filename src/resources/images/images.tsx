@@ -55,4 +55,5 @@ export const images: any = {
   cryptocurrency: require('./cryptocurrency/cryptocurrency.png'),
   collectibles: require('./collectibles/collectibles.png'),
   tick_circle_light: require('./tick_circle_light/tick_circle_light.png'),
+  gradient_add_square: require('./gradient_add_square/gradient_add_square.png'),
 };

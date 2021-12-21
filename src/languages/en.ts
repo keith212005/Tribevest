@@ -216,4 +216,5 @@ export const en = {
   SKIP_NOW: 'Skip for now',
   SLIDE_BUTTON: 'Confirm with Side Button',
   EMPTY_FULL_NAME: 'Name cannot be empty',
+  CREATE_NEW_TRIBE: 'Create new tribe',
 };

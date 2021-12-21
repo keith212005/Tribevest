@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Animated, StyleSheet, TouchableOpacity } from 'react-native';
+import { Animated, Pressable, StyleSheet, ViewStyle } from 'react-native';
 
 // LOCAL IMPORTS
 import { useToggle } from 'utils/Hooks/useToggle';
@@ -9,6 +9,7 @@ interface DefaultProps {
   outputRange?: Array<string>;
   children: any;
   onPress: () => void;
+  extraStyle: ViewStyle;
 }
 
 export const Rotate = (props: DefaultProps) => {
@@ -29,7 +30,7 @@ export const Rotate = (props: DefaultProps) => {
     }).start();
   };
   return (
-    <TouchableOpacity
+    <Pressable
       onPress={() => {
         if (!props?.inputRange && !props?.outputRange) {
           animate();
@@ -40,15 +41,18 @@ export const Rotate = (props: DefaultProps) => {
         props.onPress();
       }}
     >
-      <Animated.View style={[styles.box, { transform: [{ rotate }] }]}>
+      <Animated.View
+        style={[
+          styles.box,
+          { transform: [{ rotate }] },
+          { ...props.extraStyle },
+        ]}
+      >
         {props.children}
       </Animated.View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 const styles = StyleSheet.create({
-  box: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  box: {},
 });

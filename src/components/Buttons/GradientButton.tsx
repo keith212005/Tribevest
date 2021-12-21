@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { ViewStyle, ImageSourcePropType } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { Button } from 'react-native-elements';
@@ -9,10 +9,11 @@ import { RFValue } from 'react-native-responsive-fontsize';
 // LOCAL IMPORTS
 import { color, fonts } from '@resources';
 import { FastImg } from '@components';
+import { Source } from 'react-native-fast-image';
 
 interface DefaultProps {
   title: string;
-  image: ImageSourcePropType;
+  image: Source;
   imageSize: number;
   containerStyle?: ViewStyle;
   extraProps?: any;
@@ -27,7 +28,10 @@ const GradientButton = ({
 }: DefaultProps) => {
   return (
     <Button
-      buttonStyle={{ height: '100%' }}
+      buttonStyle={{
+        height: '100%',
+        width: '100%',
+      }}
       containerStyle={{
         borderRadius: 10,
         height: 44,
@@ -36,16 +40,17 @@ const GradientButton = ({
       ViewComponent={LinearGradient}
       linearGradientProps={{
         colors: color.primaryGradiant,
-        start: { x: 0, y: 0.5 },
-        end: { x: 1, y: 0.5 },
+        useAngle: true,
+        angle: 176,
+        angleCenter: { x: 0.2, y: 0.8 },
       }}
-      icon={FastImg(image, imageSize)}
+      icon={FastImg(image, imageSize, {})}
       title={title}
       titleStyle={[
         {
-          marginLeft: 10,
           color: 'white',
-          fontSize: RFValue(14),
+          fontSize: RFValue(12),
+          marginLeft: 20,
           fontFamily: fonts.NUNITO_REGULAR,
           fontWeight: '700',
         },

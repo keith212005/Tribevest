@@ -4,7 +4,7 @@ import React from 'react';
 import { Icon, Avatar, AvatarProps } from 'react-native-elements';
 
 // LOCAL IMPORTS
-import { images, useGlobalStyles } from '@resources';
+import { useGlobalStyles } from '@resources';
 import FastImage, { FastImageProps, Source } from 'react-native-fast-image';
 import { ViewStyle } from 'react-native';
 
@@ -26,7 +26,7 @@ export const RenderIcon = (
 };
 
 export const FastImg = (
-  uri: keyof typeof images,
+  uri: Source,
   size: number,
   extraStyle?: ViewStyle,
   extraProps?: FastImageProps,
