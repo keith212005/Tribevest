@@ -25,7 +25,6 @@ export const AvatarGroup = ({
     <View style={[styles.container, { ...containerStyle }]}>
       <View style={styles.innerContainer}>
         {list.map((item: any) => {
-          console.log(item);
           return (
             <View key={item.id} style={{ borderWidth: 2 }}>
               <FastImage

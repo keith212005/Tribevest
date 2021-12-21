@@ -74,6 +74,8 @@ const App = (props: any) => {
         })}
         {_addScreen('Onboarding' as never)}
         {_addScreen('SignUpSteps' as never)}
+        {_addScreen('Voting' as never)}
+        {_addScreen('Vote' as never)}
       </Stack.Navigator>
     </NavigationContainer>
   );

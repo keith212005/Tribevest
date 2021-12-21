@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { en } from '@languages';
 
 /* eslint-disable max-len */
@@ -17,6 +16,8 @@ export const SCREENS = {
   FaceId: 'FaceId',
   SignUp: 'SignUp',
   SignUpSteps: 'SignUpSteps',
+  Voting: 'Voting',
+  Vote: 'Vote',
 };
 
 export interface IfieldObject {

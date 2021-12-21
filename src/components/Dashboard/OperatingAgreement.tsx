@@ -15,12 +15,15 @@ import LinearGradient from 'react-native-linear-gradient';
 // LOCAL IMPORTS
 import { FastImg } from '@components';
 import { color, images, scale, useGlobalStyles } from '@resources';
+import { navigate } from '@navigator';
 
 export const OperatingAgreementButton = () => {
   const globalStyles = useGlobalStyles();
 
+  const onPress = () => navigate('Voting');
+
   return (
-    <Pressable style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       <LinearGradient
         useAngle={true}
         angle={177}
@@ -53,7 +56,7 @@ export const OperatingAgreementButton = () => {
             alignItems: 'center',
           }}
         >
-          <TouchableOpacity style={styles.viewButtonStyle}>
+          <TouchableOpacity style={styles.viewButtonStyle} onPress={onPress}>
             <Text
               style={[
                 globalStyles.textStyle('_14', 'white', 'NUNITO_EXTRABOLD'),
