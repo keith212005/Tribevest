@@ -12,6 +12,7 @@ import createState from 'react-hook-setstate';
 
 // LOCAL IMPORTS
 import {
+  fonts,
   images,
   responsiveHeight,
   responsiveWidth,
@@ -20,7 +21,7 @@ import {
 import { fieldObject } from '@constants';
 import { navigate } from '@navigator';
 import { isLoggedIn } from 'actions/isLoggedIn';
-import { CustomInput, RoundGradientButton2 } from '@components';
+import { CustomInput, RoundGradientButton } from '@components';
 import { CustomInputProps } from 'components/Inputs/CustomInput';
 import { validateEmail } from '@utils';
 
@@ -159,10 +160,11 @@ export const SignInForm = () => {
       </View>
 
       {/* Render Sign In button */}
-      <RoundGradientButton2
+      <RoundGradientButton
         gradientColor={colors.primaryGradiant}
         title={loc('SIGN_IN')}
         onPress={() => dispatch(isLoggedIn(true))}
+        titleStyle={{ fontSize: 16, fontFamily: fonts.NUNITO_BOLD }}
         extraStyle={{
           marginBottom: 30,
           width: responsiveWidth(90),

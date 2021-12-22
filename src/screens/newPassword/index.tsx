@@ -11,7 +11,7 @@ import { useTheme } from '@react-navigation/native';
 import {
   FormContainer,
   MessageWithIcon,
-  RoundGradientButton2,
+  RoundGradientButton,
   SignInHeader,
 } from '@components';
 import { styles } from './style';
@@ -142,7 +142,7 @@ export const NewPassword = () => {
 
   const _renderSubmitButton = () => {
     return (
-      <RoundGradientButton2
+      <RoundGradientButton
         gradientColor={colors.primaryGradiant}
         title={loc('RESET_PASSWORD')}
         onPress={() => {}}

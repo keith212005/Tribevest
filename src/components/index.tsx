@@ -15,3 +15,4 @@ export * from './Switch';
 export * from './DropDownPicker';
 export * from './Collapsible';
 export * from './FlatListItems';
+export * from './VotingScreen';

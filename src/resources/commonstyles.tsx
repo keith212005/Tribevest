@@ -27,7 +27,7 @@ const getGlobalStyles = (props: { colors: any }) =>
   createStyles<Style>({
     textStyle: (fontSize, color, fontFamily) => {
       return {
-        fontSize: RFValue(fontsize[fontSize]),
+        fontSize: fontsize[fontSize],
         color: props.colors[color],
         fontFamily: fonts[fontFamily],
       };

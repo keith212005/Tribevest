@@ -98,6 +98,42 @@ export const FACES = [
     imageUrl:
       'https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg',
   },
+  {
+    id: 5,
+    upVote: false,
+    imageUrl:
+      'https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg',
+  },
+  {
+    id: 6,
+    upVote: true,
+    imageUrl:
+      'https://image.shutterstock.com/image-photo/profile-picture-smiling-millennial-asian-260nw-1836020740.jpg',
+  },
+  {
+    id: 7,
+    upVote: false,
+    imageUrl:
+      'https://flyingcdn-942385.b-cdn.net/wp-content/uploads/2018/03/Awesome-Profile-Pictures-for-Guys-look-away2.jpg',
+  },
+  {
+    id: 8,
+    upVote: true,
+    imageUrl:
+      'https://i.pinimg.com/originals/a6/0d/68/a60d685194a7fd984d08a595a0a99ae7.jpg',
+  },
+  {
+    id: 9,
+    upVote: true,
+    imageUrl:
+      'https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg',
+  },
+  {
+    id: 10,
+    upVote: true,
+    imageUrl:
+      'https://www.whatsappprofiledpimages.com/wp-content/uploads/2021/08/Profile-Photo-Wallpaper.jpg',
+  },
 ];
 
 export const CAP_TABLE = [

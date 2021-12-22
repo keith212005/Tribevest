@@ -12,6 +12,7 @@ interface AvatarGroupProps {
   size: number;
   containerStyle?: ViewStyle;
   showVotes?: boolean;
+  maxToShow?: number;
 }
 
 export const AvatarGroup = ({
@@ -19,14 +20,21 @@ export const AvatarGroup = ({
   size,
   containerStyle,
   showVotes,
+  maxToShow,
 }: AvatarGroupProps) => {
   const globalStyle = useGlobalStyles();
   return (
     <View style={[styles.container, { ...containerStyle }]}>
       <View style={styles.innerContainer}>
-        {list.map((item: any) => {
+        {list.map((item: any, index: any) => {
+          if (
+            (maxToShow && maxToShow >= index) ||
+            (maxToShow && maxToShow >= 10)
+          ) {
+            return;
+          }
           return (
-            <View key={item.id} style={{ borderWidth: 2 }}>
+            <View key={item.id}>
               <FastImage
                 style={[styles.image, globalStyle.squareLayout(size)]}
                 source={{ uri: item.imageUrl }}
@@ -36,12 +44,12 @@ export const AvatarGroup = ({
                   source={item.upVote ? images.like : images.dislike}
                   style={[
                     styles.likeDislike,
-                    globalStyle.squareLayout(size / 2),
+                    globalStyle.squareLayout(size / 2.2),
                     {
                       position: 'absolute',
                       justifyContent: 'flex-end',
                       marginTop: size / 2,
-                      marginLeft: size / 2,
+                      marginLeft: size / 1.9,
                     },
                   ]}
                 />
@@ -60,6 +68,7 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flexDirection: 'row-reverse',
+    flexWrap: 'wrap',
   },
   image: {
     borderWidth: 2,

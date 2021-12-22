@@ -20,6 +20,7 @@ export const color: any = {
   darkGrey: '#4d4d4d',
   BLACK_TRANSPARENT: 'rgba(0, 0, 0, 0.5)',
   error: '#FF6865',
+  error_text: '#FF3940',
   error_background: '#FFF0F0',
   error_light: '#FDDEDE',
   green: '#32CD32',

@@ -21,7 +21,7 @@ import { navigate, navigationRef } from '@navigator';
 import {
   SignInHeader,
   FormContainer,
-  RoundGradientButton2,
+  RoundGradientButton,
   SingleSelectList,
 } from '@components';
 import {
@@ -186,7 +186,7 @@ export const SignUpSteps = () => {
         </ScrollView>
 
         {state.stepIndex !== 12 && (
-          <RoundGradientButton2
+          <RoundGradientButton
             disabled={disabled}
             gradientColor={colors.primaryGradiant}
             title={buttonName}

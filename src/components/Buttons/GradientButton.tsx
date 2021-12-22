@@ -4,10 +4,9 @@ import { ViewStyle } from 'react-native';
 // THIRD PARTY IMPORTS
 import { Button } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-import { RFValue } from 'react-native-responsive-fontsize';
 
 // LOCAL IMPORTS
-import { color, fonts } from '@resources';
+import { color, fonts, fontsize } from '@resources';
 import { FastImg } from '@components';
 import { Source } from 'react-native-fast-image';
 
@@ -17,6 +16,7 @@ interface DefaultProps {
   imageSize: number;
   containerStyle?: ViewStyle;
   extraProps?: any;
+  titleStyle?: ViewStyle;
 }
 
 const GradientButton = ({
@@ -25,12 +25,17 @@ const GradientButton = ({
   imageSize,
   containerStyle,
   extraProps,
+  titleStyle,
 }: DefaultProps) => {
   return (
     <Button
       buttonStyle={{
         height: '100%',
         width: '100%',
+        justifyContent: 'flex-start',
+        borderWidth: 1,
+
+        borderRadius: 10,
       }}
       containerStyle={{
         borderRadius: 10,
@@ -44,16 +49,17 @@ const GradientButton = ({
         angle: 176,
         angleCenter: { x: 0.2, y: 0.8 },
       }}
-      icon={FastImg(image, imageSize, {})}
+      icon={FastImg(image, imageSize, { marginLeft: 6 })}
       title={title}
       titleStyle={[
         {
           color: 'white',
-          fontSize: RFValue(12),
-          marginLeft: 20,
-          fontFamily: fonts.NUNITO_REGULAR,
+          fontSize: fontsize._14,
+          marginLeft: 6,
+          fontFamily: fonts.NUNITO_SEMIBOLD,
           fontWeight: '700',
         },
+        { ...titleStyle },
       ]}
       {...extraProps}
     />

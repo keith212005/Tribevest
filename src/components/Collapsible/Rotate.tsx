@@ -9,7 +9,7 @@ interface DefaultProps {
   outputRange?: Array<string>;
   children: any;
   onPress: () => void;
-  extraStyle: ViewStyle;
+  extraStyle?: ViewStyle;
 }
 
 export const Rotate = (props: DefaultProps) => {

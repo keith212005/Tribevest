@@ -11,7 +11,7 @@ import { useTheme } from '@react-navigation/native';
 import {
   CustomInput,
   FormContainer,
-  RoundGradientButton2,
+  RoundGradientButton,
   SignInHeader,
 } from '@components';
 import { styles } from './style';
@@ -126,7 +126,7 @@ export const PasswordReset = () => {
           leftIcon: images.sms,
         })}
 
-        <RoundGradientButton2
+        <RoundGradientButton
           gradientColor={colors.primaryGradiant}
           title={loc('SEND_INSTRUCTIONS')}
           onPress={() => navigate('CheckEmail')}

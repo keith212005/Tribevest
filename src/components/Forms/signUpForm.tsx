@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable camelcase */
 /* eslint-disable no-fallthrough */
 /* eslint-disable no-undef */
 import React from 'react';
@@ -14,7 +13,7 @@ import createState from 'react-hook-setstate';
 // LOCAL IMPORTS
 import { fieldObject } from '@constants';
 import { navigate } from '@navigator';
-import { CustomInput, RoundGradientButton2 } from '@components';
+import { CustomInput, RoundGradientButton } from '@components';
 import {
   images,
   responsiveHeight,
@@ -152,10 +151,7 @@ export const SignUpForm = () => {
           }}
         >
           <Text
-            style={[
-              globalStyle.textStyle('_14', 'primary', 'NUNITO_REGULAR'),
-              { paddingTop: responsiveHeight(1) },
-            ]}
+            style={[globalStyle.textStyle('_14', 'primary', 'NUNITO_REGULAR')]}
           >
             {loc('ADD_INVITE_CODE')}
           </Text>
@@ -165,8 +161,8 @@ export const SignUpForm = () => {
           <View>
             <Text
               style={[
-                globalStyle.textStyle('_14', 'text', 'NUNITO_REGULAR'),
-                { paddingVertical: responsiveHeight(1), fontWeight: '600' },
+                globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
+                { paddingVertical: responsiveHeight(1) },
               ]}
             >
               {loc('INVITE_CODE_LABEL')}
@@ -215,7 +211,7 @@ export const SignUpForm = () => {
       </View>
 
       {/* Render Sign In button */}
-      <RoundGradientButton2
+      <RoundGradientButton
         gradientColor={colors.primaryGradiant}
         title={loc('CREATE_ACCOUNT')}
         onPress={() => navigate('SignUpSteps')}

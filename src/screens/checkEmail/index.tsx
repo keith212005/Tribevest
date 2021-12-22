@@ -7,7 +7,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import {
   FastImg,
   FormContainer,
-  RoundGradientButton2,
+  RoundGradientButton,
   SignInHeader,
 } from '@components';
 import { navigate, navigationRef, resetNavigation } from '@navigator';
@@ -79,7 +79,7 @@ export const CheckEmail = () => {
         })}
 
         {/* Redner Open Mail Button */}
-        <RoundGradientButton2
+        <RoundGradientButton
           gradientColor={colors.primaryGradiant}
           title={loc('OPEN_EMAIL')}
           onPress={() => navigate('NewPassword')}

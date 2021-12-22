@@ -221,6 +221,7 @@ export const en = {
   CURRENT_MOTIONS: 'CURRENT MOTIONS',
   PURCHASE_PROPERTY: 'Purchase a multi-family in downtown Austin',
   PENDING: 'Pending',
+  VOTE: 'Vote',
   VOTES: 'Votes',
   SUPER_MAJORITY: 'super majority 75%',
   PAST_MOTIONS: 'PAST_MOTIONS',

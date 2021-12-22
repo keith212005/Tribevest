@@ -1,56 +1,98 @@
 import React, { memo } from 'react';
-import { ViewStyle } from 'react-native';
+import {
+  Platform,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native';
 
 // THIRD PARTY IMPORTS
-import { Button } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 
 // LOCAL IMPORTS
-import { color, fonts, fontsize } from '@resources';
+import { color, images, useGlobalStyles } from '@resources';
+import FastImage from 'react-native-fast-image';
 
 interface DefaultProps {
   title: string;
-  gradientColor: typeof color;
-  onPress: Function;
-  containerStyle?: ViewStyle;
-  extraProps?: any;
+  gradientColor: string[];
+  onPress: () => void;
+  extraStyle?: ViewStyle;
+  disabled?: boolean;
+  icon?: keyof typeof images;
+  titleStyle?: TextStyle;
 }
 
 const RoundGradientButtons = ({
   title,
   gradientColor,
   onPress,
-  containerStyle,
-  extraProps,
+  extraStyle,
+  disabled,
+  icon,
+  titleStyle,
 }: DefaultProps) => {
+  const globalStyle = useGlobalStyles();
   return (
-    <Button
-      buttonStyle={{ height: '100%' }}
-      containerStyle={{
-        width: '100%',
-        borderRadius: 30,
-        height: 48,
-        ...containerStyle,
+    <TouchableOpacity
+      disabled={disabled}
+      style={{
+        height: 50,
+        borderRadius: 100,
+        justifyContent: 'center',
+        shadowColor: color.blue,
+        ...Platform.select({
+          ios: {
+            shadowOffset: {
+              width: 5,
+              height: 5,
+            },
+            shadowRadius: 8,
+            shadowOpacity: 0.5,
+          },
+        }),
+        ...extraStyle,
       }}
-      ViewComponent={LinearGradient}
-      linearGradientProps={{
-        colors: gradientColor,
-        start: { x: 0, y: 0.25 },
-        end: { x: 0.5, y: 1 },
-      }}
-      title={title}
-      titleStyle={[
-        {
-          marginLeft: 10,
-          color: 'white',
-          fontSize: fontsize._16,
-          fontFamily: fonts.NUNITO_REGULAR,
-          fontWeight: '700',
-        },
-      ]}
       onPress={onPress}
-      {...extraProps}
-    />
+    >
+      <LinearGradient
+        useAngle={true}
+        angle={179}
+        angleCenter={{ x: 0.2, y: 0.8 }}
+        colors={color.primaryGradiant}
+        style={{
+          flexDirection: 'row',
+          opacity: disabled ? 0.3 : 1,
+          height: 50,
+          borderRadius: 100,
+          justifyContent: 'center',
+          alignItems: 'center',
+          shadowColor: gradientColor[2],
+          ...Platform.select({
+            android: { elevation: 15 },
+          }),
+          ...extraStyle,
+        }}
+      >
+        {icon && (
+          <FastImage
+            source={images.add}
+            style={[globalStyle.squareLayout(22 / 1.5)]}
+            resizeMode={FastImage.resizeMode.contain}
+            tintColor={color.text}
+          />
+        )}
+        <Text
+          style={[
+            globalStyle.textStyle('_14', 'white', 'NUNITO_BOLD'),
+            { ...titleStyle },
+          ]}
+        >
+          {title}
+        </Text>
+      </LinearGradient>
+    </TouchableOpacity>
   );
 };
 

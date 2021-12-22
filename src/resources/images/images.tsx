@@ -1,5 +1,5 @@
-/* eslint-disable camelcase */
 export const images: any = {
+  add: require('./add/add.png'),
   logo: require('./logo/logo.png'),
   background_logo: require('./background_logo/back_logo.png'),
   tribevest: require('./tribevest/tribevest.png'),
@@ -57,4 +57,5 @@ export const images: any = {
   collectibles: require('./collectibles/collectibles.png'),
   tick_circle_light: require('./tick_circle_light/tick_circle_light.png'),
   gradient_add_square: require('./gradient_add_square/gradient_add_square.png'),
+  pending: require('./pending/pending.png'),
 };

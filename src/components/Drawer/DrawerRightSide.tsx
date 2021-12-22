@@ -55,10 +55,13 @@ export const DrawerRightSide = (props: any) => {
     return (
       <DrawerItem
         icon={({}) => (
-          <Image source={images[iconName]} style={{ tintColor: colors.text }} />
+          <Image
+            source={images[iconName]}
+            style={{ tintColor: colors.text, height: 17, width: 16 }}
+          />
         )}
         label={label}
-        labelStyle={[globalStyles.textStyle('_12', 'text', 'NUNITO_BOLD')]}
+        labelStyle={[globalStyles.textStyle('_14', 'text', 'NUNITO_SEMIBOLD')]}
         onPress={() => handleSelectedDrawerItem(label)}
       />
     );
@@ -72,7 +75,7 @@ export const DrawerRightSide = (props: any) => {
         <GradientButton
           title={isOpen ? '' : loc('OPERATING_AGREEMENT')}
           image={images.document_white}
-          imageSize={20}
+          imageSize={18}
           containerStyle={{
             marginHorizontal: scale(10),
             marginVertical: scale(10),

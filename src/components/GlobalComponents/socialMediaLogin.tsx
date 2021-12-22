@@ -39,12 +39,11 @@ export const SocialMediaLogin = (props: DefaultProps) => {
         {_renderDivider()}
         <Text
           style={[
-            globalStyles.textStyle('_14', 'text', 'NUNITO_REGULAR'),
+            globalStyles.textStyle('_14', 'lightText', 'NUNITO_REGULAR'),
             { paddingHorizontal: 5 },
-            ,
           ]}
         >
-          OR
+          {loc('OR')}
         </Text>
         {_renderDivider()}
       </View>
@@ -68,7 +67,9 @@ export const SocialMediaLogin = (props: DefaultProps) => {
   const _renderCreateAccount = () => {
     return (
       <View style={styles.createAccountContainer}>
-        <Text style={[globalStyles.textStyle('_14', 'text', 'NUNITO_REGULAR')]}>
+        <Text
+          style={[globalStyles.textStyle('_14', 'lightText', 'NUNITO_REGULAR')]}
+        >
           {props.leftText}
         </Text>
         <TouchableOpacity onPress={props.onPressRightText}>

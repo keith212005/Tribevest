@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-/* eslint-disable max-len */
 import React, { memo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 

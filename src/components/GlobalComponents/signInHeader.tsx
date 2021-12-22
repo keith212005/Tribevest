@@ -46,9 +46,7 @@ export const SignInHeader: React.FC<SignInHeaderProps> = (
       </View>
 
       <View>
-        <Text
-          style={[globalStyles.textStyle('_21', 'white', 'NUNITO_EXTRABOLD')]}
-        >
+        <Text style={[globalStyles.textStyle('_22', 'white', 'NUNITO_BOLD')]}>
           {props.title}
         </Text>
         <Text
