@@ -224,7 +224,7 @@ export const en = {
   VOTE: 'Vote',
   VOTES: 'Votes',
   SUPER_MAJORITY: 'super majority 75%',
-  PAST_MOTIONS: 'PAST_MOTIONS',
+  PAST_MOTIONS: 'PAST MOTIONS',
   APPROVED: 'Approved',
   CREATED_BY: 'CREATED BY',
   DESCRIPTION: 'DESCRIPTION',

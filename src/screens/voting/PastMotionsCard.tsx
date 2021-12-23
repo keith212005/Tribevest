@@ -40,7 +40,7 @@ if (Platform.OS === 'android') {
   }
 }
 
-export const CurrentMotionsCard = () => {
+export const PastMotionsCard = () => {
   const globalStyle = useGlobalStyles();
   const { colors } = useTheme() as CustomTheme;
   const [open, setopen] = useState(false);
@@ -90,14 +90,11 @@ export const CurrentMotionsCard = () => {
           {_renderDot()}
           {_renderText('Dec 11', { color: colors.lightText })}
           <MotionStatus
-            icon={images.pending}
-            tintColor={colors.orange}
-            text={loc('PENDING')}
+            icon={images.tick_circle}
+            tintColor={colors.green_text}
+            text={loc('APPROVED')}
             iconSize={18}
-            textStyle={{
-              marginHorizontal: 3,
-              color: colors.orange_text,
-            }}
+            textStyle={{ marginHorizontal: 3, color: colors.green_text }}
             containerStyle={{ marginLeft: 10 }}
           />
         </View>
@@ -143,7 +140,7 @@ export const CurrentMotionsCard = () => {
         <Card.Divider />
         {_renderVoteReport()}
 
-        <AvatarGroup
+        {/* <AvatarGroup
           list={FACES}
           size={responsiveWidth(9.5)}
           showVotes={true}
@@ -159,7 +156,7 @@ export const CurrentMotionsCard = () => {
             alignSelf: 'center',
             marginHorizontal: 50,
           }}
-        />
+        /> */}
       </>
     );
   };

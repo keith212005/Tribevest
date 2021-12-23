@@ -27,10 +27,7 @@ export const AvatarGroup = ({
     <View style={[styles.container, { ...containerStyle }]}>
       <View style={styles.innerContainer}>
         {list.map((item: any, index: any) => {
-          if (
-            (maxToShow && maxToShow >= index) ||
-            (maxToShow && maxToShow >= 10)
-          ) {
+          if ((maxToShow && maxToShow >= index) || index > 10) {
             return;
           }
           return (
@@ -47,7 +44,7 @@ export const AvatarGroup = ({
                     globalStyle.squareLayout(size / 2.2),
                     {
                       position: 'absolute',
-                      justifyContent: 'flex-end',
+                      // justifyContent: 'flex-end',
                       marginTop: size / 2,
                       marginLeft: size / 1.9,
                     },

@@ -12,11 +12,23 @@ import { images, useGlobalStyles } from '@resources';
 import { useTheme } from '@react-navigation/native';
 import { navigate } from '@navigator';
 import { CurrentMotionsCard } from './CurrentMotionsCard';
+import { PastMotionsCard } from './PastMotionsCard';
 
 export const Voting = () => {
   const insets = useSafeAreaInsets();
   const { colors } = useTheme() as CustomTheme;
   const globalStyle = useGlobalStyles();
+
+  const _renderCardTitle = (title: string, extraStyle?: any) => (
+    <Text
+      style={[
+        globalStyle.textStyle('_12', 'lightText', 'NUNITO_BOLD'),
+        { ...extraStyle },
+      ]}
+    >
+      {title}
+    </Text>
+  );
 
   const _renderNewButtonView = () => (
     <>
@@ -39,9 +51,7 @@ export const Voting = () => {
           extraStyle={styles.newButtonExtraStyle}
         />
       </View>
-      <Text style={[globalStyle.textStyle('_12', 'lightText', 'NUNITO_BOLD')]}>
-        {loc('CURRENT_MOTIONS')}
-      </Text>
+      {_renderCardTitle(loc('CURRENT_MOTIONS'))}
     </>
   );
 
@@ -56,6 +66,11 @@ export const Voting = () => {
         <View style={{ marginHorizontal: 20 }}>
           {_renderNewButtonView()}
           <CurrentMotionsCard />
+          {_renderCardTitle(loc('PAST_MOTIONS'), {
+            marginTop: 20,
+            marginBottom: -5,
+          })}
+          <PastMotionsCard />
         </View>
       </ScrollView>
     </View>
