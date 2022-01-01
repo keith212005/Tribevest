@@ -4,7 +4,7 @@ const isOnline = false;
 export const saveNetwork = (state = isOnline, action: any) => {
   switch (action.type) {
     case REDUCER_TYPE.NETWORK_STATUS:
-      return action.isOnline;
+      return action.data;
     default: {
       return state;
     }

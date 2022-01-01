@@ -58,4 +58,5 @@ export const images: any = {
   tick_circle_light: require('./tick_circle_light/tick_circle_light.png'),
   gradient_add_square: require('./gradient_add_square/gradient_add_square.png'),
   pending: require('./pending/pending.png'),
+  no_connection: require('./no_connection/no_connection.png'),
 };

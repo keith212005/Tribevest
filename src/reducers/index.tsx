@@ -32,7 +32,7 @@ const rootReducer = (state: any, action: any) => {
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['isLoggedIn', 'isDrawerLeftSideCollapsed'], // navigation will not be persisted
+  blacklist: ['isDrawerLeftSideCollapsed', 'isOnline'], // navigation will not be persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,6 +1,6 @@
 // import './wdyr';
 
-import * as React from 'react';
+import React from 'react';
 import { LogBox } from 'react-native';
 
 // THIRD PARTY IMPORTS
@@ -16,6 +16,7 @@ import { store, persistor } from './reducers';
 const App = () => {
   LogBox.ignoreLogs(['If you want to use Reanimated 2']);
   LogBox.ignoreLogs(['Failed prop type:']);
+  console.log('calling network listener');
 
   return (
     <SafeAreaProvider>

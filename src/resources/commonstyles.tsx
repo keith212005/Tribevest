@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@react-navigation/native';
 import { fonts, fontsize } from './fonts';
-import { RFValue } from 'react-native-responsive-fontsize';
 
 export type Style = {
   textStyle: (

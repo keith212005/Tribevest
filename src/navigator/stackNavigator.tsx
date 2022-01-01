@@ -15,7 +15,7 @@ import { SCREENS } from '@constants';
 import { navigationRef } from './RootNavigation';
 import { MyDarkTheme, LightTheme } from '@resources';
 import { DrawerNavigator } from './drawerNavigator';
-import { CustomStatusBar } from '@components';
+import { CustomStatusBar, OfflineNotice } from '@components';
 
 const Stack = createStackNavigator();
 
@@ -53,6 +53,7 @@ const App = (props: any) => {
       }}
     >
       <CustomStatusBar />
+      <OfflineNotice />
       <Stack.Navigator
         initialRouteName={'Signin'}
         // initialRouteName={'SignUpSteps'}
@@ -80,7 +81,7 @@ const App = (props: any) => {
 };
 
 function mapStateToProps(state: any) {
-  return { isOnline: state.isOnline, isDarkTheme: state.theme.isDarkTheme };
+  return { isDarkTheme: state.theme.isDarkTheme };
 }
 
 function mapDispatchToProps(dispatch: any) {

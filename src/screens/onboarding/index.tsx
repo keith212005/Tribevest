@@ -6,7 +6,7 @@ import { ImageBackground, Platform } from 'react-native';
 
 // LOCAL IMPORTs
 import { styles } from './style';
-import { FastImg, RoundGradientButton } from '@components';
+import { FastImg, OfflineNotice, RoundGradientButton } from '@components';
 import { images, responsiveHeight, responsiveWidth } from '@resources';
 import { useDispatch } from 'react-redux';
 import { isOpenFirstTime } from 'actions/isOpenFirstTime';
@@ -20,25 +20,28 @@ export const Onboarding = () => {
   const insets = useSafeAreaInsets();
 
   return (
-    <ImageBackground
-      source={images.splashscreen_bg}
-      style={[styles.container, { paddingBottom: insets.bottom }]}
-    >
-      {FastImg(images.onboarding_logo, 110, {
-        alignSelf: 'center',
-        marginTop: responsiveHeight(Platform.OS === 'ios' ? 2 : 8),
-      })}
-      <OnboardingCarousel />
-      <RoundGradientButton
-        gradientColor={colors.greenGradient as any}
-        title={loc('GET_STARTED')}
-        containerStyle={{
-          width: responsiveWidth(80),
+    <>
+      {/* <OfflineNotice /> */}
+      <ImageBackground
+        source={images.splashscreen_bg}
+        style={[styles.container, { paddingBottom: insets.bottom }]}
+      >
+        {FastImg(images.onboarding_logo, 110, {
           alignSelf: 'center',
-          marginBottom: 40,
-        }}
-        onPress={() => dispatch(isOpenFirstTime(false))}
-      />
-    </ImageBackground>
+          marginTop: responsiveHeight(Platform.OS === 'ios' ? 2 : 8),
+        })}
+        <OnboardingCarousel />
+        <RoundGradientButton
+          gradientColor={colors.greenGradient as any}
+          title={loc('GET_STARTED')}
+          containerStyle={{
+            width: responsiveWidth(80),
+            alignSelf: 'center',
+            marginBottom: 40,
+          }}
+          onPress={() => dispatch(isOpenFirstTime(false))}
+        />
+      </ImageBackground>
+    </>
   );
 };
