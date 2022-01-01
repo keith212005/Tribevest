@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { connect } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
+import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 // LOCAL IMPORTS
 import * as Screen from '@screens';
@@ -39,6 +40,9 @@ const App = (props: any) => {
       />
     );
   };
+  SystemNavigationBar.setNavigationColor(
+    props.isDarkTheme ? '#273143' : 'white',
+  );
 
   return (
     <NavigationContainer

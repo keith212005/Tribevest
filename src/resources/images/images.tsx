@@ -11,8 +11,8 @@ export const images: any = {
   alerts_inactive: require('./alerts_inactive/alert_inactive.png'),
   more_square: require('./more_square/more_square.png'),
   dashboard: require('./dashboard/dashboard.png'),
-  wallet: require('./wallet/wallet.png'),
-  dollar_circle: require('./dollar_circle/dollar_circle.png'),
+  banking: require('./banking/banking.png'),
+  money_bag: require('./money_bag/money_bag.png'),
   like: require('./like/like.png'),
   dislike: require('./dislike/dislike.png'),
   members: require('./members/members.png'),
@@ -59,4 +59,5 @@ export const images: any = {
   gradient_add_square: require('./gradient_add_square/gradient_add_square.png'),
   pending: require('./pending/pending.png'),
   no_connection: require('./no_connection/no_connection.png'),
+  voting: require('./voting/voting.png'),
 };

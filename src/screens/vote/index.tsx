@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { Text, TextStyle, View } from 'react-native';
+import { ScrollView, Text, TextStyle, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -84,19 +84,21 @@ export const Vote = () => {
             title={loc('YES')}
             image={images.like}
             backgroundColor="#36B98214"
-            titleFont="NUNITO_REGULAR"
-            titleSize={18}
-            titleColor="#36B982"
+            titleFont="NUNITO_BOLD"
+            titleSize={'_18'}
+            titleColor="green_text"
             fontWeight="900"
+            onPress={() => {}}
           />
           <VoteCounter
             title={loc('NO')}
             image={images.dislike}
             backgroundColor="#FF686514"
             titleFont="NUNITO_REGULAR"
-            titleSize={18}
-            titleColor="#FF3940"
+            titleSize={'_18'}
+            titleColor="error_text"
             fontWeight="900"
+            onPress={() => {}}
           />
         </View>
       </View>
@@ -148,41 +150,43 @@ export const Vote = () => {
         showBackIcon={true}
         hideRightIcon={true}
       />
-      <View style={{ padding: 20 }}>
-        {_renderText('Purchase a multi-family in downtown Austin', {
-          ...globalStyle.textStyle('_18', 'text', 'NUNITO_REGULAR'),
-          fontWeight: '900',
-        })}
-        {_renderText(loc('CREATED_BY'), {
-          color: colors.lightText,
-          marginTop: 10,
-        })}
+      <ScrollView>
+        <View style={{ padding: 20 }}>
+          {_renderText('Purchase a multi-family in downtown Austin', {
+            ...globalStyle.textStyle('_18', 'text', 'NUNITO_REGULAR'),
+            fontWeight: '900',
+          })}
+          {_renderText(loc('CREATED_BY'), {
+            color: colors.lightText,
+            marginTop: 10,
+          })}
 
-        {_renderUserInfo()}
+          {_renderUserInfo()}
 
-        {_renderText(loc('DESCRIPTION'), {
-          color: colors.lightText,
-          marginTop: 10,
-        })}
+          {_renderText(loc('DESCRIPTION'), {
+            color: colors.lightText,
+            marginTop: 10,
+          })}
 
-        {_renderText(
-          'Pellentesque eu nisi malesuada, volutpat lectus non, varius sapien. Nulla ornare est id odio euismod, non fringilla urna ornare vivamus vitae arcu',
-          { ...globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD') },
-        )}
+          {_renderText(
+            'Pellentesque eu nisi malesuada, volutpat lectus non, varius sapien. Nulla ornare est id odio euismod, non fringilla urna ornare vivamus vitae arcu',
+            { ...globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD') },
+          )}
 
-        {_renderVotes()}
-        <AvatarGroup
-          list={FACES}
-          size={responsiveWidth(9.5)}
-          showVotes={true}
-          containerStyle={{
-            marginVertical: 10,
-            alignSelf: 'center',
-          }}
-        />
+          {_renderVotes()}
+          <AvatarGroup
+            list={FACES}
+            size={responsiveWidth(9.5)}
+            showVotes={true}
+            containerStyle={{
+              marginVertical: 10,
+              alignSelf: 'center',
+            }}
+          />
 
-        {_renderCastYourVote()}
-      </View>
+          {_renderCastYourVote()}
+        </View>
+      </ScrollView>
     </View>
   );
 };

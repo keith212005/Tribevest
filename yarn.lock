@@ -6787,6 +6787,11 @@ react-native-swiper@^1.6.0:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-system-navigation-bar@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-system-navigation-bar/-/react-native-system-navigation-bar-1.0.2.tgz#c930eeb8f56429e8843e4c4f3ac23bbd57745b55"
+  integrity sha512-qaqJlQLksBF1Q+OJB0gMeAql8iXHGpeG/VNcGTRFt7W4M0iY35au5GHSntbpxm/7/OagfVf4WU3ppGEK7MvbZg==
+
 react-native-vector-icons@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-9.0.0.tgz#ab38ec6941f3f340d39846f1e8300e59863e2fb1"

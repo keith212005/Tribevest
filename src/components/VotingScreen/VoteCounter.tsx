@@ -1,6 +1,6 @@
-import { fonts, useGlobalStyles } from '@resources';
+import { fonts, fontsize, useGlobalStyles } from '@resources';
 import React from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, StyleSheet, Pressable } from 'react-native';
 import FastImage, { Source } from 'react-native-fast-image';
 
 interface DefaultProps {
@@ -8,7 +8,7 @@ interface DefaultProps {
   image: string;
   title: string;
   titleFont?: string;
-  titleSize?: number;
+  titleSize?: keyof typeof fontsize;
   titleColor?: string;
   fontWeight?: string;
   onPress: () => void;
@@ -27,13 +27,12 @@ export const VoteCounter = (props: DefaultProps) => {
       />
       <Text
         style={[
-          {
-            color: props.titleColor,
-            fontSize: props.titleSize,
-            fontWeight: props.fontWeight,
-            // marginTop: 7,
-            // fontFamily: fonts[props.titleFont],
-          },
+          globalStyle.textStyle(
+            props.titleSize as keyof typeof fontsize,
+            props.titleColor as string,
+            props.titleFont as keyof typeof fonts,
+          ),
+          { fontWeight: props.fontWeight, marginTop: 7 },
         ]}
       >
         {props.title}

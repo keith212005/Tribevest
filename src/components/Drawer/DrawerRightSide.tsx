@@ -107,9 +107,9 @@ export const DrawerRightSide = (props: any) => {
 
         <DrawerContentScrollView {...props} bounces={false} style={{ top: 0 }}>
           {_renderDrawerItem('dashboard', loc('DASHBOARD'))}
-          {_renderDrawerItem('wallet', loc('BANKING_WALLET'))}
-          {_renderDrawerItem('dollar_circle', loc('FUNDING'))}
-          {_renderDrawerItem('like', loc('VOTING'))}
+          {_renderDrawerItem('banking', loc('BANKING_WALLET'))}
+          {_renderDrawerItem('money_bag', loc('FUNDING'))}
+          {_renderDrawerItem('voting', loc('VOTING'))}
           {_renderDrawerItem('members', loc('MEMBERS'))}
           {_renderDrawerItem('document', loc('DOCUMENTS'))}
           {_renderDrawerItem('settings', loc('TRIBE_SETTINGS'))}
