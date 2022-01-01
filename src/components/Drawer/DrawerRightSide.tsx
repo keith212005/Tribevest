@@ -29,6 +29,24 @@ export const DrawerRightSide = (props: any) => {
       case loc('DASHBOARD'):
         navigate('Tribes');
         break;
+      case loc('BANKING_WALLET'):
+        navigate('Tribes');
+        break;
+      case loc('FUNDING'):
+        navigate('Tribes');
+        break;
+      case loc('VOTING'):
+        navigate('Voting');
+        break;
+      case loc('MEMBERS'):
+        navigate('Tribes');
+        break;
+      case loc('DOCUMENTS'):
+        navigate('Tribes');
+        break;
+      case loc('TRIBE_SETTINGS'):
+        navigate('Tribes');
+        break;
       case loc('LOGOUT'):
         Alert.alert(loc('LOGOUT'), loc('LOGOUT_MESSAGE'), [
           { text: loc('CANCEL'), onPress: () => {} },

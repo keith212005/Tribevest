@@ -18,6 +18,7 @@ import { useTheme } from '@react-navigation/native';
 // LOCAL IMPORTS
 import {
   AvatarGroup,
+  Dot,
   FastImg,
   MotionStatus,
   Rotate,
@@ -25,7 +26,6 @@ import {
   TotalVoteCountView,
 } from '@components';
 import {
-  color,
   fonts,
   images,
   responsiveWidth,
@@ -33,6 +33,7 @@ import {
   useGlobalStyles,
 } from '@resources';
 import { FACES } from '@constants';
+import { navigate } from '@navigator';
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -48,8 +49,6 @@ export const CurrentMotionsCard = () => {
     LayoutAnimation.easeInEaseOut();
     setopen(!open);
   };
-
-  const _renderDot = () => <View style={styles.dotStyle} />;
 
   const _renderText = (name: string, extraStyle?: TextStyle) => {
     return (
@@ -87,7 +86,7 @@ export const CurrentMotionsCard = () => {
           ]}
         >
           {_renderText('Jonathan Ross', { color: colors.lightText })}
-          {_renderDot()}
+          <Dot />
           {_renderText('Dec 11', { color: colors.lightText })}
           <MotionStatus
             icon={images.pending}
@@ -113,7 +112,7 @@ export const CurrentMotionsCard = () => {
         style={[globalStyle.layoutDirection('row', 'flex-start', 'center')]}
       >
         {_renderText(loc('VOTES'), { fontWeight: '700' })}
-        {_renderDot()}
+        <Dot />
         {_renderText('super majority 75%', {
           fontFamily: fonts.NUNITO_REGULAR,
           fontSize: 14,
@@ -152,7 +151,9 @@ export const CurrentMotionsCard = () => {
         <RoundGradientButton
           gradientColor={colors.primaryGradiant}
           title={loc('VOTE')}
-          onPress={() => {}}
+          onPress={() => {
+            navigate('Vote');
+          }}
           extraStyle={{
             height: 38,
             width: responsiveWidth(80),
@@ -190,12 +191,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginVertical: scale(5),
-  },
-  dotStyle: {
-    height: 5,
-    width: 5,
-    borderRadius: 5 / 2,
-    marginHorizontal: 5,
-    backgroundColor: color.lightText,
   },
 });

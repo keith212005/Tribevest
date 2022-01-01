@@ -16,23 +16,8 @@ import { Card } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
-import {
-  AvatarGroup,
-  FastImg,
-  MotionStatus,
-  Rotate,
-  RoundGradientButton,
-  TotalVoteCountView,
-} from '@components';
-import {
-  color,
-  fonts,
-  images,
-  responsiveWidth,
-  scale,
-  useGlobalStyles,
-} from '@resources';
-import { FACES } from '@constants';
+import { FastImg, MotionStatus, Rotate, TotalVoteCountView } from '@components';
+import { color, fonts, images, scale, useGlobalStyles } from '@resources';
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -119,13 +104,13 @@ export const PastMotionsCard = () => {
       </View>
       <View style={{ flexDirection: 'row' }}>
         <TotalVoteCountView
-          voteCount={7}
+          voteCount={10}
           image={images.like}
           containerStyle={{ backgroundColor: '#36B98214', marginLeft: 5 }}
           textStyle={{ color: colors.green_text, marginHorizontal: 2 }}
         />
         <TotalVoteCountView
-          voteCount={4}
+          voteCount={2}
           image={images.dislike}
           containerStyle={{ backgroundColor: '#FF686514', marginLeft: 5 }}
           textStyle={{ color: colors.error_text, marginHorizontal: 2 }}
@@ -139,24 +124,6 @@ export const PastMotionsCard = () => {
       <>
         <Card.Divider />
         {_renderVoteReport()}
-
-        {/* <AvatarGroup
-          list={FACES}
-          size={responsiveWidth(9.5)}
-          showVotes={true}
-          containerStyle={{ marginVertical: 10 }}
-        />
-        <RoundGradientButton
-          gradientColor={colors.primaryGradiant}
-          title={loc('VOTE')}
-          onPress={() => {}}
-          extraStyle={{
-            height: 38,
-            width: responsiveWidth(80),
-            alignSelf: 'center',
-            marginHorizontal: 50,
-          }}
-        /> */}
       </>
     );
   };
