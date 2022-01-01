@@ -9,16 +9,21 @@ import {
   BankBalanceCard,
   CapTableCard,
   OperatingAgreementButton,
-  TribeHeader,
+  MainHeader,
 } from '@components';
 import { styles } from './style';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { images } from '@resources';
 
 const Tribe = () => {
   const insets = useSafeAreaInsets();
   return (
     <View style={{ flex: 1, marginTop: insets.top }}>
-      <TribeHeader />
+      <MainHeader
+        headerTitle={'Crypto Crew'}
+        rightIcon={images.members}
+        onPressRightIcon={() => {}}
+      />
       <ScrollView
         style={styles.container}
         bounces={false}

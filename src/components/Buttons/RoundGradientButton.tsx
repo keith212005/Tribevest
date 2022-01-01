@@ -4,6 +4,7 @@ import {
   Text,
   TextStyle,
   TouchableOpacity,
+  View,
   ViewStyle,
 } from 'react-native';
 
@@ -83,6 +84,7 @@ const RoundGradientButtons = ({
             tintColor={color.text}
           />
         )}
+
         <Text
           style={[
             globalStyle.textStyle('_14', 'white', 'NUNITO_BOLD'),

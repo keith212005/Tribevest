@@ -11,7 +11,7 @@ import {
   Dot,
   RoundGradientButton,
   TotalVoteCountView,
-  TribeHeader,
+  MainHeader,
   VoteCounter,
 } from '@components';
 import { images, responsiveWidth, useGlobalStyles } from '@resources';
@@ -146,10 +146,13 @@ export const Vote = () => {
 
   return (
     <View style={{ flex: 1, marginTop: insets.top }}>
-      <TribeHeader
+      <MainHeader
+        headerTitle="Crypto Crew"
         hideTribeName={true}
         showBackIcon={true}
         hideRightIcon={true}
+        rightIcon={images.members}
+        onPressRightIcon={() => {}}
       />
       <ScrollView>
         <View style={{ padding: 20 }}>

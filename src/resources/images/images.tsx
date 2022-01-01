@@ -61,4 +61,6 @@ export const images: any = {
   no_connection: require('./no_connection/no_connection.png'),
   voting: require('./voting/voting.png'),
   refresh: require('./refresh/refresh.png'),
+  user_circle_add: require('./user_circle_add/user_circle_add.png'),
+  no_message: require('./no_message/no_message.png'),
 };

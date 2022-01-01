@@ -232,4 +232,6 @@ export const en = {
   YES: 'Yes',
   NO: 'No',
   RESET_MY_VOTE: 'Reset my vote',
+  MESSAGES: 'Messages',
+  START_CONVERSATION: 'Start a conversation',
 };

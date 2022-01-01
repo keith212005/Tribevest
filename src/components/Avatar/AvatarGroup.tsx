@@ -44,7 +44,6 @@ export const AvatarGroup = ({
                     globalStyle.squareLayout(size / 2.2),
                     {
                       position: 'absolute',
-                      // justifyContent: 'flex-end',
                       marginTop: size / 2,
                       marginLeft: size / 1.9,
                     },

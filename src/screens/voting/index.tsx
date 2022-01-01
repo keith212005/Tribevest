@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // LOCAL IMPORTS
 import { styles } from './style';
-import { RoundGradientButton, TribeHeader } from '@components';
+import { RoundGradientButton, MainHeader } from '@components';
 import { images, useGlobalStyles } from '@resources';
 import { useTheme } from '@react-navigation/native';
 import { navigate } from '@navigator';
@@ -57,7 +57,11 @@ export const Voting = () => {
 
   return (
     <View style={{ flex: 1, marginTop: insets.top }}>
-      <TribeHeader />
+      <MainHeader
+        headerTitle="Crypto Crew"
+        rightIcon={images.members}
+        onPressRightIcon={() => {}}
+      />
       <ScrollView
         style={styles.container}
         bounces={false}

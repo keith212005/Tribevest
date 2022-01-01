@@ -4,7 +4,7 @@ export { default as GradientButton } from './Buttons/GradientButton';
 export * from './Buttons';
 export * from './commonViews';
 export * from './Drawer';
-export * from './NavigationHeaderIcons';
+export * from './NavigationHeaders';
 export * from './Wrappers';
 export * from './Avatar';
 export * from './Dashboard';
