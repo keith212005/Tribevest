@@ -23,7 +23,6 @@ export const DrawerNavigator = () => {
     isNavigator?: boolean,
     extraProps?: any,
   ) => {
-    console.log('DrawerNav render');
     return (
       <Drawer.Screen
         name={routeName}

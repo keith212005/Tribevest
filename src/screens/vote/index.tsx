@@ -9,6 +9,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   AvatarGroup,
   Dot,
+  RoundGradientButton,
   TotalVoteCountView,
   TribeHeader,
   VoteCounter,
@@ -185,6 +186,14 @@ export const Vote = () => {
           />
 
           {_renderCastYourVote()}
+          <RoundGradientButton
+            icon={images.refresh}
+            gradientColor={['#1846FF14', '#1846FF14']}
+            title={loc('RESET_MY_VOTE')}
+            onPress={() => {}}
+            titleStyle={{ color: '#189EFF', marginLeft: 10 }}
+            extraStyle={{ marginTop: 16 }}
+          />
         </View>
       </ScrollView>
     </View>

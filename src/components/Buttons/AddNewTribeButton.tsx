@@ -23,9 +23,7 @@ export const AddNewTribeButton = (props: any) => {
           paddingLeft: isOpen ? 12 : 0,
         },
       ]}
-      onPress={() => {
-        console.log('onPRess');
-      }}
+      onPress={() => {}}
     >
       {FastImg(images.gradient_add_square, 25)}
       {isOpen && <Text style={[styles.text]}>{loc('CREATE_NEW_TRIBE')}</Text>}

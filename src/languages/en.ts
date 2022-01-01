@@ -231,4 +231,5 @@ export const en = {
   CAST_YOUR_VOTE: 'CAST YOUR VOTE',
   YES: 'Yes',
   NO: 'No',
+  RESET_MY_VOTE: 'Reset my vote',
 };

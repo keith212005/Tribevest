@@ -5,12 +5,9 @@ import { View, StyleSheet, Modal, Image, Text, Dimensions } from 'react-native';
 
 const { height, width } = Dimensions.get('window');
 export const OfflineNotice = React.memo(() => {
-  console.log('OfflineNotice rendered....');
   const netInfo = useNetInfo();
 
-  useEffect(() => {
-    console.log('net info changed, new state: ', netInfo);
-  }, [netInfo]);
+  useEffect(() => {}, [netInfo]);
 
   return (
     <Modal

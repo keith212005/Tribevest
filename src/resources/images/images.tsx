@@ -60,4 +60,5 @@ export const images: any = {
   pending: require('./pending/pending.png'),
   no_connection: require('./no_connection/no_connection.png'),
   voting: require('./voting/voting.png'),
+  refresh: require('./refresh/refresh.png'),
 };

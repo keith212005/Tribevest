@@ -12,7 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 // LOCAL IMPORTS
 import { color, images, useGlobalStyles } from '@resources';
-import FastImage from 'react-native-fast-image';
+import FastImage, { Source } from 'react-native-fast-image';
 
 interface DefaultProps {
   title: string;
@@ -60,7 +60,7 @@ const RoundGradientButtons = ({
         useAngle={true}
         angle={179}
         angleCenter={{ x: 0.2, y: 0.8 }}
-        colors={color.primaryGradiant}
+        colors={gradientColor}
         style={{
           flexDirection: 'row',
           opacity: disabled ? 0.3 : 1,
@@ -77,7 +77,7 @@ const RoundGradientButtons = ({
       >
         {icon && (
           <FastImage
-            source={images.add}
+            source={icon as Source}
             style={[globalStyle.squareLayout(22 / 1.5)]}
             resizeMode={FastImage.resizeMode.contain}
             tintColor={color.text}

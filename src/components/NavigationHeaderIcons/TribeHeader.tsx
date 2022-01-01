@@ -23,7 +23,6 @@ interface DefaultProps {
 }
 
 const TribeHeader = (props: DefaultProps) => {
-  console.log('TribeHeader render...');
   const globalStyles = useGlobalStyles();
   const { colors } = useTheme() as unknown as CustomTheme;
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);

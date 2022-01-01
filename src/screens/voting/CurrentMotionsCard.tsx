@@ -44,7 +44,7 @@ if (Platform.OS === 'android') {
 export const CurrentMotionsCard = () => {
   const globalStyle = useGlobalStyles();
   const { colors } = useTheme() as CustomTheme;
-  const [open, setopen] = useState(false);
+  const [open, setopen] = useState(true);
   const onPress = () => {
     LayoutAnimation.easeInEaseOut();
     setopen(!open);
