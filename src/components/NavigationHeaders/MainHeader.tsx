@@ -103,5 +103,6 @@ const styles = StyleSheet.create({
   },
   title: {
     flex: 6,
+    paddingLeft: 10,
   },
 });

@@ -1,6 +1,5 @@
 import { en } from '@languages';
 
-/* eslint-disable max-len */
 export const SCREENS = {
   Signin: 'Signin',
   TabNavigator: 'TabNavigator',
@@ -18,6 +17,7 @@ export const SCREENS = {
   SignUpSteps: 'SignUpSteps',
   Voting: 'Voting',
   Vote: 'Vote',
+  Banking: 'Banking',
 };
 
 export interface IfieldObject {
@@ -417,5 +417,78 @@ export const TRIBEVEST_PLANS = [
     amount: 40,
     description: 'PER_MONTH_ANUALLY',
     selected: false,
+  },
+];
+
+export const BANKING_MENU = [
+  {
+    label: 'Accounts',
+    value: 'Accounts',
+  },
+  {
+    label: 'Cards',
+    value: 'Cards',
+  },
+  {
+    label: 'Counterparties',
+    value: 'Counterparties',
+  },
+  {
+    label: 'Transactions',
+    value: 'Transactions',
+  },
+  {
+    label: 'Payments',
+    value: 'Payments',
+  },
+  {
+    label: 'Statements',
+    value: 'Statements',
+  },
+];
+
+export const TRIBEVEST_ACCOUNTS = [
+  {
+    id: 1,
+    available_balance: '$72,520.00',
+    account_details: '**** **** 4837',
+  },
+  {
+    id: 2,
+    available_balance: '$63,652.00',
+    account_details: '**** **** 8721',
+  },
+];
+
+export const EXTERNAL_ACCOUNTS = [
+  {
+    id: 1,
+    type: 'SAVINGS',
+    description: 'Peakeys Personal',
+    balance: '$58,849.00',
+  },
+  {
+    id: 2,
+    type: 'SAVINGS',
+    description: 'Family Savings',
+    balance: '$58,849.00',
+  },
+  {
+    id: 3,
+    type: 'CHECKING',
+    description: 'Investments',
+    balance: '$45,611.00',
+  },
+  {
+    id: 4,
+    type: 'SAVINGS',
+    description: 'Family Investments',
+    balance: '$80,987.00',
+  },
+  {
+    id: 5,
+    type: 'CHECKING',
+    description: 'Extra Savings',
+    balance: '$50,872.00',
   },
 ];

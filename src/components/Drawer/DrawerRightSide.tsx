@@ -30,7 +30,7 @@ export const DrawerRightSide = (props: any) => {
         navigate('Tribes');
         break;
       case loc('BANKING_WALLET'):
-        navigate('Tribes');
+        navigate('Banking');
         break;
       case loc('FUNDING'):
         navigate('Tribes');

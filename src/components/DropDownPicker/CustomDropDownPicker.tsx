@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React from 'react';
+import React, { useState } from 'react';
 import { Text } from 'react-native';
 
 // THIRD PARTY IMPORTS

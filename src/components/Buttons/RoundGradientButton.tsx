@@ -4,7 +4,6 @@ import {
   Text,
   TextStyle,
   TouchableOpacity,
-  View,
   ViewStyle,
 } from 'react-native';
 
@@ -22,6 +21,7 @@ interface DefaultProps {
   extraStyle?: ViewStyle;
   disabled?: boolean;
   icon?: keyof typeof images;
+  iconSize?: number;
   titleStyle?: TextStyle;
 }
 
@@ -33,6 +33,7 @@ const RoundGradientButtons = ({
   disabled,
   icon,
   titleStyle,
+  iconSize,
 }: DefaultProps) => {
   const globalStyle = useGlobalStyles();
   return (
@@ -79,7 +80,9 @@ const RoundGradientButtons = ({
         {icon && (
           <FastImage
             source={icon as Source}
-            style={[globalStyle.squareLayout(22 / 1.5)]}
+            style={[
+              globalStyle.squareLayout(iconSize ? iconSize / 1.5 : 22 / 1.5),
+            ]}
             resizeMode={FastImage.resizeMode.contain}
             tintColor={color.text}
           />

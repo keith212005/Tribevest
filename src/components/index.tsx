@@ -17,3 +17,4 @@ export * from './Collapsible';
 export * from './FlatListItems';
 export * from './VotingScreen';
 export * from './OfflineNotice';
+export * from './Banking';

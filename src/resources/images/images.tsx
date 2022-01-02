@@ -63,4 +63,7 @@ export const images: any = {
   refresh: require('./refresh/refresh.png'),
   user_circle_add: require('./user_circle_add/user_circle_add.png'),
   no_message: require('./no_message/no_message.png'),
+  arrow_left: require('./arrow_left/arrow_left.png'),
+  filter: require('./filter/filter.png'),
+  close_circle: require('./close_circle/close_circle.png'),
 };

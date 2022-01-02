@@ -6,7 +6,7 @@ import { Icon, Avatar, AvatarProps } from 'react-native-elements';
 // LOCAL IMPORTS
 import { useGlobalStyles } from '@resources';
 import FastImage, { FastImageProps, Source } from 'react-native-fast-image';
-import { ViewStyle } from 'react-native';
+import { Text, TextStyle, ViewStyle } from 'react-native';
 
 export const RenderIcon = (
   name: string,
@@ -86,3 +86,7 @@ export const renderAvatar = (
 // octicon
 // simple-line-icon
 // zocial
+
+export const _renderText = (name: string, extraStyle?: TextStyle) => {
+  return <Text style={[{ ...extraStyle }]}>{name}</Text>;
+};
