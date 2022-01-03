@@ -18,6 +18,8 @@ import { MyDarkTheme, LightTheme } from '@resources';
 import { DrawerNavigator } from './drawerNavigator';
 import { CustomStatusBar, OfflineNotice } from '@components';
 
+import { Host } from 'react-native-portalize';
+
 const Stack = createStackNavigator();
 
 const forFade = ({ current }: { current: any }) => ({
@@ -56,30 +58,32 @@ const App = (props: any) => {
         }, 1000);
       }}
     >
-      <CustomStatusBar />
-      <OfflineNotice />
-      <Stack.Navigator
-        initialRouteName={'Signin'}
-        // initialRouteName={'SignUpSteps'}
-        screenOptions={{
-          headerShown: false,
-          gestureEnabled: true,
-          cardStyleInterpolator: forFade,
-        }}
-      >
-        {_addScreen('Signin' as never)}
-        {_addScreen('SignUp' as never)}
-        {_addScreen('PasswordReset' as never)}
-        {_addScreen('CheckEmail' as never)}
-        {_addScreen('NewPassword' as never)}
-        {_addScreen('FaceId' as never)}
+      <Host>
+        <CustomStatusBar />
+        <OfflineNotice />
+        <Stack.Navigator
+          initialRouteName={'Signin'}
+          // initialRouteName={'SignUpSteps'}
+          screenOptions={{
+            headerShown: false,
+            gestureEnabled: true,
+            cardStyleInterpolator: forFade,
+          }}
+        >
+          {_addScreen('Signin' as never)}
+          {_addScreen('SignUp' as never)}
+          {_addScreen('PasswordReset' as never)}
+          {_addScreen('CheckEmail' as never)}
+          {_addScreen('NewPassword' as never)}
+          {_addScreen('FaceId' as never)}
 
-        {_addScreen('DrawerNavigator' as never, true, {
-          component: DrawerNavigator,
-        })}
-        {_addScreen('Onboarding' as never)}
-        {_addScreen('SignUpSteps' as never)}
-      </Stack.Navigator>
+          {_addScreen('DrawerNavigator' as never, true, {
+            component: DrawerNavigator,
+          })}
+          {_addScreen('Onboarding' as never)}
+          {_addScreen('SignUpSteps' as never)}
+        </Stack.Navigator>
+      </Host>
     </NavigationContainer>
   );
 };

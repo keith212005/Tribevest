@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ViewStyle } from 'react-native';
 
 // LOCAL IMPORTs
 import { RoundGradientButton, _renderText } from '@components';
@@ -21,6 +21,7 @@ interface DefaultProps {
   buttonName: string;
   image: string;
   onPress: () => void;
+  containerStyle?: ViewStyle;
 }
 
 export const BankingScreenAddAccount = ({
@@ -28,11 +29,17 @@ export const BankingScreenAddAccount = ({
   buttonName,
   image,
   onPress,
+  containerStyle,
 }: DefaultProps) => {
   const globalStyle = useGlobalStyles();
   const { colors } = useTheme() as CustomTheme;
   return (
-    <View style={[globalStyle.layoutDirection('row', 'flex-start', 'center')]}>
+    <View
+      style={[
+        globalStyle.layoutDirection('row', 'flex-start', 'center'),
+        { ...containerStyle },
+      ]}
+    >
       {_renderText(title, {
         ...globalStyle.textStyle('_18', 'text', 'NUNITO_BOLD'),
         flex: 1,
@@ -56,7 +63,7 @@ const styles = StyleSheet.create({
     width: responsiveWidth(22),
     height: moderateScale(32),
     alignSelf: 'center',
-    marginRight: 10,
+    // marginRight: 10,
   },
   newButtonTitleStyle: {
     fontFamily: fonts.NUNITO_REGULAR,

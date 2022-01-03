@@ -10,8 +10,8 @@ import { CustomDropDownPicker, MainHeader, _renderText } from '@components';
 import { images, useGlobalStyles } from '@resources';
 import { BANKING_MENU } from '@constants';
 import { styles } from './style';
-import { TribevestAccounts } from './TribevestAccounts';
-import { ExternalAccounts } from './ExternalAccounts';
+import { TribevestAccountsList } from './TribevestAccountsList';
+import { ExternalAccountsList } from './ExternalAccountsList';
 
 export const Banking = () => {
   const insets = useSafeAreaInsets();
@@ -46,8 +46,8 @@ export const Banking = () => {
         labelStyle={[globalStyle.textStyle('_14', 'black', 'NUNITO_REGULAR')]}
       />
 
-      <TribevestAccounts />
-      <ExternalAccounts />
+      <TribevestAccountsList />
+      <ExternalAccountsList />
     </View>
   );
 };

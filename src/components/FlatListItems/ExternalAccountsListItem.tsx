@@ -63,11 +63,18 @@ export const ExternalAccountsListItem = memo(
           {
             backgroundColor: colors.card,
             borderColor: colors.card,
+            borderWidth: 0,
+          },
+        ]}
+        wrapperStyle={[
+          styles.wrapperStyle,
+          {
+            backgroundColor: colors.card,
+            borderLeftWidth: 20,
             borderLeftColor:
               item.type === 'SAVINGS' ? colors.blue : colors.green_text,
           },
         ]}
-        wrapperStyle={[styles.wrapperStyle, { backgroundColor: colors.card }]}
       >
         {/* Render Saving And Checking vertical label */}
         <Text
@@ -105,13 +112,15 @@ export const ExternalAccountsListItem = memo(
   },
 );
 
+// Do not change this style make sure layout dont change if anything changed here.
 const styles = StyleSheet.create({
   containerStyle: {
     borderRadius: 10,
     padding: 0,
     marginLeft: 0,
+    marginRight: 0,
     marginTop: 8,
-    borderLeftWidth: 20,
+    borderWidth: 0,
   },
   wrapperStyle: {
     borderRadius: 10,

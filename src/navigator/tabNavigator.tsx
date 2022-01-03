@@ -50,7 +50,6 @@ export const TabNavigator = () => {
       screenOptions={({ route }) => ({
         tabBarButton: ['Banking'].includes(route.name) ? () => null : undefined,
         tabBarIcon: ({ focused, color }) => {
-          console.log(route.name);
           let iconName: string = 'home';
           if (route.name === SCREENS.Tribes) {
             iconName = focused ? images.tribes_active : images.tribes_inactive;
