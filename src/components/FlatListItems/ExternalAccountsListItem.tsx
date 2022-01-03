@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { memo } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, TextStyle, Pressable } from 'react-native';
 
 // LOCAL IMPORTS
 import { useGlobalStyles } from '@resources';
@@ -9,60 +9,124 @@ import { useGlobalStyles } from '@resources';
 import { Card } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
 
-export const ExternalAccountsListItem = memo(({ item }: any) => {
-  const globalStyle = useGlobalStyles();
-  const { colors } = useTheme() as CustomTheme;
+interface DefaultProps {
+  item: any;
+  onPressViewDetails: () => void;
+}
 
-  return (
-    <Card
-      containerStyle={styles.containerStyle}
-      wrapperStyle={[styles.wrapperStyle, { backgroundColor: colors.card }]}
-    >
-      <View
-        style={[
-          styles.accountTypeContainer,
+export const ExternalAccountsListItem = memo(
+  ({ item, onPressViewDetails }: DefaultProps) => {
+    const globalStyle = useGlobalStyles();
+    const { colors } = useTheme() as CustomTheme;
+    console.log('ExternalAccountsListItem card redner.....');
+
+    const _renderRow = (
+      title: string,
+      description: string,
+      titleStyle?: TextStyle,
+      descriptionStyle?: TextStyle,
+      onPress?: () => void,
+    ) => {
+      return (
+        <View
+          style={[
+            globalStyle.layoutDirection('row', 'space-between', 'flex-start'),
+            styles.rowContainer,
+          ]}
+        >
+          <Pressable onPress={onPress}>
+            <Text
+              style={[
+                globalStyle.textStyle('_14', 'text', 'NUNITO_BOLD'),
+                { ...titleStyle },
+              ]}
+            >
+              {title}
+            </Text>
+          </Pressable>
+          <Text
+            style={[
+              globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
+              { ...descriptionStyle },
+            ]}
+          >
+            {description}
+          </Text>
+        </View>
+      );
+    };
+
+    return (
+      <Card
+        containerStyle={[
+          styles.containerStyle,
           {
-            backgroundColor:
-              item.type === 'SAVINGS' ? 'blue' : colors.green_text,
+            backgroundColor: colors.card,
+            borderColor: colors.card,
+            borderLeftColor:
+              item.type === 'SAVINGS' ? colors.blue : colors.green_text,
           },
         ]}
+        wrapperStyle={[styles.wrapperStyle, { backgroundColor: colors.card }]}
       >
-        <Text style={[globalStyle.textStyle('_10', 'white', 'NUNITO_BOLD')]}>
+        {/* Render Saving And Checking vertical label */}
+        <Text
+          style={[
+            styles.accountLabel,
+            globalStyle.textStyle('_10', 'white', 'NUNITO_BOLD'),
+            { marginLeft: item.type === 'SAVINGS' ? -32 : -35 },
+          ]}
+        >
           {item.type}
         </Text>
-      </View>
-    </Card>
-  );
-});
+
+        {/* Render First Row */}
+        {_renderRow(
+          item.description,
+          loc('AVAILABLE_BALANCE'),
+          {},
+          { ...globalStyle.textStyle('_12', 'lightText', 'NUNITO_REGULAR') },
+        )}
+
+        {/* Render Second Row */}
+        {_renderRow(
+          loc('VIEW_DETAILS'),
+          item.balance,
+          {
+            marginBottom: 6,
+            textAlign: 'right',
+            ...globalStyle.textStyle('_14', 'blue', 'NUNITO_REGULAR'),
+          },
+          { textAlign: 'right' },
+          () => onPressViewDetails(),
+        )}
+      </Card>
+    );
+  },
+);
 
 const styles = StyleSheet.create({
   containerStyle: {
     borderRadius: 10,
-    height: 84,
     padding: 0,
     marginLeft: 0,
-    marginBottom: -8,
+    marginTop: 8,
+    borderLeftWidth: 20,
   },
   wrapperStyle: {
     borderRadius: 10,
-    height: 84,
-    justifyContent: 'center',
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
-    marginLeft: -1,
-    marginTop: -1,
-    marginRight: -1,
+    paddingTop: 16,
+    paddingBottom: 16,
   },
-  accountTypeContainer: {
+  rowContainer: {
+    borderRadius: 10,
+    width: '100%',
+    paddingLeft: 16,
+    paddingRight: 16,
+  },
+  accountLabel: {
     transform: [{ rotate: '270deg' }],
-    alignSelf: 'flex-start',
-    marginLeft: -31,
-    width: 84,
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 4,
-    paddingHorizontal: 11,
+    position: 'absolute',
+    marginTop: 30,
   },
 });

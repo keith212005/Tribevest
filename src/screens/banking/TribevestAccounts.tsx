@@ -17,7 +17,7 @@ const renderItem = (item: any) => (
 
 export const TribevestAccounts = () => {
   return (
-    <View style={[styles.TribeVestAccountContainer, { flex: 1 }]}>
+    <View style={[styles.TribeVestAccountContainer]}>
       {/* Render Title and Button */}
       <BankingScreenAddAccount
         title={loc('TRIBEVEST_ACCOUNT')}

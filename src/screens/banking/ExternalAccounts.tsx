@@ -10,11 +10,20 @@ import { styles } from './style';
 import { BankingScreenAddAccount, ExternalAccountsListItem } from '@components';
 import { EXTERNAL_ACCOUNTS } from '@constants';
 
-const renderItem = ({ item }: any) => <ExternalAccountsListItem item={item} />;
+const renderItem = ({ item }: any) => {
+  return (
+    <ExternalAccountsListItem
+      item={item}
+      onPressViewDetails={() => {
+        console.log('View Details.....');
+      }}
+    />
+  );
+};
 
 export const ExternalAccounts = () => {
   return (
-    <View style={[styles.TribeVestAccountContainer, { flex: 1 }]}>
+    <View style={[styles.TribeVestAccountContainer]}>
       <BankingScreenAddAccount
         title={loc('EXTERNAL_ACCOUNTS')}
         buttonName={loc('ADD')}

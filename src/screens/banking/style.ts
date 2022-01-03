@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
     marginLeft: 2,
   },
   TribeVestAccountContainer: {
+    flex: 1,
     paddingLeft: 20,
     paddingTop: 24,
   },
