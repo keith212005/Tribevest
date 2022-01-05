@@ -38,6 +38,7 @@ export const color: any = {
   orange_text: '#FF9B5F',
   orange_background: '#FFF0E5',
   light_blue_background: '#E5F7FF',
+  cardBackgroundGradient: ['#23C26F', '#23BEC2'],
 };
 
 export const MyDarkTheme = {

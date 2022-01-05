@@ -9,16 +9,25 @@ import LinearGradient from 'react-native-linear-gradient';
 // LOCAL IMPORTS
 
 interface ISafeAreaWrapperProps {
-  containerStyle?: ViewStyle;
+  colors: any;
+  containerStyle?: Array<any> | ViewStyle;
   children?: React.ReactNode;
+  extraProps?: any;
 }
 
-export const LinearGradeintBackground: React.FC<ISafeAreaWrapperProps> = ({
+export const LinearGradientWrapper: React.FC<ISafeAreaWrapperProps> = ({
+  colors = color.primaryGradiant,
   containerStyle = { flex: 1 },
   children,
 }) => {
   return (
-    <LinearGradient colors={color.primaryGradiant} style={[containerStyle]}>
+    <LinearGradient
+      colors={colors}
+      style={[containerStyle]}
+      useAngle={true}
+      angle={145}
+      angleCenter={{ x: 0.2, y: 0.8 }}
+    >
       {children}
     </LinearGradient>
   );

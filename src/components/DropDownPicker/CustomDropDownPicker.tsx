@@ -15,7 +15,7 @@ import { useTheme } from '@react-navigation/native';
 interface DefaultProps extends DropDownPickerProps {
   label?: string;
   valueObject?: IfieldObject;
-  extraStyle: ViewStyle;
+  extraStyle?: ViewStyle;
 }
 
 export const CustomDropDownPicker = (props: DefaultProps) => {

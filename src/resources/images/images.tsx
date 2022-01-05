@@ -66,4 +66,5 @@ export const images: any = {
   arrow_left: require('./arrow_left/arrow_left.png'),
   filter: require('./filter/filter.png'),
   close_circle: require('./close_circle/close_circle.png'),
+  master_card: require('./master_card/master_card.png'),
 };

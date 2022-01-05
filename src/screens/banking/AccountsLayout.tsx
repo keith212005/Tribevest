@@ -34,71 +34,63 @@ export const AccountsLayout = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <View style={[styles.TribeVestAccountContainer]}>
-        {/* Render Title and Button */}
-        <BankingScreenAddAccount
-          title={loc('TRIBEVEST_ACCOUNT')}
-          buttonName={loc('ADD')}
-          image={'add'}
-          onPress={() => {}}
-          containerStyle={{ width: responsiveWidth(90) }}
-        />
+    <View style={[styles.TribeVestAccountContainer]}>
+      {/* Render Title and Button */}
+      <BankingScreenAddAccount
+        title={loc('TRIBEVEST_ACCOUNT')}
+        buttonName={loc('ADD')}
+        image={'add'}
+        onPress={() => {}}
+        containerStyle={{ width: responsiveWidth(90) }}
+      />
 
-        {/* RenderTribevest Account List */}
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={TRIBEVEST_ACCOUNTS}
-          renderItem={renderTribevestAccountItems}
-          keyExtractor={(item) => item.id.toString()}
-        />
+      {/* RenderTribevest Account List */}
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={TRIBEVEST_ACCOUNTS}
+        renderItem={renderTribevestAccountItems}
+        keyExtractor={(item) => item.id.toString()}
+      />
 
-        <CustomModal ref={ref}>
-          <View
-            style={[
-              styles.modalContainer,
-              { backgroundColor: colors.background },
-            ]}
-          >
-            <AvailableBalance />
-            <Statements />
-            <Transactions />
-          </View>
-        </CustomModal>
-      </View>
+      <CustomModal ref={ref}>
+        <View
+          style={[
+            styles.modalContainer,
+            { backgroundColor: colors.background },
+          ]}
+        >
+          <AvailableBalance />
+          <Statements />
+          <Transactions />
+        </View>
+      </CustomModal>
 
-      <View style={[{ flex: 1, paddingHorizontal: 20 }]}>
-        <BankingScreenAddAccount
-          title={loc('EXTERNAL_ACCOUNTS')}
-          buttonName={loc('ADD')}
-          image={'add'}
-          onPress={() => {}}
-          containerStyle={{
-            width: responsiveWidth(90),
-            marginVertical: Platform.OS === 'ios' ? 5 : 5,
-          }}
-        />
+      <BankingScreenAddAccount
+        title={loc('EXTERNAL_ACCOUNTS')}
+        buttonName={loc('ADD')}
+        image={'add'}
+        onPress={() => {}}
+        containerStyle={{
+          width: responsiveWidth(90),
+          marginVertical: Platform.OS === 'ios' ? 5 : 5,
+        }}
+      />
 
-        {/* Render External Account List */}
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 20 }}
-          nestedScrollEnabled={true}
-          data={EXTERNAL_ACCOUNTS}
-          renderItem={renderExternalAccountsItem}
-          keyExtractor={(item: any) => item.id}
-        />
-      </View>
+      {/* Render External Account List */}
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 20 }}
+        nestedScrollEnabled={true}
+        data={EXTERNAL_ACCOUNTS}
+        renderItem={renderExternalAccountsItem}
+        keyExtractor={(item: any) => item.id}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   TribeVestAccountContainer: {
-    flex: 1,
     paddingLeft: 20,
     paddingTop: 24,
   },

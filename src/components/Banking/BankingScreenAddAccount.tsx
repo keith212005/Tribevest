@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     width: responsiveWidth(22),
     height: moderateScale(32),
     alignSelf: 'center',
-    // marginRight: 10,
   },
   newButtonTitleStyle: {
     fontFamily: fonts.NUNITO_REGULAR,

@@ -1,7 +1,14 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-undef */
 import React from 'react';
-import { Text, View, StyleSheet, TextStyle, Pressable } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextStyle,
+  Pressable,
+  ViewStyle,
+} from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { useTheme } from '@react-navigation/native';
@@ -26,6 +33,7 @@ interface DefaultProps {
   rightIcon?: keyof typeof images;
   rightIconTintColor?: string;
   onPressRightIcon: () => void;
+  containerStyle?: ViewStyle;
 }
 
 export const MainHeader = (props: DefaultProps) => {
@@ -41,6 +49,7 @@ export const MainHeader = (props: DefaultProps) => {
           backgroundColor: isDarkTheme ? colors.card : 'white',
           borderBottomColor: '#DADCDE',
           borderBottomWidth: 1,
+          ...props.containerStyle,
         },
       ]}
     >
