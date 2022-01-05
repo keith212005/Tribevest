@@ -492,3 +492,79 @@ export const EXTERNAL_ACCOUNTS = [
     balance: '$50,872.00',
   },
 ];
+
+export const MONTHLY_STATEMENT = [
+  {
+    id: 1,
+    month: 'January',
+    from: 'Jan 1 - Jan 31, 2021',
+  },
+  {
+    id: 2,
+    month: 'February',
+    from: 'Feb 1 - Feb 30, 2021',
+  },
+  {
+    id: 3,
+    month: 'March',
+    from: 'Mar 1 - Mar 31, 2021',
+  },
+  {
+    id: 4,
+    month: 'April',
+    from: 'Apr 1 - Apr 30, 2021',
+  },
+  {
+    id: 5,
+    month: 'May',
+    from: 'May 1 - May 31, 2021',
+  },
+  {
+    id: 6,
+    month: 'June',
+    from: 'Jun 1 - Jun 30, 2021',
+  },
+];
+
+export const TRANSACTIONS = [
+  {
+    id: 1,
+    date: 'July 02, 2021',
+    cardName: 'Tribevest Card',
+    paymentType: 'Card Payment',
+    amount: '$37.87',
+    status: 'Processed',
+  },
+  {
+    id: 2,
+    date: 'July 02, 2021',
+    cardName: 'Tribevest Card',
+    paymentType: 'Card Payment',
+    amount: '$37.87',
+    status: 'Processed',
+  },
+  {
+    id: 3,
+    date: 'July 02, 2021',
+    cardName: 'Tribevest Card',
+    paymentType: 'Card Payment',
+    amount: '$37.87',
+    status: 'Processed',
+  },
+  {
+    id: 4,
+    date: 'July 02, 2021',
+    cardName: 'Tribevest Card',
+    paymentType: 'Card Payment',
+    amount: '$37.87',
+    status: 'Processed',
+  },
+  {
+    id: 5,
+    date: 'July 02, 2021',
+    cardName: 'Tribevest Card',
+    paymentType: 'Card Payment',
+    amount: '$37.87',
+    status: 'Processed',
+  },
+];

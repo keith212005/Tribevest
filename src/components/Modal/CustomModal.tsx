@@ -1,12 +1,15 @@
 /* eslint-disable no-undef */
-import { useTheme } from '@react-navigation/native';
-import { responsiveWidth } from '@resources';
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Divider } from 'react-native-elements';
+import React, { forwardRef, useImperativeHandle, useRef, memo } from 'react';
+import { Platform, StyleSheet, View } from 'react-native';
 
+// THIRD PARTY IMPORTS
+import { Divider } from 'react-native-elements';
+import { useTheme } from '@react-navigation/native';
 import { Modalize } from 'react-native-modalize';
 import { Portal } from 'react-native-portalize';
+
+// LOCAL IMPORTS
+import { responsiveHeight, responsiveWidth } from '@resources';
 
 interface DefaultProps {
   children?: any;
@@ -32,24 +35,31 @@ export const CustomModal = forwardRef((props: DefaultProps, ref: any) => {
           ref={modalizeRef}
           withHandle={false}
           rootStyle={{}}
-          modalStyle={{ backgroundColor: colors.card }}
-          HeaderComponent={
-            <View
-              style={{
-                backgroundColor: colors.card,
-                borderTopRightRadius: 12,
-                borderTopLeftRadius: 12,
-              }}
-            >
-              <Divider style={styles.divider} />
-            </View>
-          }
+          modalStyle={{
+            backgroundColor: colors.background,
+            marginTop: responsiveHeight(Platform.OS === 'ios' ? 14 : 13),
+          }}
+          HeaderComponent={<HeaderComponent />}
           {...props}
         >
           {props.children}
         </Modalize>
       </Portal>
     </>
+  );
+});
+
+const HeaderComponent = memo(() => {
+  const { colors } = useTheme() as CustomTheme;
+  return (
+    <View
+      style={[
+        { backgroundColor: colors.background },
+        styles.headerComponentContainer,
+      ]}
+    >
+      <Divider style={styles.divider} />
+    </View>
   );
 });
 
@@ -61,5 +71,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: responsiveWidth(20),
     margin: 10,
+  },
+  headerComponentContainer: {
+    borderTopRightRadius: 12,
+    borderTopLeftRadius: 12,
   },
 });

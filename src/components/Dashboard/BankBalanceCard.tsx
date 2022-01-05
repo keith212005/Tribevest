@@ -15,7 +15,7 @@ import { Card } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
-import { FastImg, Rotate } from '@components';
+import { CardWrapper, FastImg, Rotate } from '@components';
 import { images, scale, useGlobalStyles } from '@resources';
 
 if (Platform.OS === 'android') {
@@ -91,26 +91,16 @@ export const BankBalanceCard = () => {
   };
 
   return (
-    <Card containerStyle={[styles.container, { backgroundColor: colors.card }]}>
+    <CardWrapper
+      containerStyle={{ marginHorizontal: 0, backgroundColor: colors.card }}
+    >
       {_renderCardHeader()}
       {open && _renderCollapsibleCardBody()}
-    </Card>
+    </CardWrapper>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 0,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
