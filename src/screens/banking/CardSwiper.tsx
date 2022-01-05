@@ -11,7 +11,7 @@ import {
   useGlobalStyles,
 } from '@resources';
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, Platform } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { useSharedValue } from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
@@ -109,7 +109,7 @@ export const CardSwiper = () => {
             justifyContent: 'space-between',
             minWidth: 40,
             alignSelf: 'center',
-            marginTop: -26,
+            marginTop: Platform.OS === 'ios' ? -26 : 0,
           }}
         >
           {CARDS_LIST.map((_, index) => {
@@ -144,6 +144,5 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 16,
     marginBottom: 24,
-    borderWidth: 1,
   },
 });
