@@ -568,3 +568,30 @@ export const TRANSACTIONS = [
     status: 'Processed',
   },
 ];
+
+export const CARDS_LIST = [
+  {
+    id: 1,
+    label: 'Tribevest: **** **** 6621',
+    value: 'Tribevest: **** **** 6621',
+    number: '8732 7621 6743 6621',
+    cvv: '652',
+    expDate: '03/24',
+  },
+  {
+    id: 2,
+    label: 'Tribevest: **** **** 6622',
+    value: 'Tribevest: **** **** 6622',
+    number: '8732 7621 6743 6621',
+    cvv: '652',
+    expDate: '03/24',
+  },
+  {
+    id: 3,
+    label: 'Tribevest: **** **** 6623',
+    value: 'Tribevest: **** **** 6623',
+    number: '8732 7621 6743 6621',
+    cvv: '652',
+    expDate: '03/24',
+  },
+];

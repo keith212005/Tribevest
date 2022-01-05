@@ -17,6 +17,8 @@ interface DefaultProps {
 
 export const TribevestAccountsListItem = memo(
   ({ item, onSelect }: DefaultProps) => {
+    console.log('TribevestAccountsListItem render...');
+
     const globalStyle = useGlobalStyles();
     const { colors } = useTheme() as CustomTheme;
 

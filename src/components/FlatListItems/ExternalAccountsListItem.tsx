@@ -11,106 +11,105 @@ import { useTheme } from '@react-navigation/native';
 
 interface DefaultProps {
   item: any;
-  onPressViewDetails: () => void;
 }
 
-export const ExternalAccountsListItem = memo(
-  ({ item, onPressViewDetails }: DefaultProps) => {
-    const globalStyle = useGlobalStyles();
-    const { colors } = useTheme() as CustomTheme;
-    console.log('ExternalAccountsListItem card redner.....');
+export const ExternalAccountsListItem = memo(({ item }: DefaultProps) => {
+  const globalStyle = useGlobalStyles();
+  const { colors } = useTheme() as CustomTheme;
+  console.log('ExternalAccountsListItem card redner.....');
 
-    const _renderRow = (
-      title: string,
-      description: string,
-      titleStyle?: TextStyle,
-      descriptionStyle?: TextStyle,
-      onPress?: () => void,
-    ) => {
-      return (
-        <View
-          style={[
-            globalStyle.layoutDirection('row', 'space-between', 'flex-start'),
-            styles.rowContainer,
-          ]}
-        >
-          <Pressable onPress={onPress}>
-            <Text
-              style={[
-                globalStyle.textStyle('_14', 'text', 'NUNITO_BOLD'),
-                { ...titleStyle },
-              ]}
-            >
-              {title}
-            </Text>
-          </Pressable>
-          <Text
-            style={[
-              globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
-              { ...descriptionStyle },
-            ]}
-          >
-            {description}
-          </Text>
-        </View>
-      );
-    };
-
+  const _renderRow = (
+    title: string,
+    description: string,
+    titleStyle?: TextStyle,
+    descriptionStyle?: TextStyle,
+    onPress?: () => void,
+  ) => {
     return (
-      <Card
-        containerStyle={[
-          styles.containerStyle,
-          {
-            backgroundColor: colors.card,
-            borderColor: colors.card,
-            borderWidth: 0,
-          },
-        ]}
-        wrapperStyle={[
-          styles.wrapperStyle,
-          {
-            backgroundColor: colors.card,
-            borderLeftWidth: 20,
-            borderLeftColor:
-              item.type === 'SAVINGS' ? colors.blue : colors.green_text,
-          },
+      <View
+        style={[
+          globalStyle.layoutDirection('row', 'space-between', 'flex-start'),
+          styles.rowContainer,
         ]}
       >
-        {/* Render Saving And Checking vertical label */}
+        <Pressable onPress={onPress}>
+          <Text
+            style={[
+              globalStyle.textStyle('_14', 'text', 'NUNITO_BOLD'),
+              { ...titleStyle },
+            ]}
+          >
+            {title}
+          </Text>
+        </Pressable>
         <Text
           style={[
-            styles.accountLabel,
-            globalStyle.textStyle('_10', 'white', 'NUNITO_BOLD'),
-            { marginLeft: item.type === 'SAVINGS' ? -32 : -35 },
+            globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
+            { ...descriptionStyle },
           ]}
         >
-          {item.type}
+          {description}
         </Text>
-
-        {/* Render First Row */}
-        {_renderRow(
-          item.description,
-          loc('AVAILABLE_BALANCE'),
-          {},
-          { ...globalStyle.textStyle('_12', 'lightText', 'NUNITO_REGULAR') },
-        )}
-
-        {/* Render Second Row */}
-        {_renderRow(
-          loc('VIEW_DETAILS'),
-          item.balance,
-          {
-            marginBottom: 6,
-            textAlign: 'right',
-            ...globalStyle.textStyle('_14', 'blue', 'NUNITO_REGULAR'),
-          },
-          { textAlign: 'right' },
-          () => onPressViewDetails(),
-        )}
-      </Card>
+      </View>
     );
-  },
-);
+  };
+
+  return (
+    <Card
+      containerStyle={[
+        styles.containerStyle,
+        {
+          backgroundColor: colors.card,
+          borderColor: colors.card,
+          borderWidth: 0,
+        },
+      ]}
+      wrapperStyle={[
+        styles.wrapperStyle,
+        {
+          backgroundColor: colors.card,
+          borderLeftWidth: 20,
+          borderLeftColor:
+            item.type === 'SAVINGS' ? colors.blue : colors.green_text,
+        },
+      ]}
+    >
+      {/* Render Saving And Checking vertical label */}
+      <Text
+        style={[
+          styles.accountLabel,
+          globalStyle.textStyle('_10', 'white', 'NUNITO_BOLD'),
+          { marginLeft: item.type === 'SAVINGS' ? -32 : -35 },
+        ]}
+      >
+        {item.type}
+      </Text>
+
+      {/* Render First Row */}
+      {_renderRow(
+        item.description,
+        loc('AVAILABLE_BALANCE'),
+        {},
+        { ...globalStyle.textStyle('_12', 'lightText', 'NUNITO_REGULAR') },
+      )}
+
+      {/* Render Second Row */}
+      {_renderRow(
+        loc('VIEW_DETAILS'),
+        item.balance,
+        {
+          marginBottom: 6,
+          textAlign: 'right',
+          ...globalStyle.textStyle('_14', 'blue', 'NUNITO_REGULAR'),
+        },
+        { textAlign: 'right' },
+        () => {
+          console.log('View Detaukss...');
+        },
+      )}
+    </Card>
+  );
+});
 
 // Do not change this style make sure layout dont change if anything changed here.
 const styles = StyleSheet.create({

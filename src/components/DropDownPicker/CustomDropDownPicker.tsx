@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
-import { Text } from 'react-native';
+import React from 'react';
+import { Text, ViewStyle } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import DropDownPicker, {
@@ -15,6 +15,7 @@ import { useTheme } from '@react-navigation/native';
 interface DefaultProps extends DropDownPickerProps {
   label?: string;
   valueObject?: IfieldObject;
+  extraStyle: ViewStyle;
 }
 
 export const CustomDropDownPicker = (props: DefaultProps) => {
@@ -31,8 +32,11 @@ export const CustomDropDownPicker = (props: DefaultProps) => {
 
       <DropDownPicker
         style={{
+          paddingLeft: scale(16),
+          height: scale(40),
           borderColor: colors.placeHolderColor,
-          backgroundColor: colors.inputBackgroundColor,
+          backgroundColor: '#F1F5F9',
+          ...props.extraStyle,
         }}
         {...props}
       />
