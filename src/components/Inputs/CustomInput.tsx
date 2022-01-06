@@ -33,6 +33,7 @@ export interface CustomInputProps extends TextInputProps {
   showPasswordIcon?: boolean;
   onPressRightIcon?: any;
   extraStyle?: ViewStyle;
+  containerStyle?: ViewStyle;
 }
 
 export const CustomInput: React.FC<CustomInputProps> = (
@@ -49,7 +50,7 @@ export const CustomInput: React.FC<CustomInputProps> = (
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { ...props.containerStyle }]}>
       {props.label && (
         <Text style={[globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD')]}>
           {props.label}

@@ -252,4 +252,10 @@ export const en = {
   CARD_PAYMENT: 'Card Payment',
   PROCESSED: 'Processed',
   DEPOSIT_MONEY: 'Deposit Money',
+  NEW_MOTION_SETUP: 'New Motion Setup',
+  title: 'Title',
+  ENTER_TITLE: 'Enter title',
+  RECIPIENT_NAMES_MSG: 'Recipient names cannot contain accented letters',
+  SET_VOTE_DEADLINE: 'Set Vote Deadline',
+  CURRENT_VOTING_THRESHHOLD: 'Current voting threshold',
 };

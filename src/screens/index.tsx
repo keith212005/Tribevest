@@ -15,3 +15,4 @@ export { Alerts } from './alerts';
 export { Voting } from './voting';
 export { Vote } from './vote';
 export { Banking } from './banking';
+export { NewMotionSetup } from './newMotionSetup';

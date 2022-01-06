@@ -15,10 +15,11 @@ import { useTheme } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
 // LOCAL IMPORTS
-import { navigate, openDrawer } from '@navigator';
-import { BackButton, TribeAvatar } from '@components';
+import { openDrawer } from '@navigator';
+import { TribeAvatar } from '@components';
 import { images, scale, useGlobalStyles } from '@resources';
 import FastImage, { Source } from 'react-native-fast-image';
+import { Icon } from 'react-native-elements';
 
 var url =
   'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
@@ -30,9 +31,10 @@ interface DefaultProps {
   hideRightIcon?: boolean;
   hideLeftImage?: boolean;
   showBackIcon?: boolean;
+  onPressBackButton?: () => void;
   rightIcon?: keyof typeof images;
   rightIconTintColor?: string;
-  onPressRightIcon: () => void;
+  onPressRightIcon?: () => void;
   containerStyle?: ViewStyle;
 }
 
@@ -55,7 +57,16 @@ export const MainHeader = (props: DefaultProps) => {
     >
       <View style={{ flex: 1 }}>
         {props.showBackIcon ? (
-          <BackButton onPress={() => navigate('Voting')} />
+          <Icon
+            tvParallaxProperties={false}
+            size={25}
+            name="chevron-left"
+            type="feather"
+            color={colors.blue}
+            onPress={props.onPressBackButton}
+            containerStyle={{}}
+            iconStyle={{ padding: 8 }}
+          />
         ) : (
           !props.hideLeftImage && (
             <TribeAvatar
@@ -80,7 +91,7 @@ export const MainHeader = (props: DefaultProps) => {
 
       <View style={{ flex: 1 }}>
         {!props.hideRightIcon && (
-          <Pressable onPress={() => props?.onPressRightIcon()}>
+          <Pressable onPress={props.onPressRightIcon}>
             <FastImage
               source={props.rightIcon as Source}
               style={[

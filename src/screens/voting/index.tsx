@@ -45,7 +45,7 @@ export const Voting = () => {
         <RoundGradientButton
           gradientColor={colors.primaryGradiant}
           title={loc('NEW')}
-          onPress={() => navigate('Vote')}
+          onPress={() => navigate('NewMotionSetup')}
           icon={images.add}
           titleStyle={styles.newButtonTitleStyle}
           extraStyle={styles.newButtonExtraStyle}

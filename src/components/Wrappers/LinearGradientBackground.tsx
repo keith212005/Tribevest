@@ -19,6 +19,7 @@ export const LinearGradientWrapper: React.FC<ISafeAreaWrapperProps> = ({
   colors = color.primaryGradiant,
   containerStyle = { flex: 1 },
   children,
+  extraProps = {},
 }) => {
   return (
     <LinearGradient
@@ -27,6 +28,7 @@ export const LinearGradientWrapper: React.FC<ISafeAreaWrapperProps> = ({
       useAngle={true}
       angle={145}
       angleCenter={{ x: 0.2, y: 0.8 }}
+      {...extraProps}
     >
       {children}
     </LinearGradient>

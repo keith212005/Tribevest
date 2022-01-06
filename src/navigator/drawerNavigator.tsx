@@ -48,8 +48,6 @@ export const DrawerNavigator = () => {
         {_addScreen('TabNavigator' as never, true, {
           component: TabNavigator,
         })}
-        {_addScreen('Voting' as never)}
-        {_addScreen('Vote' as never)}
       </Drawer.Navigator>
     </>
   );

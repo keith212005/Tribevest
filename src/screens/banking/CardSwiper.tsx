@@ -55,6 +55,11 @@ export const CardSwiper = () => {
             <LinearGradientWrapper
               colors={color.cardBackgroundGradient}
               containerStyle={styles.containerStyle}
+              extraProps={{
+                useAngle: true,
+                angle: 45,
+                angleCenter: { x: 0.4, y: 0.6 },
+              }}
             >
               <Text style={styles.cardName}>{cardName}</Text>
               <Text style={styles.cardNumber}>{cardNumber}</Text>

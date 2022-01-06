@@ -48,7 +48,11 @@ export const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarButton: ['Banking'].includes(route.name) ? () => null : undefined,
+        tabBarButton: ['Banking', 'Voting', 'Vote', 'NewMotionSetup'].includes(
+          route.name,
+        )
+          ? () => null
+          : undefined,
         tabBarIcon: ({ focused, color }) => {
           let iconName: string = 'home';
           if (route.name === SCREENS.Tribes) {
@@ -123,6 +127,9 @@ export const TabNavigator = () => {
       {_addScreen('Alerts' as never, false)}
       {_addScreen('Profile' as never, false)}
       {_addScreen('Banking' as never, false)}
+      {_addScreen('Voting' as never, false)}
+      {_addScreen('Vote' as never, false)}
+      {_addScreen('NewMotionSetup' as never, false)}
     </Tab.Navigator>
   );
 };

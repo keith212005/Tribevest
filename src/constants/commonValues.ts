@@ -18,6 +18,7 @@ export const SCREENS = {
   Voting: 'Voting',
   Vote: 'Vote',
   Banking: 'Banking',
+  NewMotionSetup: 'NewMotionSetup',
 };
 
 export interface IfieldObject {
