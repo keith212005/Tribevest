@@ -6,16 +6,19 @@ import { View, StyleSheet, ViewStyle, TouchableOpacity } from 'react-native';
 
 // LOCAL IMPORTS
 import { images, scale, useGlobalStyles } from '@resources';
-import { CardSwiper, _renderText } from '@components';
+import { CardSwiper, CustomModal, _renderText } from '@components';
 import FastImage from 'react-native-fast-image';
 import { useTheme } from '@react-navigation/native';
 import { Divider } from 'react-native-elements';
+import { useModalize } from 'react-native-modalize/lib/utils/use-modalize';
+import { CardsMoreDetailsPopup } from './CardMoreDetailsPopup';
 
 interface DefaultProps {
   containerStyle?: ViewStyle;
 }
 
 export const BankingCards = (props: DefaultProps) => {
+  const { ref, open } = useModalize();
   const globalStyle = useGlobalStyles();
   const { colors } = useTheme() as CustomTheme;
 
@@ -92,12 +95,14 @@ export const BankingCards = (props: DefaultProps) => {
             ...globalStyle.textStyle('_12', 'text', 'NUNITO_BLACK'),
           })}
 
-          <FastImage
-            style={[globalStyle.squareLayout(20), {}]}
-            source={images.info_circle}
-            resizeMode={FastImage.resizeMode.contain}
-            tintColor={colors.text}
-          />
+          <TouchableOpacity onPress={() => open()}>
+            <FastImage
+              style={[globalStyle.squareLayout(20), {}]}
+              source={images.pending}
+              resizeMode={FastImage.resizeMode.contain}
+              tintColor={colors.text}
+            />
+          </TouchableOpacity>
         </View>
 
         {/* Render Divider */}
@@ -109,6 +114,10 @@ export const BankingCards = (props: DefaultProps) => {
         {/* Render Add to Apple wallet button */}
         {_renderAppleWalletButton()}
       </View>
+
+      <CustomModal ref={ref}>
+        <CardsMoreDetailsPopup />
+      </CustomModal>
     </View>
   );
 };

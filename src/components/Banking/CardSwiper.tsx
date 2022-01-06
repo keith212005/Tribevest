@@ -1,43 +1,22 @@
 /* eslint-disable no-undef */
-import { LinearGradientWrapper } from '@components';
-import { CARDS_LIST } from '@constants';
-import { useTheme } from '@react-navigation/native';
-import {
-  color,
-  fonts,
-  images,
-  responsiveHeight,
-  responsiveWidth,
-  useGlobalStyles,
-} from '@resources';
 import React from 'react';
-import { Text, StyleSheet, View, Platform } from 'react-native';
-import FastImage from 'react-native-fast-image';
-import { useSharedValue } from 'react-native-reanimated';
+import { StyleSheet, View, Platform } from 'react-native';
+
+// THIRD PARTY IMPORTS
 import Carousel from 'react-native-reanimated-carousel';
+import { useTheme } from '@react-navigation/native';
+import { useSharedValue } from 'react-native-reanimated';
+
+// LOCAL IMPORTS
+import { CARDS_LIST } from '@constants';
 import { PaginationItem } from './PaginationItem';
+import { responsiveHeight, responsiveWidth } from '@resources';
+import { CreditCardView } from 'components/Cards/CreditCardView';
 
 export const CardSwiper = () => {
   const progressValue = useSharedValue<number>(0);
   const r = React.useRef<any>(null);
   const { colors } = useTheme() as CustomTheme;
-
-  const globalStyle = useGlobalStyles();
-
-  const _renderColumn = (topText: string, bottomText: string) => {
-    return (
-      <>
-        <Text style={[globalStyle.textStyle('_12', 'white', 'NUNITO_LIGHT')]}>
-          {topText}
-        </Text>
-        <Text
-          style={[globalStyle.textStyle('_14', 'white', 'NUNITO_SEMIBOLD')]}
-        >
-          {bottomText}
-        </Text>
-      </>
-    );
-  };
 
   return (
     <View>
@@ -52,55 +31,13 @@ export const CardSwiper = () => {
         data={CARDS_LIST}
         renderItem={({ cardName, cardNumber, cvv, expDate }) => {
           return (
-            <LinearGradientWrapper
-              colors={color.cardBackgroundGradient}
-              containerStyle={styles.containerStyle}
-              extraProps={{
-                useAngle: true,
-                angle: 45,
-                angleCenter: { x: 0.4, y: 0.6 },
-              }}
-            >
-              <Text style={styles.cardName}>{cardName}</Text>
-              <Text style={styles.cardNumber}>{cardNumber}</Text>
-              <View style={{ flexDirection: 'row' }}>
-                <View
-                  style={[
-                    { flex: 5 },
-                    globalStyle.layoutDirection(
-                      'column',
-                      'center',
-                      'flex-start',
-                    ),
-                  ]}
-                >
-                  {_renderColumn('CVV', cvv)}
-                </View>
-                <View
-                  style={[
-                    { flex: 6 },
-                    globalStyle.layoutDirection(
-                      'column',
-                      'center',
-                      'flex-start',
-                    ),
-                  ]}
-                >
-                  {_renderColumn('Exp. data', expDate)}
-                </View>
-                <View style={{}}>
-                  <FastImage
-                    source={images.master_card}
-                    style={[globalStyle.squareLayout(60)]}
-                    resizeMode={FastImage.resizeMode.contain}
-                  />
-                </View>
-              </View>
-            </LinearGradientWrapper>
+            <CreditCardView
+              cardName={cardName}
+              cardNumber={cardNumber}
+              cvv={cvv}
+              expDate={expDate}
+            />
           );
-        }}
-        onSnapToItem={(index) => {
-          console.log('current index:', index);
         }}
         onProgressChange={(_: any, absoluteProgress: any) => {
           progressValue.value = absoluteProgress;
@@ -108,15 +45,7 @@ export const CardSwiper = () => {
       />
 
       {!!progressValue && (
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            minWidth: 40,
-            alignSelf: 'center',
-            marginTop: Platform.OS === 'ios' ? -26 : 0,
-          }}
-        >
+        <View style={styles.paginationContainer}>
           {CARDS_LIST.map((_, index) => {
             return (
               <PaginationItem
@@ -134,20 +63,11 @@ export const CardSwiper = () => {
 };
 
 const styles = StyleSheet.create({
-  containerStyle: {
-    borderRadius: 10,
-    padding: 20,
-  },
-  cardName: {
-    fontSize: 14,
-    fontFamily: fonts.NUNITO_SEMIBOLD,
-    color: 'white',
-  },
-  cardNumber: {
-    fontSize: 16,
-    fontFamily: fonts.NUNITO_REGULAR,
-    color: 'white',
-    marginTop: 16,
-    marginBottom: 24,
+  paginationContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    minWidth: 40,
+    alignSelf: 'center',
+    marginTop: Platform.OS === 'ios' ? -26 : 0,
   },
 });
