@@ -5,13 +5,13 @@ import { Platform, StyleSheet, View } from 'react-native';
 // THIRD PARTY IMPORTS
 import { Divider } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
-import { Modalize } from 'react-native-modalize';
+import { Modalize, ModalizeProps } from 'react-native-modalize';
 import { Portal } from 'react-native-portalize';
 
 // LOCAL IMPORTS
 import { responsiveHeight, responsiveWidth } from '@resources';
 
-interface DefaultProps {
+interface DefaultProps extends ModalizeProps {
   children?: any;
 }
 
