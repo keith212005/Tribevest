@@ -67,4 +67,6 @@ export const images: any = {
   filter: require('./filter/filter.png'),
   close_circle: require('./close_circle/close_circle.png'),
   master_card: require('./master_card/master_card.png'),
+  location: require('./location/location.png'),
+  apple_wallet: require('./apple_wallet/apple_wallet.png'),
 };

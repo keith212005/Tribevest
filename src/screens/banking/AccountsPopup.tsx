@@ -18,7 +18,7 @@ import { Transactions } from './Transactions';
 
 // LOCAL IMPORTS
 
-export const AccountsLayout = () => {
+export const AccountsPopup = () => {
   const { ref, open } = useModalize();
   const { colors } = useTheme() as CustomTheme;
 

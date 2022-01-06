@@ -258,4 +258,7 @@ export const en = {
   RECIPIENT_NAMES_MSG: 'Recipient names cannot contain accented letters',
   SET_VOTE_DEADLINE: 'Set Vote Deadline',
   CURRENT_VOTING_THRESHHOLD: 'Current voting threshold',
+  MARKETING: 'Marketing',
+  ADDRESS: 'Address',
+  ADD_TO_APPLE_WALLET: 'Add to Apple Wallet',
 };

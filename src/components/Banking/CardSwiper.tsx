@@ -40,7 +40,7 @@ export const CardSwiper = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       <Carousel<any>
         ref={r}
         pagingEnabled={true}

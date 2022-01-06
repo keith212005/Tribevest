@@ -3,16 +3,16 @@ import React, { useCallback, useState } from 'react';
 import { TouchableWithoutFeedback, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import { useTheme } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // LOCAL IMPORTS
 import { styles } from './style';
-import { CustomDropDownPicker, MainHeader, _renderText } from '@components';
-import { images, scale, useGlobalStyles } from '@resources';
+import { BankingCards } from './BankingCards';
+import { AccountsPopup } from './AccountsPopup';
 import { BANKING_MENU, CARDS_LIST } from '@constants';
-import { AccountsLayout } from './AccountsLayout';
-import { useTheme } from '@react-navigation/native';
-import { CardSwiper } from './CardSwiper';
+import { images, scale, useGlobalStyles } from '@resources';
+import { CustomDropDownPicker, MainHeader, _renderText } from '@components';
 
 export const Banking = () => {
   const insets = useSafeAreaInsets();
@@ -74,6 +74,7 @@ export const Banking = () => {
             ]}
           />
 
+          {/* show Select cards list Dropdown when Cards is selected. */}
           {value === 'Cards' ? (
             <CustomDropDownPicker
               zIndex={2000}
@@ -93,13 +94,18 @@ export const Banking = () => {
           ) : null}
 
           {/* REDNDER LAYOUT ACCORDING TO ITEM SELECTED IN ABOVE PICKER */}
-          {value === 'Accounts' ? <AccountsLayout /> : null}
+          {value === 'Accounts' ? <AccountsPopup /> : null}
         </View>
       </TouchableWithoutFeedback>
+
+      {/* Render Banking Cards Carousel */}
       {value === 'Cards' ? (
-        <View style={{ flex: 1, zIndex: -1, marginTop: -30 }}>
-          <CardSwiper />
-        </View>
+        <BankingCards
+          containerStyle={{
+            marginTop: -30,
+            zIndex: -1,
+          }}
+        />
       ) : null}
     </View>
   );
