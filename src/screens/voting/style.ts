@@ -1,6 +1,6 @@
 import { fonts, moderateScale, responsiveWidth } from '@resources';
 import { ViewStyle, StyleSheet } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
+import { fontScale } from 'react-native-utils-scale';
 
 interface Style {
   container: ViewStyle;
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create<Style>({
   },
   newButtonTitleStyle: {
     fontFamily: fonts.NUNITO_REGULAR,
-    fontSize: RFValue(12),
+    fontSize: fontScale(12),
     color: 'white',
     marginLeft: 2,
   },

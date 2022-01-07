@@ -1,10 +1,10 @@
 import { fonts, moderateScale, responsiveWidth } from '@resources';
 import { StyleSheet } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
+
+import { fontScale } from 'react-native-utils-scale';
 
 export const styles = StyleSheet.create({
   dropDownContainerStyle: {
-    width: responsiveWidth(90),
     marginLeft: 20,
     marginTop: 8,
   },
@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   newButtonTitleStyle: {
     fontFamily: fonts.NUNITO_REGULAR,
-    fontSize: RFValue(12),
+    fontSize: fontScale(12),
     marginLeft: 2,
   },
   TribeVestAccountContainer: {

@@ -14,7 +14,7 @@ import {
 
 //THIRD PARTY IMPORTS
 import { useTheme } from '@react-navigation/native';
-import { RFValue } from 'react-native-responsive-fontsize';
+import { fontScale } from 'react-native-utils-scale';
 
 interface DefaultProps {
   title: string;
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   newButtonTitleStyle: {
     fontFamily: fonts.NUNITO_REGULAR,
-    fontSize: RFValue(12),
+    fontSize: fontScale(12),
     marginLeft: 2,
   },
 });

@@ -114,9 +114,7 @@ export const CurrentMotionsCard = () => {
         {_renderText(loc('VOTES'), { fontWeight: '700' })}
         <Dot />
         {_renderText('super majority 75%', {
-          fontFamily: fonts.NUNITO_REGULAR,
-          fontSize: 14,
-          color: colors.lightText,
+          ...globalStyle.textStyle('_14', 'lightText', 'NUNITO_REGULAR'),
         })}
       </View>
       <View style={{ flexDirection: 'row' }}>

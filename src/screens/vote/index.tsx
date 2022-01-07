@@ -18,6 +18,7 @@ import { images, responsiveWidth, useGlobalStyles } from '@resources';
 import { useTheme } from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
 import { FACES } from '@constants';
+import { navigate } from '@navigator';
 
 export const Vote = () => {
   const insets = useSafeAreaInsets();
@@ -153,6 +154,7 @@ export const Vote = () => {
         hideRightIcon={true}
         rightIcon={images.members}
         onPressRightIcon={() => {}}
+        onPressBackButton={() => navigate('Voting')}
       />
       <ScrollView>
         <View style={{ padding: 20 }}>

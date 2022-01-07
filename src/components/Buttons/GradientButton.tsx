@@ -9,6 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { color, fonts, fontsize } from '@resources';
 import { FastImg } from '@components';
 import { Source } from 'react-native-fast-image';
+import { fontScale, scale } from 'react-native-utils-scale';
 
 interface DefaultProps {
   title: string;
@@ -54,8 +55,8 @@ const GradientButton = ({
       titleStyle={[
         {
           color: 'white',
-          fontSize: fontsize._14,
-          marginLeft: 6,
+          fontSize: fontScale(fontsize._14),
+          marginLeft: scale(8),
           fontFamily: fonts.NUNITO_SEMIBOLD,
           fontWeight: '700',
         },

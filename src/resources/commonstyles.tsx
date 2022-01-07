@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@react-navigation/native';
 import { fonts, fontsize } from './fonts';
+import { fontScale } from 'react-native-utils-scale';
 
 export type Style = {
   textStyle: (
@@ -26,7 +27,7 @@ const getGlobalStyles = (props: { colors: any }) =>
   createStyles<Style>({
     textStyle: (fontSize, color, fontFamily) => {
       return {
-        fontSize: fontsize[fontSize],
+        fontSize: fontScale(fontsize[fontSize]),
         color: props.colors[color],
         fontFamily: fonts[fontFamily],
       };

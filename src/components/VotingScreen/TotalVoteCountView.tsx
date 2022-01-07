@@ -23,7 +23,14 @@ export const TotalVoteCountView = ({
   const globalStyle = useGlobalStyles();
   return (
     <View style={[styles.container, { ...containerStyle }]}>
-      <Text style={[styles.count, { ...textStyle }]}>{voteCount}</Text>
+      <Text
+        style={[
+          globalStyle.textStyle('_14', 'black', 'NUNITO_REGULAR'),
+          { ...textStyle },
+        ]}
+      >
+        {voteCount}
+      </Text>
       <FastImage source={image} style={[globalStyle.squareLayout(16)]} />
     </View>
   );
@@ -37,9 +44,5 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 10,
-  },
-  count: {
-    fontFamily: fonts.NUNITO_REGULAR,
-    fontSize: 14,
   },
 });

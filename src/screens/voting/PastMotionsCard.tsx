@@ -97,9 +97,7 @@ export const PastMotionsCard = () => {
         {_renderText(loc('VOTES'), { fontWeight: '700' })}
         {_renderDot()}
         {_renderText('super majority 75%', {
-          fontFamily: fonts.NUNITO_REGULAR,
-          fontSize: 14,
-          color: colors.lightText,
+          ...globalStyle.textStyle('_14', 'lightText', 'NUNITO_REGULAR'),
         })}
       </View>
       <View style={{ flexDirection: 'row' }}>

@@ -16,14 +16,9 @@ import createState from 'react-hook-setstate';
 
 // LOCAL IMPORTS
 import { IfieldObject } from '@constants';
-import {
-  color,
-  images,
-  scale,
-  useGlobalStyles,
-  verticalScale,
-} from '@resources';
+import { color, images, useGlobalStyles, verticalScale } from '@resources';
 import FastImage, { Source } from 'react-native-fast-image';
+import { moderateScale, scale } from 'react-native-size-matters';
 
 export interface CustomInputProps extends TextInputProps {
   label?: string;
@@ -76,7 +71,8 @@ export const CustomInput: React.FC<CustomInputProps> = (
               backgroundColor: props.valueObject?.isError
                 ? color.error_light
                 : color.inputBackgroundColor,
-              paddingLeft: props.leftIcon ? 40 : 20,
+              paddingLeft: props.leftIcon ? moderateScale(32) : 20,
+              paddingRight: props.showPasswordIcon ? moderateScale(30) : 0,
               textAlignVertical: props.multiline ? 'top' : 'auto',
             },
             props.extraStyle,
@@ -126,9 +122,8 @@ const styles = StyleSheet.create({
     margin: scale(10),
   },
   rightImage: {
-    marginRight: 20,
     alignSelf: 'flex-end',
     position: 'absolute',
-    paddingRight: 10,
+    paddingRight: scale(10),
   },
 });

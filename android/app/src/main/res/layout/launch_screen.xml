@@ -11,4 +11,5 @@
         android:scaleType="centerCrop"
         android:background="@color/splashprimary"
         android:src="@drawable/splashscreen"/>
+
 </RelativeLayout>

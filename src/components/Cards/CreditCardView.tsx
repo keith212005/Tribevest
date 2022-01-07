@@ -9,6 +9,7 @@ import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
 import { fonts, images, useGlobalStyles } from '@resources';
+import { fontScale } from 'react-native-utils-scale';
 
 interface CreditCardViewProps {
   cardName: string;
@@ -122,12 +123,12 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   cardName: {
-    fontSize: 14,
+    fontSize: fontScale(14),
     fontFamily: fonts.NUNITO_SEMIBOLD,
     color: 'white',
   },
   cardNumber: {
-    fontSize: 16,
+    fontSize: fontScale(16),
     fontFamily: fonts.NUNITO_REGULAR,
     color: 'white',
     marginTop: 16,

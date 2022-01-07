@@ -60,7 +60,7 @@ export const BankingCards = (props: DefaultProps) => {
           {
             marginTop: 20,
             backgroundColor: 'black',
-            borderRadius: scale(10),
+            borderRadius: 10,
             alignSelf: 'center',
             paddingVertical: 10,
             paddingHorizontal: 68,

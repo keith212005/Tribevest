@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 // LOCAL IMPORT
 import { FastImg } from '@components';
 import { color, fonts, images } from '@resources';
+import { fontScale } from 'react-native-utils-scale';
 
 export const AddNewTribeButton = (props: any) => {
   const isOpen = useSelector((state: any) => state.isDrawerLeftSideCollapsed);
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDF0FF',
   },
   text: {
-    fontSize: 16,
+    fontSize: fontScale(16),
     fontFamily: fonts.NUNITO_BOLD,
     color: color.blue,
     marginLeft: 18,

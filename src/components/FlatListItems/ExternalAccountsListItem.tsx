@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import { View, StyleSheet, Text, TextStyle, Pressable } from 'react-native';
 
 // LOCAL IMPORTS
-import { useGlobalStyles } from '@resources';
+import { scale, useGlobalStyles } from '@resources';
 
 // THIRD PARTY IMPORTS
 import { Card } from 'react-native-elements';
@@ -79,7 +79,7 @@ export const ExternalAccountsListItem = memo(({ item }: DefaultProps) => {
         style={[
           styles.accountLabel,
           globalStyle.textStyle('_10', 'white', 'NUNITO_BOLD'),
-          { marginLeft: item.type === 'SAVINGS' ? -32 : -35 },
+          { marginLeft: item.type === 'SAVINGS' ? scale(-27) : -30 },
         ]}
       >
         {item.type}

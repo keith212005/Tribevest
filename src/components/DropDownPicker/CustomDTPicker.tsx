@@ -1,6 +1,13 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
-import { Pressable, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import {
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 // THIRD PARTY IMPORTS
 import moment from 'moment';
@@ -51,7 +58,7 @@ export const CustomDTPicker = (props: DefaultProps) => {
       </Pressable>
       <DatePicker
         modal
-        textColor="#ffffff"
+        textColor={Platform.OS === 'ios' ? '#ffffff' : 'black'}
         open={open}
         onConfirm={(date) => {
           props.onSuccess(date);

@@ -1,8 +1,9 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import { fontScale, scale } from 'react-native-utils-scale';
 import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
@@ -24,6 +25,7 @@ export const CardsMoreDetailsPopup = (props: CardsMoreDetailsPopupProps) => {
             expDate={'03/24'}
           />
         </View>
+        <Text style={{ fontSize: scale(24) }}>asdfasdfdafs</Text>
       </View>
     );
   };

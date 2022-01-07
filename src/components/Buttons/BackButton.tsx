@@ -5,13 +5,13 @@ import { StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 // LOCAL IMPORTS
-import { scale } from '@resources';
+import { responsiveHeight, scale } from '@resources';
 
 export const BackButton = (props: any) => {
   return (
     <Icon
       tvParallaxProperties={false}
-      size={25}
+      size={responsiveHeight(3)}
       name="chevron-left"
       type="feather"
       color="white"
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#46AFFF',
   },
   iconStyle: {
-    borderRadius: 20,
-    padding: 5,
+    borderRadius: 60,
+    padding: scale(5),
   },
 });

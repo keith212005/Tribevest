@@ -18,6 +18,7 @@ import { fonts, scale, useGlobalStyles } from '@resources';
 import { CustomInput, CustomInputProps } from 'components/Inputs/CustomInput';
 import { CheckBox } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
+import { fontScale } from 'react-native-utils-scale';
 
 export const NewMotionSetup = () => {
   const insets = useSafeAreaInsets();
@@ -93,7 +94,9 @@ export const NewMotionSetup = () => {
           }}
           wrapperStyle={{ backgroundColor: colors.background }}
           fontFamily={fonts.NUNITO_REGULAR}
-          textStyle={{ fontSize: 12 }}
+          textStyle={{
+            ...globalStyle.textStyle('_10', 'text', 'NUNITO_SEMIBOLD'),
+          }}
         />
 
         <CustomDTPicker
