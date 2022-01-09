@@ -1,17 +1,24 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { View, StyleSheet, ViewStyle, TouchableOpacity } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ViewStyle,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 
 // THIRD PARTY IMPORTS
 
 // LOCAL IMPORTS
-import { images, scale, useGlobalStyles } from '@resources';
+import { images, useGlobalStyles } from '@resources';
 import { CardSwiper, CustomModal, _renderText } from '@components';
 import FastImage from 'react-native-fast-image';
 import { useTheme } from '@react-navigation/native';
 import { Divider } from 'react-native-elements';
 import { useModalize } from 'react-native-modalize/lib/utils/use-modalize';
 import { CardsMoreDetailsPopup } from './CardMoreDetailsPopup';
+import { scale, verticalScale } from 'react-native-size-matters';
 
 interface DefaultProps {
   containerStyle?: ViewStyle;
@@ -27,7 +34,7 @@ export const BankingCards = (props: DefaultProps) => {
       <View
         style={[
           globalStyle.layoutDirection('row', 'flex-start', 'flex-start'),
-          { marginTop: 18 },
+          { marginTop: scale(18) },
         ]}
       >
         <FastImage
@@ -39,13 +46,13 @@ export const BankingCards = (props: DefaultProps) => {
         <View>
           {_renderText(loc('ADDRESS'), {
             ...globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
-            marginLeft: 5,
+            marginLeft: scale(5),
           })}
           {_renderText('1816 Vilage Oak Coury, Austin TX, USA, 78704', {
             ...globalStyle.textStyle('_14', 'lightText', 'NUNITO_SEMIBOLD'),
-            marginLeft: 5,
-            marginTop: 4,
-            width: 200,
+            marginLeft: scale(5),
+            marginTop: scale(4),
+            width: scale(150),
           })}
         </View>
       </View>
@@ -56,15 +63,8 @@ export const BankingCards = (props: DefaultProps) => {
     return (
       <TouchableOpacity
         style={[
+          styles.appleWalletButtonContainer,
           globalStyle.layoutDirection('row', 'flex-start', 'center'),
-          {
-            marginTop: 20,
-            backgroundColor: 'black',
-            borderRadius: 10,
-            alignSelf: 'center',
-            paddingVertical: 10,
-            paddingHorizontal: 68,
-          },
         ]}
       >
         <FastImage
@@ -74,14 +74,14 @@ export const BankingCards = (props: DefaultProps) => {
         />
         {_renderText(loc('ADD_TO_APPLE_WALLET'), {
           ...globalStyle.textStyle('_16', 'white', 'NUNITO_REGULAR'),
-          marginLeft: 16,
+          marginLeft: scale(16),
         })}
       </TouchableOpacity>
     );
   };
 
   return (
-    <View style={[styles.container, { ...props.containerStyle }]}>
+    <ScrollView style={[{ ...props.containerStyle }]}>
       <CardSwiper />
 
       <View style={{ paddingHorizontal: 20 }}>
@@ -118,10 +118,18 @@ export const BankingCards = (props: DefaultProps) => {
       <CustomModal ref={ref}>
         <CardsMoreDetailsPopup />
       </CustomModal>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  appleWalletButtonContainer: {
+    marginTop: scale(20),
+    backgroundColor: 'black',
+    borderRadius: scale(10),
+    alignSelf: 'center',
+    paddingVertical: verticalScale(10),
+    paddingHorizontal: scale(68),
+    marginBottom: scale(20),
+  },
 });

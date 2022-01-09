@@ -261,4 +261,5 @@ export const en = {
   MARKETING: 'Marketing',
   ADDRESS: 'Address',
   ADD_TO_APPLE_WALLET: 'Add to Apple Wallet',
+  LATEST_TRANSACTIONS: 'Latest Transactions',
 };

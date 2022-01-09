@@ -36,6 +36,7 @@ export const CustomModal = forwardRef((props: DefaultProps, ref: any) => {
           withHandle={false}
           rootStyle={{}}
           modalStyle={{
+            flex: 1,
             backgroundColor: colors.background,
             marginTop: responsiveHeight(Platform.OS === 'ios' ? 14 : 13),
           }}

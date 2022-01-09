@@ -1,11 +1,9 @@
 /* eslint-disable no-undef */
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Text, View, ViewStyle } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import DropDownPicker, {
-  DropDownPickerProps,
-} from 'react-native-dropdown-picker';
+import DropDownPicker, { ValueType } from 'react-native-dropdown-picker';
 
 // LOCAL IMPORT
 import { useGlobalStyles } from '@resources';
@@ -13,11 +11,20 @@ import { IfieldObject } from '@constants';
 import { useTheme } from '@react-navigation/native';
 import { scale } from 'react-native-size-matters';
 
-interface DefaultProps extends DropDownPickerProps {
+interface DefaultProps {
+  onOpen: () => void;
+  open: boolean;
+  value: string | number | boolean;
+  items: Array<any>;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  setValue: Dispatch<SetStateAction<ValueType | any>>;
+  setItems: Dispatch<SetStateAction<any[]>>;
   label?: string;
   valueObject?: IfieldObject;
   extraStyle?: ViewStyle;
   mainContainerStyle?: ViewStyle;
+  containerStyle?: ViewStyle;
+  labelStyle?: any;
 }
 
 export const CustomDropDownPicker = (props: DefaultProps) => {

@@ -599,3 +599,69 @@ export const CARDS_LIST = [
     expDate: '03/24',
   },
 ];
+
+export const LATEST_TRANSACTIONS = [
+  {
+    id: 1,
+    name: 'Insurance',
+    type: 'Allianz Life',
+    amount: '-$13,000.00',
+    date: 'Today',
+  },
+  {
+    id: 2,
+    name: 'Family Investments',
+    type: 'Marketing',
+    amount: '-$16,000.00',
+    date: 'June 05, 2021',
+  },
+  {
+    id: 3,
+    name: 'Home Loan',
+    type: 'Quicken Loans',
+    amount: '-$25,999.00',
+    date: 'June 07, 2021',
+  },
+  {
+    id: 4,
+    name: 'Transport',
+    type: 'US Metro',
+    amount: '-$2,000.00',
+    date: 'June 08, 2021',
+  },
+  {
+    id: 5,
+    name: 'Medical Insurance',
+    type: 'United Health',
+    amount: '-$10,000.00',
+    date: 'June 09, 2021',
+  },
+  {
+    id: 6,
+    name: 'Investments',
+    type: 'Stock Market',
+    amount: '-$16,000.00',
+    date: 'June 09, 2021',
+  },
+  {
+    id: 7,
+    name: 'Home Rent',
+    type: 'Airbnb',
+    amount: '-$9,000.00',
+    date: 'June 12, 2021',
+  },
+  {
+    id: 8,
+    name: 'Shopping',
+    type: 'Apache Mall',
+    amount: '-$2,000.00',
+    date: 'June 15, 2021',
+  },
+  {
+    id: 9,
+    name: 'Amazone',
+    type: 'Card Payment',
+    amount: '-$5,000.00',
+    date: 'June 16, 2021',
+  },
+];

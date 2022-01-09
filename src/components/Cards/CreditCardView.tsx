@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Platform } from 'react-native';
 
 // THRID PARTY IMPORTS
 import FastImage from 'react-native-fast-image';
@@ -47,8 +47,12 @@ export const CreditCardView = (props: CreditCardViewProps) => {
         angleCenter: { x: 0.4, y: 0.6 },
       }}
     >
-      <CircleOne />
-      <CircleTwo />
+      {Platform.OS === 'ios' && (
+        <>
+          <CircleOne />
+          <CircleTwo />
+        </>
+      )}
 
       <Text style={styles.cardName}>{props.cardName}</Text>
       <Text style={styles.cardNumber}>{props.cardNumber}</Text>

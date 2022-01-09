@@ -17,7 +17,7 @@ export const Transactions = () => {
   const globalStyle = useGlobalStyles();
 
   return (
-    <View style={styles.container}>
+    <>
       <View
         style={[globalStyle.layoutDirection('row', 'space-between', 'center')]}
       >
@@ -31,18 +31,17 @@ export const Transactions = () => {
 
       <FlatList
         data={TRANSACTIONS}
-        style={styles.flatListStyle}
+        style={[styles.flatListStyle, { height: 400 }]}
         renderItem={renderTransactionItem}
         ItemSeparatorComponent={() => (
           <Divider style={{ marginVertical: verticalScale(16) }} />
         )}
       />
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
   flatListStyle: {
     marginBottom: verticalScale(40),
     marginTop: verticalScale(16),

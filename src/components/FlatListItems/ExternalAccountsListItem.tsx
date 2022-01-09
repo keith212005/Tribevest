@@ -61,7 +61,6 @@ export const ExternalAccountsListItem = memo(({ item }: DefaultProps) => {
         {
           backgroundColor: colors.card,
           borderColor: colors.card,
-          borderWidth: 0,
         },
       ]}
       wrapperStyle={[
@@ -79,7 +78,7 @@ export const ExternalAccountsListItem = memo(({ item }: DefaultProps) => {
         style={[
           styles.accountLabel,
           globalStyle.textStyle('_10', 'white', 'NUNITO_BOLD'),
-          { marginLeft: item.type === 'SAVINGS' ? scale(-27) : -30 },
+          { marginLeft: item.type === 'SAVINGS' ? scale(-29) : -36 },
         ]}
       >
         {item.type}

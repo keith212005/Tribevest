@@ -17,7 +17,6 @@ target 'Tribevest' do
   permissions_path = '../node_modules/react-native-permissions/ios'
   pod 'Permission-FaceID', :path => "#{permissions_path}/FaceID"
 
-  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
   target 'TribevestTests' do
     inherit! :complete

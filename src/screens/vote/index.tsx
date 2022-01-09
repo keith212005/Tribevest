@@ -3,6 +3,7 @@ import React from 'react';
 import { ScrollView, Text, TextStyle, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import FastImage from 'react-native-fast-image';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // LOCAL IMPORTS
@@ -14,11 +15,10 @@ import {
   MainHeader,
   VoteCounter,
 } from '@components';
-import { images, responsiveWidth, useGlobalStyles } from '@resources';
-import { useTheme } from '@react-navigation/native';
-import FastImage from 'react-native-fast-image';
 import { FACES } from '@constants';
 import { navigate } from '@navigator';
+import { useTheme } from '@react-navigation/native';
+import { images, responsiveWidth, useGlobalStyles } from '@resources';
 
 export const Vote = () => {
   const insets = useSafeAreaInsets();
@@ -43,6 +43,7 @@ export const Vote = () => {
       <View
         style={[
           globalStyle.layoutDirection('row', 'flex-start', 'center'),
+
           { marginTop: 10 },
         ]}
       >

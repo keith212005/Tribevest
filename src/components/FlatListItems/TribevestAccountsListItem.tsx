@@ -1,14 +1,15 @@
 /* eslint-disable no-undef */
 import React, { memo } from 'react';
-import { View, StyleSheet, ViewStyle, Pressable } from 'react-native';
+import { View, ViewStyle, Pressable } from 'react-native';
 
 // LOCAL IMPORTS
 import { useGlobalStyles } from '@resources';
-import { _renderText } from '@components';
+import { CardWrapper, _renderText } from '@components';
 
 // THIRD PARTY IMPORTS
-import { Card, Divider } from 'react-native-elements';
+import { Divider } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
+import { scale } from 'react-native-size-matters';
 
 interface DefaultProps {
   item: any;
@@ -28,7 +29,7 @@ export const TribevestAccountsListItem = memo(
       extraStyle?: ViewStyle,
     ) => {
       return (
-        <View style={{ margin: 5, ...extraStyle }}>
+        <View style={{ margin: scale(5), ...extraStyle }}>
           {_renderText(title, {
             ...globalStyle.textStyle('_12', 'lightText', 'NUNITO_REGULAR'),
           })}
@@ -41,12 +42,7 @@ export const TribevestAccountsListItem = memo(
 
     return (
       <Pressable onPress={() => onSelect(item)}>
-        <Card
-          containerStyle={[
-            styles.cardContainerStyle,
-            { backgroundColor: colors.card },
-          ]}
-        >
+        <CardWrapper containerStyle={{ backgroundColor: colors.card }}>
           <View
             style={[
               globalStyle.layoutDirection('row', 'space-between', 'center'),
@@ -61,27 +57,11 @@ export const TribevestAccountsListItem = memo(
             {_renderAvailableBalance(
               loc('ACCOUNT_DETAILS'),
               item.account_details,
-              { flex: 4, marginLeft: 5 },
+              { flex: 4, marginLeft: 20 },
             )}
           </View>
-        </Card>
+        </CardWrapper>
       </Pressable>
     );
   },
 );
-
-const styles = StyleSheet.create({
-  cardContainerStyle: {
-    marginLeft: 1,
-    marginBottom: 5,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-});
