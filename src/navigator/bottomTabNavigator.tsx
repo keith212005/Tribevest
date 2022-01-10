@@ -21,7 +21,7 @@ const forFade = ({ current }: { current: any }) => ({
   },
 });
 
-export const TabNavigator = () => {
+export const BottomTabNavigator = () => {
   const globalStyles = useGlobalStyles();
   const { colors } = useTheme() as unknown as CustomTheme;
 
@@ -48,9 +48,13 @@ export const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarButton: ['Banking', 'Voting', 'Vote', 'NewMotionSetup'].includes(
-          route.name,
-        )
+        tabBarButton: [
+          'Banking',
+          'Voting',
+          'Vote',
+          'NewMotionSetup',
+          'TopTabNavigator',
+        ].includes(route.name)
           ? () => null
           : undefined,
         tabBarIcon: ({ focused, color }) => {

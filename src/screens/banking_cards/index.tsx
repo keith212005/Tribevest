@@ -9,16 +9,15 @@ import {
 } from 'react-native';
 
 // THIRD PARTY IMPORTS
-
-// LOCAL IMPORTS
-import { images, useGlobalStyles } from '@resources';
-import { CardSwiper, CustomModal, _renderText } from '@components';
-import FastImage from 'react-native-fast-image';
 import { useTheme } from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
 import { Divider } from 'react-native-elements';
 import { useModalize } from 'react-native-modalize/lib/utils/use-modalize';
+
+// LOCAL IMPORTS
+import { images, useGlobalStyles, scale, verticalScale } from '@resources';
+import { CardSwiper, CustomModal, _renderText } from '@components';
 import { CardsMoreDetailsPopup } from './CardMoreDetailsPopup';
-import { scale, verticalScale } from 'react-native-size-matters';
 
 interface DefaultProps {
   containerStyle?: ViewStyle;

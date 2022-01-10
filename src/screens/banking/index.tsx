@@ -6,11 +6,15 @@ import { LogBox, TouchableWithoutFeedback, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // LOCAL IMPORTS
-import { BankingCards } from './BankingCards';
-import { Accounts } from './Accounts';
 import { BANKING_MENU, CARDS_LIST } from '@constants';
 import { images, useGlobalStyles } from '@resources';
 import { CustomDropDownPicker, MainHeader, _renderText } from '@components';
+
+import { BankingAccounts } from 'screens/banking_accounts';
+import { BankingCards } from 'screens/banking_cards';
+import { BankingTransactions } from 'screens/banking_transactions';
+import { BankingStatements } from 'screens/banking_statements';
+import { BankingPayments } from 'screens/banking_payments';
 
 export const Banking = () => {
   const insets = useSafeAreaInsets();
@@ -74,36 +78,58 @@ export const Banking = () => {
             ]}
           />
 
-          {/* show Select cards list Dropdown when Cards is selected. */}
-          {value === 'Cards' ? (
-            <CustomDropDownPicker
-              open={cardListOpen}
-              value={cardValue}
-              items={cardItems}
-              setOpen={setCardListOpen}
-              setValue={setCardValue}
-              setItems={setCardItems}
-              onOpen={onCardListOpen}
-              extraStyle={{}}
-              mainContainerStyle={{ marginHorizontal: 20, zIndex: 1000 }}
-              labelStyle={[
-                globalStyle.textStyle('_14', 'black', 'NUNITO_REGULAR'),
-              ]}
-            />
-          ) : null}
-
           {/* REDNDER LAYOUT ACCORDING TO ITEM SELECTED IN ABOVE PICKER */}
-          {value === 'Accounts' ? <Accounts /> : null}
 
-          {/* Render Banking Cards Carousel */}
+          {/* Render Accounts Layout */}
+          {value === 'Accounts' ? <BankingAccounts /> : null}
+
+          {/* Render Banking Cards Layout */}
           {value === 'Cards' ? (
-            <BankingCards
-              containerStyle={{
-                // marginTop: -30,
-                zIndex: -1,
-              }}
-            />
+            <>
+              <CustomDropDownPicker
+                open={cardListOpen}
+                value={cardValue}
+                items={cardItems}
+                setOpen={setCardListOpen}
+                setValue={setCardValue}
+                setItems={setCardItems}
+                onOpen={onCardListOpen}
+                extraStyle={{}}
+                mainContainerStyle={{ marginHorizontal: 20, zIndex: 1000 }}
+                labelStyle={[
+                  globalStyle.textStyle('_14', 'black', 'NUNITO_REGULAR'),
+                ]}
+              />
+              <BankingCards containerStyle={{ zIndex: -1 }} />
+            </>
           ) : null}
+
+          {/* Render Transactions Layout */}
+          {value === 'Transactions' ? (
+            <>
+              <CustomDropDownPicker
+                open={cardListOpen}
+                value={cardValue}
+                items={cardItems}
+                setOpen={setCardListOpen}
+                setValue={setCardValue}
+                setItems={setCardItems}
+                onOpen={onCardListOpen}
+                extraStyle={{}}
+                mainContainerStyle={{ marginHorizontal: 20, zIndex: 1000 }}
+                labelStyle={[
+                  globalStyle.textStyle('_14', 'black', 'NUNITO_REGULAR'),
+                ]}
+              />
+              <BankingTransactions />
+            </>
+          ) : null}
+
+          {/* Render Statements Layout */}
+          {value === 'Statements' ? <BankingStatements /> : null}
+
+          {/* Render Payments Layout */}
+          {value === 'Payments' ? <BankingPayments /> : null}
         </>
       </TouchableWithoutFeedback>
     </View>

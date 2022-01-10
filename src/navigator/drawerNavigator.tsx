@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import * as Screen from '@screens';
 import { DrawerContent } from '@components';
 import { SCREENS } from '@constants';
-import { TabNavigator } from './tabNavigator';
+import { BottomTabNavigator } from './bottomTabNavigator';
 import { responsiveWidth } from '@resources';
 
 const Drawer = createDrawerNavigator();
@@ -35,7 +35,7 @@ export const DrawerNavigator = () => {
   return (
     <>
       <Drawer.Navigator
-        initialRouteName={'TabNavigator'}
+        initialRouteName={'BottomTabNavigator'}
         screenOptions={{
           drawerType: 'back', // important otherwise messup drawerleftside animation
           headerShown: false,
@@ -45,8 +45,8 @@ export const DrawerNavigator = () => {
         }}
         drawerContent={(props) => <DrawerContent {...props} />}
       >
-        {_addScreen('TabNavigator' as never, true, {
-          component: TabNavigator,
+        {_addScreen('BottomTabNavigator' as never, true, {
+          component: BottomTabNavigator,
         })}
       </Drawer.Navigator>
     </>

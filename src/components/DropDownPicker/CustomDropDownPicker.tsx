@@ -6,13 +6,12 @@ import { Text, View, ViewStyle } from 'react-native';
 import DropDownPicker, { ValueType } from 'react-native-dropdown-picker';
 
 // LOCAL IMPORT
-import { useGlobalStyles } from '@resources';
+import { useGlobalStyles, scale } from '@resources';
 import { IfieldObject } from '@constants';
 import { useTheme } from '@react-navigation/native';
-import { scale } from 'react-native-size-matters';
 
 interface DefaultProps {
-  onOpen: () => void;
+  onOpen?: () => void;
   open: boolean;
   value: string | number | boolean;
   items: Array<any>;
@@ -40,6 +39,7 @@ export const CustomDropDownPicker = (props: DefaultProps) => {
       )}
 
       <DropDownPicker
+        listMode="SCROLLVIEW"
         style={{
           paddingLeft: 16,
           height: scale(40),

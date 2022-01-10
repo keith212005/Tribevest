@@ -3,13 +3,12 @@ import React, { memo } from 'react';
 import { View, ViewStyle, Pressable } from 'react-native';
 
 // LOCAL IMPORTS
-import { useGlobalStyles } from '@resources';
+import { useGlobalStyles, scale } from '@resources';
 import { CardWrapper, _renderText } from '@components';
 
 // THIRD PARTY IMPORTS
 import { Divider } from 'react-native-elements';
 import { useTheme } from '@react-navigation/native';
-import { scale } from 'react-native-size-matters';
 
 interface DefaultProps {
   item: any;

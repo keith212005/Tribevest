@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { forwardRef, useImperativeHandle, useRef, memo } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View, ViewStyle } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { Divider } from 'react-native-elements';
@@ -13,6 +13,7 @@ import { responsiveHeight, responsiveWidth } from '@resources';
 
 interface DefaultProps extends ModalizeProps {
   children?: any;
+  modalExtraStyle?: ViewStyle;
 }
 
 export const CustomModal = forwardRef((props: DefaultProps, ref: any) => {
@@ -39,6 +40,7 @@ export const CustomModal = forwardRef((props: DefaultProps, ref: any) => {
             flex: 1,
             backgroundColor: colors.background,
             marginTop: responsiveHeight(Platform.OS === 'ios' ? 14 : 13),
+            ...props.modalExtraStyle,
           }}
           HeaderComponent={<HeaderComponent />}
           {...props}

@@ -2,7 +2,7 @@ import { en } from '@languages';
 
 export const SCREENS = {
   Signin: 'Signin',
-  TabNavigator: 'TabNavigator',
+  BottomTabNavigator: 'BottomTabNavigator',
   DrawerNavigator: 'DrawerNavigator',
   Tribes: 'Tribes',
   Messages: 'Messages',
@@ -421,6 +421,17 @@ export const TRIBEVEST_PLANS = [
   },
 ];
 
+export const ACCOUNT_TYPES = [
+  {
+    label: 'Business Checking',
+    value: 'Business Checking',
+  },
+  {
+    label: 'Business Savings',
+    value: 'Business Savings',
+  },
+];
+
 export const BANKING_MENU = [
   {
     label: 'Accounts',
@@ -663,5 +674,70 @@ export const LATEST_TRANSACTIONS = [
     type: 'Card Payment',
     amount: '-$5,000.00',
     date: 'June 16, 2021',
+  },
+];
+
+export const STATEMENTS = [
+  {
+    id: 1,
+    from: 'Jun 1 - Jun 30, 2021',
+  },
+  {
+    id: 2,
+    from: 'May 1 - May 31, 2021',
+  },
+  {
+    id: 3,
+    from: 'Apr 1 - Apr 30, 2021',
+  },
+  {
+    id: 4,
+    from: 'Mar 1 - Mar 31, 2021',
+  },
+  {
+    id: 5,
+    from: 'Feb 1 - Feb 28, 2021',
+  },
+  {
+    id: 6,
+    from: 'Jan 1 - Jan 31, 2021',
+  },
+];
+
+export const SCHEDULED = [
+  {
+    id: 1,
+    date: 'July 22, 2021',
+    amount: '$7,500.00',
+  },
+  {
+    id: 2,
+    date: 'July 24, 2021',
+    amount: '$6,000.00',
+  },
+  {
+    id: 3,
+    date: 'July 26, 2021',
+    amount: '$4,800.00',
+  },
+  {
+    id: 4,
+    date: 'July 27, 2021',
+    amount: '$1,000.00',
+  },
+  {
+    id: 5,
+    date: 'July 30, 2021',
+    amount: '$9,900.00',
+  },
+  {
+    id: 6,
+    date: 'August 1, 2021',
+    amount: '$3,999.00',
+  },
+  {
+    id: 7,
+    date: 'August 3, 2021',
+    amount: '$8,900.00',
   },
 ];

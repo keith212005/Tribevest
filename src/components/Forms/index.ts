@@ -3,3 +3,4 @@ export { FormContainer } from './FormContainer';
 export { SignUpForm } from './signUpForm';
 export { TribeNameForm } from './tribeNameForm';
 export { BillingForm } from './BillingForm';
+export { AddNewRecipientForm } from './AddNewRecipientFrom';

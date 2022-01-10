@@ -1,5 +1,5 @@
 export { Tribes as DrawerNavigator } from './tribes';
-export { Tribes as TabNavigator } from './tribes';
+export { Tribes as BottomTabNavigator } from './tribes';
 export { Tribes } from './tribes';
 export { Signin } from './signin';
 export { SignUp } from './signup';

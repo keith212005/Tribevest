@@ -69,4 +69,8 @@ export const images: any = {
   master_card: require('./master_card/master_card.png'),
   location: require('./location/location.png'),
   apple_wallet: require('./apple_wallet/apple_wallet.png'),
+  no_transactions: require('./no_transactions/no_transactions.png'),
+  download_statement: require('./download_statement/download_statement.png'),
+  no_saved_recipients: require('./no_saved_recipients/no_saved_recipients.png'),
+  no_payments_found: require('./no_payments_found/no_payments_found.png'),
 };

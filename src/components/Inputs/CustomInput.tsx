@@ -16,12 +16,19 @@ import createState from 'react-hook-setstate';
 
 // LOCAL IMPORTS
 import { IfieldObject } from '@constants';
-import { color, images, useGlobalStyles, verticalScale } from '@resources';
+import {
+  color,
+  images,
+  useGlobalStyles,
+  verticalScale,
+  moderateScale,
+  scale,
+} from '@resources';
 import FastImage, { Source } from 'react-native-fast-image';
-import { moderateScale, scale } from 'react-native-size-matters';
 
 export interface CustomInputProps extends TextInputProps {
   label?: string;
+  labelStyle?: ViewStyle;
   refName?: any;
   valueObject?: IfieldObject;
   leftIcon?: string;
@@ -47,7 +54,12 @@ export const CustomInput: React.FC<CustomInputProps> = (
   return (
     <View style={[styles.container, { ...props.containerStyle }]}>
       {props.label && (
-        <Text style={[globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD')]}>
+        <Text
+          style={[
+            globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
+            { ...props.labelStyle },
+          ]}
+        >
           {props.label}
         </Text>
       )}

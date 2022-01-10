@@ -42,6 +42,7 @@ const App = (props: any) => {
       />
     );
   };
+
   SystemNavigationBar.setNavigationColor(
     props.isDarkTheme ? '#273143' : 'white',
   );
