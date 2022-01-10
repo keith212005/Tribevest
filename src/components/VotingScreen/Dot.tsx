@@ -1,18 +1,34 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { ViewStyle } from 'react-native';
 
+// LOCAL IMPORTS
 import { color } from '@resources';
+import LinearGradient from 'react-native-linear-gradient';
 
-export const Dot = () => {
-  return <View style={styles.dotStyle} />;
+interface DefaultProps {
+  extraStyle: ViewStyle;
+  size: number;
+  colors: Array<string>;
+}
+
+export const Dot = ({ extraStyle, size, colors }: DefaultProps) => {
+  return (
+    <>
+      <LinearGradient
+        colors={colors}
+        style={[
+          {
+            height: size,
+            width: size,
+            borderRadius: size / 2,
+            backgroundColor: color,
+            ...extraStyle,
+          },
+        ]}
+        useAngle={true}
+        angle={145}
+        angleCenter={{ x: 0.2, y: 0.8 }}
+      />
+    </>
+  );
 };
-
-const styles = StyleSheet.create({
-  dotStyle: {
-    height: 5,
-    width: 5,
-    borderRadius: 5 / 2,
-    marginHorizontal: 5,
-    backgroundColor: color.lightText,
-  },
-});

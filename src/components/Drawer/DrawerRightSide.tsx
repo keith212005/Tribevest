@@ -33,7 +33,7 @@ export const DrawerRightSide = (props: any) => {
         navigate('Banking');
         break;
       case loc('FUNDING'):
-        navigate('Tribes');
+        navigate('Funding');
         break;
       case loc('VOTING'):
         navigate('Voting');

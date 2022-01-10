@@ -73,4 +73,6 @@ export const images: any = {
   download_statement: require('./download_statement/download_statement.png'),
   no_saved_recipients: require('./no_saved_recipients/no_saved_recipients.png'),
   no_payments_found: require('./no_payments_found/no_payments_found.png'),
+  cap_table: require('./cap_table/cap_table.png'),
+  graph: require('./graph/graph.png'),
 };

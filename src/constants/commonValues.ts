@@ -1,4 +1,5 @@
 import { en } from '@languages';
+import { Funding } from '@screens';
 
 export const SCREENS = {
   Signin: 'Signin',
@@ -19,6 +20,7 @@ export const SCREENS = {
   Vote: 'Vote',
   Banking: 'Banking',
   NewMotionSetup: 'NewMotionSetup',
+  Funding: 'Funding',
 };
 
 export interface IfieldObject {

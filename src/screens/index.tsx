@@ -21,3 +21,4 @@ export { BankingCards } from './banking_cards';
 export { BankingTransactions } from './banking_transactions';
 export { BankingStatements } from './banking_statements';
 export { BankingPayments } from './banking_payments';
+export { Funding } from './funding';

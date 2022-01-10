@@ -53,7 +53,7 @@ export const BottomTabNavigator = () => {
           'Voting',
           'Vote',
           'NewMotionSetup',
-          'TopTabNavigator',
+          'Funding',
         ].includes(route.name)
           ? () => null
           : undefined,
@@ -134,6 +134,7 @@ export const BottomTabNavigator = () => {
       {_addScreen('Voting' as never, false)}
       {_addScreen('Vote' as never, false)}
       {_addScreen('NewMotionSetup' as never, false)}
+      {_addScreen('Funding' as never, false)}
     </Tab.Navigator>
   );
 };

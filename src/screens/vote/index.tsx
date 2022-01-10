@@ -117,7 +117,11 @@ export const Vote = () => {
           {_renderText(loc('VOTES'), {
             ...globalStyle.textStyle('_14', 'text', 'NUNITO_BOLD'),
           })}
-          <Dot />
+          <Dot
+            size={6}
+            extraStyle={{ marginHorizontal: 10 }}
+            colors={['grey', 'grey']}
+          />
           {_renderText('super majority 75%', {
             ...globalStyle.textStyle('_14', 'text', 'NUNITO_REGULAR'),
             color: colors.lightText,

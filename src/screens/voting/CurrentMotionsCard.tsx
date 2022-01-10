@@ -86,7 +86,11 @@ export const CurrentMotionsCard = () => {
           ]}
         >
           {_renderText('Jonathan Ross', { color: colors.lightText })}
-          <Dot />
+          <Dot
+            size={6}
+            extraStyle={{ marginHorizontal: 10 }}
+            colors={['grey', 'grey']}
+          />
           {_renderText('Dec 11', { color: colors.lightText })}
           <MotionStatus
             icon={images.pending}
@@ -112,7 +116,12 @@ export const CurrentMotionsCard = () => {
         style={[globalStyle.layoutDirection('row', 'flex-start', 'center')]}
       >
         {_renderText(loc('VOTES'), { fontWeight: '700' })}
-        <Dot />
+
+        <Dot
+          size={6}
+          extraStyle={{ marginHorizontal: 10 }}
+          colors={['grey', 'grey']}
+        />
         {_renderText('super majority 75%', {
           ...globalStyle.textStyle('_14', 'lightText', 'NUNITO_REGULAR'),
         })}
