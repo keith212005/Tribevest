@@ -609,6 +609,24 @@ export const CARDS_LIST = [
     cvv: '652',
     expDate: '03/24',
   },
+  {
+    id: 4,
+    label: 'Tribevest: **** **** 6624',
+    value: 'Tribevest: **** **** 6624',
+    cardName: 'Marketing',
+    cardNumber: '8732 7621 6743 6621',
+    cvv: '652',
+    expDate: '03/24',
+  },
+  {
+    id: 5,
+    label: 'Tribevest: **** **** 6625',
+    value: 'Tribevest: **** **** 6625',
+    cardName: 'Marketing',
+    cardNumber: '8732 7621 6743 6621',
+    cvv: '652',
+    expDate: '03/24',
+  },
 ];
 
 export const LATEST_TRANSACTIONS = [

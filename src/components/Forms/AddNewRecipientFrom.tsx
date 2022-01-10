@@ -1,6 +1,6 @@
 /* eslint-disable no-fallthrough */
 /* eslint-disable no-undef */
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 
 // THIRD PARTY IMPORTS

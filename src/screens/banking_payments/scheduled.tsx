@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { Divider } from 'react-native-elements';
@@ -10,14 +10,12 @@ import { AddFloatingButton, ScheduledListItem, _renderText } from '@components';
 import FastImage from 'react-native-fast-image';
 
 export const Scheduled = (props: any) => {
-  console.log(props.route.params.SCHEDULED);
-
   const globalStyle = useGlobalStyles();
   const renderTransactionItem = ({ item }: any) => (
     <ScheduledListItem item={item} />
   );
 
-  if (!props.route.params.SCHEDULED) {
+  if (!props?.route?.params?.scheduled) {
     return (
       <>
         <View
@@ -39,11 +37,12 @@ export const Scheduled = (props: any) => {
       </>
     );
   }
+
   return (
     <View style={[{ flex: 1 }]}>
       <FlatList
         contentContainerStyle={{ paddingBottom: 100 }}
-        data={props.route.params.SCHEDULED}
+        data={props.route.params.scheduled}
         renderItem={renderTransactionItem}
         ItemSeparatorComponent={() => (
           <Divider style={{ marginTop: verticalScale(16) }} />

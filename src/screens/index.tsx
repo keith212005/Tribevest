@@ -16,3 +16,8 @@ export { Voting } from './voting';
 export { Vote } from './vote';
 export { Banking } from './banking';
 export { NewMotionSetup } from './newMotionSetup';
+export { BankingAccounts } from './banking_accounts';
+export { BankingCards } from './banking_cards';
+export { BankingTransactions } from './banking_transactions';
+export { BankingStatements } from './banking_statements';
+export { BankingPayments } from './banking_payments';

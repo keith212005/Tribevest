@@ -1,28 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useTheme } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 // LOCAL IMPORTS
-import { SCREENS, TRANSACTIONS, SCHEDULED } from '@constants';
 import { AddARecipient } from '@components';
 import { useGlobalStyles } from '@resources';
 import { Payments } from './payments';
 import { Scheduled } from './scheduled';
+import { SCREENS, TRANSACTIONS, SCHEDULED } from '@constants';
 
 const Tab = createMaterialTopTabNavigator();
 
 export const BankingPayments = () => {
   const globalStyle = useGlobalStyles();
   const { colors } = useTheme() as CustomTheme;
-  const [transactions, setTransactions] = useState(null);
+  const [transactions, setTransactions] = useState<any>();
+  const [scheduled, setScheduled] = useState<any>();
 
   useEffect(() => {
     if (!transactions) {
       setTransactions(TRANSACTIONS);
+      setScheduled(SCHEDULED);
     }
   }, []);
 
@@ -76,7 +79,7 @@ export const BankingPayments = () => {
     <View style={{ flex: 1, paddingHorizontal: 20 }}>
       <Tab.Navigator>
         {_addScreen('Payments' as never, Payments, {}, { transactions })}
-        {_addScreen('Scheduled' as never, Scheduled, {}, { SCHEDULED })}
+        {_addScreen('Scheduled' as never, Scheduled, {}, { scheduled })}
       </Tab.Navigator>
     </View>
   );

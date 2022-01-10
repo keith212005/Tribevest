@@ -31,7 +31,7 @@ export const CustomDropDownPicker = (props: DefaultProps) => {
   const { colors } = useTheme() as CustomTheme;
 
   return (
-    <View style={{ ...props.mainContainerStyle }}>
+    <View style={[{}, { ...props.mainContainerStyle }]}>
       {props.label && (
         <Text style={[globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD')]}>
           {props.label}
@@ -40,6 +40,9 @@ export const CustomDropDownPicker = (props: DefaultProps) => {
 
       <DropDownPicker
         listMode="SCROLLVIEW"
+        scrollViewProps={{
+          nestedScrollEnabled: false,
+        }}
         style={{
           paddingLeft: 16,
           height: scale(40),
