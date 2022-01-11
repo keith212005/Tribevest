@@ -6,7 +6,7 @@ import { Icon, Avatar, AvatarProps } from 'react-native-elements';
 // LOCAL IMPORTS
 import { useGlobalStyles } from '@resources';
 import FastImage, { FastImageProps, Source } from 'react-native-fast-image';
-import { Text, TextStyle, ViewStyle } from 'react-native';
+import { Text, TextStyle, View, ViewStyle } from 'react-native';
 
 export const RenderIcon = (
   name: string,
@@ -56,19 +56,22 @@ export const FastImgUrl = (uri: any, size: number, extraStyle?: object) => {
 export const renderAvatar = (
   url: string,
   size: number,
+  containerStyle?: ViewStyle,
   extraProps?: AvatarProps,
 ) => {
   return (
-    <Avatar
-      activeOpacity={0.2}
-      containerStyle={{ backgroundColor: '#BDBDBD' }}
-      rounded
-      size={size}
-      source={{ uri: url }}
-      title="AP"
-      imageProps={{ transition: true }}
-      {...extraProps}
-    />
+    <View>
+      <Avatar
+        activeOpacity={0.2}
+        containerStyle={{ backgroundColor: '#BDBDBD', ...containerStyle }}
+        rounded
+        size={size}
+        source={{ uri: url }}
+        title="AP"
+        imageProps={{ transition: true }}
+        {...extraProps}
+      />
+    </View>
   );
 };
 

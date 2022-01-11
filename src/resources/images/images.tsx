@@ -63,7 +63,7 @@ export const images: any = {
   refresh: require('./refresh/refresh.png'),
   user_circle_add: require('./user_circle_add/user_circle_add.png'),
   no_message: require('./no_message/no_message.png'),
-  arrow_left: require('./arrow_left/arrow_left.png'),
+  arrow_left_gradient: require('./arrow_left_gradient/arrow_left_gradient.png'),
   filter: require('./filter/filter.png'),
   close_circle: require('./close_circle/close_circle.png'),
   master_card: require('./master_card/master_card.png'),
@@ -75,4 +75,8 @@ export const images: any = {
   no_payments_found: require('./no_payments_found/no_payments_found.png'),
   cap_table: require('./cap_table/cap_table.png'),
   graph: require('./graph/graph.png'),
+  arrow_right: require('./arrow_right/arrow_right.png'),
+  dollar_circle: require('./dollar_circle/dollar_circle.png'),
+  manage: require('./manage/manage.png'),
+  arrow_left: require('./arrow_left/arrow_left.png'),
 };

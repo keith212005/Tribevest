@@ -8,7 +8,9 @@ import {
 } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import LinearGradient from 'react-native-linear-gradient';
+import LinearGradient, {
+  LinearGradientProps,
+} from 'react-native-linear-gradient';
 
 // LOCAL IMPORTS
 import { color, images, useGlobalStyles } from '@resources';
@@ -23,6 +25,7 @@ interface DefaultProps {
   icon?: keyof typeof images;
   iconSize?: number;
   titleStyle?: TextStyle;
+  extraLinearGradientProps?: LinearGradientProps;
 }
 
 const RoundGradientButtons = ({
@@ -34,6 +37,7 @@ const RoundGradientButtons = ({
   icon,
   titleStyle,
   iconSize,
+  extraLinearGradientProps,
 }: DefaultProps) => {
   const globalStyle = useGlobalStyles();
   return (
@@ -76,6 +80,7 @@ const RoundGradientButtons = ({
           }),
           ...extraStyle,
         }}
+        {...extraLinearGradientProps}
       >
         {icon && (
           <FastImage

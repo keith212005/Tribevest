@@ -126,7 +126,11 @@ export const Banking = () => {
                 setItems={setCardItems}
                 onOpen={onCardListOpen}
                 extraStyle={{}}
-                mainContainerStyle={{ marginHorizontal: 20, zIndex: 1000 }}
+                mainContainerStyle={{
+                  marginHorizontal: 20,
+                  zIndex: 1000,
+                  minHeight: cardListOpen ? 250 : 0,
+                }}
                 labelStyle={[
                   globalStyle.textStyle('_14', 'black', 'NUNITO_REGULAR'),
                 ]}

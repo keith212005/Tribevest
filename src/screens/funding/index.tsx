@@ -13,13 +13,19 @@ import {
   TotalContributionsLineChart,
   _renderText,
 } from '@components';
-import { images, responsiveWidth, scale, useGlobalStyles } from '@resources';
+import { images, useGlobalStyles, verticalScale, scale } from '@resources';
 import { useTheme } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { MY_CONTRIBUTIONS } from '@constants';
+import { Divider } from 'react-native-elements';
+import FastImage from 'react-native-fast-image';
+import { FundingTribesTabNavigator } from './FundingTribesTabNavigator';
 
 export const Funding = () => {
   const insets = useSafeAreaInsets();
   const globlaStyle = useGlobalStyles();
   const { colors } = useTheme() as CustomTheme;
+  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
 
   const _renderTitleAndCapButtons = () => {
     return (
@@ -41,10 +47,19 @@ export const Funding = () => {
             onPress={() => {}}
             icon={images.cap_table}
             iconSize={30}
-            extraStyle={{ width: responsiveWidth(45) }}
+            extraStyle={{
+              width: scale(155),
+              height: verticalScale(38),
+            }}
             titleStyle={{
-              ...globlaStyle.textStyle('_16', 'white', 'NUNITO_BOLD'),
+              ...globlaStyle.textStyle('_14', 'white', 'NUNITO_REGULAR'),
               marginLeft: scale(6),
+            }}
+            extraLinearGradientProps={{
+              useAngle: true,
+              angle: 169,
+              angleCenter: { x: 0.3, y: 0.7 },
+              colors: colors.primaryGradiant,
             }}
           />
           <RoundGradientButton
@@ -53,10 +68,19 @@ export const Funding = () => {
             onPress={() => {}}
             icon={images.graph}
             iconSize={30}
-            extraStyle={{ width: responsiveWidth(45) }}
+            extraStyle={{
+              width: scale(155),
+              height: verticalScale(38),
+            }}
             titleStyle={{
-              ...globlaStyle.textStyle('_16', 'white', 'NUNITO_BOLD'),
+              ...globlaStyle.textStyle('_14', 'white', 'NUNITO_REGULAR'),
               marginLeft: scale(6),
+            }}
+            extraLinearGradientProps={{
+              useAngle: true,
+              angle: 169,
+              angleCenter: { x: 0.3, y: 0.7 },
+              colors: colors.primaryGradiant,
             }}
           />
         </View>
@@ -64,9 +88,54 @@ export const Funding = () => {
     );
   };
 
+  const _renderLastNextContribution = () => {
+    const _renderCard = (
+      amount: string,
+      title: string,
+      description: string,
+    ) => {
+      return (
+        <CardWrapper
+          containerStyle={{
+            flex: 5,
+            backgroundColor: isDarkTheme ? colors.background : 'white',
+          }}
+        >
+          {_renderText(amount, {
+            ...globlaStyle.textStyle('_24', 'blue', 'NUNITO_BOLD'),
+          })}
+          {_renderText(loc(title), {
+            ...globlaStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
+            width: scale(100),
+            marginVertical: scale(8),
+          })}
+          {_renderText(description, {
+            ...globlaStyle.textStyle('_14', 'lightText', 'NUNITO_REGULAR'),
+          })}
+        </CardWrapper>
+      );
+    };
+    return (
+      <View
+        style={[globlaStyle.layoutDirection('row', 'space-evenly', 'center')]}
+      >
+        {_renderCard(
+          '$9,000.00',
+          'MY_LAST_CONTRIBUTIONS',
+          'Since October 2020',
+        )}
+        {_renderCard('$1,200.00', 'MY_NEXT_CONTRIBUTIONS', 'Scheduled 5/31/21')}
+      </View>
+    );
+  };
+
   const _renderTotalContributionGraph = () => {
     return (
-      <CardWrapper containerStyle={{ backgroundColor: colors.background }}>
+      <CardWrapper
+        containerStyle={{
+          backgroundColor: isDarkTheme ? colors.background : 'white',
+        }}
+      >
         {_renderText(loc('TOTAL_CONTRIBUTIONS'), {
           ...globlaStyle.textStyle('_18', 'text', 'NUNITO_BOLD'),
         })}
@@ -74,7 +143,7 @@ export const Funding = () => {
           style={[globlaStyle.layoutDirection('row', 'flex-start', 'center')]}
         >
           <Dot
-            size={10}
+            size={8}
             extraStyle={{ marginRight: 10 }}
             colors={colors.greenGradient}
           />
@@ -83,7 +152,7 @@ export const Funding = () => {
           })}
 
           <Dot
-            size={10}
+            size={8}
             extraStyle={{ marginLeft: 24, marginRight: 5 }}
             colors={colors.primaryGradiant}
           />
@@ -93,6 +162,112 @@ export const Funding = () => {
           })}
         </View>
         <TotalContributionsLineChart />
+      </CardWrapper>
+    );
+  };
+
+  const _renderMyContributionSchedule = () => {
+    return (
+      <CardWrapper
+        containerStyle={{
+          backgroundColor: isDarkTheme ? colors.background : 'white',
+          // height: scale(320),
+        }}
+      >
+        {_renderText(loc('MY_CONTRIBUTION_SCHEDULE'), {
+          ...globlaStyle.textStyle('_18', 'text', 'NUNITO_BOLD'),
+          marginBottom: 20,
+        })}
+
+        <ScrollView style={{ height: scale(320) }}>
+          {MY_CONTRIBUTIONS.map((item) => {
+            return (
+              <>
+                <View
+                  style={[
+                    globlaStyle.layoutDirection(
+                      'row',
+                      'space-between',
+                      'center',
+                    ),
+                  ]}
+                >
+                  <View>
+                    {_renderText(item.amount, {
+                      ...globlaStyle.textStyle('_16', 'text', 'NUNITO_BOLD'),
+                    })}
+                    {_renderText('Start: ' + item.date, {
+                      ...globlaStyle.textStyle(
+                        '_12',
+                        'lightText',
+                        'NUNITO_BOLD',
+                      ),
+                      marginTop: scale(4),
+                    })}
+                  </View>
+                  <View
+                    style={[
+                      globlaStyle.layoutDirection('row', 'center', 'center'),
+                    ]}
+                  >
+                    <View
+                      style={{
+                        backgroundColor: '#F1F5F9',
+                        paddingHorizontal: 7,
+                        paddingVertical: 5,
+                        borderRadius: 5,
+                      }}
+                    >
+                      {_renderText(item.times, {
+                        ...globlaStyle.textStyle(
+                          '_14',
+                          'text',
+                          'NUNITO_REGULAR',
+                        ),
+                      })}
+                    </View>
+                    {_renderText(item.type, {
+                      paddingLeft: scale(8),
+                      paddingRight: scale(25),
+                      ...globlaStyle.textStyle(
+                        '_14',
+                        'lightText',
+                        'NUNITO_REGULAR',
+                      ),
+                    })}
+
+                    <FastImage
+                      source={images.arrow_right}
+                      style={[globlaStyle.squareLayout(30)]}
+                      resizeMode={FastImage.resizeMode.contain}
+                    />
+                  </View>
+                </View>
+                <Divider style={{ marginVertical: verticalScale(16) }} />
+              </>
+            );
+          })}
+        </ScrollView>
+      </CardWrapper>
+    );
+  };
+
+  const _renderFundingRoundsAndTribeContributions = () => {
+    return (
+      <CardWrapper
+        containerStyle={{
+          backgroundColor: isDarkTheme ? colors.background : 'white',
+          height: scale(1400),
+        }}
+      >
+        <ScrollView
+          style={{
+            height: scale(1375),
+          }}
+          contentContainerStyle={{ flex: 1 }}
+        >
+          <FundingTribesTabNavigator />
+        </ScrollView>
       </CardWrapper>
     );
   };
@@ -108,6 +283,9 @@ export const Funding = () => {
       <ScrollView>
         {_renderTitleAndCapButtons()}
         {_renderTotalContributionGraph()}
+        {_renderLastNextContribution()}
+        {_renderMyContributionSchedule()}
+        {_renderFundingRoundsAndTribeContributions()}
       </ScrollView>
     </View>
   );

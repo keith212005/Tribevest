@@ -299,7 +299,7 @@ export const en = {
   DEADLINE: 'Deadline',
   ABOUT: 'About',
   CONTRIBUTIONS_DATE: 'Contributions Date',
-  Participant: 'PARTICIPANT',
+  PARTICIPANT: 'PARTICIPANT',
   EDIT_CONTRIBUTION_SERIES: 'Edit Contribution Series',
   FUNDING_ROUND: 'Funding Round',
   BANK_ACOUNT: 'Bank Account',
@@ -313,4 +313,7 @@ export const en = {
   SUCCESS: 'Success',
   SCHEDULED: 'Scheduled',
   CANCEL_CONTRIBUTIONS: 'Cancel Contributions',
+  ABOUT_TEXT: `Fusce laoreet, turpi consectetur fermentum, quam nunc facilisis urna, quis dapibus arcu ex sit amet lacus. Donec auctor id augue ut suscipit laoreet
+  Aliquam sit amet fermentum odio ut sem lacus, auctor faucibus sollicitudin a volutpat a lorem. Morbi condimentum sit amet turpis quis luctus. Pellentesque at laoreet enim, at eleifend lectus. Pellentesque viverra tellus nec bibendum accumsan.
+  Phasellus elementum quam felisd hendrerit ante tristique at. Praesent auctor molestie lacinia. Integer at diam efficitur, consectetur est sit amet, facilisis ante.`,
 };

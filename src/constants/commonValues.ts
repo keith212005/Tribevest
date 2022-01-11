@@ -761,3 +761,41 @@ export const SCHEDULED = [
     amount: '$8,900.00',
   },
 ];
+
+export const MY_CONTRIBUTIONS = [
+  {
+    id: 1,
+    amount: '$500.00',
+    date: '06-02-2021',
+    times: '5x',
+    type: 'Recurring',
+  },
+  {
+    id: 2,
+    amount: '$350.00',
+    date: '07-05-2021',
+    times: '8x',
+    type: 'Recurring',
+  },
+  {
+    id: 3,
+    amount: '$4,000.00',
+    date: '07-28-2021',
+    times: '1x',
+    type: 'Recurring',
+  },
+  {
+    id: 4,
+    amount: '$25,000.00',
+    date: '08-08-2021',
+    times: '1x',
+    type: 'Recurring',
+  },
+  {
+    id: 5,
+    amount: '$30,000.00',
+    date: '09-08-2021',
+    times: '2x',
+    type: 'Recurring',
+  },
+];

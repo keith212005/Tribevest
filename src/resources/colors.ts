@@ -27,6 +27,7 @@ export const color: any = {
   green: '#32CD32',
   lightBackground: '#273143',
   primaryGradiant: ['#189EFF', '#1846FF'],
+  whiteGradient: ['white', 'white'],
   greenGradient: ['#23C26F', '#23BEC2'],
   transparentGradient: ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0)'],
   transparent: 'rgba(0, 0, 0, 0)',
