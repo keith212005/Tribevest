@@ -46,6 +46,7 @@ export const Pagination = (props: any) => {
 
   let lastPage = paginationRange[paginationRange.length - 1];
   console.log('lastPage>>>>', lastPage);
+  console.log('currentPage>>>>', currentPage);
 
   const _renderButton = (
     imageName: string,
@@ -80,38 +81,40 @@ export const Pagination = (props: any) => {
         }
 
         return (
-          <LinearGradient
-            useAngle={true}
-            angle={145}
-            angleCenter={{ x: 0.4, y: 0.6 }}
-            colors={
-              currentPage === pageNumber
-                ? colors.primaryGradiant
-                : colors.whiteGradient
-            }
-            key={pageNumber}
-            style={[
-              globalStyle.layoutDirection('row', 'center', 'center'),
-              {
-                paddingVertical: 5,
-                paddingHorizontal: 12,
-                marginHorizontal: 5,
-                borderRadius: 8,
-              },
-            ]}
-          >
-            <Text
+          <TouchableOpacity onPress={() => onPageChange(pageNumber)}>
+            <LinearGradient
+              useAngle={true}
+              angle={145}
+              angleCenter={{ x: 0.4, y: 0.6 }}
+              colors={
+                currentPage === pageNumber
+                  ? colors.primaryGradiant
+                  : colors.whiteGradient
+              }
+              key={pageNumber}
               style={[
-                globalStyle.textStyle(
-                  '_14',
-                  currentPage === pageNumber ? 'white' : 'text',
-                  'NUNITO_REGULAR',
-                ),
+                globalStyle.layoutDirection('row', 'center', 'center'),
+                {
+                  paddingVertical: 5,
+                  paddingHorizontal: 12,
+                  marginHorizontal: 5,
+                  borderRadius: 8,
+                },
               ]}
             >
-              {pageNumber}
-            </Text>
-          </LinearGradient>
+              <Text
+                style={[
+                  globalStyle.textStyle(
+                    '_14',
+                    currentPage === pageNumber ? 'white' : 'text',
+                    'NUNITO_REGULAR',
+                  ),
+                ]}
+              >
+                {pageNumber}
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
         );
       })}
 
