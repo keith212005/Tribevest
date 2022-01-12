@@ -5,7 +5,6 @@ import { View } from 'react-native';
 // THIRD PARTY IMPORTS
 import { useSelector } from 'react-redux';
 import { useTheme } from '@react-navigation/native';
-import { useModalize } from 'react-native-modalize/lib/utils/use-modalize';
 import { DetailsMyContributionsTabNavigator } from './DetailsMyContributionsTabNavigator';
 
 // LOCAL IMPORTS
@@ -17,7 +16,6 @@ export const FundingRoundsTabScreen = () => {
   const globalStyle = useGlobalStyles();
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const { colors } = useTheme() as CustomTheme;
-  const { ref, open } = useModalize();
 
   const [actionOpen, setActionOpen] = useState(false);
   const [value, setValue] = useState('Accounts');
@@ -49,7 +47,7 @@ export const FundingRoundsTabScreen = () => {
 
       {/* Render Create new funding round button */}
       <GradientTextButton
-        onPress={() => open()}
+        onPress={() => {}}
         backgroundColor={
           isDarkTheme ? [colors.card, colors.card] : ['white', 'white']
         }

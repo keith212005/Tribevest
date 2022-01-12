@@ -6,7 +6,7 @@ import '../../typings/globals';
 // THIRD PARTY IMPORTS
 import { connect } from 'react-redux';
 import { Host } from 'react-native-portalize';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
@@ -19,13 +19,13 @@ import { MyDarkTheme, LightTheme } from '@resources';
 import { DrawerNavigator } from './drawerNavigator';
 import { CustomStatusBar, OfflineNotice } from '@components';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
-const forFade = ({ current }: { current: any }) => ({
-  cardStyle: {
-    opacity: current.progress,
-  },
-});
+// const forFade = ({ current }: { current: any }) => ({
+//   cardStyle: {
+//     opacity: current.progress,
+//   },
+// });
 
 const App = (props: any) => {
   const _addScreen = (
@@ -42,14 +42,12 @@ const App = (props: any) => {
     );
   };
 
-  SystemNavigationBar.setNavigationColor(
-    props.isDarkTheme ? '#273143' : 'white',
-  );
+  SystemNavigationBar.setNavigationColor(props.isDark ? '#273143' : 'white');
 
   return (
     <NavigationContainer
       ref={navigationRef}
-      theme={props.isDarkTheme ? MyDarkTheme : LightTheme}
+      theme={props.isDark ? MyDarkTheme : LightTheme}
       onReady={() => {
         setTimeout(() => {
           if (Platform.OS === 'android') {
@@ -66,7 +64,7 @@ const App = (props: any) => {
           screenOptions={{
             headerShown: false,
             gestureEnabled: true,
-            cardStyleInterpolator: forFade,
+            // cardStyleInterpolator: forFade,
           }}
         >
           {_addScreen('Signin' as never)}
@@ -88,7 +86,12 @@ const App = (props: any) => {
 };
 
 function mapStateToProps(state: any) {
-  return { isDarkTheme: state.theme.isDarkTheme };
+  console.log(state);
+
+  return {
+    isDark: state.theme.isDarkTheme,
+    isOpenedFirstTime: state.isOpenedFirstTime,
+  };
 }
 
 function mapDispatchToProps(dispatch: any) {

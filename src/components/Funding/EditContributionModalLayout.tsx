@@ -3,6 +3,7 @@ import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import { useSelector } from 'react-redux';
 import { useTheme } from '@react-navigation/native';
 
 // LOCAL IMPORTS
@@ -14,6 +15,7 @@ import { SCHEDULED_CONTRIBUTIONS } from '@constants';
 export const EditContributionModalLayout = () => {
   const globalStyle = useGlobalStyles();
   const { colors } = useTheme() as CustomTheme;
+  const isDark = useSelector((state: any) => state.theme.isDarkTheme);
 
   const _renderRow = (title: string, description: string) => {
     return (
@@ -35,7 +37,12 @@ export const EditContributionModalLayout = () => {
 
   const _renderScheduledList = () => {
     return (
-      <View style={styles.listContainer}>
+      <View
+        style={[
+          styles.listContainer,
+          { backgroundColor: isDark ? colors.card : colors.white },
+        ]}
+      >
         <View
           style={[
             globalStyle.layoutDirection('row', 'space-between', 'center'),
@@ -70,7 +77,14 @@ export const EditContributionModalLayout = () => {
                       containerStyle={{ padding: 0 }}
                       onPress={() => {}}
                     />
-                    {_renderText(item.date, { flex: 8 })}
+                    {_renderText(item.date, {
+                      flex: 8,
+                      ...globalStyle.textStyle(
+                        '_14',
+                        'text',
+                        'NUNITO_SEMIBOLD',
+                      ),
+                    })}
                     {_renderText(item.status, {
                       color:
                         item.status === 'Success'

@@ -5,7 +5,7 @@ import { Text, Platform, View } from 'react-native';
 // THIRD PARTY IMPORTS
 import FastImage from 'react-native-fast-image';
 import { useTheme } from '@react-navigation/native';
-import { HeaderStyleInterpolators } from '@react-navigation/stack';
+// import { HeaderStyleInterpolators } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // LOCAL IMPORTS
@@ -119,7 +119,7 @@ export const BottomTabNavigator = () => {
         headerShown: false,
         gestureEnabled: true,
         cardStyleInterpolator: forFade,
-        headerStyleInterpolator: HeaderStyleInterpolators.forFade,
+        // headerStyleInterpolator: HeaderStyleInterpolators.forFade,
         tabBarShowLabel: false,
         tabBarStyle: {
           height: responsiveHeight(Platform.OS === 'ios' ? 10 : 8),

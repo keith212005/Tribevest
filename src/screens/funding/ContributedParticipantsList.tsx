@@ -2,47 +2,20 @@
 import React, { memo, useMemo, useState } from 'react';
 import { View, ScrollView } from 'react-native';
 
-// LOCAL IMORTs
+// LOCAL IMORTS
 import { CAP_TABLE } from '@constants';
-import { renderAvatar, _renderText } from '@components';
+import { Pagination } from './Pagination';
 import { useGlobalStyles } from '@resources';
+import { renderAvatar, _renderText } from '@components';
 
 // THIRD PARTY IMPORTS
 import _ from 'lodash';
 import { Divider } from 'react-native-elements';
-import { Pagination } from './Pagination';
-
-const RenderItem = memo(({ item }: any) => {
-  const globalStyle = useGlobalStyles();
-
-  return (
-    <View>
-      <View
-        style={[
-          globalStyle.layoutDirection('row', 'flex-start', 'center'),
-          { paddingHorizontal: 10, paddingVertical: 8 },
-        ]}
-      >
-        {renderAvatar(item.imageUrl, 40, { marginRight: 10, marginLeft: -10 })}
-        {_renderText(item.name, {
-          ...globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
-          flex: 2,
-        })}
-        {_renderText(item.amount, {
-          ...globalStyle.textStyle('_14', 'lightText', 'NUNITO_REGULAR'),
-        })}
-      </View>
-      <Divider />
-    </View>
-  );
-});
 
 let PageSize = 5;
 export const ContributedParticipantsList = () => {
   const globalStyle = useGlobalStyles();
-
   const [currentPage, setCurrentPage] = useState(1);
-
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
@@ -83,3 +56,28 @@ export const ContributedParticipantsList = () => {
     </View>
   );
 };
+
+const RenderItem = memo(({ item }: any) => {
+  const globalStyle = useGlobalStyles();
+
+  return (
+    <View>
+      <View
+        style={[
+          globalStyle.layoutDirection('row', 'flex-start', 'center'),
+          { paddingHorizontal: 10, paddingVertical: 8 },
+        ]}
+      >
+        {renderAvatar(item.imageUrl, 40, { marginRight: 10, marginLeft: -10 })}
+        {_renderText(item.name, {
+          ...globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
+          flex: 2,
+        })}
+        {_renderText(item.amount, {
+          ...globalStyle.textStyle('_14', 'lightText', 'NUNITO_REGULAR'),
+        })}
+      </View>
+      <Divider />
+    </View>
+  );
+});

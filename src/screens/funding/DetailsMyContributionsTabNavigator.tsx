@@ -4,12 +4,11 @@ import { StyleSheet, Text, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { useTheme } from '@react-navigation/native';
-import FastImage from 'react-native-fast-image';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 // LOCAL IMPORTS
 import { SCREENS } from '@constants';
-import { _renderText } from '@components';
+import { FastImg, _renderText } from '@components';
 import { useSelector } from 'react-redux';
 import { images, useGlobalStyles } from '@resources';
 import { DetailsTabScreen } from './DetailsTabScreen';
@@ -90,11 +89,7 @@ export const DetailsMyContributionsTabNavigator = () => {
         style={[globalStyle.layoutDirection('row', 'flex-start', 'center')]}
       >
         {/* Render Dollar Image */}
-        <FastImage
-          source={images.dollar_circle}
-          style={[globalStyle.squareLayout(20)]}
-          resizeMode={FastImage.resizeMode.contain}
-        />
+        {FastImg(images.dollar_circle, 20)}
 
         {/* Render Amount */}
         {_renderText('$25,000.00', {

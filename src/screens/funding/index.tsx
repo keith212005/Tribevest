@@ -1,10 +1,16 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
+
+// THIRD PARTY IMPORTS
+import { useSelector } from 'react-redux';
+import { Divider } from 'react-native-elements';
+import FastImage from 'react-native-fast-image';
+import { useTheme } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useModalize } from 'react-native-modalize/lib/utils/use-modalize';
 
 // LOCAL IMPORTS
-import { styles } from './style';
 import {
   CardWrapper,
   CustomModal,
@@ -22,13 +28,9 @@ import {
   scale,
   responsiveHeight,
 } from '@resources';
-import { useTheme } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { styles } from './style';
 import { MY_CONTRIBUTIONS } from '@constants';
-import { Divider } from 'react-native-elements';
-import FastImage from 'react-native-fast-image';
 import { FundingTribesTabNavigator } from './FundingTribesTabNavigator';
-import { useModalize } from 'react-native-modalize/lib/utils/use-modalize';
 
 export const Funding = () => {
   const insets = useSafeAreaInsets();
@@ -149,6 +151,7 @@ export const Funding = () => {
         {_renderText(loc('TOTAL_CONTRIBUTIONS'), {
           ...globlaStyle.textStyle('_18', 'text', 'NUNITO_BOLD'),
         })}
+
         <View
           style={[globlaStyle.layoutDirection('row', 'flex-start', 'center')]}
         >
