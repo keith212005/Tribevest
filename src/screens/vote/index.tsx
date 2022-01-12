@@ -10,10 +10,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   AvatarGroup,
   Dot,
-  RoundGradientButton,
   TotalVoteCountView,
   MainHeader,
   VoteCounter,
+  GradientTextButton,
 } from '@components';
 import { FACES } from '@constants';
 import { navigate } from '@navigator';
@@ -196,14 +196,21 @@ export const Vote = () => {
           />
 
           {_renderCastYourVote()}
-          <RoundGradientButton
+
+          <GradientTextButton
+            fixedBackgroundColor={true}
+            backgroundColor={['#1846FF14', '#1846FF14']}
             icon={images.refresh}
-            gradientColor={['#1846FF14', '#1846FF14']}
-            title={loc('RESET_MY_VOTE')}
-            onPress={() => {}}
-            titleStyle={{ color: '#189EFF', marginLeft: 10 }}
-            extraStyle={{ marginTop: 16 }}
-          />
+            textStyle={{}}
+            onPress={() => console.log('sdfdsfsaddsafda')}
+            containerStyle={{
+              marginTop: 20,
+              width: '90%',
+              alignSelf: 'center',
+            }}
+          >
+            {loc('RESET_MY_VOTE')}
+          </GradientTextButton>
         </View>
       </ScrollView>
     </View>

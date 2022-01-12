@@ -52,7 +52,7 @@ export const usePagination = ({
         We do not show dots just when there is just one page number to be inserted between the extremes of sibling and the page limits i.e 1 and totalPageCount. Hence we are using leftSiblingIndex > 2 and rightSiblingIndex < totalPageCount - 2
       */
     const shouldShowLeftDots = leftSiblingIndex > 2;
-    const shouldShowRightDots = rightSiblingIndex < totalPageCount - 2;
+    const shouldShowRightDots = rightSiblingIndex < totalPageCount - 0;
 
     const firstPageIndex = 1;
     const lastPageIndex = totalPageCount;
@@ -61,7 +61,7 @@ export const usePagination = ({
           Case 2: No left dots to show, but rights dots to be shown
       */
     if (!shouldShowLeftDots && shouldShowRightDots) {
-      let leftItemCount = 3 + 2 * siblingCount;
+      let leftItemCount = 2 + 1 * siblingCount;
       let leftRange = range(1, leftItemCount);
 
       return [...leftRange, DOTS, totalPageCount];
@@ -71,7 +71,7 @@ export const usePagination = ({
           Case 3: No right dots to show, but left dots to be shown
       */
     if (shouldShowLeftDots && !shouldShowRightDots) {
-      let rightItemCount = 3 + 2 * siblingCount;
+      let rightItemCount = 2 + 1 * siblingCount;
       let rightRange = range(
         totalPageCount - rightItemCount + 1,
         totalPageCount,

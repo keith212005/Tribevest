@@ -20,7 +20,7 @@ export const CardWrapper = ({
   return (
     <Card
       containerStyle={[styles.container, { ...containerStyle }]}
-      wrapperStyle={wrapperStyle}
+      wrapperStyle={[wrapperStyle, { flex: 1 }]}
       {...extraProps}
     >
       {children}

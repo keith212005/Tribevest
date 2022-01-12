@@ -3,20 +3,19 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import { useSelector } from 'react-redux';
 import FastImage from 'react-native-fast-image';
-import { fontScale } from 'react-native-utils-scale';
+import { useTheme } from '@react-navigation/native';
 import { DetailsMyContributionsTabNavigator } from './DetailsMyContributionsTabNavigator';
 
 // LOCAL IMPORTS
-import { BANKING_MENU } from '@constants';
-import { images, useGlobalStyles } from '@resources';
 import {
   CustomDropDownPicker,
   _renderText,
   GradientTextButton,
 } from '@components';
-import { useSelector } from 'react-redux';
-import { useTheme } from '@react-navigation/native';
+import { BANKING_MENU } from '@constants';
+import { images, useGlobalStyles } from '@resources';
 
 export const FundingRoundsTabScreen = () => {
   const globalStyle = useGlobalStyles();
@@ -52,8 +51,12 @@ export const FundingRoundsTabScreen = () => {
       />
 
       <GradientTextButton
-        style={[{ fontSize: fontScale(14) }]}
         onPress={() => console.log('sdfdsfsaddsafda')}
+        backgroundColor={
+          isDarkTheme
+            ? [colors.background, colors.background]
+            : ['white', 'white']
+        }
       >
         {loc('CREATE_NEW_FUNDING_FOUND')}
       </GradientTextButton>

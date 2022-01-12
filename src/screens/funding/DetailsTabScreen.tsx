@@ -3,11 +3,10 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 // LOCAL IMPORTS
-import { _renderText } from '@components';
+import { FastImg, _renderText } from '@components';
 import { images, scale, useGlobalStyles } from '@resources';
 
 // THRID PARTY IMPORTS
-import FastImage from 'react-native-fast-image';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@react-navigation/native';
 import { Divider } from 'react-native-elements';
@@ -17,8 +16,6 @@ export const DetailsTabScreen = () => {
   const globalStyle = useGlobalStyles();
   const { colors } = useTheme() as CustomTheme;
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
-
-  console.log('>>>>>>>>>', isDarkTheme);
 
   const _renderManage = () => {
     return (
@@ -31,27 +28,14 @@ export const DetailsTabScreen = () => {
         {_renderText(loc('MANAGE'), {
           ...globalStyle.textStyle('_14', 'lightText', 'NUNITO_SEMIBOLD'),
         })}
-
-        <FastImage
-          source={images.manage}
-          resizeMode={FastImage.resizeMode.cover}
-          style={[globalStyle.squareLayout(20)]}
-        />
+        {FastImg(images.manage, 20)}
       </View>
     );
   };
 
   const _renderCardView = (title: string, description: string) => {
     return (
-      <View
-        style={{
-          padding: scale(16),
-          borderWidth: 1,
-          borderRadius: 10,
-          borderColor: colors.lightText,
-          marginTop: 10,
-        }}
-      >
+      <View style={[styles.cardContainer, { borderColor: colors.lightText }]}>
         {_renderText(title, {
           ...globalStyle.textStyle('_14', 'text', 'NUNITO_SEMIBOLD'),
         })}
@@ -97,5 +81,11 @@ export const DetailsTabScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  cardContainer: {
+    padding: scale(16),
+    borderWidth: 1,
+    borderRadius: 10,
+    marginTop: 10,
   },
 });

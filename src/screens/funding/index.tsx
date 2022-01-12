@@ -252,26 +252,6 @@ export const Funding = () => {
     );
   };
 
-  const _renderFundingRoundsAndTribeContributions = () => {
-    return (
-      <CardWrapper
-        containerStyle={{
-          backgroundColor: isDarkTheme ? colors.background : 'white',
-          height: scale(1400),
-        }}
-      >
-        <ScrollView
-          style={{
-            height: scale(1375),
-          }}
-          contentContainerStyle={{ flex: 1 }}
-        >
-          <FundingTribesTabNavigator />
-        </ScrollView>
-      </CardWrapper>
-    );
-  };
-
   return (
     <View style={[styles.container, { marginTop: insets.top }]}>
       <MainHeader
@@ -285,7 +265,7 @@ export const Funding = () => {
         {_renderTotalContributionGraph()}
         {_renderLastNextContribution()}
         {_renderMyContributionSchedule()}
-        {_renderFundingRoundsAndTribeContributions()}
+        <FundingTribesTabNavigator />
       </ScrollView>
     </View>
   );
