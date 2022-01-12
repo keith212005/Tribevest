@@ -108,7 +108,7 @@ export const Funding = () => {
         <CardWrapper
           containerStyle={{
             flex: 5,
-            backgroundColor: isDarkTheme ? colors.background : 'white',
+            backgroundColor: isDarkTheme ? colors.card : 'white',
           }}
         >
           {_renderText(amount, {
@@ -143,7 +143,7 @@ export const Funding = () => {
     return (
       <CardWrapper
         containerStyle={{
-          backgroundColor: isDarkTheme ? colors.background : 'white',
+          backgroundColor: isDarkTheme ? colors.card : 'white',
         }}
       >
         {_renderText(loc('TOTAL_CONTRIBUTIONS'), {
@@ -180,7 +180,7 @@ export const Funding = () => {
     return (
       <CardWrapper
         containerStyle={{
-          backgroundColor: isDarkTheme ? colors.background : 'white',
+          backgroundColor: isDarkTheme ? colors.card : 'white',
         }}
       >
         {_renderText(loc('MY_CONTRIBUTION_SCHEDULE'), {

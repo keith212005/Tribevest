@@ -20,7 +20,6 @@ const SigninScreen = (props: any) => {
   const { isAppOpenFirstTime, isUserLoggedIn } = props;
 
   useEffect(() => {
-    props.isOpenFirstTime(false);
     if (props.isUserLoggedIn) {
       props.navigation.dispatch(
         CommonActions.reset({
@@ -38,7 +37,7 @@ const SigninScreen = (props: any) => {
   */
 
   // Actions to be done when app installed and opened first time only
-  if (isAppOpenFirstTime && !isUserLoggedIn) {
+  if (isAppOpenFirstTime) {
     return <Onboarding />;
   }
 
@@ -51,36 +50,34 @@ const SigninScreen = (props: any) => {
   }
 
   return (
-    <>
-      <View style={{ flex: 1 }}>
-        <SignInHeader
-          title={loc('SIGN_INTO_TRIBEVEST')}
-          description={loc('MANAGE_YOUR_TRIBES')}
-        />
+    <View style={{ flex: 1 }}>
+      <SignInHeader
+        title={loc('SIGN_INTO_TRIBEVEST')}
+        description={loc('MANAGE_YOUR_TRIBES')}
+      />
 
-        <FormContainer>
-          <ScrollView
-            bounces={false}
-            showsVerticalScrollIndicator={false}
-            style={{}}
-          >
-            {/* Render Face Id Sign In */}
-            <FaceIdSignIn />
+      <FormContainer>
+        <ScrollView
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+          style={{}}
+        >
+          {/* Render Face Id Sign In */}
+          <FaceIdSignIn />
 
-            {/* Render Sign In Form*/}
-            <SignInForm />
+          {/* Render Sign In Form*/}
+          <SignInForm />
 
-            {/* Render Google Facebook Apple Buttons*/}
-            <SocialMediaLogin
-              leftText={loc('NEW_TO_TRIBEVEST')}
-              rightText={loc('CREATE_AN_ACCOUNT')}
-              onPressRightText={() => navigate('SignUp')}
-              onPressIcon={(iconName) => console.log(iconName)}
-            />
-          </ScrollView>
-        </FormContainer>
-      </View>
-    </>
+          {/* Render Google Facebook Apple Buttons*/}
+          <SocialMediaLogin
+            leftText={loc('NEW_TO_TRIBEVEST')}
+            rightText={loc('CREATE_AN_ACCOUNT')}
+            onPressRightText={() => navigate('SignUp')}
+            onPressIcon={(iconName) => console.log(iconName)}
+          />
+        </ScrollView>
+      </FormContainer>
+    </View>
   );
 };
 

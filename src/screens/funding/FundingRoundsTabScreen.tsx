@@ -9,13 +9,9 @@ import { useModalize } from 'react-native-modalize/lib/utils/use-modalize';
 import { DetailsMyContributionsTabNavigator } from './DetailsMyContributionsTabNavigator';
 
 // LOCAL IMPORTS
-import {
-  GradientTextButton,
-  CustomDropDownPicker,
-  CustomModal,
-} from '@components';
+import { GradientTextButton, CustomDropDownPicker } from '@components';
 import { BANKING_MENU } from '@constants';
-import { responsiveHeight, useGlobalStyles } from '@resources';
+import { useGlobalStyles } from '@resources';
 
 export const FundingRoundsTabScreen = () => {
   const globalStyle = useGlobalStyles();
@@ -31,7 +27,7 @@ export const FundingRoundsTabScreen = () => {
     <View
       style={{
         flex: 1,
-        backgroundColor: isDarkTheme ? colors.background : colors.white,
+        backgroundColor: isDarkTheme ? colors.card : colors.white,
       }}
     >
       {/* RENDER STATEMENTS DROPDOWN PICKER */}

@@ -65,7 +65,7 @@ export const DetailsTabScreen = () => {
     <View
       style={[
         styles.container,
-        { backgroundColor: isDarkTheme ? colors.background : colors.white },
+        { backgroundColor: isDarkTheme ? colors.card : colors.white },
       ]}
     >
       {_renderManage()}

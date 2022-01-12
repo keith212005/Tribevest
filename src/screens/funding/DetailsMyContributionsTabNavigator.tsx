@@ -35,7 +35,7 @@ export const DetailsMyContributionsTabNavigator = () => {
           tabBarIndicatorContainerStyle: {
             borderBottomWidth: 1,
             borderColor: colors.lightText,
-            backgroundColor: isDarkTheme ? colors.background : colors.white,
+            backgroundColor: isDarkTheme ? colors.card : colors.white,
           },
           tabBarIndicatorStyle: {
             borderWidth: 1,

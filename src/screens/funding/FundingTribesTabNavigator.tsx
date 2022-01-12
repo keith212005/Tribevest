@@ -34,7 +34,7 @@ export const FundingTribesTabNavigator = () => {
           tabBarIndicatorContainerStyle: {
             borderBottomWidth: 1,
             borderColor: colors.lightText,
-            backgroundColor: isDark ? colors.background : colors.white,
+            backgroundColor: isDark ? colors.card : colors.white,
           },
           tabBarIndicatorStyle: {
             borderWidth: 1,
@@ -59,7 +59,7 @@ export const FundingTribesTabNavigator = () => {
 
   return (
     <CardWrapper
-      containerStyle={{ backgroundColor: isDark ? colors.background : 'white' }}
+      containerStyle={{ backgroundColor: isDark ? colors.card : 'white' }}
     >
       <View style={{ height: scale(1325) }}>
         <Tab.Navigator>

@@ -28,6 +28,7 @@ export const DrawerRightSide = (props: any) => {
   const globalStyles = useGlobalStyles();
   const { colors } = useTheme() as unknown as CustomTheme;
   const isOpen = useSelector((state: any) => state.isDrawerLeftSideCollapsed);
+  const isDark = useSelector((state: any) => state.theme.isDarkTheme);
 
   function handleSelectedDrawerItem(label: any) {
     closeDrawer();
@@ -126,7 +127,16 @@ export const DrawerRightSide = (props: any) => {
       </View>
       {isOpen && (
         <View style={styles.centeredView}>
-          <View style={styles.modalView} />
+          <View
+            style={[
+              styles.modalView,
+              {
+                backgroundColor: isDark
+                  ? colors.BLACK_TRANSPARENT
+                  : colors.whiteOpacityDark,
+              },
+            ]}
+          />
         </View>
       )}
     </View>

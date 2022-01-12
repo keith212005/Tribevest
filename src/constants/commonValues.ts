@@ -36,6 +36,39 @@ export var fieldObject = {
   isFocus: false,
 };
 
+export const ONBOARDING_SCREENS = [
+  {
+    id: 1,
+    image: 'onboarding_welcome',
+    title: 'ONBOARDING1_TITLE',
+    description: '',
+  },
+  {
+    id: 2,
+    image: 'onboarding_create_plan',
+    title: 'ONBOARDING2_TITLE',
+    description: 'ONBOARDING2_DESCRIPTION',
+  },
+  {
+    id: 3,
+    image: 'onboarding_invite_friends',
+    title: 'ONBOARDING3_TITLE',
+    description: 'ONBOARDING3_DESCRIPTION',
+  },
+  {
+    id: 4,
+    image: 'onboarding_file_llc',
+    title: 'ONBOARDING4_TITLE',
+    description: 'ONBOARDING4_DESCRIPTION',
+  },
+  {
+    id: 5,
+    image: 'onboarding_pool_capital',
+    title: 'ONBOARDING5_TITLE',
+    description: 'ONBOARDING5_DESCRIPTION',
+  },
+];
+
 export const TRIBE_LIST_SIDE_DRAWER = [
   {
     id: 1,

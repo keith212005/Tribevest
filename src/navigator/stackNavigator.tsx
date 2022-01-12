@@ -4,9 +4,10 @@ import { Platform } from 'react-native';
 import '../../typings/globals';
 
 // THIRD PARTY IMPORTS
+import { connect } from 'react-redux';
+import { Host } from 'react-native-portalize';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { connect } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 import SystemNavigationBar from 'react-native-system-navigation-bar';
 
@@ -17,8 +18,6 @@ import { navigationRef } from './RootNavigation';
 import { MyDarkTheme, LightTheme } from '@resources';
 import { DrawerNavigator } from './drawerNavigator';
 import { CustomStatusBar, OfflineNotice } from '@components';
-
-import { Host } from 'react-native-portalize';
 
 const Stack = createStackNavigator();
 
@@ -64,7 +63,6 @@ const App = (props: any) => {
         <OfflineNotice />
         <Stack.Navigator
           initialRouteName={'Signin'}
-          // initialRouteName={'SignUpSteps'}
           screenOptions={{
             headerShown: false,
             gestureEnabled: true,
