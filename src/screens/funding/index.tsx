@@ -1,31 +1,41 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // LOCAL IMPORTS
 import { styles } from './style';
 import {
   CardWrapper,
+  CustomModal,
   Dot,
+  EditContributionModalLayout,
   MainHeader,
   RoundGradientButton,
   TotalContributionsLineChart,
   _renderText,
 } from '@components';
-import { images, useGlobalStyles, verticalScale, scale } from '@resources';
+import {
+  images,
+  useGlobalStyles,
+  verticalScale,
+  scale,
+  responsiveHeight,
+} from '@resources';
 import { useTheme } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import { MY_CONTRIBUTIONS } from '@constants';
 import { Divider } from 'react-native-elements';
 import FastImage from 'react-native-fast-image';
 import { FundingTribesTabNavigator } from './FundingTribesTabNavigator';
+import { useModalize } from 'react-native-modalize/lib/utils/use-modalize';
 
 export const Funding = () => {
   const insets = useSafeAreaInsets();
   const globlaStyle = useGlobalStyles();
   const { colors } = useTheme() as CustomTheme;
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
+  const { ref, open } = useModalize();
 
   const _renderTitleAndCapButtons = () => {
     return (
@@ -235,11 +245,13 @@ export const Funding = () => {
                       ),
                     })}
 
-                    <FastImage
-                      source={images.arrow_right}
-                      style={[globlaStyle.squareLayout(30)]}
-                      resizeMode={FastImage.resizeMode.contain}
-                    />
+                    <TouchableOpacity onPress={() => open()}>
+                      <FastImage
+                        source={images.arrow_right}
+                        style={[globlaStyle.squareLayout(30)]}
+                        resizeMode={FastImage.resizeMode.contain}
+                      />
+                    </TouchableOpacity>
                   </View>
                 </View>
                 <Divider style={{ marginVertical: verticalScale(16) }} />
@@ -265,6 +277,14 @@ export const Funding = () => {
         {_renderMyContributionSchedule()}
         <FundingTribesTabNavigator />
       </ScrollView>
+
+      {/* Open Modal when user clicks on Create new funding button */}
+      <CustomModal
+        ref={ref}
+        modalExtraStyle={{ marginTop: responsiveHeight(10) }}
+      >
+        <EditContributionModalLayout />
+      </CustomModal>
     </View>
   );
 };

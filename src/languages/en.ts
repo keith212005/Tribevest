@@ -302,7 +302,7 @@ export const en = {
   PARTICIPANT: 'PARTICIPANT',
   EDIT_CONTRIBUTION_SERIES: 'Edit Contribution Series',
   FUNDING_ROUND: 'Funding Round',
-  BANK_ACOUNT: 'Bank Account',
+  BANK_ACCOUNT: 'Bank Account',
   START_DATE: 'Start Date',
   MONTHLY_RECURRING_DATE: 'Monthly Recurring Date',
   MARK_UPCOMING_CONTRIBUTIONS:
@@ -316,4 +316,6 @@ export const en = {
   ABOUT_TEXT: `Fusce laoreet, turpi consectetur fermentum, quam nunc facilisis urna, quis dapibus arcu ex sit amet lacus. Donec auctor id augue ut suscipit laoreet
   Aliquam sit amet fermentum odio ut sem lacus, auctor faucibus sollicitudin a volutpat a lorem. Morbi condimentum sit amet turpis quis luctus. Pellentesque at laoreet enim, at eleifend lectus. Pellentesque viverra tellus nec bibendum accumsan.
   Phasellus elementum quam felisd hendrerit ante tristique at. Praesent auctor molestie lacinia. Integer at diam efficitur, consectetur est sit amet, facilisis ante.`,
+  EDIT_CONTRIBUTIONS_NOTE:
+    'Mark the upcomin contribution(s) that you would like to permanently remove from your schedule. Contributions can removed up to X business days before the scheduled date.',
 };

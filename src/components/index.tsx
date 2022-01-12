@@ -19,3 +19,4 @@ export * from './Banking';
 export * from './Modal';
 export * from './Cards';
 export * from './Charts';
+export * from './Funding';

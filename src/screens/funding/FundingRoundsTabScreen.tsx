@@ -3,19 +3,25 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import { useTheme } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+import { useTheme } from '@react-navigation/native';
+import { useModalize } from 'react-native-modalize/lib/utils/use-modalize';
 import { DetailsMyContributionsTabNavigator } from './DetailsMyContributionsTabNavigator';
 
 // LOCAL IMPORTS
-import { GradientTextButton, CustomDropDownPicker } from '@components';
+import {
+  GradientTextButton,
+  CustomDropDownPicker,
+  CustomModal,
+} from '@components';
 import { BANKING_MENU } from '@constants';
-import { useGlobalStyles } from '@resources';
+import { responsiveHeight, useGlobalStyles } from '@resources';
 
 export const FundingRoundsTabScreen = () => {
   const globalStyle = useGlobalStyles();
   const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
   const { colors } = useTheme() as CustomTheme;
+  const { ref, open } = useModalize();
 
   const [actionOpen, setActionOpen] = useState(false);
   const [value, setValue] = useState('Accounts');
@@ -47,7 +53,7 @@ export const FundingRoundsTabScreen = () => {
 
       {/* Render Create new funding round button */}
       <GradientTextButton
-        onPress={() => console.log('sdfdsfsaddsafda')}
+        onPress={() => open()}
         backgroundColor={
           isDarkTheme ? [colors.card, colors.card] : ['white', 'white']
         }

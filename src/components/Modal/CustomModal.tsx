@@ -30,25 +30,23 @@ export const CustomModal = forwardRef((props: DefaultProps, ref: any) => {
   }));
 
   return (
-    <>
-      <Portal>
-        <Modalize
-          ref={modalizeRef}
-          withHandle={false}
-          rootStyle={{}}
-          modalStyle={{
-            flex: 1,
-            backgroundColor: colors.background,
-            marginTop: responsiveHeight(Platform.OS === 'ios' ? 14 : 13),
-            ...props.modalExtraStyle,
-          }}
-          HeaderComponent={<HeaderComponent />}
-          {...props}
-        >
-          {props.children}
-        </Modalize>
-      </Portal>
-    </>
+    <Portal>
+      <Modalize
+        ref={modalizeRef}
+        withHandle={false}
+        rootStyle={{}}
+        modalStyle={{
+          flex: 1,
+          backgroundColor: colors.background,
+          marginTop: responsiveHeight(Platform.OS === 'ios' ? 14 : 13),
+          ...props.modalExtraStyle,
+        }}
+        HeaderComponent={<HeaderComponent />}
+        {...props}
+      >
+        {props.children}
+      </Modalize>
+    </Portal>
   );
 });
 

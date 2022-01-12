@@ -1,15 +1,17 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-undef */
-import * as React from 'react';
-import { View, Image, Alert, Modal, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Image, Alert, StyleSheet } from 'react-native';
 
 // THIRD PARTY IMPORTS
+import { Divider } from 'react-native-elements';
+import { useTheme } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { colors, Divider } from 'react-native-elements';
 
 // LOCAL IMPORTS
 import { DrawerHeader } from './DrawerHeader';
-import { GradientButton, _renderText } from '@components';
+import { GradientButton } from '@components';
 import {
   color,
   images,
@@ -17,11 +19,9 @@ import {
   scale,
   useGlobalStyles,
 } from '@resources';
+import { isLoggedIn } from 'actions/isLoggedIn';
 import { resetNavigation, navigate, closeDrawer } from '@navigator';
 import { ToggleDarkThemeSwitch } from './toggleDarkThemeSwitch';
-import { useDispatch, useSelector } from 'react-redux';
-import { isLoggedIn } from 'actions/isLoggedIn';
-import { useTheme } from '@react-navigation/native';
 
 export const DrawerRightSide = (props: any) => {
   const dispatch = useDispatch();

@@ -1,5 +1,4 @@
 import { en } from '@languages';
-import { Funding } from '@screens';
 
 export const SCREENS = {
   Signin: 'Signin',
@@ -797,5 +796,38 @@ export const MY_CONTRIBUTIONS = [
     date: '09-08-2021',
     times: '2x',
     type: 'Recurring',
+  },
+];
+
+export const SCHEDULED_CONTRIBUTIONS = [
+  {
+    id: 1,
+    date: 'February 21, 2021',
+    status: 'Success',
+    checked: true,
+  },
+  {
+    id: 2,
+    date: 'February 21, 2021',
+    status: 'Success',
+    checked: false,
+  },
+  {
+    id: 3,
+    date: 'August 2, 2021',
+    status: 'Scheduled',
+    checked: false,
+  },
+  {
+    id: 4,
+    date: 'September 2, 2021',
+    status: 'Scheduled',
+    checked: false,
+  },
+  {
+    id: 5,
+    date: 'October 2, 2021',
+    status: 'Scheduled',
+    checked: false,
   },
 ];
