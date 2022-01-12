@@ -1,15 +1,17 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { useTheme } from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 // LOCAL IMPORTS
-import { useSelector } from 'react-redux';
 import { SCREENS } from '@constants';
-import { useGlobalStyles } from '@resources';
+import { _renderText } from '@components';
+import { useSelector } from 'react-redux';
+import { images, useGlobalStyles } from '@resources';
 import { DetailsTabScreen } from './DetailsTabScreen';
 import { MyContributionsTabScreen } from './MyContributionsTabScreen';
 
@@ -62,9 +64,67 @@ export const DetailsMyContributionsTabNavigator = () => {
   };
 
   return (
-    <Tab.Navigator>
-      {_addScreen('Details' as never, DetailsTabScreen)}
-      {_addScreen('My Contributions' as never, MyContributionsTabScreen)}
-    </Tab.Navigator>
+    <View style={[styles.container]}>
+      <View
+        style={[globalStyle.layoutDirection('row', 'space-between', 'center')]}
+      >
+        {/* Render Funding Round Number */}
+        {_renderText(loc('OUR_THIRD_FUNDING_ROUND'), {
+          ...globalStyle.textStyle('_16', 'text', 'NUNITO_SEMIBOLD'),
+        })}
+        {/* Render Active Button */}
+        <View style={[styles.activeBtnContainer]}>
+          {_renderText(loc('ACTIVE'), {
+            ...globalStyle.textStyle('_10', 'green_text', 'NUNITO_SEMIBOLD'),
+          })}
+        </View>
+      </View>
+
+      {/* Render Days Left */}
+      {_renderText('12 ' + loc('DAYS_LEFT'), {
+        ...globalStyle.textStyle('_10', 'lightText', 'NUNITO_SEMIBOLD'),
+        marginVertical: 10,
+      })}
+
+      <View
+        style={[globalStyle.layoutDirection('row', 'flex-start', 'center')]}
+      >
+        {/* Render Dollar Image */}
+        <FastImage
+          source={images.dollar_circle}
+          style={[globalStyle.squareLayout(20)]}
+          resizeMode={FastImage.resizeMode.contain}
+        />
+
+        {/* Render Amount */}
+        {_renderText('$25,000.00', {
+          ...globalStyle.textStyle('_14', 'text', 'NUNITO_BOLD'),
+          marginLeft: 4,
+        })}
+      </View>
+
+      {/* Render Details and My Contributions Tab Navigator */}
+      <Tab.Navigator>
+        {_addScreen('Details' as never, DetailsTabScreen)}
+        {_addScreen('My Contributions' as never, MyContributionsTabScreen)}
+      </Tab.Navigator>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    borderWidth: 1,
+    marginVertical: 8,
+    borderRadius: 8,
+    borderColor: 'grey',
+  },
+  activeBtnContainer: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    backgroundColor: '#D8F7EA',
+    borderRadius: 60,
+  },
+});

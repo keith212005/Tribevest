@@ -3,19 +3,14 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import { useSelector } from 'react-redux';
-import FastImage from 'react-native-fast-image';
 import { useTheme } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 import { DetailsMyContributionsTabNavigator } from './DetailsMyContributionsTabNavigator';
 
 // LOCAL IMPORTS
-import {
-  CustomDropDownPicker,
-  _renderText,
-  GradientTextButton,
-} from '@components';
+import { GradientTextButton, CustomDropDownPicker } from '@components';
 import { BANKING_MENU } from '@constants';
-import { images, useGlobalStyles } from '@resources';
+import { useGlobalStyles } from '@resources';
 
 export const FundingRoundsTabScreen = () => {
   const globalStyle = useGlobalStyles();
@@ -50,71 +45,18 @@ export const FundingRoundsTabScreen = () => {
         labelStyle={[globalStyle.textStyle('_14', 'black', 'NUNITO_REGULAR')]}
       />
 
+      {/* Render Create new funding round button */}
       <GradientTextButton
         onPress={() => console.log('sdfdsfsaddsafda')}
         backgroundColor={
-          isDarkTheme
-            ? [colors.background, colors.background]
-            : ['white', 'white']
+          isDarkTheme ? [colors.card, colors.card] : ['white', 'white']
         }
       >
         {loc('CREATE_NEW_FUNDING_FOUND')}
       </GradientTextButton>
 
-      <View
-        style={{
-          borderWidth: 1,
-          marginVertical: 8,
-          borderRadius: 8,
-          borderColor: 'grey',
-          padding: 16,
-          flex: 1,
-        }}
-      >
-        <View
-          style={[
-            globalStyle.layoutDirection('row', 'space-between', 'center'),
-          ]}
-        >
-          {_renderText(loc('OUR_THIRD_FUNDING_ROUND'), {
-            ...globalStyle.textStyle('_16', 'text', 'NUNITO_SEMIBOLD'),
-          })}
-          <View
-            style={{
-              paddingHorizontal: 10,
-              paddingVertical: 4,
-              backgroundColor: '#D8F7EA',
-              borderRadius: 60,
-            }}
-          >
-            {_renderText(loc('ACTIVE'), {
-              ...globalStyle.textStyle('_10', 'green_text', 'NUNITO_SEMIBOLD'),
-            })}
-          </View>
-        </View>
-
-        {_renderText('12 ' + loc('DAYS_LEFT'), {
-          ...globalStyle.textStyle('_10', 'lightText', 'NUNITO_SEMIBOLD'),
-        })}
-
-        <View
-          style={[globalStyle.layoutDirection('row', 'flex-start', 'center')]}
-        >
-          <FastImage
-            source={images.dollar_circle}
-            style={[globalStyle.squareLayout(20)]}
-            resizeMode={FastImage.resizeMode.contain}
-          />
-
-          {_renderText('$25,000.00', {
-            ...globalStyle.textStyle('_14', 'text', 'NUNITO_BOLD'),
-            marginLeft: 4,
-            marginVertical: 10,
-          })}
-        </View>
-
-        <DetailsMyContributionsTabNavigator />
-      </View>
+      {/* Render Funding Rounds and Tribe Contributions Tab */}
+      <DetailsMyContributionsTabNavigator />
     </View>
   );
 };

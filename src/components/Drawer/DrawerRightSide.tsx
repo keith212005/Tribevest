@@ -1,16 +1,22 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-undef */
 import * as React from 'react';
-import { View, Image, Alert } from 'react-native';
+import { View, Image, Alert, Modal, StyleSheet } from 'react-native';
 
 // THIRD PARTY IMPORTS
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { Divider } from 'react-native-elements';
+import { colors, Divider } from 'react-native-elements';
 
 // LOCAL IMPORTS
 import { DrawerHeader } from './DrawerHeader';
-import { GradientButton } from '@components';
-import { images, responsiveWidth, scale, useGlobalStyles } from '@resources';
+import { GradientButton, _renderText } from '@components';
+import {
+  color,
+  images,
+  responsiveWidth,
+  scale,
+  useGlobalStyles,
+} from '@resources';
 import { resetNavigation, navigate, closeDrawer } from '@navigator';
 import { ToggleDarkThemeSwitch } from './toggleDarkThemeSwitch';
 import { useDispatch, useSelector } from 'react-redux';
@@ -113,11 +119,30 @@ export const DrawerRightSide = (props: any) => {
           {_renderDrawerItem('members', loc('MEMBERS'))}
           {_renderDrawerItem('document', loc('DOCUMENTS'))}
           {_renderDrawerItem('settings', loc('TRIBE_SETTINGS'))}
-          {_renderDrawerItem('settings', loc('LOGOUT'))}
+          {_renderDrawerItem('manage', loc('LOGOUT'))}
           <Divider />
           <ToggleDarkThemeSwitch />
         </DrawerContentScrollView>
       </View>
+      {isOpen && (
+        <View style={styles.centeredView}>
+          <View style={styles.modalView} />
+        </View>
+      )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  centeredView: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    position: 'absolute',
+  },
+  modalView: {
+    flex: 1,
+    backgroundColor: color.whiteOpacityDark,
+    alignItems: 'center',
+  },
+});

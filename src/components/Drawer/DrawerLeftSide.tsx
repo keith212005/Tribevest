@@ -30,9 +30,7 @@ export const DrawerLeftSide = () => {
   };
 
   const renderItem = ({ item }: any) => (
-    <>
-      <TribeListDrawerItem item={item} onTribeSelected={handleSelectedTribe} />
-    </>
+    <TribeListDrawerItem item={item} onTribeSelected={handleSelectedTribe} />
   );
 
   const _renderFooterItem = () => (
@@ -43,7 +41,7 @@ export const DrawerLeftSide = () => {
     <View
       style={[
         styles.tribeImageContainer,
-        { width: isOpen ? responsiveWidth(80) : '100%' },
+        { width: isOpen ? responsiveWidth(85) : '100%' },
       ]}
     >
       <DrawerLeftSideCollapseButton />
@@ -63,7 +61,7 @@ export const DrawerLeftSide = () => {
   const keyExtractor = useCallback((item: any) => item.id.toString(), []);
 
   return (
-    <View>
+    <View style={{ zIndex: 9999 }}>
       {_renderHeaderItem()}
       <FlatList
         style={styles.flatList}

@@ -38,7 +38,10 @@ export const TribeListDrawerItem = ({ item, onTribeSelected }: any) => {
         {isOpen && <TribeDetails item={item} />}
       </Pressable>
       <LinearGradient
-        style={styles.selctedView}
+        style={[
+          styles.selctedView,
+          { height: responsiveHeight(isOpen ? 6 : 3) },
+        ]}
         useAngle={true}
         angle={100}
         angleCenter={{ x: 0.5, y: 0.5 }}
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
   },
   selctedView: {
     width: 4,
-    height: responsiveHeight(6),
+
     alignSelf: 'center',
     marginLeft: 20,
     borderRadius: 6,

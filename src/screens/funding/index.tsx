@@ -171,7 +171,6 @@ export const Funding = () => {
       <CardWrapper
         containerStyle={{
           backgroundColor: isDarkTheme ? colors.background : 'white',
-          // height: scale(320),
         }}
       >
         {_renderText(loc('MY_CONTRIBUTION_SCHEDULE'), {
@@ -182,7 +181,7 @@ export const Funding = () => {
         <ScrollView style={{ height: scale(320) }}>
           {MY_CONTRIBUTIONS.map((item) => {
             return (
-              <>
+              <View key={item.id}>
                 <View
                   style={[
                     globlaStyle.layoutDirection(
@@ -212,7 +211,7 @@ export const Funding = () => {
                   >
                     <View
                       style={{
-                        backgroundColor: '#F1F5F9',
+                        backgroundColor: isDarkTheme ? colors.card : '#F1F5F9',
                         paddingHorizontal: 7,
                         paddingVertical: 5,
                         borderRadius: 5,
@@ -244,7 +243,7 @@ export const Funding = () => {
                   </View>
                 </View>
                 <Divider style={{ marginVertical: verticalScale(16) }} />
-              </>
+              </View>
             );
           })}
         </ScrollView>
@@ -258,9 +257,8 @@ export const Funding = () => {
         headerTitle={'Crypto Crew'}
         rightIcon={images.members}
         onPressRightIcon={() => {}}
-        containerStyle={{ marginBottom: 16 }}
       />
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ paddingTop: 16 }}>
         {_renderTitleAndCapButtons()}
         {_renderTotalContributionGraph()}
         {_renderLastNextContribution()}

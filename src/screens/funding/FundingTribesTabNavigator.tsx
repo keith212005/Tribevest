@@ -61,7 +61,7 @@ export const FundingTribesTabNavigator = () => {
     <CardWrapper
       containerStyle={{ backgroundColor: isDark ? colors.background : 'white' }}
     >
-      <View style={{ flex: 1, height: scale(1250) }}>
+      <View style={{ height: scale(1325) }}>
         <Tab.Navigator>
           {_addScreen('Funding Rounds' as never, FundingRoundsTabScreen)}
           {_addScreen(

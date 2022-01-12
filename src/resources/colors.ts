@@ -15,7 +15,7 @@ export const color: any = {
   selectedBackgroundBlue: '#E0EFFF',
   orange: 'orange',
   whiteOpacity: 'rgba(255, 255, 255, 0.3)',
-  whiteOpacityDark: 'rgba(255, 255, 255, 0.9)',
+  whiteOpacityDark: 'rgba(255, 255, 255, 0.7)',
   unfocusBorder_opacity_low: 'rgba(23, 28, 68, 0.1)',
   grey: '#DCDCDC',
   darkGrey: '#4d4d4d',

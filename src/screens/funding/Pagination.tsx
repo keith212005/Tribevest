@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 /* eslint-disable no-undef */
 import React from 'react';
 import {
@@ -11,7 +10,7 @@ import {
 
 // LOCAL IMPORTS
 import { usePagination, DOTS } from '@utils';
-import { images, useGlobalStyles } from '@resources';
+import { images, scale, useGlobalStyles } from '@resources';
 
 // THIRD PARTY IMPORTS
 import LinearGradient from 'react-native-linear-gradient';
@@ -65,11 +64,11 @@ export const Pagination = (props: any) => {
           styles.prevNextStyle,
           {
             ...extraStyle,
-            // backgroundColor: isDark ? colors.transparent : colors.white,
+            backgroundColor: isDark ? colors.card : '#F1F5F9',
           },
         ]}
       >
-        {FastImg(images[imageName], 20, { margin: 5 })}
+        {FastImg(images[imageName], 20, { margin: scale(7) })}
       </TouchableOpacity>
     );
   };
@@ -77,18 +76,27 @@ export const Pagination = (props: any) => {
   return (
     <View style={[globalStyle.layoutDirection('row', 'center', 'center'), {}]}>
       {/* Render Previous Arrow */}
-      {_renderButton('arrow_left', onPrevious, { marginRight: 10 })}
+      {_renderButton('arrow_left', onPrevious, { marginRight: 5 })}
 
       {/* Render Numbers */}
       {paginationRange.map((pageNumber: any) => {
         let selected = currentPage === pageNumber ? 'white' : 'text';
 
         if (pageNumber === DOTS) {
-          return <Text>{DOTS}</Text>;
+          return (
+            <Text
+              style={[globalStyle.textStyle('_14', 'text', 'NUNITO_REGULAR')]}
+            >
+              {DOTS}
+            </Text>
+          );
         }
 
         return (
-          <TouchableOpacity onPress={() => onPageChange(pageNumber)}>
+          <TouchableOpacity
+            key={pageNumber}
+            onPress={() => onPageChange(pageNumber)}
+          >
             <LinearGradient
               useAngle={true}
               angle={145}
@@ -97,9 +105,7 @@ export const Pagination = (props: any) => {
               colors={
                 currentPage === pageNumber
                   ? colors.primaryGradiant
-                  : isDark
-                  ? [colors.transparent, colors.transparent]
-                  : colors.whiteGradient
+                  : [colors.transparent, colors.transparent]
               }
               style={[
                 styles.btnGradientStyle,
@@ -115,7 +121,7 @@ export const Pagination = (props: any) => {
       })}
 
       {/* Render Next Arrow */}
-      {_renderButton('arrow_right', onNext, { marginLeft: 10 })}
+      {_renderButton('arrow_right', onNext, { marginLeft: 5 })}
     </View>
   );
 };
@@ -126,8 +132,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1F5F9',
   },
   btnGradientStyle: {
-    paddingVertical: 5,
-    paddingHorizontal: 11,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
     borderRadius: 8,
   },
 });

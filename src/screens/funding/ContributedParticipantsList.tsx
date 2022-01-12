@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { memo, useMemo, useState } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 
 // LOCAL IMORTs
 import { CAP_TABLE } from '@constants';
@@ -16,7 +16,7 @@ const RenderItem = memo(({ item }: any) => {
   const globalStyle = useGlobalStyles();
 
   return (
-    <>
+    <View>
       <View
         style={[
           globalStyle.layoutDirection('row', 'flex-start', 'center'),
@@ -33,7 +33,7 @@ const RenderItem = memo(({ item }: any) => {
         })}
       </View>
       <Divider />
-    </>
+    </View>
   );
 });
 
@@ -50,7 +50,7 @@ export const ContributedParticipantsList = () => {
   }, [currentPage]);
 
   return (
-    <>
+    <View>
       {_renderText(loc('CONTRIBUTIONS_DATE'), {
         ...globalStyle.textStyle('_16', 'text', 'NUNITO_BOLD'),
       })}
@@ -68,9 +68,9 @@ export const ContributedParticipantsList = () => {
         })}
       </View>
       <Divider style={{ marginVertical: 8 }} />
-      <ScrollView style={styles.container}>
+      <ScrollView contentContainerStyle={{ height: 300 }}>
         {currentTableData.map((item) => (
-          <RenderItem item={item} />
+          <RenderItem key={item.id} item={item} />
         ))}
       </ScrollView>
 
@@ -80,10 +80,6 @@ export const ContributedParticipantsList = () => {
         pageSize={PageSize}
         onPageChange={(page: any) => setCurrentPage(page)}
       />
-    </>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});

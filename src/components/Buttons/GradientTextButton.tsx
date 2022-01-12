@@ -21,7 +21,7 @@ interface DefaultProps {
   textStyle?: TextStyle;
   backgroundColor?: any;
   containerStyle?: ViewStyle;
-  fixedBackgroundColor: boolean;
+  fixedBackgroundColor?: boolean;
 }
 
 export const GradientTextButton = (props: DefaultProps) => {
