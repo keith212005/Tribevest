@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import * as React from 'react';
+import React from 'react';
 import { Text, Platform, View } from 'react-native';
 
 // THIRD PARTY IMPORTS
@@ -12,6 +12,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as Screen from '@screens';
 import { SCREENS } from '@constants';
 import { images, responsiveHeight, useGlobalStyles } from '@resources';
+import { renderAvatar } from '@components';
 
 const Tab = createBottomTabNavigator();
 
@@ -94,11 +95,18 @@ export const BottomTabNavigator = () => {
                   }),
                 }}
               >
-                <FastImage
-                  source={iconName as any}
-                  style={[globalStyles.squareLayout(20)]}
-                  resizeMode={FastImage.resizeMode.contain}
-                />
+                {route.name === SCREENS.Profile ? (
+                  renderAvatar(
+                    'https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg',
+                    26,
+                  )
+                ) : (
+                  <FastImage
+                    source={iconName as any}
+                    style={[globalStyles.squareLayout(20)]}
+                    resizeMode={FastImage.resizeMode.contain}
+                  />
+                )}
               </View>
 
               <Text

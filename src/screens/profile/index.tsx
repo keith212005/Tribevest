@@ -1,21 +1,53 @@
-import * as React from 'react';
-import { Text } from 'react-native';
+/* eslint-disable no-undef */
+import React from 'react';
+import { View, Text, ScrollView, ImageBackground } from 'react-native';
 
 // THIRD PARTY IMPORTS
-import { useSelector } from 'react-redux';
-import SafeAreaView from 'react-native-safe-area-view';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // LOCAL IMPORTS
-import { styles } from './style';
-import { SafeAreaWrapper } from '@components';
+import { images, responsiveHeight, responsiveWidth, scale } from '@resources';
+import { RoundGradientButton, UserProfileInfo } from '@components';
+import { useTheme } from '@react-navigation/native';
 
 export const Profile = () => {
-  const isDarkTheme = useSelector((state: any) => state.theme.isDarkTheme);
+  const insets = useSafeAreaInsets();
+  const { colors } = useTheme() as CustomTheme;
+
   return (
-    <SafeAreaView
-      statusBarStyle={isDarkTheme ? 'light-content' : 'dark-content'}
+    <ImageBackground
+      source={images.splashscreen_bg}
+      resizeMode="cover"
+      style={{ flex: 1 }}
     >
-      <Text>Alerts screen</Text>
-    </SafeAreaView>
+      <ScrollView
+        bounces={false}
+        showsVerticalScrollIndicator={false}
+        style={{}}
+        contentContainerStyle={{
+          flex: 1,
+          marginTop: responsiveHeight(17),
+          backgroundColor: colors.white,
+          borderTopRightRadius: 30,
+          borderTopLeftRadius: 30,
+        }}
+      >
+        <UserProfileInfo />
+        <RoundGradientButton
+          gradientColor={colors.primaryGradiant}
+          title={loc('NEW')}
+          onPress={() => {}}
+          icon={images.settings}
+          iconTintColor={'white'}
+          iconSize={30}
+          titleStyle={{}}
+          extraStyle={{
+            marginTop: scale(24),
+            width: responsiveWidth(90),
+            alignSelf: 'center',
+          }}
+        />
+      </ScrollView>
+    </ImageBackground>
   );
 };

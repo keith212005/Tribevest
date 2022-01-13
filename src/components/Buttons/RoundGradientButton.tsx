@@ -24,6 +24,7 @@ interface DefaultProps {
   disabled?: boolean;
   icon?: keyof typeof images;
   iconSize?: number;
+  iconTintColor?: string;
   titleStyle?: TextStyle;
   extraLinearGradientProps?: LinearGradientProps;
 }
@@ -35,6 +36,7 @@ const RoundGradientButtons = ({
   extraStyle,
   disabled,
   icon,
+  iconTintColor,
   titleStyle,
   iconSize,
   extraLinearGradientProps,
@@ -89,7 +91,7 @@ const RoundGradientButtons = ({
               globalStyle.squareLayout(iconSize ? iconSize / 1.5 : 22 / 1.5),
             ]}
             resizeMode={FastImage.resizeMode.contain}
-            tintColor={color.text}
+            tintColor={iconTintColor}
           />
         )}
 

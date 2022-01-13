@@ -16,14 +16,7 @@ import createState from 'react-hook-setstate';
 
 // LOCAL IMPORTS
 import { IfieldObject } from '@constants';
-import {
-  color,
-  images,
-  useGlobalStyles,
-  verticalScale,
-  moderateScale,
-  scale,
-} from '@resources';
+import { color, images, useGlobalStyles, scale } from '@resources';
 import FastImage, { Source } from 'react-native-fast-image';
 
 export interface CustomInputProps extends TextInputProps {
@@ -38,9 +31,7 @@ export interface CustomInputProps extends TextInputProps {
   containerStyle?: ViewStyle;
 }
 
-export const CustomInput: React.FC<CustomInputProps> = (
-  props: CustomInputProps,
-) => {
+export const CustomInput: React.FC<CustomInputProps> = (props) => {
   const [state, setState] = createState<any>({
     secureTextEntry: props.showPasswordIcon ? true : false,
   });
@@ -83,8 +74,8 @@ export const CustomInput: React.FC<CustomInputProps> = (
               backgroundColor: props.valueObject?.isError
                 ? color.error_light
                 : color.inputBackgroundColor,
-              paddingLeft: props.leftIcon ? moderateScale(32) : 20,
-              paddingRight: props.showPasswordIcon ? moderateScale(30) : 0,
+              paddingLeft: props.leftIcon ? scale(32) : 20,
+              paddingRight: props.showPasswordIcon ? scale(30) : 10,
               textAlignVertical: props.multiline ? 'top' : 'auto',
             },
             props.extraStyle,
@@ -126,7 +117,7 @@ const styles = StyleSheet.create({
   input: {
     color: color.black,
     borderRadius: 8,
-    height: Platform.OS === 'ios' ? verticalScale(40) : verticalScale(50),
+    height: Platform.OS === 'ios' ? scale(40) : scale(50),
   },
   leftImage: {
     position: 'absolute',

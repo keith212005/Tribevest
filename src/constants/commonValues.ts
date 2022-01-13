@@ -354,7 +354,7 @@ export const SIGN_UP_STEP5 = [
   {
     id: 4,
     icon: 'realestate',
-    description: en.REAL_ESTATE,
+    description: en.LARGE_REAL_ESTATE_DEAL,
     selected: false,
   },
   {
